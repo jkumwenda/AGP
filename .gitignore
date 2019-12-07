@@ -10,3 +10,4 @@ AGP/__pycache__/
 backend/__pycache__/
 AGP/.env
 db.sqlite3
+requirements.txt
