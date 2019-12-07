@@ -24,9 +24,10 @@ router.register(r'club', backend_views.ClubViewSet, base_name='Club')
 router.register(r'club_course', backend_views.ClubCourseViewSet, base_name='Club Course')
 router.register(r'profile', backend_views.ProfileViewSet, base_name='Profile')
 router.register(r'club_profile', backend_views.ClubProfileViewSet, base_name='Club Profile')
-router.register(r'Handcap', backend_views.HandcapViewSet, base_name='Handcap')
-router.register(r'Role', backend_views.RoleViewSet, base_name='Role')
-router.register(r'Profile_Role', backend_views.ProfileRoleViewSet, base_name='Profile Role')
+router.register(r'handcap', backend_views.HandcapViewSet, base_name='Handcap')
+router.register(r'role', backend_views.RoleViewSet, base_name='Role')
+router.register(r'profile_role', backend_views.ProfileRoleViewSet, base_name='Profile Role')
+router.register(r'permission', backend_views.PermissionViewSet, base_name='Permission')
 
 
 # Wire up our API using automatic URL routing.
