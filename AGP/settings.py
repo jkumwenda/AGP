@@ -80,8 +80,8 @@ DATABASES = {
     'default': {
         'NAME': 'agp',
         'ENGINE': 'django.db.backends.mysql',
-        'USER': 'root',
-        'PASSWORD': 'manager',
+        'USER': 'louis',
+        'PASSWORD': 'louis',
         'OPTIONS': {
             'autocommit': True,
         }
