@@ -26,6 +26,7 @@ router.register(r'profile', backend_views.ProfileViewSet, base_name='Profile')
 router.register(r'club_profile', backend_views.ClubProfileViewSet, base_name='Club Profile')
 router.register(r'Handcap', backend_views.HandcapViewSet, base_name='Handcap')
 router.register(r'Role', backend_views.RoleViewSet, base_name='Role')
+router.register(r'Profile_Role', backend_views.ProfileRoleViewSet, base_name='Profile Role')
 
 
 # Wire up our API using automatic URL routing.

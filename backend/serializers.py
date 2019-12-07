@@ -83,3 +83,7 @@ class RoleSerializer(serializers.ModelSerializer):
 		model  = Role      
 		fields = '__all__'                 
 
+class ProfileRoleSerializer(serializers.ModelSerializer):
+	class Meta:
+		model  = ProfileRole      
+		fields = '__all__'    

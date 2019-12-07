@@ -70,3 +70,7 @@ class HandcapViewSet(viewsets.ModelViewSet):
 class RoleViewSet(viewsets.ModelViewSet):
     queryset= Role.objects.all()
     serializer_class= RoleSerializer
+
+class ProfileRoleViewSet(viewsets.ModelViewSet):
+    queryset= ProfileRole.objects.all()
+    serializer_class= ProfileRoleSerializer
