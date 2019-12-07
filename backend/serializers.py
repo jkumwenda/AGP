@@ -71,4 +71,10 @@ class ProfileSerializer(serializers.ModelSerializer):
 class ClubProfileSerializer(serializers.ModelSerializer):
 	class Meta:
 		model  = ClubProfile      
-		fields =   '__all__'                 
+		fields =   '__all__'   
+
+class HandcapSerializer(serializers.ModelSerializer):
+	class Meta:
+		model  = Handcap      
+		fields =   '__all__'                    
+
