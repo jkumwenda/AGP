@@ -91,4 +91,19 @@ class ProfileRoleSerializer(serializers.ModelSerializer):
 class PermissionSerializer(serializers.ModelSerializer):
 	class Meta:
 		model  = Permission      
+		fields = '__all__'
+
+class RolePermissionSerializer(serializers.ModelSerializer):
+	class Meta:
+		model  = RolePermission      
+		fields = '__all__'
+
+class RegistrationDateSerializer(serializers.ModelSerializer):
+	class Meta:
+		model  = RegistrationDate      
 		fields = '__all__'    
+
+class FormatSerializer(serializers.ModelSerializer):
+	class Meta:
+		model  = Format      
+		fields = '__all__'

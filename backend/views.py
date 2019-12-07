@@ -78,3 +78,17 @@ class ProfileRoleViewSet(viewsets.ModelViewSet):
 class PermissionViewSet(viewsets.ModelViewSet):
     queryset= Permission.objects.all()
     serializer_class= PermissionSerializer
+
+class RolePermissionViewSet(viewsets.ModelViewSet):
+    queryset= RolePermission.objects.all()
+    serializer_class= RolePermissionSerializer
+
+
+class RegistrationDateViewSet(viewsets.ModelViewSet):
+    queryset= RegistrationDate.objects.all()
+    serializer_class= RegistrationDateSerializer
+
+
+class FormatViewSet(viewsets.ModelViewSet):
+    queryset= Format.objects.all()
+    serializer_class= FormatSerializer
