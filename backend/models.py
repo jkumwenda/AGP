@@ -257,3 +257,5 @@ class Register(models.Model):
     class Meta:
         managed = False
         db_table = 'register'
+
+        #jnhnh
