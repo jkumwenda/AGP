@@ -23,6 +23,8 @@ router.register(r'course_type_hole', backend_views.UserViewSet, base_name='Cours
 router.register(r'club', backend_views.ClubViewSet, base_name='Club')
 router.register(r'club_course', backend_views.ClubCourseViewSet, base_name='Club Course')
 router.register(r'profile', backend_views.ProfileViewSet, base_name='Profile')
+router.register(r'club_profile', backend_views.ClubProfileViewSet, base_name='Club Profile')
+
 
 # Wire up our API using automatic URL routing.
 # Additionally, we include login URLs for the browsable API.

@@ -58,3 +58,7 @@ class ClubCourseViewSet(viewsets.ModelViewSet):
 class ProfileViewSet(viewsets.ModelViewSet):
     queryset = Profile.objects.all()
     serializer_class = ProfileSerializer            
+
+class ClubProfileViewSet(viewsets.ModelViewSet):
+    queryset= ClubProfile.objects.all()
+    serializer_class= ClubProfileSerializer
