@@ -29,7 +29,7 @@ router.register(r'role', backend_views.RoleViewSet, base_name='Role')
 router.register(r'profile_role', backend_views.ProfileRoleViewSet, base_name='Profile Role')
 router.register(r'permission', backend_views.PermissionViewSet, base_name='Permission')
 router.register(r'role_permission', backend_views.RolePermissionViewSet, base_name='Role Permission')
-router.register(r'registration_date', backend_views.RegistrationDateViewSet, base_name='Registrtion Date')
+router.register(r'registration_date', backend_views.RegistrationDateViewSet, base_name='Registration Date')
 router.register(r'format', backend_views.FormatViewSet, base_name='Format')
 
 
