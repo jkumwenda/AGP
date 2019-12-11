@@ -1,6 +1,5 @@
 from django.db import models
 
-# Course Management Models
 class Country(models.Model):
     pk_countryid = models.AutoField(primary_key=True)
     country = models.CharField(max_length=45)
@@ -8,7 +7,6 @@ class Country(models.Model):
     class Meta:
         managed = False
         db_table = 'country'
-
 
 class Course(models.Model):
     pk_courseid = models.AutoField(primary_key=True)
@@ -19,16 +17,17 @@ class Course(models.Model):
         managed = False
         db_table = 'course'
 
-
 class Rating(models.Model):
     pk_ratingid = models.AutoField(primary_key=True)
     fk_courseid = models.ForeignKey(Course, models.DO_NOTHING, db_column='fk_courseid')
     course_rating = models.CharField(max_length=45)
     sloppy_rating = models.CharField(max_length=45)
+    par = models.CharField(max_length=45, blank=True, null=True)
 
     class Meta:
         managed = False
         db_table = 'rating'
+        unique_together = (('pk_ratingid', 'fk_courseid'),)
 
 
 class Type(models.Model):
@@ -37,18 +36,19 @@ class Type(models.Model):
 
     class Meta:
         managed = False
-        db_table = 'type'        
-
+        db_table = 'type'
 
 class CourseType(models.Model):
     pk_course_typeid = models.AutoField(primary_key=True)
     fk_courseid = models.ForeignKey(Course, models.DO_NOTHING, db_column='fk_courseid')
     fk_typeid = models.ForeignKey('Type', models.DO_NOTHING, db_column='fk_typeid')
+    hand_index = models.CharField(max_length=45, blank=True, null=True)
+    course_handicap = models.CharField(max_length=45, blank=True, null=True)
+    status = models.IntegerField(blank=True, null=True)
 
     class Meta:
         managed = False
         db_table = 'course_type'
-
 
 class Hole(models.Model):
     pk_holeid = models.IntegerField(primary_key=True)
@@ -57,7 +57,6 @@ class Hole(models.Model):
     class Meta:
         managed = False
         db_table = 'hole'
-
 
 class CourseTypeHole(models.Model):
     pk_course_type_holeid = models.AutoField(primary_key=True)
@@ -71,8 +70,6 @@ class CourseTypeHole(models.Model):
         managed = False
         db_table = 'course_type_hole'
 
-
-# Club Management
 class Club(models.Model):
     pk_clubid = models.AutoField(primary_key=True)
     club = models.CharField(max_length=100)
@@ -80,7 +77,6 @@ class Club(models.Model):
     class Meta:
         managed = False
         db_table = 'club'
-
 
 class ClubCourse(models.Model):
     pk_club_courseid = models.AutoField(primary_key=True)
@@ -111,17 +107,15 @@ class ClubProfile(models.Model):
         managed = False
         db_table = 'club_profile'
 
-
-class Handcap(models.Model):
-    pk_handcapid = models.AutoField(primary_key=True)
+class Handicap(models.Model):
+    pk_handicapid = models.AutoField(primary_key=True)
     fk_profileid = models.ForeignKey('Profile', models.DO_NOTHING, db_column='fk_profileid')
+    handicap_index = models.CharField(max_length=45, blank=True, null=True)
     status = models.IntegerField()
     date = models.DateField()
-
     class Meta:
         managed = False
-        db_table = 'handcap'
-
+        db_table = 'handicap'
 
 class Role(models.Model):
     pk_roleid = models.AutoField(primary_key=True)
@@ -132,7 +126,6 @@ class Role(models.Model):
         managed = False
         db_table = 'role'
 
-
 class ProfileRole(models.Model):
     pk_profile_roleid = models.AutoField(primary_key=True)
     fk_profileid = models.ForeignKey(Profile, models.DO_NOTHING, db_column='fk_profileid')
@@ -141,7 +134,6 @@ class ProfileRole(models.Model):
     class Meta:
         managed = False
         db_table = 'profile_role'
-
 
 class Permission(models.Model):
     pk_permissionid = models.AutoField(primary_key=True)
@@ -153,7 +145,6 @@ class Permission(models.Model):
         managed = False
         db_table = 'permission'
 
-
 class RolePermission(models.Model):
     pk_role_permissionid = models.AutoField(primary_key=True)
     fk_roleid = models.ForeignKey(Role, models.DO_NOTHING, db_column='fk_roleid')
@@ -163,8 +154,8 @@ class RolePermission(models.Model):
         managed = False
         db_table = 'role_permission'
 
-
 # Event Management
+
 class EventType(models.Model):
     pk_event_typeid = models.AutoField(primary_key=True)
     event_type = models.CharField(max_length=45)
@@ -173,21 +164,48 @@ class EventType(models.Model):
         managed = False
         db_table = 'event_type'
 
+class DrawType(models.Model):
+    pk_draw_typeid = models.AutoField(primary_key=True)
+    draw_type = models.CharField(max_length=45)
+
+    class Meta:
+        managed = False
+        db_table = 'draw_type'
 
 class Event(models.Model):
     pk_eventid = models.IntegerField(primary_key=True)
     fk_event_typeid = models.ForeignKey('EventType', models.DO_NOTHING, db_column='fk_event_typeid')
     fk_profileid = models.ForeignKey('Profile', models.DO_NOTHING, db_column='fk_profileid')
+    fk_draw_typeid = models.ForeignKey(DrawType, models.DO_NOTHING, db_column='fk_draw_typeid')
     event = models.CharField(max_length=500)
-    event_description = models.CharField(max_length=45)
-    start_date = models.DateField()
-    end_date = models.DateField()
+    event_description = models.TextField()
+    start_date = models.DateTimeField()
+    end_date = models.DateTimeField()
 
     class Meta:
         managed = False
         db_table = 'event'
 
+class Field(models.Model):
+    pk_fieldid = models.AutoField(primary_key=True)
+    fk_eventid = models.ForeignKey(Event, models.DO_NOTHING, db_column='fk_eventid')
+    field_type = models.CharField(max_length=3)
 
+    class Meta:
+        managed = False
+        db_table = 'field'
+
+
+class Slot(models.Model):
+    pk_slotid = models.AutoField(primary_key=True)
+    fk_fieldid = models.ForeignKey(Field, models.DO_NOTHING, db_column='fk_fieldid')
+    slot_time = models.TimeField()
+
+    class Meta:
+        managed = False
+        db_table = 'slot'
+
+        
 class RegistrationDate(models.Model):
     pk_registration_dateid = models.AutoField(primary_key=True)
     fk_eventid = models.ForeignKey(Event, models.DO_NOTHING, db_column='fk_eventid')
@@ -198,7 +216,6 @@ class RegistrationDate(models.Model):
         managed = False
         db_table = 'registration_date'
 
-
 class Format(models.Model):
     pk_formatid = models.AutoField(primary_key=True)
     format = models.CharField(max_length=45)
@@ -206,7 +223,6 @@ class Format(models.Model):
     class Meta:
         managed = False
         db_table = 'format'
-        
 
 class EventFormat(models.Model):
     pk_event_formatid = models.IntegerField(primary_key=True)
@@ -218,34 +234,16 @@ class EventFormat(models.Model):
         db_table = 'event_format'
 
 
-class Activity(models.Model):
-    pk_slot_activityid = models.AutoField(primary_key=True)
-    activity = models.CharField(max_length=45, blank=True, null=True)
-    slot_status = models.CharField(max_length=45, blank=True, null=True)
-
-    class Meta:
-        managed = False
-        db_table = 'activity'
 
 
-class EventDay(models.Model):
-    pk_event_dayid = models.AutoField(primary_key=True)
+class Information(models.Model):
+    pk_informationid = models.AutoField(primary_key=True)
     fk_eventid = models.ForeignKey(Event, models.DO_NOTHING, db_column='fk_eventid')
-    event_day = models.DateField()
+    info = models.TextField()
 
     class Meta:
         managed = False
-        db_table = 'event_day'
-
-
-class Slot(models.Model):
-    pk_slotid = models.AutoField(primary_key=True)
-    fk_event_dayid = models.ForeignKey(EventDay, models.DO_NOTHING, db_column='fk_event_dayid')
-    fk_slot_activityid = models.ForeignKey(Activity, models.DO_NOTHING, db_column='fk_slot_activityid')
-
-    class Meta:
-        managed = False
-        db_table = 'slot'
+        db_table = 'information'
 
 
 class Register(models.Model):
@@ -257,3 +255,7 @@ class Register(models.Model):
     class Meta:
         managed = False
         db_table = 'register'
+
+
+
+

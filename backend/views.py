@@ -58,3 +58,37 @@ class ClubCourseViewSet(viewsets.ModelViewSet):
 class ProfileViewSet(viewsets.ModelViewSet):
     queryset = Profile.objects.all()
     serializer_class = ProfileSerializer            
+
+class ClubProfileViewSet(viewsets.ModelViewSet):
+    queryset= ClubProfile.objects.all()
+    serializer_class= ClubProfileSerializer
+
+class HandicapViewSet(viewsets.ModelViewSet):
+    queryset= Handicap.objects.all()
+    serializer_class= HandicapSerializer
+
+class RoleViewSet(viewsets.ModelViewSet):
+    queryset= Role.objects.all()
+    serializer_class= RoleSerializer
+
+class ProfileRoleViewSet(viewsets.ModelViewSet):
+    queryset= ProfileRole.objects.all()
+    serializer_class= ProfileRoleSerializer
+
+class PermissionViewSet(viewsets.ModelViewSet):
+    queryset= Permission.objects.all()
+    serializer_class= PermissionSerializer
+
+class RolePermissionViewSet(viewsets.ModelViewSet):
+    queryset= RolePermission.objects.all()
+    serializer_class= RolePermissionSerializer
+
+
+class RegistrationDateViewSet(viewsets.ModelViewSet):
+    queryset= RegistrationDate.objects.all()
+    serializer_class= RegistrationDateSerializer
+
+
+class FormatViewSet(viewsets.ModelViewSet):
+    queryset= Format.objects.all()
+    serializer_class= FormatSerializer
