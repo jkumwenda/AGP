@@ -107,7 +107,7 @@ class ClubProfile(models.Model):
         managed = False
         db_table = 'club_profile'
 
-class Handcap(models.Model):
+class Handicap(models.Model):
     pk_handicapid = models.AutoField(primary_key=True)
     fk_profileid = models.ForeignKey('Profile', models.DO_NOTHING, db_column='fk_profileid')
     handicap_index = models.CharField(max_length=45, blank=True, null=True)

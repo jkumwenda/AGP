@@ -73,9 +73,9 @@ class ClubProfileSerializer(serializers.ModelSerializer):
 		model  = ClubProfile      
 		fields = '__all__'   
 
-class HandcapSerializer(serializers.ModelSerializer):
+class HandicapSerializer(serializers.ModelSerializer):
 	class Meta:
-		model  = Handcap      
+		model  = Handicap      
 		fields = '__all__'        
 
 class RoleSerializer(serializers.ModelSerializer):

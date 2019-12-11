@@ -63,9 +63,9 @@ class ClubProfileViewSet(viewsets.ModelViewSet):
     queryset= ClubProfile.objects.all()
     serializer_class= ClubProfileSerializer
 
-class HandcapViewSet(viewsets.ModelViewSet):
-    queryset= Handcap.objects.all()
-    serializer_class= HandcapSerializer
+class HandicapViewSet(viewsets.ModelViewSet):
+    queryset= Handicap.objects.all()
+    serializer_class= HandicapSerializer
 
 class RoleViewSet(viewsets.ModelViewSet):
     queryset= Role.objects.all()
