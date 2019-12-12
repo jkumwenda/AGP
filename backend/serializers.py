@@ -68,40 +68,48 @@ class ProfileSerializer(serializers.ModelSerializer):
 		model   =   Profile
 		fields  =   '__all__' 
 
+
 class ClubProfileSerializer(serializers.ModelSerializer):
 	class Meta:
 		model  = ClubProfile      
 		fields = '__all__'   
+
 
 class HandicapSerializer(serializers.ModelSerializer):
 	class Meta:
 		model  = Handicap      
 		fields = '__all__'        
 
+
 class RoleSerializer(serializers.ModelSerializer):
 	class Meta:
 		model  = Role      
 		fields = '__all__'                 
+
 
 class ProfileRoleSerializer(serializers.ModelSerializer):
 	class Meta:
 		model  = ProfileRole      
 		fields = '__all__'    
 
+
 class PermissionSerializer(serializers.ModelSerializer):
 	class Meta:
 		model  = Permission      
 		fields = '__all__'
+
 
 class RolePermissionSerializer(serializers.ModelSerializer):
 	class Meta:
 		model  = RolePermission      
 		fields = '__all__'
 
+
 class RegistrationDateSerializer(serializers.ModelSerializer):
 	class Meta:
 		model  = RegistrationDate      
 		fields = '__all__'    
+
 
 class FormatSerializer(serializers.ModelSerializer):
 	class Meta:

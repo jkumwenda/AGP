@@ -1,5 +1,6 @@
 from django.db import models
 
+
 class Country(models.Model):
     pk_countryid = models.AutoField(primary_key=True)
     country = models.CharField(max_length=45)
@@ -7,6 +8,7 @@ class Country(models.Model):
     class Meta:
         managed = False
         db_table = 'country'
+
 
 class Course(models.Model):
     pk_courseid = models.AutoField(primary_key=True)
@@ -16,6 +18,7 @@ class Course(models.Model):
     class Meta:
         managed = False
         db_table = 'course'
+
 
 class Rating(models.Model):
     pk_ratingid = models.AutoField(primary_key=True)
@@ -38,6 +41,7 @@ class Type(models.Model):
         managed = False
         db_table = 'type'
 
+
 class CourseType(models.Model):
     pk_course_typeid = models.AutoField(primary_key=True)
     fk_courseid = models.ForeignKey(Course, models.DO_NOTHING, db_column='fk_courseid')
@@ -50,6 +54,7 @@ class CourseType(models.Model):
         managed = False
         db_table = 'course_type'
 
+
 class Hole(models.Model):
     pk_holeid = models.IntegerField(primary_key=True)
     hole = models.IntegerField()
@@ -57,6 +62,7 @@ class Hole(models.Model):
     class Meta:
         managed = False
         db_table = 'hole'
+
 
 class CourseTypeHole(models.Model):
     pk_course_type_holeid = models.AutoField(primary_key=True)
@@ -70,6 +76,7 @@ class CourseTypeHole(models.Model):
         managed = False
         db_table = 'course_type_hole'
 
+
 class Club(models.Model):
     pk_clubid = models.AutoField(primary_key=True)
     club = models.CharField(max_length=100)
@@ -77,6 +84,7 @@ class Club(models.Model):
     class Meta:
         managed = False
         db_table = 'club'
+
 
 class ClubCourse(models.Model):
     pk_club_courseid = models.AutoField(primary_key=True)
@@ -107,6 +115,7 @@ class ClubProfile(models.Model):
         managed = False
         db_table = 'club_profile'
 
+
 class Handicap(models.Model):
     pk_handicapid = models.AutoField(primary_key=True)
     fk_profileid = models.ForeignKey('Profile', models.DO_NOTHING, db_column='fk_profileid')
@@ -117,6 +126,7 @@ class Handicap(models.Model):
         managed = False
         db_table = 'handicap'
 
+
 class Role(models.Model):
     pk_roleid = models.AutoField(primary_key=True)
     role = models.CharField(max_length=45)
@@ -126,14 +136,16 @@ class Role(models.Model):
         managed = False
         db_table = 'role'
 
+
 class ProfileRole(models.Model):
     pk_profile_roleid = models.AutoField(primary_key=True)
     fk_profileid = models.ForeignKey(Profile, models.DO_NOTHING, db_column='fk_profileid')
-    fk_roleid = models.ForeignKey('Role', models.DO_NOTHING, db_column='fk__roleid')  # Field renamed because it contained more than one '_' in a row.
+    fk_roleid = models.ForeignKey('Role', models.DO_NOTHING, db_column='fk__roleid')
 
     class Meta:
         managed = False
         db_table = 'profile_role'
+
 
 class Permission(models.Model):
     pk_permissionid = models.AutoField(primary_key=True)
@@ -145,6 +157,7 @@ class Permission(models.Model):
         managed = False
         db_table = 'permission'
 
+
 class RolePermission(models.Model):
     pk_role_permissionid = models.AutoField(primary_key=True)
     fk_roleid = models.ForeignKey(Role, models.DO_NOTHING, db_column='fk_roleid')
@@ -154,7 +167,6 @@ class RolePermission(models.Model):
         managed = False
         db_table = 'role_permission'
 
-# Event Management
 
 class EventType(models.Model):
     pk_event_typeid = models.AutoField(primary_key=True)
@@ -164,6 +176,7 @@ class EventType(models.Model):
         managed = False
         db_table = 'event_type'
 
+
 class DrawType(models.Model):
     pk_draw_typeid = models.AutoField(primary_key=True)
     draw_type = models.CharField(max_length=45)
@@ -171,6 +184,7 @@ class DrawType(models.Model):
     class Meta:
         managed = False
         db_table = 'draw_type'
+
 
 class Event(models.Model):
     pk_eventid = models.IntegerField(primary_key=True)
@@ -185,6 +199,7 @@ class Event(models.Model):
     class Meta:
         managed = False
         db_table = 'event'
+
 
 class Field(models.Model):
     pk_fieldid = models.AutoField(primary_key=True)
@@ -216,6 +231,7 @@ class RegistrationDate(models.Model):
         managed = False
         db_table = 'registration_date'
 
+
 class Format(models.Model):
     pk_formatid = models.AutoField(primary_key=True)
     format = models.CharField(max_length=45)
@@ -223,6 +239,7 @@ class Format(models.Model):
     class Meta:
         managed = False
         db_table = 'format'
+
 
 class EventFormat(models.Model):
     pk_event_formatid = models.IntegerField(primary_key=True)
@@ -232,8 +249,6 @@ class EventFormat(models.Model):
     class Meta:
         managed = False
         db_table = 'event_format'
-
-
 
 
 class Information(models.Model):
@@ -255,7 +270,3 @@ class Register(models.Model):
     class Meta:
         managed = False
         db_table = 'register'
-
-
-
-
