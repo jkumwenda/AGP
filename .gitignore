@@ -11,3 +11,4 @@ backend/__pycache__/
 AGP/.env
 db.sqlite3
 requirements.txt
+migrations/
