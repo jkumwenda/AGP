@@ -4,6 +4,9 @@ from rest_framework import routers
 from rest_framework.schemas import get_schema_view
 from rest_framework_swagger.renderers import SwaggerUIRenderer, OpenAPIRenderer
 import backend.views as backend_views
+from rest_framework_jwt.views import obtain_jwt_token
+from rest_framework_jwt.views import refresh_jwt_token
+from rest_framework_jwt.views import verify_jwt_token
 
 schema_view = get_schema_view(
     title='AGP API', 
@@ -39,5 +42,9 @@ router.register(r'format', backend_views.FormatViewSet, base_name='Format')
 urlpatterns = [
     url('^$', schema_view),
 	url(r'^api/',include(router.urls)),
-    url(r'^api-auth/', include('rest_framework.urls', namespace='rest_framework'))
+    url(r'^api-auth/', include('rest_framework.urls', namespace='rest_framework')),
+    url(r'^auth-jwt/', obtain_jwt_token),
+    url(r'^auth-jwt-refresh/', refresh_jwt_token),
+    url(r'^auth-jwt-verify/', verify_jwt_token),
 ]
+
