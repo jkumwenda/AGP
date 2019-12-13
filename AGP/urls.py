@@ -34,7 +34,11 @@ router.register(r'permission', backend_views.PermissionViewSet, base_name='Permi
 router.register(r'role_permission', backend_views.RolePermissionViewSet, base_name='Role Permission')
 router.register(r'registration_date', backend_views.RegistrationDateViewSet, base_name='Registration Date')
 router.register(r'format', backend_views.FormatViewSet, base_name='Format')
-
+router.register(r'registration', backend_views.RegisterViewSet, base_name='Registration')
+router.register(r'slot', backend_views.SlotViewSet, base_name='Slot')
+router.register(r'event_format', backend_views.EventFormatViewSet, base_name='Event Format')
+router.register(r'event', backend_views.EventViewSet, base_name='Event')
+router.register(r'event_type', backend_views.EventTypeViewSet, base_name='Event Type')
 
 
 # Wire up our API using automatic URL routing.

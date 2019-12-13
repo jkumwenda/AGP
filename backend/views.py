@@ -92,3 +92,28 @@ class RegistrationDateViewSet(viewsets.ModelViewSet):
 class FormatViewSet(viewsets.ModelViewSet):
     queryset= Format.objects.all()
     serializer_class= FormatSerializer
+
+
+class RegisterViewSet(viewsets.ModelViewSet):
+    queryset= Register.objects.all()
+    serializer_class= RegisterSerializer
+
+
+class SlotViewSet(viewsets.ModelViewSet):
+    queryset= Slot.objects.all()
+    serializer_class= SlotSerializer
+
+
+class EventViewSet(viewsets.ModelViewSet):
+    queryset= Event.objects.all()
+    serializer_class= EventSerializer
+
+
+class EventTypeViewSet(viewsets.ModelViewSet):
+    queryset= EventType.objects.all()
+    serializer_class= EventTypeSerializer
+
+
+class EventFormatViewSet(viewsets.ModelViewSet):
+    queryset= EventFormat.objects.all()
+    serializer_class= EventTypeSerializer

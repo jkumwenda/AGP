@@ -115,3 +115,27 @@ class FormatSerializer(serializers.ModelSerializer):
 	class Meta:
 		model  = Format      
 		fields = '__all__'
+
+
+class RegisterSerializer(serializers.ModelSerializer):
+	class Meta:
+		model  = Register      
+		fields = '__all__'
+
+
+class SlotSerializer(serializers.ModelSerializer):
+	class Meta:
+		model  = Slot      
+		fields = '__all__'
+
+		
+class EventSerializer(serializers.ModelSerializer):
+	class Meta:
+		model  = Event      
+		fields = '__all__'
+
+
+class EventTypeSerializer(serializers.ModelSerializer):
+	class Meta:
+		model  = EventType      
+		fields = '__all__'
