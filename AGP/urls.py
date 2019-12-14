@@ -15,7 +15,7 @@ schema_view = get_schema_view(
 
 # Routers provide an easy way of automatically determining the URL conf.
 router = routers.DefaultRouter()
-router.register(r'users', backend_views.UserViewSet, base_name='Users')
+router.register(r'user', backend_views.UserViewSet, base_name='User')
 router.register(r'country', backend_views.CountryViewSet, base_name='Country')
 router.register(r'course', backend_views.CourseViewSet, base_name='Course')
 router.register(r'rating', backend_views.RatingViewSet, base_name='Rating')
@@ -25,6 +25,7 @@ router.register(r'hole', backend_views.HoleViewSet, base_name='Hole')
 router.register(r'course_type_hole', backend_views.UserViewSet, base_name='Course Type Hole')
 router.register(r'club', backend_views.ClubViewSet, base_name='Club')
 router.register(r'club_course', backend_views.ClubCourseViewSet, base_name='Club Course')
+router.register(r'gender', backend_views.GenderViewSet, base_name='Gender')
 router.register(r'profile', backend_views.ProfileViewSet, base_name='Profile')
 router.register(r'club_profile', backend_views.ClubProfileViewSet, base_name='Club Profile')
 router.register(r'handicap', backend_views.HandicapViewSet, base_name='Handicap')

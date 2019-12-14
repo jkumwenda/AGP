@@ -1,13 +1,8 @@
 from django.contrib.auth.models import User
 from rest_framework import serializers
+from rest_framework.relations import HyperlinkedIdentityField
 from .models import *
 
-
-class UserSerializer(serializers.HyperlinkedModelSerializer):
-    class Meta:
-        model = User
-        fields = ['url', 'username', 'email', 'is_staff']
- 
 
 class CountrySerializer(serializers.ModelSerializer):
 	class Meta:
@@ -63,11 +58,37 @@ class ClubCourseSerializer(serializers.ModelSerializer):
 		fields  =   '__all__'   
 
 
-class ProfileSerializer(serializers.ModelSerializer):
+class GenderSerializer(serializers.ModelSerializer):				
+	class Meta:
+		model   =   Gender
+		fields = '__all__'	
+
+
+class ProfileSerializer(serializers.ModelSerializer):	
+	# gender = GenderSerializer(read_only=True)
+	# fk_genderid = serializers.PrimaryKeyRelatedField(
+    #                     queryset=Gender.objects.all(),
+    #                     write_only=True, source='gender')	    			
 	class Meta:
 		model   =   Profile
-		fields  =   '__all__' 
+		fields = '__all__'	
+  
 
+class UserSerializer(serializers.ModelSerializer):
+	password = serializers.CharField(write_only=True)
+	userprofile = ProfileSerializer(required=False)
+	class Meta:
+		model 	= 	User
+		fields = ('id','first_name', 'last_name', 'email', 'username', 'password', 'userprofile')	
+	
+	def create(self, validated_data, instance=None):
+		profile_data = validated_data.pop('userprofile')
+		user = User.objects.create(**validated_data)
+		user.set_password(validated_data['password'])
+		user.save()
+		Profile.objects.update_or_create(user=user,**profile_data)
+		return user	
+		
 
 class ClubProfileSerializer(serializers.ModelSerializer):
 	class Meta:
