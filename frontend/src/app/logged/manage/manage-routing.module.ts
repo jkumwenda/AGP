@@ -18,6 +18,10 @@ import { EditRoleComponent } from './roles/edit-role/edit-role.component';
 import { AddRoleComponent } from './roles/add-role/add-role.component';
 import { RolesComponent } from './roles/roles.component';
 import { ManageComponent } from './manage.component';
+import { HolesComponent } from './holes/holes.component';
+import { AddHoleComponent } from './holes/add-hole/add-hole.component';
+import { EditHoleComponent } from './holes/edit-hole/edit-hole.component';
+import { HoleComponent } from './holes/hole/hole.component';
 
 
 const manageRoutes: Routes = [
@@ -39,6 +43,10 @@ const manageRoutes: Routes = [
     {path: 'add-gender', component: AddGenderComponent},
     {path: 'edit-gender/:id', component: EditGenderComponent},
     {path: 'gender', component: GenderComponent},
+    {path: 'holes', component:HolesComponent},
+    {path: 'add-hole', component:AddHoleComponent},
+    {path: 'edit-hole/:id', component:EditHoleComponent},
+    {path: 'hole', component:HoleComponent}
   ]}
 ];
 

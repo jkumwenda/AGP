@@ -1,0 +1,28 @@
+<div class="card login-card dropdown-all w-100 ">
+  <div class="card-header card-header-customer md-secondary-dark">
+      <h5 class="mdi mdi-file-table"> {{moduleTitle}}</h5>
+  </div>
+  <div class="card-body login-card-body ">
+      <h6><a [routerLink]="['/manage/add-hole']" class="btn btn-outline-secondary btn-sm mdi mdi-plus ">Add Hole</a></h6>
+      <table class="table table-striped">
+          <thead>
+              <tr>
+                  <th>Hole</th>
+                  <th width="40px">Controls</th>
+              </tr>
+          </thead>
+          <tbody>
+              <tr *ngFor="let hole of holes">
+                  <td>{{ hole.hole }}</td>
+                  <td>
+                    <div class="btn-toolbar">
+                      <button (click)="deleteHole(hole.pk_holeid)" class="btn btn-danger btn-sm btn-control"><i class="mdi mdi-delete"></i></button>
+                      <button (click)="editHole(hole.pk_holeid)" class="btn btn-success btn-sm btn-control"><i class="mdi mdi-pencil"></i></button>
+                      </div>
+                    </td>
+              </tr>
+          </tbody>
+      </table>
+  </div>
+</div>
+

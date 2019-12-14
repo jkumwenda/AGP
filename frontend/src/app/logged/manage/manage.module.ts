@@ -23,6 +23,10 @@ import { GendersComponent } from './genders/genders.component';
 import { AddGenderComponent } from './genders/add-gender/add-gender.component';
 import { EditGenderComponent } from './genders/edit-gender/edit-gender.component';
 import { GenderComponent } from './genders/gender/gender.component';
+import { HolesComponent } from './holes/holes.component';
+import { AddHoleComponent } from './holes/add-hole/add-hole.component';
+import { EditHoleComponent } from './holes/edit-hole/edit-hole.component';
+import { HoleComponent } from './holes/hole/hole.component';
 
 @NgModule({
   declarations: [
@@ -43,7 +47,11 @@ import { GenderComponent } from './genders/gender/gender.component';
     GendersComponent,
     AddGenderComponent,
     EditGenderComponent,
-    GenderComponent
+    GenderComponent,
+    HolesComponent,
+    AddHoleComponent,
+    EditHoleComponent,
+    HoleComponent
   ],
   imports: [
     FormsModule,
