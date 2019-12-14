@@ -51,7 +51,6 @@ CORS_ORIGIN_REGEX_WHITELIST = [
     'http://localhost:4200',
 ]
 
-
 INSTALLED_APPS = [
     'django.contrib.admin',
     'django.contrib.auth',
