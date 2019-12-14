@@ -1,0 +1,26 @@
+<div class="card login-card dropdown-all w-100 ">
+    <div class="card-header card-header-customer md-secondary-dark">
+        <h5 class="mdi mdi-file-table"> {{moduleTitle}}</h5>
+    </div>
+    <div class="card-body login-card-body ">
+        <h6><a [routerLink]="['/manage/add-gender']" class="btn btn-outline-secondary btn-sm mdi mdi-plus ">Add Gender</a></h6>
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>Gender</th>
+                    <th width='60px'>Controls</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let gender of genders; let data_index=index">
+                    <td>{{gender.gender}}</td>
+                    <td>
+                    <button (click)="deleteGender(gender.pk_genderid)" class="btn btn-danger btn-sm btn-control"><i class="mdi mdi-delete"></i></button>
+                    <button (click)="editGender(gender.pk_genderid)" class="btn btn-success btn-sm btn-control"><i class="mdi mdi-pencil"></i></button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+
