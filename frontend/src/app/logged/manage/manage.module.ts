@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NgxUiLoaderModule } from 'ngx-ui-loader';
 import { HttpClientModule } from '@angular/common/http';
+import { DataTablesModule } from 'angular-datatables';
 
 import { ManageRoutingModule } from './manage-routing.module';
 import { UserComponent } from './users/user/user.component';
@@ -23,6 +24,18 @@ import { GendersComponent } from './genders/genders.component';
 import { AddGenderComponent } from './genders/add-gender/add-gender.component';
 import { EditGenderComponent } from './genders/edit-gender/edit-gender.component';
 import { GenderComponent } from './genders/gender/gender.component';
+import { HolesComponent } from './holes/holes.component';
+import { AddHoleComponent } from './holes/add-hole/add-hole.component';
+import { EditHoleComponent } from './holes/edit-hole/edit-hole.component';
+import { HoleComponent } from './holes/hole/hole.component';
+import { CountriesComponent } from './countries/countries.component';
+import { CountryComponent } from './countries/country/country.component';
+import { AddCountryComponent } from './countries/add-country/add-country.component';
+import { EditCountryComponent } from './countries/edit-country/edit-country.component';
+import { TypesComponent } from './types/types.component';
+import { AddTypeComponent } from './types/add-type/add-type.component';
+import { EditTypeComponent } from './types/edit-type/edit-type.component';
+import { TypeComponent } from './types/type/type.component';
 
 @NgModule({
   declarations: [
@@ -43,10 +56,23 @@ import { GenderComponent } from './genders/gender/gender.component';
     GendersComponent,
     AddGenderComponent,
     EditGenderComponent,
-    GenderComponent
+    GenderComponent,
+    HolesComponent,
+    AddHoleComponent,
+    EditHoleComponent,
+    HoleComponent,
+    CountriesComponent,
+    CountryComponent,
+    AddCountryComponent,
+    EditCountryComponent,
+    TypesComponent,
+    AddTypeComponent,
+    EditTypeComponent,
+    TypeComponent
   ],
   imports: [
     FormsModule,
+    DataTablesModule,
     ReactiveFormsModule,
     NgxUiLoaderModule,
     HttpClientModule,

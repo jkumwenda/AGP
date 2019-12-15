@@ -51,7 +51,6 @@ export class EditGenderComponent implements OnInit {
     if (this.gender == null) {
       this.gender = new Gender();
       this.gender.gender = null;
-
     }
     this.genderForm = this.formBuilder.group({
       gender: [this.gender.gender, Validators.compose([Validators.required])],

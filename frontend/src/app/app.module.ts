@@ -7,6 +7,7 @@ import { HttpClientModule } from '@angular/common/http';    // add this
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';    // add this
 import { AuthService } from './shared/services/auth.service';    // add this
 import { AppRoutingModule } from './app-routing.module';
+import { DataTablesModule } from 'angular-datatables';
 
 import { SharedModule } from './shared/shared.module';
 import { ManageModule } from './logged/manage/manage.module';
@@ -33,6 +34,7 @@ import { CustomersComponent } from './logged/customers/customers.component';
 
   ],
   imports: [
+    DataTablesModule,
     BrowserModule,
     AppRoutingModule,
     BrowserModule,
