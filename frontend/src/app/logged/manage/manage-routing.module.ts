@@ -31,7 +31,6 @@ import { AddTypeComponent } from './types/add-type/add-type.component';
 import { EditTypeComponent } from './types/edit-type/edit-type.component';
 import { TypeComponent } from './types/type/type.component';
 
-
 const manageRoutes: Routes = [
   {path: 'manage', component: ManageComponent,
   children: [
@@ -51,20 +50,18 @@ const manageRoutes: Routes = [
     {path: 'add-gender', component: AddGenderComponent},
     {path: 'edit-gender/:id', component: EditGenderComponent},
     {path: 'gender', component: GenderComponent},
-    {path: 'holes', component:HolesComponent},
-    {path: 'add-hole', component:AddHoleComponent},
-    {path: 'edit-hole/:id', component:EditHoleComponent},
-    {path: 'hole', component:HoleComponent},
-    {path: 'countries', component:CountriesComponent},
-    {path: 'add-country', component:AddCountryComponent},
-    {path: 'edit-country/:id', component:EditCountryComponent},
-    {path: 'country', component:CountryComponent},
-    {path: 'types', component:TypesComponent},
-    {path: 'add-type', component:AddTypeComponent},
-    {path: 'edit-type/:id', component:EditTypeComponent},
-    {path: 'type', component:TypeComponent}
-
-
+    {path: 'holes', component: HolesComponent},
+    {path: 'add-hole', component: AddHoleComponent},
+    {path: 'edit-hole/:id', component: EditHoleComponent},
+    {path: 'hole', component: HoleComponent},
+    {path: 'countries', component: CountriesComponent},
+    {path: 'add-country', component: AddCountryComponent},
+    {path: 'edit-country/:id', component: EditCountryComponent},
+    {path: 'country', component: CountryComponent},
+    {path: 'types', component: TypesComponent},
+    {path: 'add-type', component: AddTypeComponent},
+    {path: 'edit-type/:id', component: EditTypeComponent},
+    {path: 'type', component: TypeComponent}
   ]}
 ];
 

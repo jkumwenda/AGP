@@ -36,6 +36,13 @@ import { TypesComponent } from './types/types.component';
 import { AddTypeComponent } from './types/add-type/add-type.component';
 import { EditTypeComponent } from './types/edit-type/edit-type.component';
 import { TypeComponent } from './types/type/type.component';
+import { CoursesComponent } from './courses/courses.component';
+import { AddCourseComponent } from './courses/add-course/add-course.component';
+import { EditCourseComponent } from './courses/edit-course/edit-course.component';
+import { ClubsComponent } from './clubs/clubs.component';
+import { AddClubComponent } from './clubs/add-club/add-club.component';
+import { EditClubComponent } from './clubs/edit-club/edit-club.component';
+import { ClubComponent } from './clubs/club/club.component';
 
 @NgModule({
   declarations: [
@@ -68,7 +75,14 @@ import { TypeComponent } from './types/type/type.component';
     TypesComponent,
     AddTypeComponent,
     EditTypeComponent,
-    TypeComponent
+    TypeComponent,
+    CoursesComponent,
+    AddCourseComponent,
+    EditCourseComponent,
+    ClubsComponent,
+    AddClubComponent,
+    EditClubComponent,
+    ClubComponent
   ],
   imports: [
     FormsModule,

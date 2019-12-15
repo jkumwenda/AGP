@@ -24,7 +24,7 @@ export class CommonService {
     this.httpHeaders = {
       headers: new HttpHeaders({
         'Content-Type': 'application/json',
-        Authorization: 'Bearer ' + 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjozLCJ1c2VybmFtZSI6ImxvdWlzIiwiZXhwIjoxNTc2NjQ1NzY0LCJlbWFpbCI6ImxvdWlzbnlpcm9uZ283M0BnbWFpbC5jb20iLCJvcmlnX2lhdCI6MTU3NjM0NTc2NH0.aRHgH8XUL73KKODp670gytaS_9X6xRPjE3xV9q_K_vI'
+        Authorization: 'Bearer ' + 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoxLCJ1c2VybmFtZSI6ImprdW13ZW5kYSIsImV4cCI6MTU3NjczNjMxNiwiZW1haWwiOiJqa3Vtd2VuZGFAZ21haWwuY29tIiwib3JpZ19pYXQiOjE1NzY0MzYzMTZ9.9In72ZU5M6uPnGNu87FRcNBBdf3yMR2vQg5yD2qloMI'
       })
     };
   }

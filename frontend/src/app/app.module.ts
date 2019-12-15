@@ -18,7 +18,11 @@ import { FooterComponent } from './layout/footer/footer.component';
 import { LoginComponent } from './auth/login/login.component';
 import { LoggedComponent } from './logged/logged.component';
 import { DashboardComponent } from './logged/dashboard/dashboard.component';
-import { CustomersComponent } from './logged/customers/customers.component';
+import { TournamentsComponent } from './logged/tournaments/tournaments.component';
+import { AddTournamentComponent } from './logged/tournaments/add-tournament/add-tournament.component';
+import { EditTournamentComponent } from './logged/tournaments/edit-tournament/edit-tournament.component';
+import { TournamentComponent } from './logged/tournaments/tournament/tournament.component';
+import { CourseComponent } from './logged/course/course.component';
 
 
 @NgModule({
@@ -29,8 +33,12 @@ import { CustomersComponent } from './logged/customers/customers.component';
     FooterComponent,
     LoginComponent,
     LoggedComponent,
-    CustomersComponent,
     DashboardComponent,
+    TournamentsComponent,
+    AddTournamentComponent,
+    EditTournamentComponent,
+    TournamentComponent,
+    CourseComponent,
 
   ],
   imports: [

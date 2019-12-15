@@ -9,7 +9,7 @@ class Country(models.Model):
     country = models.CharField(max_length=45)
 
     class Meta:
-        managed = False
+        managed = True
         db_table = 'country'
 
 
@@ -20,7 +20,7 @@ class Course(models.Model):
     course = models.CharField(max_length=100)
 
     class Meta:
-        managed = False
+        managed = True
         db_table = 'course'
 
 
@@ -33,7 +33,7 @@ class Rating(models.Model):
     par = models.CharField(max_length=45, blank=True, null=True)
 
     class Meta:
-        managed = False
+        managed = True
         db_table = 'rating'
         unique_together = (('pk_ratingid', 'fk_courseid'),)
 
@@ -43,7 +43,7 @@ class Type(models.Model):
     type = models.CharField(max_length=45)
 
     class Meta:
-        managed = False
+        managed = True
         db_table = 'type'
 
 
@@ -58,7 +58,7 @@ class CourseType(models.Model):
     status = models.IntegerField(blank=True, null=True)
 
     class Meta:
-        managed = False
+        managed = True
         db_table = 'course_type'
 
 
@@ -67,7 +67,7 @@ class Hole(models.Model):
     hole = models.IntegerField()
 
     class Meta:
-        managed = False
+        managed = True
         db_table = 'hole'
 
 
@@ -82,7 +82,7 @@ class CourseTypeHole(models.Model):
     si = models.IntegerField(blank=True, null=True)
 
     class Meta:
-        managed = False
+        managed = True
         db_table = 'course_type_hole'
 
 
@@ -91,7 +91,7 @@ class Club(models.Model):
     club = models.CharField(max_length=100)
 
     class Meta:
-        managed = False
+        managed = True
         db_table = 'club'
 
 
@@ -103,7 +103,7 @@ class ClubCourse(models.Model):
         'Course', models.DO_NOTHING, db_column='fk_courseid')
 
     class Meta:
-        managed = False
+        managed = True
         db_table = 'club_course'
 
 
@@ -112,7 +112,7 @@ class Gender(models.Model):
     gender = models.CharField(max_length=100)
 
     class Meta:
-        managed = False
+        managed = True
         db_table = 'gender'
 
 
@@ -126,7 +126,7 @@ class Profile(models.Model):
     phone = models.CharField(max_length=45)
 
     class Meta:
-        managed = False
+        managed = True
         db_table = 'profile'
 
 
@@ -138,7 +138,7 @@ class ClubProfile(models.Model):
         'Profile', models.DO_NOTHING, db_column='fk_profileid')
 
     class Meta:
-        managed = False
+        managed = True
         db_table = 'club_profile'
 
 
@@ -151,7 +151,7 @@ class Handicap(models.Model):
     date = models.DateField()
 
     class Meta:
-        managed = False
+        managed = True
         db_table = 'handicap'
 
 
@@ -161,7 +161,7 @@ class Role(models.Model):
     role_desc = models.CharField(max_length=45)
 
     class Meta:
-        managed = False
+        managed = True
         db_table = 'role'
 
 
@@ -173,7 +173,7 @@ class ProfileRole(models.Model):
         'Role', models.DO_NOTHING, db_column='fk__roleid')
 
     class Meta:
-        managed = False
+        managed = True
         db_table = 'profile_role'
 
 
@@ -184,7 +184,7 @@ class Permission(models.Model):
     permission_desc = models.CharField(max_length=45, blank=True, null=True)
 
     class Meta:
-        managed = False
+        managed = True
         db_table = 'permission'
 
 
@@ -196,7 +196,7 @@ class RolePermission(models.Model):
         Permission, models.DO_NOTHING, db_column='fk_permissionid')
 
     class Meta:
-        managed = False
+        managed = True
         db_table = 'role_permission'
 
 
@@ -205,7 +205,7 @@ class EventType(models.Model):
     event_type = models.CharField(max_length=45)
 
     class Meta:
-        managed = False
+        managed = True
         db_table = 'event_type'
 
 
@@ -214,7 +214,7 @@ class DrawType(models.Model):
     draw_type = models.CharField(max_length=45)
 
     class Meta:
-        managed = False
+        managed = True
         db_table = 'draw_type'
 
 
@@ -232,7 +232,7 @@ class Event(models.Model):
     end_date = models.DateTimeField()
 
     class Meta:
-        managed = False
+        managed = True
         db_table = 'event'
 
 
@@ -243,7 +243,7 @@ class Field(models.Model):
     field_type = models.CharField(max_length=3)
 
     class Meta:
-        managed = False
+        managed = True
         db_table = 'field'
 
 
@@ -254,7 +254,7 @@ class Slot(models.Model):
     slot_time = models.TimeField()
 
     class Meta:
-        managed = False
+        managed = True
         db_table = 'slot'
 
 
@@ -266,7 +266,7 @@ class RegistrationDate(models.Model):
     close_date = models.DateTimeField()
 
     class Meta:
-        managed = False
+        managed = True
         db_table = 'registration_date'
 
 
@@ -275,7 +275,7 @@ class Format(models.Model):
     format = models.CharField(max_length=45)
 
     class Meta:
-        managed = False
+        managed = True
         db_table = 'format'
 
 
@@ -287,7 +287,7 @@ class EventFormat(models.Model):
         'Format', models.DO_NOTHING, db_column='fk_formatid')
 
     class Meta:
-        managed = False
+        managed = True
         db_table = 'event_format'
 
 
@@ -298,7 +298,7 @@ class Information(models.Model):
     info = models.TextField()
 
     class Meta:
-        managed = False
+        managed = True
         db_table = 'information'
 
 
@@ -311,5 +311,5 @@ class Register(models.Model):
     reg_date = models.DateTimeField()
 
     class Meta:
-        managed = False
+        managed = True
         db_table = 'register'
