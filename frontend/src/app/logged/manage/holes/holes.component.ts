@@ -29,7 +29,7 @@ export class HolesComponent implements OnInit {
 
   editHole(holeId) {
     //this.router.navigate(['/manage/edit-hole', holeId]);
-    this.router.navigate(['/manage/edit-hole', holeId]);
+    this.router.navigate(["/manage/edit-hole", holeId]);
   }
   ngOnInit() {
     this.getHoles();

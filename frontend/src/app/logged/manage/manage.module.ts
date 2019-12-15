@@ -31,6 +31,10 @@ import { CountriesComponent } from './countries/countries.component';
 import { CountryComponent } from './countries/country/country.component';
 import { AddCountryComponent } from './countries/add-country/add-country.component';
 import { EditCountryComponent } from './countries/edit-country/edit-country.component';
+import { TypesComponent } from './types/types.component';
+import { AddTypeComponent } from './types/add-type/add-type.component';
+import { EditTypeComponent } from './types/edit-type/edit-type.component';
+import { TypeComponent } from './types/type/type.component';
 
 @NgModule({
   declarations: [
@@ -59,7 +63,11 @@ import { EditCountryComponent } from './countries/edit-country/edit-country.comp
     CountriesComponent,
     CountryComponent,
     AddCountryComponent,
-    EditCountryComponent
+    EditCountryComponent,
+    TypesComponent,
+    AddTypeComponent,
+    EditTypeComponent,
+    TypeComponent
   ],
   imports: [
     FormsModule,

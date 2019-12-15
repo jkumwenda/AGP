@@ -26,6 +26,10 @@ import { CountriesComponent } from './countries/countries.component';
 import { AddCountryComponent } from './countries/add-country/add-country.component';
 import { EditCountryComponent } from './countries/edit-country/edit-country.component';
 import { CountryComponent } from './countries/country/country.component';
+import { TypesComponent } from './types/types.component';
+import { AddTypeComponent } from './types/add-type/add-type.component';
+import { EditTypeComponent } from './types/edit-type/edit-type.component';
+import { TypeComponent } from './types/type/type.component';
 
 
 const manageRoutes: Routes = [
@@ -54,7 +58,11 @@ const manageRoutes: Routes = [
     {path: 'countries', component:CountriesComponent},
     {path: 'add-country', component:AddCountryComponent},
     {path: 'edit-country/:id', component:EditCountryComponent},
-    {path: 'country', component:CountryComponent}
+    {path: 'country', component:CountryComponent},
+    {path: 'types', component:TypesComponent},
+    {path: 'add-type', component:AddTypeComponent},
+    {path: 'edit-type/:id', component:EditTypeComponent},
+    {path: 'type', component:TypeComponent}
 
 
   ]}

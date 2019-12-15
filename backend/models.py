@@ -39,7 +39,7 @@ class Rating(models.Model):
 
 
 class Type(models.Model):
-    pk_typeid = models.IntegerField(primary_key=True)
+    pk_typeid = models.AutoField(primary_key=True)
     type = models.CharField(max_length=45)
 
     class Meta:
