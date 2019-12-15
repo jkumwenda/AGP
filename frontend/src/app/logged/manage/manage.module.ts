@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NgxUiLoaderModule } from 'ngx-ui-loader';
 import { HttpClientModule } from '@angular/common/http';
+import { DataTablesModule } from 'angular-datatables';
 
 import { ManageRoutingModule } from './manage-routing.module';
 import { UserComponent } from './users/user/user.component';
@@ -71,6 +72,7 @@ import { TypeComponent } from './types/type/type.component';
   ],
   imports: [
     FormsModule,
+    DataTablesModule,
     ReactiveFormsModule,
     NgxUiLoaderModule,
     HttpClientModule,

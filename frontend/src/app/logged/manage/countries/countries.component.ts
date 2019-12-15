@@ -2,6 +2,8 @@ import { Component, OnInit } from "@angular/core";
 import { CountryService } from "src/app/shared/services/country.service";
 import { Router } from "@angular/router";
 import { Country } from 'src/app/shared/interfaces/country';
+import { DataTablesModule } from 'angular-datatables';
+
 
 @Component({
   selector: "app-countries",
@@ -13,6 +15,11 @@ export class CountriesComponent implements OnInit {
   public countries: Country[]
 
   constructor(private countryService: CountryService, private router: Router) {}
+
+
+  checkIfEmpty(){
+    return Array.isArray(this.countries) && this.countries.length
+  }
 
   getCountries(){
     this.countryService.getCountrys().then(

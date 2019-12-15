@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-
+import { DataTablesModule } from 'angular-datatables';
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',

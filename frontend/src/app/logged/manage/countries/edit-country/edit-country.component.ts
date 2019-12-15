@@ -31,7 +31,6 @@ export class EditCountryComponent implements OnInit {
       this.country.country = null;
     }
 
-
     this.countryForm = this.formBuilder.group({
       country: [this.country.country, Validators.compose([Validators.required])]
     });
@@ -39,28 +38,31 @@ export class EditCountryComponent implements OnInit {
 
   getCountry(countryId) {
     this.countryService.getCountry(countryId).then(
-      (result:Country)=> {
-        this.country=result
+      (result: Country) => {
+        this.country = result;
         this.initializeCountryForm();
       },
       error => console.log(error)
-    )
+    );
   }
 
   editCountry() {
-    const data  = this.countryForm.value;
+    const data = this.countryForm.value;
     this.countryData = {
-      country: data.country,
+      country: data.country
     };
 
-    this.countryService.editCountry(this.countryId, this.countryData).then((result) => {
-      this.router.navigate(['/manage/countries/']);
-    }, (error) => {
-      console.log(error);
-    });
+    this.countryService.editCountry(this.countryId, this.countryData).then(
+      result => {
+        this.router.navigate(["/manage/countries/"]);
+      },
+      error => {
+        console.log(error);
+      }
+    );
   }
 
   ngOnInit() {
-    this.getCountry(this.countryId)
+    this.getCountry(this.countryId);
   }
 }
