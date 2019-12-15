@@ -1,3 +1,4 @@
+import { ManageNavComponent } from './manage/manage-nav/manage-nav.component';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Routes, RouterModule } from '@angular/router';
@@ -35,6 +36,7 @@ const manageRoutes: Routes = [
   {path: 'manage', component: ManageComponent,
   children: [
     {path: 'roles', component: RolesComponent},
+    {path: 'manage-nav', component: ManageNavComponent},
     {path: 'add-role', component: AddRoleComponent},
     {path: 'edit-role', component: EditRoleComponent},
     {path: 'role', component: RoleComponent},

@@ -43,6 +43,7 @@ import { ClubsComponent } from './clubs/clubs.component';
 import { AddClubComponent } from './clubs/add-club/add-club.component';
 import { EditClubComponent } from './clubs/edit-club/edit-club.component';
 import { ClubComponent } from './clubs/club/club.component';
+import { ManageNavComponent } from './manage/manage-nav/manage-nav.component';
 
 @NgModule({
   declarations: [
@@ -82,7 +83,8 @@ import { ClubComponent } from './clubs/club/club.component';
     ClubsComponent,
     AddClubComponent,
     EditClubComponent,
-    ClubComponent
+    ClubComponent,
+    ManageNavComponent
   ],
   imports: [
     FormsModule,
