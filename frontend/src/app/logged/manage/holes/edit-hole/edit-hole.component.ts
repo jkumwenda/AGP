@@ -1,8 +1,6 @@
 import { Component, OnInit } from "@angular/core";
 import { FormBuilder, FormGroup, Validators } from "@angular/forms";
-import { GenderService } from "src/app/shared/services/gender.service";
 import { Router, ActivatedRoute } from "@angular/router";
-import { Gender } from 'src/app/shared/interfaces/gender';
 import { Hole } from 'src/app/shared/interfaces/hole';
 import { HoleService } from 'src/app/shared/services/hole.service';
 
@@ -25,10 +23,10 @@ export class EditHoleComponent implements OnInit {
     private activatedRoute: ActivatedRoute
   ) {
     this.holeId = activatedRoute.snapshot.params['id'];
-    this.initializeGenderForm();
+    this.initializeHoleForm();
   }
 
-  initializeGenderForm() {
+  initializeHoleForm() {
     if (this.hole == null) {
       this.hole = new Hole();
       this.hole.hole = null;
@@ -42,11 +40,23 @@ export class EditHoleComponent implements OnInit {
     this.holeService.getHole(holeId).then(
       (result:Hole) => {
       this.hole = result;
-      this.initializeGenderForm();
+      this.initializeHoleForm();
     }, (error) => {
     });
   }
 
+  editHole() {
+    const data  = this.holeForm.value;
+    this.holeData = {
+      hole: data.hole,
+    };
+
+    this.holeService.editHole(this.holeId, this.holeData).then((result) => {
+      this.router.navigate(['/manage/holes/']);
+    }, (error) => {
+      console.log(error);
+    });
+  }
   ngOnInit() {
     this.getHole(this.holeId)
   }

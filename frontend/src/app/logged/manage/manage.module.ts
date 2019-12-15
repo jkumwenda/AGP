@@ -27,6 +27,10 @@ import { HolesComponent } from './holes/holes.component';
 import { AddHoleComponent } from './holes/add-hole/add-hole.component';
 import { EditHoleComponent } from './holes/edit-hole/edit-hole.component';
 import { HoleComponent } from './holes/hole/hole.component';
+import { CountriesComponent } from './countries/countries.component';
+import { CountryComponent } from './countries/country/country.component';
+import { AddCountryComponent } from './countries/add-country/add-country.component';
+import { EditCountryComponent } from './countries/edit-country/edit-country.component';
 
 @NgModule({
   declarations: [
@@ -51,7 +55,11 @@ import { HoleComponent } from './holes/hole/hole.component';
     HolesComponent,
     AddHoleComponent,
     EditHoleComponent,
-    HoleComponent
+    HoleComponent,
+    CountriesComponent,
+    CountryComponent,
+    AddCountryComponent,
+    EditCountryComponent
   ],
   imports: [
     FormsModule,

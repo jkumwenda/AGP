@@ -22,6 +22,10 @@ import { HolesComponent } from './holes/holes.component';
 import { AddHoleComponent } from './holes/add-hole/add-hole.component';
 import { EditHoleComponent } from './holes/edit-hole/edit-hole.component';
 import { HoleComponent } from './holes/hole/hole.component';
+import { CountriesComponent } from './countries/countries.component';
+import { AddCountryComponent } from './countries/add-country/add-country.component';
+import { EditCountryComponent } from './countries/edit-country/edit-country.component';
+import { CountryComponent } from './countries/country/country.component';
 
 
 const manageRoutes: Routes = [
@@ -46,7 +50,13 @@ const manageRoutes: Routes = [
     {path: 'holes', component:HolesComponent},
     {path: 'add-hole', component:AddHoleComponent},
     {path: 'edit-hole/:id', component:EditHoleComponent},
-    {path: 'hole', component:HoleComponent}
+    {path: 'hole', component:HoleComponent},
+    {path: 'countries', component:CountriesComponent},
+    {path: 'add-country', component:AddCountryComponent},
+    {path: 'edit-country/:id', component:EditCountryComponent},
+    {path: 'country', component:CountryComponent}
+
+
   ]}
 ];
 
