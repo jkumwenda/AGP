@@ -454,3 +454,6 @@ button {
     text-align: center;
     align-items: center;
 }
+.after-btn-spacing{
+  margin-top: 50px;
+}

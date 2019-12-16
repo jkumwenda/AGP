@@ -4,10 +4,11 @@
     </div>
     <div class="card-body login-card-body ">
         <h6><a [routerLink]="['/manage/add-country']" class="btn btn-outline-secondary btn-sm mdi mdi-plus ">Add country</a></h6>
+        <div class="after-btn-spacing"></div>
         <table datatable class="table table-striped" *ngIf="checkIfEmpty()">
             <thead>
                 <tr>
-                    <th>country</th>
+                    <th>Country</th>
                     <th width='60px'>Controls</th>
                 </tr>
             </thead>
