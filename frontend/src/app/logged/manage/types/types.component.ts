@@ -14,6 +14,11 @@ export class TypesComponent implements OnInit {
 
   constructor(private router: Router, private typeService: TypeService) {}
 
+
+  checkIfEmpty(){
+    return Array.isArray(this.types) && this.types.length
+  }
+
   getTypes() {
     this.typeService.getTypes().then(
       (result: Type[]) => (this.types = result),
