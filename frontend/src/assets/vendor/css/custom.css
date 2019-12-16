@@ -454,3 +454,66 @@ button {
     text-align: center;
     align-items: center;
 }
+
+.course-card {
+    padding: 15px;
+}
+
+.btn-blue {
+    background-color: #2e59c1;
+    color: #ecf0f1;
+}
+
+.btn-tab {
+    margin-left: 5px;
+    margin-right: 5px;
+    border-radius: 2px !important;
+}
+
+.tab-pill {
+    padding: 10px;
+    border-radius: 2px;
+}
+
+.tab-pill-blue {
+    border: 1px solid #2e59c1;
+}
+
+.tab-pill-red {
+    border: 1px solid #bd2130;
+}
+
+.tab-pill-green {
+    border: 1px solid #1e7e34;
+}
+
+.card-red {
+    background-color: #bd2130;
+    color: #f0f0f0;
+}
+
+.btn-white {
+    background-color: #f0f0f0 !important;
+    border: 1px solid #666666;
+}
+
+.card-course {
+    display: flex;
+}
+
+.holes-table {
+    font-size: x-small;
+}
+
+.hole-delete {
+    color: #fc283d;
+}
+
+.hole-edit {
+    color: #57d15b;
+}
+
+.set-on-red {
+    color: hsl(0, 75%, 85%);
+    font-size: medium;
+}
