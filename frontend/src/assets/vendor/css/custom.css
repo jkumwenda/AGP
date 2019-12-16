@@ -517,3 +517,7 @@ button {
     color: hsl(0, 75%, 85%);
     font-size: medium;
 }
+
+.after-btn-spacing {
+    margin-top: 50px;
+}
