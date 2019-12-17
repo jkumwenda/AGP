@@ -1,8 +1,8 @@
 import { Component, OnInit } from "@angular/core";
 import { FormBuilder, FormGroup, Validators } from "@angular/forms";
 import { Router, ActivatedRoute } from "@angular/router";
-import { Hole } from 'src/app/shared/interfaces/hole';
-import { HoleService } from 'src/app/shared/services/hole.service';
+import { Hole } from "src/app/shared/interfaces/hole";
+import { HoleService } from "src/app/shared/services/hole.service";
 
 @Component({
   selector: "app-edit-hole",
@@ -22,7 +22,7 @@ export class EditHoleComponent implements OnInit {
     private router: Router,
     private activatedRoute: ActivatedRoute
   ) {
-    this.holeId = activatedRoute.snapshot.params['id'];
+    this.holeId = activatedRoute.snapshot.params["id"];
     this.initializeHoleForm();
   }
 
@@ -32,32 +32,36 @@ export class EditHoleComponent implements OnInit {
       this.hole.hole = null;
     }
     this.holeForm = this.formBuilder.group({
-      hole: [this.hole.hole, Validators.compose([Validators.required])],
+      hole: [this.hole.hole, Validators.compose([Validators.required])]
     });
   }
 
   getHole(holeId) {
     this.holeService.getHole(holeId).then(
-      (result:Hole) => {
-      this.hole = result;
-      this.initializeHoleForm();
-    }, (error) => {
-    });
+      (result: Hole) => {
+        this.hole = result;
+        this.initializeHoleForm();
+      },
+      error => {}
+    );
   }
 
   editHole() {
-    const data  = this.holeForm.value;
+    const data = this.holeForm.value;
     this.holeData = {
-      hole: data.hole,
+      hole: data.hole
     };
 
-    this.holeService.editHole(this.holeId, this.holeData).then((result) => {
-      this.router.navigate(['/manage/holes/']);
-    }, (error) => {
-      console.log(error);
-    });
+    this.holeService.editHole(this.holeId, this.holeData).then(
+      result => {
+        this.router.navigate(["/manage/holes/"]);
+      },
+      error => {
+        console.log(error);
+      }
+    );
   }
   ngOnInit() {
-    this.getHole(this.holeId)
+    this.getHole(this.holeId);
   }
 }

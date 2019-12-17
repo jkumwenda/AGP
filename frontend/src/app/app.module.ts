@@ -25,6 +25,7 @@ import { TournamentComponent } from './logged/tournaments/tournament/tournament.
 import { CourseComponent } from './logged/course/course.component';
 
 
+
 @NgModule({
   declarations: [
     AppComponent,
