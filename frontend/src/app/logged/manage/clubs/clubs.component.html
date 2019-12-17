@@ -1,1 +1,29 @@
-<p>clubs works!</p>
+<div class="card login-card dropdown-all w-100 ">
+  <div class="card-header card-header-customer md-secondary-dark">
+      <h5 class="mdi mdi-file-table"> {{moduleTitle}}</h5>
+  </div>
+  <div class="card-body login-card-body ">
+      <h6><a [routerLink]="['/manage/add-club']" class="btn btn-outline-secondary btn-sm mdi mdi-plus ">Add club</a></h6>
+      <div class="after-btn-spacing"></div>
+      <table datatable class="table table-striped" *ngIf="checkIfEmpty()">
+          <thead>
+              <tr>
+                  <th>club</th>
+                  <th width="40px">Controls</th>
+              </tr>
+          </thead>
+          <tbody>
+              <tr *ngFor="let club of clubs">
+                  <td>{{ club.club }}</td>
+                  <td>
+                    <div class="btn-toolbar">
+                      <button (click)="deleteClub(club.pk_clubid)" class="btn btn-danger btn-sm btn-control"><i class="mdi mdi-delete"></i></button>
+                      <button (click)="editClub(club.pk_clubid)" class="btn btn-success btn-sm btn-control"><i class="mdi mdi-pencil"></i></button>
+                      </div>
+                    </td>
+              </tr>
+          </tbody>
+      </table>
+  </div>
+</div>
+
