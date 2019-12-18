@@ -23,6 +23,7 @@ import { AddTournamentComponent } from './logged/tournaments/add-tournament/add-
 import { EditTournamentComponent } from './logged/tournaments/edit-tournament/edit-tournament.component';
 import { TournamentComponent } from './logged/tournaments/tournament/tournament.component';
 import { CourseComponent } from './logged/course/course.component';
+import { AddRatingComponent } from './logged/course/add-rating/add-rating.component';
 
 
 
@@ -40,6 +41,7 @@ import { CourseComponent } from './logged/course/course.component';
     EditTournamentComponent,
     TournamentComponent,
     CourseComponent,
+    AddRatingComponent,
 
   ],
   imports: [
