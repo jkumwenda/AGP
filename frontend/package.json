@@ -21,6 +21,7 @@
     "@angular/platform-browser": "~8.2.9",
     "@angular/platform-browser-dynamic": "~8.2.9",
     "@angular/router": "~8.2.9",
+    "@mdi/font": "^4.7.95",
     "angular-datatables": "^8.0.0",
     "datatables.net": "^1.10.20",
     "datatables.net-dt": "^1.10.20",
