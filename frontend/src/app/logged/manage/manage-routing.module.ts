@@ -31,6 +31,13 @@ import { TypesComponent } from './types/types.component';
 import { AddTypeComponent } from './types/add-type/add-type.component';
 import { EditTypeComponent } from './types/edit-type/edit-type.component';
 import { TypeComponent } from './types/type/type.component';
+import { CoursesComponent } from './courses/courses.component';
+import { AddCourseComponent } from './courses/add-course/add-course.component';
+import { EditCourseComponent } from './courses/edit-course/edit-course.component';
+import { ClubsComponent } from './clubs/clubs.component';
+import { AddClubComponent } from './clubs/add-club/add-club.component';
+import { ClubComponent } from './clubs/club/club.component';
+import { EditClubComponent } from './clubs/edit-club/edit-club.component';
 
 const manageRoutes: Routes = [
   {path: 'manage', component: ManageComponent,
@@ -63,7 +70,14 @@ const manageRoutes: Routes = [
     {path: 'types', component: TypesComponent},
     {path: 'add-type', component: AddTypeComponent},
     {path: 'edit-type/:id', component: EditTypeComponent},
-    {path: 'type', component: TypeComponent}
+    {path: 'type', component: TypeComponent},
+    {path: 'courses', component: CoursesComponent},
+    {path: 'add-course', component: AddCourseComponent},
+    {path: 'edit-course/:id', component: EditCourseComponent},
+    {path: 'clubs', component: ClubsComponent},
+    {path: 'add-club', component: AddClubComponent},
+    {path: 'edit-club/:id', component: EditClubComponent},
+
   ]}
 ];
 

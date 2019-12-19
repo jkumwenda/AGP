@@ -1,1 +1,20 @@
-<p>edit-club works!</p>
+<div class="card login-card dropdown-all w-100 ">
+  <div class="card-header card-header-customer">
+      <h5 class="mdi mdi-book-plus"> {{ moduleTitle }}</h5>
+  </div>
+  <div class="card-body login-card-body ">
+      <form [formGroup]="clubForm" (ngSubmit)="editClub()">
+
+          <div class="form-group">
+              <div class="row">
+                  <div class="col-lg-12 col-md-12 col-sm-12">
+                      <label for="club">Club</label>
+                      <input type="text" class="form-control" id="club" aria-describedby="emailHelp" placeholder="Enter username" required formControlName='club'>
+                  </div>
+              </div>
+          </div>
+          <button type="submit" class="btn btn-primary" [disabled]="!clubForm.valid">Save</button>
+          <button type="submit" class="btn" [routerLink]="'/manage/clubs'">Cancel</button>
+      </form>
+  </div>
+</div>

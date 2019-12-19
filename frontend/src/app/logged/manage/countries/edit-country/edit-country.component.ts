@@ -27,8 +27,7 @@ export class EditCountryComponent implements OnInit {
   }
   initializeCountryForm() {
     if (this.country == null) {
-      this.country = new Country();
-      this.country.country = null;
+      this.country = new Country(null,null);
     }
 
     this.countryForm = this.formBuilder.group({

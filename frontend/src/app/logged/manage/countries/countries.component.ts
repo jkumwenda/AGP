@@ -22,7 +22,7 @@ export class CountriesComponent implements OnInit {
   }
 
   getCountries(){
-    this.countryService.getCountrys().then(
+    this.countryService.getCountries().then(
       (result:Country[])=>this.countries=result,
        error=>console.log(error)
     )

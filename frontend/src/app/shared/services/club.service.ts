@@ -4,15 +4,15 @@ import { CommonService } from './common.service';
 @Injectable({
   providedIn: 'root',
 })
-export class CountryService {
+export class ClubService {
   public token: any;
-  public endpoint: any = 'api/country/';
+  public endpoint: any = 'api/club/';
 
   constructor(
     private commonService: CommonService) {
   }
 
-  addCountry(data) {
+  addClub(data) {
     return new Promise((resolve, reject) => {
       this.commonService.post(this.endpoint, data).then((result) => {
         resolve(result);
@@ -22,7 +22,7 @@ export class CountryService {
     });
   }
 
-  getCountries() {
+  getClubs() {
     return new Promise((resolve, reject) => {
       this.commonService.get(this.endpoint).then((result) => {
         resolve(result);
@@ -32,9 +32,9 @@ export class CountryService {
     });
   }
 
-  getCountry(countryId) {
+  getClub(clubId) {
     return new Promise((resolve, reject) => {
-      this.commonService.get(this.endpoint + countryId + '/').then((result) => {
+      this.commonService.get(this.endpoint + clubId + '/').then((result) => {
         resolve(result);
       }, (error) => {
         reject(error);
@@ -42,9 +42,9 @@ export class CountryService {
     });
   }
 
-  editCountry(countryId, data) {
+  editClub(clubId, data) {
     return new Promise((resolve, reject) => {
-      this.commonService.update(this.endpoint + countryId + '/', data).then((result) => {
+      this.commonService.update(this.endpoint + clubId + '/', data).then((result) => {
         resolve(true);
       }, (error) => {
         reject(false);
@@ -52,9 +52,9 @@ export class CountryService {
     });
   }
 
-  deleteCountry(countryId) {
+  deleteClub(clubId) {
     return new Promise((resolve, reject) => {
-      this.commonService.delete(this.endpoint + countryId + '/').then((result) => {
+      this.commonService.delete(this.endpoint + clubId + '/').then((result) => {
         resolve(true);
       }, (error) => {
         reject(false);

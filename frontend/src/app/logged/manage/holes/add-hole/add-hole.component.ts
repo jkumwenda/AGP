@@ -35,5 +35,6 @@ export class AddHoleComponent implements OnInit {
     this.holeForm = this.formBuilder.group({
       hole: ["", Validators.compose([Validators.required])]
     });
+
   }
 }

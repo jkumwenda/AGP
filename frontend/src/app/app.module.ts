@@ -23,12 +23,7 @@ import { AddTournamentComponent } from './logged/tournaments/add-tournament/add-
 import { EditTournamentComponent } from './logged/tournaments/edit-tournament/edit-tournament.component';
 import { TournamentComponent } from './logged/tournaments/tournament/tournament.component';
 import { CourseComponent } from './logged/course/course.component';
-import { PlayersComponent } from './logged/players/players.component';
-import { AddPlayerComponent } from './logged/players/add-player/add-player.component';
-import { EditPlayerComponent } from './logged/players/edit-player/edit-player.component';
-import { PlayerComponent } from './logged/players/player/player.component';
-import { ClubManagerComponent } from './logged/club-manager/club-manager.component';
-
+import { AddRatingComponent } from './logged/course/add-rating/add-rating.component';
 
 @NgModule({
   declarations: [
@@ -44,11 +39,7 @@ import { ClubManagerComponent } from './logged/club-manager/club-manager.compone
     EditTournamentComponent,
     TournamentComponent,
     CourseComponent,
-    PlayersComponent,
-    AddPlayerComponent,
-    EditPlayerComponent,
-    PlayerComponent,
-    ClubManagerComponent,
+    AddRatingComponent,
 
   ],
   imports: [
