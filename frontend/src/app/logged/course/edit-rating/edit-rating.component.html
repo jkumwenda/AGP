@@ -1,6 +1,6 @@
 <!-- Button trigger modal -->
 <!-- Modal -->
-<div class="modal fade" id="setRating" tabindex="-1" role="dialog" aria-labelledby="modelTitleId" aria-hidden="true">
+<div class="modal fade" id="editRating" tabindex="-1" role="dialog" aria-labelledby="modelTitleId" aria-hidden="true">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
@@ -10,7 +10,7 @@
           </button>
       </div>
       <div class="modal-body">
-          <form [formGroup]="rateForm" (ngSubmit)="addRate()">
+          <form [formGroup]="ratingForm" (ngSubmit)="editRating()">
 
           <div class="form-group">
               <div class="row">
@@ -38,7 +38,7 @@
               </div>
           </div>
 
-          <button type="submit" class="btn btn-primary btn-block btn-lg" [disabled]="!rateForm.valid">Save</button>
+          <button type="submit" class="btn btn-primary btn-block btn-lg" [disabled]="!ratingForm.valid">Save</button>
 
       </form>
       </div>

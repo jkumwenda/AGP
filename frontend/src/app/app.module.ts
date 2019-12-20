@@ -24,6 +24,8 @@ import { EditTournamentComponent } from './logged/tournaments/edit-tournament/ed
 import { TournamentComponent } from './logged/tournaments/tournament/tournament.component';
 import { CourseComponent } from './logged/course/course.component';
 import { AddRatingComponent } from './logged/course/add-rating/add-rating.component';
+import { PlayersComponent } from './logged/players/players.component';
+import { EditRatingComponent } from './logged/course/edit-rating/edit-rating.component';
 
 @NgModule({
   declarations: [
@@ -40,6 +42,8 @@ import { AddRatingComponent } from './logged/course/add-rating/add-rating.compon
     TournamentComponent,
     CourseComponent,
     AddRatingComponent,
+    PlayersComponent,
+    EditRatingComponent
 
   ],
   imports: [

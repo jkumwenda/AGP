@@ -27,7 +27,7 @@ class Course(models.Model):
 class Rating(models.Model):
     pk_ratingid = models.AutoField(primary_key=True)
     fk_courseid = models.ForeignKey(
-        Course, models.DO_NOTHING, db_column='fk_courseid')
+        Course, models.DO_NOTHING, related_name="rating", db_column='fk_courseid')
     course_rating = models.CharField(max_length=45)
     sloppy_rating = models.CharField(max_length=45)
     par = models.CharField(max_length=45, blank=True, null=True)

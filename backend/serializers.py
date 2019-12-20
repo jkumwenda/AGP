@@ -10,21 +10,22 @@ class CountrySerializer(serializers.ModelSerializer):
         fields = '__all__'
 
 
+class RatingSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Rating
+        fields = '__all__'
+
+
 class CourseSerializer(serializers.ModelSerializer):
     country = CountrySerializer(source="pk_countryid", read_only=True)
+    rating= RatingSerializer(many=True, read_only=True)
     pk_countryid = serializers.PrimaryKeyRelatedField(
         queryset=Country.objects.all(), write_only=True
     )
 
     class Meta:
         model = Course
-        fields = ['pk_courseid', 'course', 'pk_countryid', 'country']
-
-
-class RatingSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = Rating
-        fields = '__all__'
+        fields = ['pk_courseid', 'course', 'pk_countryid', 'country', 'rating']
 
 
 class TypeSerializer(serializers.ModelSerializer):
