@@ -48,6 +48,10 @@ import { FormatsComponent } from './formats/formats.component';
 import { AddFormatComponent } from './formats/add-format/add-format.component';
 import { EditFormatComponent } from './formats/edit-format/edit-format.component';
 import { FormatComponent } from './formats/format/format.component';
+import { DrawTypesComponent } from './draw-types/draw-types.component';
+import { AddDrawTypeComponent } from './draw-types/add-draw-type/add-draw-type.component';
+import { EditDrawTypeComponent } from './draw-types/edit-draw-type/edit-draw-type.component';
+import { DrawTypeComponent } from './draw-types/draw-type/draw-type.component';
 
 @NgModule({
   declarations: [
@@ -92,7 +96,11 @@ import { FormatComponent } from './formats/format/format.component';
     FormatsComponent,
     AddFormatComponent,
     EditFormatComponent,
-    FormatComponent
+    FormatComponent,
+    DrawTypesComponent,
+    AddDrawTypeComponent,
+    EditDrawTypeComponent,
+    DrawTypeComponent
   ],
   imports: [
     FormsModule,

@@ -10,6 +10,12 @@ class CountrySerializer(serializers.ModelSerializer):
         fields = '__all__'
 
 
+class DrawTypeSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = DrawType
+        fields = '__all__'
+
+
 class CourseSerializer(serializers.ModelSerializer):
     country = CountrySerializer(source="pk_countryid", read_only=True)
     pk_countryid = serializers.PrimaryKeyRelatedField(

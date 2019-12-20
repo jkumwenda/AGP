@@ -42,6 +42,10 @@ import { FormatsComponent } from './formats/formats.component';
 import { AddFormatComponent } from './formats/add-format/add-format.component';
 import { EditFormatComponent } from './formats/edit-format/edit-format.component';
 import { FormatComponent } from './formats/format/format.component';
+import { DrawTypesComponent } from './draw-types/draw-types.component';
+import { AddDrawTypeComponent } from './draw-types/add-draw-type/add-draw-type.component';
+import { EditDrawTypeComponent } from './draw-types/edit-draw-type/edit-draw-type.component';
+import { DrawTypeComponent } from './draw-types/draw-type/draw-type.component';
 
 const manageRoutes: Routes = [
   {path: 'manage', component: ManageComponent,
@@ -85,6 +89,10 @@ const manageRoutes: Routes = [
     {path: 'add-format', component: AddFormatComponent},
     {path: 'edit-format/:id', component: EditFormatComponent},
     {path: 'format', component: FormatComponent},
+    {path: 'draw-types', component: DrawTypesComponent},
+    {path: 'add-draw-type', component: AddDrawTypeComponent},
+    {path: 'edit-draw-type/:id', component: EditDrawTypeComponent},
+    {path: 'draw-type', component: DrawTypeComponent},
   
   ]}
 ];
