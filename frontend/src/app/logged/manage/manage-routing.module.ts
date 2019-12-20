@@ -84,8 +84,8 @@ const manageRoutes: Routes = [
     {path: 'formats', component: FormatsComponent},
     {path: 'add-format', component: AddFormatComponent},
     {path: 'edit-format/:id', component: EditFormatComponent},
-    {path: 'format', component: FormatComponent}
-
+    {path: 'format', component: FormatComponent},
+  
   ]}
 ];
 
