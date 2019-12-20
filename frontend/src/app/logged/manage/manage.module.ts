@@ -44,6 +44,10 @@ import { AddClubComponent } from './clubs/add-club/add-club.component';
 import { EditClubComponent } from './clubs/edit-club/edit-club.component';
 import { ClubComponent } from './clubs/club/club.component';
 import { ManageNavComponent } from './manage/manage-nav/manage-nav.component';
+import { FormatsComponent } from './formats/formats.component';
+import { AddFormatComponent } from './formats/add-format/add-format.component';
+import { FormatComponent } from './formats/format/format.component';
+import { EditFormatComponent } from './formats/edit-format/edit-format.component';
 
 @NgModule({
   declarations: [
@@ -84,7 +88,11 @@ import { ManageNavComponent } from './manage/manage-nav/manage-nav.component';
     AddClubComponent,
     EditClubComponent,
     ClubComponent,
-    ManageNavComponent
+    ManageNavComponent,
+    FormatsComponent,
+    AddFormatComponent,
+    FormatComponent,
+    EditFormatComponent
   ],
   imports: [
     FormsModule,

@@ -38,6 +38,10 @@ import { ClubsComponent } from './clubs/clubs.component';
 import { AddClubComponent } from './clubs/add-club/add-club.component';
 import { ClubComponent } from './clubs/club/club.component';
 import { EditClubComponent } from './clubs/edit-club/edit-club.component';
+import { FormatsComponent } from './formats/formats.component';
+import { AddFormatComponent } from './formats/add-format/add-format.component';
+import { EditFormatComponent } from './formats/edit-format/edit-format.component';
+import { FormatComponent } from './formats/format/format.component';
 
 const manageRoutes: Routes = [
   {path: 'manage', component: ManageComponent,
@@ -77,6 +81,10 @@ const manageRoutes: Routes = [
     {path: 'clubs', component: ClubsComponent},
     {path: 'add-club', component: AddClubComponent},
     {path: 'edit-club/:id', component: EditClubComponent},
+    {path: 'formats', component: FormatsComponent},
+    {path: 'add-format', component: AddFormatComponent},
+    {path: 'edit-format/:id', component: EditFormatComponent},
+    {path: 'format', component: FormatComponent}
 
   ]}
 ];
