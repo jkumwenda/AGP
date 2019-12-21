@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { Role } from '../../../shared/interfaces/role';
+import { Router } from '@angular/router';
+import { RoleService } from '../../../shared/services/role.service';
 
 @Component({
   selector: 'app-roles',
@@ -6,10 +9,37 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./roles.component.css']
 })
 export class RolesComponent implements OnInit {
+  moduleTitle = 'Role';
+  public roles: Role[];
 
-  constructor() { }
+  constructor(
+    private roleService: RoleService,
+    private router: Router,
+  ) { }
 
-  ngOnInit() {
+  getRoles() {
+    this.roleService.getRoles().then((result) => {
+      this.roles = result as Role[];
+    }, (error) => {
+    });
   }
 
+  checkIfEmpty(){
+    return Array.isArray(this.roles) && this.roles.length
+  }
+
+  editRole(roleId) {
+    this.router.navigate(['/manage/edit-role', roleId]);
+  }
+
+  deleteRole(roleId) {
+    this.roleService.deleteRole(roleId).then((result) => {
+      this.getRoles();
+    }, (error) => {
+    });
+  }
+
+  ngOnInit() {
+    this.getRoles();
+  }
 }
