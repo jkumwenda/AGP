@@ -10,9 +10,9 @@ class CountrySerializer(serializers.ModelSerializer):
         fields = '__all__'
 
 
-class RatingSerializer(serializers.ModelSerializer):
+class DrawTypeSerializer(serializers.ModelSerializer):
     class Meta:
-        model = Rating
+        model = DrawType
         fields = '__all__'
 
 

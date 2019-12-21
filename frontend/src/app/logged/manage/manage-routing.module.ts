@@ -38,6 +38,14 @@ import { ClubsComponent } from './clubs/clubs.component';
 import { AddClubComponent } from './clubs/add-club/add-club.component';
 import { ClubComponent } from './clubs/club/club.component';
 import { EditClubComponent } from './clubs/edit-club/edit-club.component';
+import { FormatsComponent } from './formats/formats.component';
+import { AddFormatComponent } from './formats/add-format/add-format.component';
+import { EditFormatComponent } from './formats/edit-format/edit-format.component';
+import { FormatComponent } from './formats/format/format.component';
+import { DrawTypesComponent } from './draw-types/draw-types.component';
+import { AddDrawTypeComponent } from './draw-types/add-draw-type/add-draw-type.component';
+import { EditDrawTypeComponent } from './draw-types/edit-draw-type/edit-draw-type.component';
+import { DrawTypeComponent } from './draw-types/draw-type/draw-type.component';
 
 const manageRoutes: Routes = [
   {path: 'manage', component: ManageComponent,
@@ -45,11 +53,11 @@ const manageRoutes: Routes = [
     {path: 'roles', component: RolesComponent},
     {path: 'manage-nav', component: ManageNavComponent},
     {path: 'add-role', component: AddRoleComponent},
-    {path: 'edit-role', component: EditRoleComponent},
+    {path: 'edit-role/:id', component: EditRoleComponent},
     {path: 'role', component: RoleComponent},
     {path: 'permissions', component: PermissionsComponent},
     {path: 'add-permission', component: AddPermissionComponent},
-    {path: 'edit-permission', component: EditPermissionComponent},
+    {path: 'edit-permission/:id', component: EditPermissionComponent},
     {path: 'permission', component: PermissionComponent},
     {path: 'users', component: UsersComponent},
     {path: 'add-user', component: AddUserComponent},
@@ -77,7 +85,15 @@ const manageRoutes: Routes = [
     {path: 'clubs', component: ClubsComponent},
     {path: 'add-club', component: AddClubComponent},
     {path: 'edit-club/:id', component: EditClubComponent},
-
+    {path: 'formats', component: FormatsComponent},
+    {path: 'add-format', component: AddFormatComponent},
+    {path: 'edit-format/:id', component: EditFormatComponent},
+    {path: 'format', component: FormatComponent},
+    {path: 'draw-types', component: DrawTypesComponent},
+    {path: 'add-draw-type', component: AddDrawTypeComponent},
+    {path: 'edit-draw-type/:id', component: EditDrawTypeComponent},
+    {path: 'draw-type', component: DrawTypeComponent},
+  
   ]}
 ];
 

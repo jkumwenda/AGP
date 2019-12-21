@@ -1,1 +1,40 @@
-<p>edit-permission works!</p>
+<div class="card login-card dropdown-all w-100 ">
+    <div class="card-header card-header-customer">
+        <h5 class="mdi mdi-book-plus"> {{moduleTitle}}</h5>
+    </div>
+    <div class="card-body login-card-body ">
+        <form [formGroup]="permissionForm" (ngSubmit)="editPermission()">
+
+            <div class="form-group">
+                <div class="row">
+                    <div class="col-lg-12 col-md-12 col-sm-12">
+                        <label for="Permission">Permission</label>
+                        <input type="text" class="form-control" id="permission" placeholder="Enter permission" required formControlName='permission'>
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="row">
+                    <div class="col-lg-12 col-md-12 col-sm-12">
+                        <label for="Code">Code</label>
+                        <input type="text" class="form-control" id="code" placeholder="Enter code" required formControlName='code'>
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="row">
+                    <div class="col-lg-12 col-md-12 col-sm-12">
+                        <label for="Permission Description">Permission Description</label>
+                        <textarea class="form-control" id="Permission description" rows="5" placeholder="Enter permission description" required formControlName='permission_desc'></textarea>
+                    </div>
+                </div>
+            </div>
+
+
+            <button type="submit" class="btn btn-primary" [disabled]="!permissionForm.valid">Save</button>
+            <button type="submit" class="btn" [routerLink]="'/manage/permissions'">Cancel</button>
+        </form>
+    </div>
+</div>
