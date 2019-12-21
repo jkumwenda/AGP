@@ -44,6 +44,14 @@ import { AddClubComponent } from './clubs/add-club/add-club.component';
 import { EditClubComponent } from './clubs/edit-club/edit-club.component';
 import { ClubComponent } from './clubs/club/club.component';
 import { ManageNavComponent } from './manage/manage-nav/manage-nav.component';
+import { FormatsComponent } from './formats/formats.component';
+import { AddFormatComponent } from './formats/add-format/add-format.component';
+import { EditFormatComponent } from './formats/edit-format/edit-format.component';
+import { FormatComponent } from './formats/format/format.component';
+import { DrawTypesComponent } from './draw-types/draw-types.component';
+import { AddDrawTypeComponent } from './draw-types/add-draw-type/add-draw-type.component';
+import { EditDrawTypeComponent } from './draw-types/edit-draw-type/edit-draw-type.component';
+import { DrawTypeComponent } from './draw-types/draw-type/draw-type.component';
 
 @NgModule({
   declarations: [
@@ -84,7 +92,15 @@ import { ManageNavComponent } from './manage/manage-nav/manage-nav.component';
     AddClubComponent,
     EditClubComponent,
     ClubComponent,
-    ManageNavComponent
+    ManageNavComponent,
+    FormatsComponent,
+    AddFormatComponent,
+    EditFormatComponent,
+    FormatComponent,
+    DrawTypesComponent,
+    AddDrawTypeComponent,
+    EditDrawTypeComponent,
+    DrawTypeComponent
   ],
   imports: [
     FormsModule,

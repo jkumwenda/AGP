@@ -104,6 +104,11 @@ class FormatViewSet(viewsets.ModelViewSet):
     queryset = Format.objects.all()
     serializer_class = FormatSerializer
 
+class DrawTypeViewSet(viewsets.ModelViewSet):
+    queryset = DrawType.objects.all()
+    serializer_class = DrawTypeSerializer
+
+
 
 class RegisterViewSet(viewsets.ModelViewSet):
     queryset = Register.objects.all()

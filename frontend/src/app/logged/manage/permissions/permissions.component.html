@@ -1,1 +1,32 @@
-<p>permissions works!</p>
+<div class="card login-card dropdown-all w-100 ">
+    <div class="card-header card-header-customer md-secondary-dark">
+        <h5 class="mdi mdi-file-table"> {{moduleTitle}}</h5>
+    </div>
+    <div class="card-body login-card-body ">
+        <h6><a [routerLink]="['/manage/add-permission']" class="btn btn-outline-secondary btn-sm mdi mdi-plus ">Add Permission</a></h6>
+        <div class="after-btn-spacing"></div>
+        <table datatable class="table table-striped" *ngIf="checkIfEmpty()">
+            <thead>
+                <tr>
+                    <th>Permission</th>
+                    <th>Code</th>
+                    <th>Description</th>
+                    <th width='60px'>Controls</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let permission of permissions; let data_index=index">
+                    <td>{{permission.permission}}</td>
+                    <td>{{permission.code}}</td>
+                    <td>{{permission.permission_desc}}</td>
+
+                    <td>
+                    <button (click)="deletePermission(permission.pk_permissionid)" class="btn btn-danger btn-sm btn-control"><i class="mdi mdi-delete"></i></button>
+                    <button (click)="editPermission(permission.pk_permissionid)" class="btn btn-success btn-sm btn-control"><i class="mdi mdi-pencil"></i></button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+
