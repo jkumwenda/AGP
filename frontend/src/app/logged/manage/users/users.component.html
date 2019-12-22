@@ -3,32 +3,31 @@
         <h5 class="mdi mdi-file-table"> Users</h5>
     </div>
     <div class="card-body login-card-body ">
-        <h6><a [routerLink]="['/manage/add-user']" class="btn btn-outline-secondary btn-sm mdi mdi-plus ">Add User</a></h6>
-        <table class="table table-striped">
-            <thead>
-                <tr>
-                    <th>Firstname</th>
-                    <th>Lastname</th>
-                    <th>Email</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td>John</td>
-                    <td>Doe</td>
-                    <td>john@example.com</td>
-                </tr>
-                <tr>
-                    <td>Mary</td>
-                    <td>Moe</td>
-                    <td>mary@example.com</td>
-                </tr>
-                <tr>
-                    <td>July</td>
-                    <td>Dooley</td>
-                    <td>july@example.com</td>
-                </tr>
-            </tbody>
-        </table>
+      <h6><a [routerLink]="['/manage/add-user']" class="btn btn-outline-secondary btn-sm mdi mdi-plus ">Add User</a></h6>
+      <table datatable class="table table-striped">
+          <thead>
+              <tr>
+                  <th>Username</th>
+                  <th>Firstname</th>
+                  <th>Lastname</th>
+                  <th>Email</th>
+                  <th width="40px">Controls</th>
+              </tr>
+          </thead>
+          <tbody>
+              <tr *ngFor="let user of users">
+                  <td>{{ user.username }}</td>
+                  <td>{{ user.first_name }}</td>
+                  <td>{{ user.last_name }}</td>
+                  <td>{{ user.email }}</td>
+                  <td>
+                    <div class="btn-toolbar">
+                      <button (click)="deleteHole(hole.pk_holeid)" class="btn btn-danger btn-sm btn-control"><i class="mdi mdi-delete"></i></button>
+                      <button (click)="editHole(hole.pk_holeid)" class="btn btn-success btn-sm btn-control"><i class="mdi mdi-pencil"></i></button>
+                      </div>
+                    </td>
+              </tr>
+          </tbody>
+      </table>
     </div>
 </div>

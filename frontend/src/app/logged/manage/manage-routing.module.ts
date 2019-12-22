@@ -97,7 +97,7 @@ const manageRoutes: Routes = [
     {path: 'add-draw-type', component: AddDrawTypeComponent},
     {path: 'edit-draw-type/:id', component: EditDrawTypeComponent},
     {path: 'draw-type', component: DrawTypeComponent}
-    ], canActivate: [AuthGuard], data: {role: 'Admin'}},
+    ], canActivate: [AuthGuard]},
 ];
 
 @NgModule({

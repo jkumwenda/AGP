@@ -8,15 +8,18 @@ import { AuthService } from 'src/app/shared/services/auth.service';
 })
 export class HeaderComponent implements OnInit {
 
+  private username: string;
+
   constructor(
     private authService: AuthService
-  ) { }
+  ) {
+    this.username = localStorage.getItem('username');
+  }
 
   logout() {
     this.authService.logout();
   }
 
-  ngOnInit() {
-  }
+  ngOnInit() { }
 
 }
