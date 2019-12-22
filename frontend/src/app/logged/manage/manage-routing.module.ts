@@ -2,6 +2,9 @@ import { ManageNavComponent } from './manage/manage-nav/manage-nav.component';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Routes, RouterModule } from '@angular/router';
+import { AuthGuard } from 'src/app/shared/services/auth-guard.service';
+import { RoleGuard } from 'src/app/shared/services/role-guard.service';
+
 import { GendersComponent } from './genders/genders.component';
 import { AddGenderComponent } from './genders/add-gender/add-gender.component';
 import { EditGenderComponent } from './genders/edit-gender/edit-gender.component';
@@ -46,6 +49,7 @@ import { DrawTypesComponent } from './draw-types/draw-types.component';
 import { AddDrawTypeComponent } from './draw-types/add-draw-type/add-draw-type.component';
 import { EditDrawTypeComponent } from './draw-types/edit-draw-type/edit-draw-type.component';
 import { DrawTypeComponent } from './draw-types/draw-type/draw-type.component';
+import { from } from 'rxjs';
 
 const manageRoutes: Routes = [
   {path: 'manage', component: ManageComponent,
@@ -92,9 +96,8 @@ const manageRoutes: Routes = [
     {path: 'draw-types', component: DrawTypesComponent},
     {path: 'add-draw-type', component: AddDrawTypeComponent},
     {path: 'edit-draw-type/:id', component: EditDrawTypeComponent},
-    {path: 'draw-type', component: DrawTypeComponent},
-  
-  ]}
+    {path: 'draw-type', component: DrawTypeComponent}
+    ], canActivate: [AuthGuard], data: {role: 'Admin'}},
 ];
 
 @NgModule({

@@ -4,6 +4,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NgxUiLoaderModule } from 'ngx-ui-loader';
 import { HttpClientModule } from '@angular/common/http';
 import { DataTablesModule } from 'angular-datatables';
+import { AuthGuard } from 'src/app/shared/services/auth-guard.service';
 
 import { ManageRoutingModule } from './manage-routing.module';
 import { UserComponent } from './users/user/user.component';
@@ -113,6 +114,7 @@ import { DrawTypeComponent } from './draw-types/draw-type/draw-type.component';
   ],
   exports: [
     ManageRoutingModule
-  ]
+  ],
+  providers: [AuthGuard]
 })
 export class ManageModule { }

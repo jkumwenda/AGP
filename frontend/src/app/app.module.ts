@@ -25,6 +25,7 @@ import { TournamentComponent } from './logged/tournaments/tournament/tournament.
 import { CourseComponent } from './logged/course/course.component';
 import { AddRatingComponent } from './logged/course/add-rating/add-rating.component';
 import { PlayersComponent } from './logged/players/players.component';
+import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 
 @NgModule({
   declarations: [
@@ -41,7 +42,8 @@ import { PlayersComponent } from './logged/players/players.component';
     TournamentComponent,
     CourseComponent,
     AddRatingComponent,
-    PlayersComponent
+    PlayersComponent,
+    PageNotFoundComponent
   ],
   imports: [
     DataTablesModule,

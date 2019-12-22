@@ -8,19 +8,10 @@ const API_URL = environment.apiUrl;
 @Injectable()
 export class AuthService {
 
-  // http options used for making API calls
   private httpOptions: any;
-
-  // the actual JWT token
   public token: string;
-
-  // the token expiration date
-  public token_expires: Date;
-
-  // the username of the logged in user
+  public tokenExpires: Date;
   public username: string;
-
-  // error messages received from the login attempt
   public errors: any = [];
 
   constructor(private http: HttpClient, private router: Router) {
@@ -29,41 +20,44 @@ export class AuthService {
     };
   }
 
-  // Uses http.post() to get an auth token from djangorestframework-jwt endpoint
   public login(user) {
-    // console.log('Something is not alright here', user);
     this.http.post(API_URL + 'auth-jwt/', JSON.stringify(user), this.httpOptions).subscribe(
       data => {
         this.updateData(data['token']);
-        this.router.navigate(['/logged/dashboard']);
+        this.router.navigate(['/dashboard']);
       },
       err => {
-        this.errors = err['error'];
+        this.errors = err('error');
       }
     );
   }
 
-  // Refreshes the JWT token, to extend the time the user is logged in
   public refreshToken() {
     this.http.post(API_URL + 'auth-jwt-refresh/', JSON.stringify({token: this.token}), this.httpOptions).subscribe(
       data => {
         this.updateData(data['token']);
       },
       err => {
-        this.errors = err['error'];
+        this.errors = err('error');
       }
     );
   }
 
   public logout() {
     this.token = null;
-    this.token_expires = null;
+    this.tokenExpires = null;
     this.username = null;
     localStorage.clear();
+    this.router.navigate(['/login']);
   }
 
   public isAuthenticated() {
     return this.token != null;
+  }
+
+  public decode() {
+    const Role = 'Admin';
+    return Role;
   }
 
   private updateData(token) {
@@ -71,11 +65,9 @@ export class AuthService {
     this.errors = [];
     localStorage.setItem('token', this.token);
 
-    // decode the token to read the username and expiration timestamp
-    const token_parts = this.token.split(/\./);
-    const token_decoded = JSON.parse(window.atob(token_parts[1]));
-    this.token_expires = new Date(token_decoded.exp * 1000);
-    this.username = token_decoded.username;
+    const tokenParts = this.token.split(/\./);
+    const tokenDecoded = JSON.parse(window.atob(tokenParts[1]));
+    this.tokenExpires = new Date(tokenDecoded.exp * 1000);
+    this.username = tokenDecoded.username;
   }
-
 }

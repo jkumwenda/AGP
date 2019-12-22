@@ -2,8 +2,9 @@ import { Injectable } from '@angular/core';
 import { MatDialog } from '@angular/material';
 import { NgxUiLoaderService } from 'ngx-ui-loader';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { environment } from '../../../environments/environment';
-import { ConfirmationDialogComponent } from '../../shared/confirmation-dialog/confirmation-dialog.component';
+import { environment } from 'src/environments/environment';
+import { ConfirmationDialogComponent } from 'src/app/shared/confirmation-dialog/confirmation-dialog.component';
+import { AuthService } from 'src/app/shared/services/auth.service';
 
 const API_URL = environment.apiUrl;
 
@@ -17,52 +18,54 @@ export class CommonService {
   constructor(
     private http: HttpClient,
     private dialog: MatDialog,
-    private ngxService: NgxUiLoaderService
+    private ngxService: NgxUiLoaderService,
+    private authService: AuthService
     ) {
 
-    this.token = localStorage.getItem('token');
+    this.token = this.authService.token;
     this.httpHeaders = {
       headers: new HttpHeaders({
         'Content-Type': 'application/json',
-        Authorization: 'Bearer ' + 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoxLCJ1c2VybmFtZSI6ImxvdWlzIiwiZXhwIjoxNTc3MDg3MzY2LCJlbWFpbCI6ImxvdWlzbnlpcm9uZ283M0BnbWFpbC5jb20iLCJvcmlnX2lhdCI6MTU3Njc4NzM2Nn0.HDiCgiJAUzTtOSIVhafxQ3ib11kDZUCTk6AHtyxhW3I'
+        Authorization: 'Bearer ' + this.token
       })
     };
   }
 
   post(endpoint, data) {
-    // this.ngxService.start();
+    this.ngxService.start();
     return new Promise((resolve, reject) => {
       this.http.post(API_URL + endpoint, JSON.stringify(data), this.httpHeaders).subscribe(result => {
-        // this.ngxService.stop();
+        this.ngxService.stop();
         resolve(result);
       }, (error) => {
-          // this.ngxService.stop();
+          this.ngxService.stop();
           reject(error);
       });
     });
   }
 
   get(endpoint) {
-    // this.ngxService.start();
+    console.log('THIS IS THE TOKEN NOW', this.token);
+    this.ngxService.start();
     return new Promise((resolve, reject) => {
       this.http.get(API_URL + endpoint, this.httpHeaders).subscribe(result => {
-        // this.ngxService.stop();
+        this.ngxService.stop();
         resolve(result);
       }, (error) => {
-          // this.ngxService.stop();
+          this.ngxService.stop();
           reject(error);
       });
     });
   }
 
   update(endpoint, data) {
-    // this.ngxService.start();
+    this.ngxService.start();
     return new Promise((resolve, reject) => {
       this.http.patch(API_URL + endpoint, JSON.stringify(data), this.httpHeaders).subscribe(result => {
-        // this.ngxService.stop();
+        this.ngxService.stop();
         resolve(result);
       }, (error) => {
-          // this.ngxService.stop();
+          this.ngxService.stop();
           reject(error);
       });
     });
@@ -76,17 +79,16 @@ export class CommonService {
     return new Promise((resolve, reject) => {
       dialogRef.afterClosed().subscribe(result => {
         if (result) {
-          // this.ngxService.start();
+          this.ngxService.start();
           this.http.delete(API_URL + endpoint, this.httpHeaders).subscribe(result => {
-            // this.ngxService.stop();
+            this.ngxService.stop();
             resolve(result);
           }, (error) => {
-              // this.ngxService.start();
+              this.ngxService.start();
               reject(error);
           });
         }
       });
     });
   }
-
 }
