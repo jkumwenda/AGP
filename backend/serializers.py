@@ -14,7 +14,13 @@ class DrawTypeSerializer(serializers.ModelSerializer):
     class Meta:
         model = DrawType
         fields = '__all__'
-
+        
+        
+class RatingSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Rating
+        fields = '__all__'
+        
 
 class CourseSerializer(serializers.ModelSerializer):
     country = CountrySerializer(source="pk_countryid", read_only=True)
@@ -71,10 +77,6 @@ class GenderSerializer(serializers.ModelSerializer):
 
 
 class ProfileSerializer(serializers.ModelSerializer):
-    # gender = GenderSerializer(read_only=True)
-    # fk_genderid = serializers.PrimaryKeyRelatedField(
-    #                     queryset=Gender.objects.all(),
-    #                     write_only=True, source='gender')
     class Meta:
         model = Profile
         fields = '__all__'
