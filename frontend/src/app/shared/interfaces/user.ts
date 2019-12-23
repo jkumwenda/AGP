@@ -5,4 +5,9 @@ export class User {
   email: string;
   username: string;
   password: string;
+
+  constructor(fname,lname){
+    this.first_name=fname
+    this.last_name=lname
+  }
 }

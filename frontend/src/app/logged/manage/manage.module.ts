@@ -52,6 +52,10 @@ import { DrawTypesComponent } from './draw-types/draw-types.component';
 import { AddDrawTypeComponent } from './draw-types/add-draw-type/add-draw-type.component';
 import { EditDrawTypeComponent } from './draw-types/edit-draw-type/edit-draw-type.component';
 import { DrawTypeComponent } from './draw-types/draw-type/draw-type.component';
+import { EventTypesComponent } from './event-types/event-types.component';
+import { AddEventTypeComponent } from './event-types/add-event-type/add-event-type.component';
+import { EditEventTypeComponent } from './event-types/edit-event-type/edit-event-type.component';
+import { EventTypeComponent } from './event-types/event-type/event-type.component';
 
 @NgModule({
   declarations: [
@@ -100,7 +104,11 @@ import { DrawTypeComponent } from './draw-types/draw-type/draw-type.component';
     DrawTypesComponent,
     AddDrawTypeComponent,
     EditDrawTypeComponent,
-    DrawTypeComponent
+    DrawTypeComponent,
+    EventTypesComponent,
+    AddEventTypeComponent,
+    EditEventTypeComponent,
+    EventTypeComponent
   ],
   imports: [
     FormsModule,
