@@ -18,7 +18,7 @@ class RatingSerializer(serializers.ModelSerializer):
 
 class CourseSerializer(serializers.ModelSerializer):
     country = CountrySerializer(source="pk_countryid", read_only=True)
-    rating= RatingSerializer(many=True, read_only=True)
+    rating = RatingSerializer(many=True, read_only=True)
     pk_countryid = serializers.PrimaryKeyRelatedField(
         queryset=Country.objects.all(), write_only=True
     )
@@ -34,12 +34,6 @@ class TypeSerializer(serializers.ModelSerializer):
         fields = '__all__'
 
 
-class CourseTypeSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = CourseType
-        fields = '__all__'
-
-
 class HoleSerializer(serializers.ModelSerializer):
     class Meta:
         model = Hole
@@ -47,8 +41,19 @@ class HoleSerializer(serializers.ModelSerializer):
 
 
 class CourseTypeHoleSerializer(serializers.ModelSerializer):
+    hole = HoleSerializer(source="hole_pk_holeid", read_only=True)
+
     class Meta:
         model = CourseTypeHole
+        fields = '__all__'
+
+
+class CourseTypeSerializer(serializers.ModelSerializer):
+    type = TypeSerializer(source="fk_typeid", read_only=True)
+    holes = CourseTypeHoleSerializer(many=True, read_only=True)
+
+    class Meta:
+        model = CourseType
         fields = '__all__'
 
 

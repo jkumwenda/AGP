@@ -3,7 +3,8 @@ from django.contrib.auth.models import User
 from rest_framework import viewsets
 from .serializers import *
 from .models import *
-
+from rest_framework.response import Response
+from rest_framework.decorators import action
 
 class UserViewSet(viewsets.ModelViewSet):
     queryset = User.objects.all()
@@ -19,6 +20,13 @@ class CourseViewSet(viewsets.ModelViewSet):
     queryset = Course.objects.all()
     serializer_class = CourseSerializer
 
+    @action(methods=['GET'],  detail=True)
+    def types(self,request, pk=None):
+        course=self.get_object()
+        serializer= CourseTypeSerializer(
+            course.types.all(), many=True
+        )
+        return Response(serializer.data)
 
 class RatingViewSet(viewsets.ModelViewSet):
     queryset = Rating.objects.all()

@@ -24,7 +24,7 @@ export class CommonService {
     this.httpHeaders = {
       headers: new HttpHeaders({
         'Content-Type': 'application/json',
-        Authorization: 'Bearer ' + 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoxLCJ1c2VybmFtZSI6ImxvdWlzIiwiZXhwIjoxNTc3MDg3MzY2LCJlbWFpbCI6ImxvdWlzbnlpcm9uZ283M0BnbWFpbC5jb20iLCJvcmlnX2lhdCI6MTU3Njc4NzM2Nn0.HDiCgiJAUzTtOSIVhafxQ3ib11kDZUCTk6AHtyxhW3I'
+       // Authorization: 'Bearer ' + 'http://shanalikhan.github.io/2017/02/19/Option-to-ignore-settings-folders-code-settings-sync.html'
       })
     };
   }
