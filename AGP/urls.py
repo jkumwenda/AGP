@@ -23,7 +23,7 @@ router.register(r'type', backend_views.TypeViewSet, base_name='Type')
 router.register(r'course_type', backend_views.CourseTypeViewSet,
                 base_name='Course Type')
 router.register(r'hole', backend_views.HoleViewSet, base_name='Hole')
-router.register(r'course_type_hole', backend_views.UserViewSet,
+router.register(r'course_type_hole', backend_views.CourseTypeHoleViewSet,
                 base_name='Course Type Hole')
 router.register(r'club', backend_views.ClubViewSet, base_name='Club')
 router.register(r'club_course', backend_views.ClubCourseViewSet,

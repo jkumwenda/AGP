@@ -38,6 +38,7 @@ import { ClubsComponent } from './clubs/clubs.component';
 import { AddClubComponent } from './clubs/add-club/add-club.component';
 import { ClubComponent } from './clubs/club/club.component';
 import { EditClubComponent } from './clubs/edit-club/edit-club.component';
+import { CourseComponent } from '../course/course.component';
 
 const manageRoutes: Routes = [
   {path: 'manage', component: ManageComponent,
@@ -77,6 +78,7 @@ const manageRoutes: Routes = [
     {path: 'clubs', component: ClubsComponent},
     {path: 'add-club', component: AddClubComponent},
     {path: 'edit-club/:id', component: EditClubComponent},
+    //{path: 'course/:id', component: CourseComponent},
 
   ]}
 ];

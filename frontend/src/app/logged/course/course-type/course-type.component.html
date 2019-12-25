@@ -1,0 +1,14 @@
+<div class="card card-red">
+  <div class="card-body">
+      <strong>{{ courseType.type.type }}</strong>
+      <hr>
+      Hand Index <span class="badge badge-light">{{ courseType.hand_index }}</span><br>
+     Course Handicap <span class="badge badge-light">{{ courseType.course_handicap }}</span>
+      <hr>
+      <div class="row">
+        <button (click)="editCourseType=true" class="btn btn-sm mdi mdi-pencil-box set-on-red" data-toggle="modal" data-target="#editCourseType">Update</button>
+      </div>
+  </div>
+</div>
+
+<app-edit-course-type *ngIf="editCourseType" [courseType]="courseType"></app-edit-course-type>

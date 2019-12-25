@@ -2,6 +2,8 @@ import { Component, OnInit, Input, ViewChild, ElementRef } from "@angular/core";
 import { Rating } from "src/app/shared/interfaces/rating";
 import { FormGroup, FormBuilder, Validators } from "@angular/forms";
 import { RatingService } from "src/app/shared/services/rating.service";
+import { Subscription } from "rxjs";
+import { CourseCommunicationService } from "src/app/shared/services/course-communication.service";
 
 @Component({
   selector: "app-edit-rating",
@@ -16,39 +18,57 @@ export class EditRatingComponent implements OnInit {
   public moduleTitle: string = "Edit Rating";
   public ratingId: number;
   public ratingForm: FormGroup;
+  private subscription: Subscription;
+  private formData: any;
 
   constructor(
     private ratingService: RatingService,
-    private formBulder: FormBuilder
-  ) {}
-
-  editRating() {
-    this.ratingService
-      .editRating(this.rating.pk_ratingid, this.ratingForm.value)
-      .then(
-        result => this.closeModal.nativeElement.click(),
-        error => console.log(error)
-      );
+    private formBuilder: FormBuilder,
+    private courseCommunicationService: CourseCommunicationService
+  ) {
+    this.initializeRateForm(Rating.initializeRating());
+    this.subscribe();
   }
 
-  initialiseRatingForm() {
-    if (this.rating == null) this.rating = Rating.initializeRating();
+  editRating() {
+    console.log(this.rating);
+    this.ratingService.editRating(this.ratingId, this.ratingForm.value).then(
+      (result: Rating) => {
+        this.closeModal.nativeElement.click();
+        this.courseCommunicationService.sendRating(this.ratingForm.value);
+      },
+      error => console.log(error)
+    );
+  }
 
-    this.ratingForm = this.formBulder.group({
+  initializeRateForm(rating) {
+    if (this.rating === undefined) this.rating = Rating.initializeRating();
+    this.ratingId = rating.pk_ratingid;
+    this.ratingForm = this.formBuilder.group({
       course_rating: [
-        this.rating.course_rating,
+        rating.course_rating,
         Validators.compose([Validators.required])
       ],
       sloppy_rating: [
-        this.rating.sloppy_rating,
+        rating.sloppy_rating,
         Validators.compose([Validators.required])
       ],
-      par: [this.rating.par, Validators.compose([Validators.required])],
-      fk_courseid: this.courseId
+      par: [rating.par, Validators.compose([Validators.required])],
+      fk_courseid: rating.fk_courseid,
+      pk_ratingid: rating.pk_ratingid
     });
   }
 
+  subscribe() {
+    this.subscription = this.courseCommunicationService
+      .getRating()
+      .subscribe(rating => {
+        this.rating = rating;
+        this.initializeRateForm(rating);
+      });
+  }
+
   ngOnInit() {
-    this.initialiseRatingForm();
+    this.initializeRateForm(this.rating);
   }
 }

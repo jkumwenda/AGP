@@ -15,7 +15,6 @@ export class Rating{
     this.par=par
     this.fk_courseid= courseId
   }
-  static initializeRating(){
-    return new Rating(null,null,null,null,null)
-  }
+  static initializeRating = () => new Rating(null,null,null,null,null)
+
 }
