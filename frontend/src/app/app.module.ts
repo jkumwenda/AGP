@@ -28,6 +28,16 @@ import { AddRatingComponent } from './logged/course/add-rating/add-rating.compon
 import { PlayersComponent } from './logged/players/players.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { SignupComponent } from './auth/signup/signup.component';
+import { EditRatingComponent } from './logged/course/edit-rating/edit-rating.component';
+import { RatingComponent } from './logged/course/rating/rating.component';
+import { CourseTypesComponent } from './logged/course/course-types/course-types.component';
+import { CourseTypeComponent } from './logged/course/course-type/course-type.component';
+import { CourseTypeHolesComponent } from './logged/course/course-type-holes/course-type-holes.component';
+import { AddCourseTypeComponent } from './logged/course/add-course-type/add-course-type.component';
+
+import { AddCourseTypeHoleComponent } from './logged/course/add-course-type-hole/add-course-type-hole.component';
+import { EditCourseTypeHoleComponent } from './logged/course/edit-course-type-hole/edit-course-type-hole.component';
+import { EditCourseTypeComponent } from './logged/course/edit-course-type/edit-course-type.component';
 
 @NgModule({
   declarations: [
@@ -46,7 +56,18 @@ import { SignupComponent } from './auth/signup/signup.component';
     AddRatingComponent,
     PlayersComponent,
     PageNotFoundComponent,
-    SignupComponent
+    SignupComponent,
+    EditRatingComponent,
+    RatingComponent,
+    CourseTypesComponent,
+    CourseTypeComponent,
+    CourseTypeHolesComponent,
+    AddCourseTypeComponent,
+    AddCourseTypeHoleComponent,
+    EditCourseTypeHoleComponent,
+    EditCourseTypeComponent,
+
+
   ],
   imports: [
     DataTablesModule,

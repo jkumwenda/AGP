@@ -1,7 +1,8 @@
-import { Component, OnInit, Input, ViewChild, ElementRef } from "@angular/core";
+import { Component, OnInit, Input, ViewChild, ElementRef, Output, EventEmitter} from "@angular/core";
 import { RatingService } from "src/app/shared/services/rating.service";
 import { FormGroup, FormBuilder, Validators } from "@angular/forms";
-import * as $ from "jquery";
+import { Rating } from 'src/app/shared/interfaces/rating';
+import { CourseCommunicationService } from 'src/app/shared/services/course-communication.service';
 @Component({
   selector: "app-add-rating",
   templateUrl: "./add-rating.component.html",
@@ -10,15 +11,18 @@ import * as $ from "jquery";
 export class AddRatingComponent implements OnInit {
   @ViewChild("closeModal", null) closeModal: ElementRef;
   @Input() courseId: number;
-  public moduleTitle: string = "Set Rating";
+  @Output() ratingCreated= new EventEmitter<Rating>()
+
+  public moduleTitle: string = 'Set Rating';
   public rateForm: FormGroup;
 
   addRate() {
-    console.log(this.rateForm.value)
     this.rateService.addRating(this.rateForm.value).then(
-      result => {
+      (result:Rating) => {
         this.closeModal.nativeElement.click();
+        this.courseCommunicationService.sendRating(result)
         this.initialiseRatingForm();
+
       },
       error => console.log(error)
     );
@@ -26,7 +30,8 @@ export class AddRatingComponent implements OnInit {
 
   constructor(
     private rateService: RatingService,
-    private formBuilder: FormBuilder
+    private formBuilder: FormBuilder,
+    private courseCommunicationService: CourseCommunicationService
   ) {}
 
   private initialiseRatingForm() {
@@ -40,6 +45,5 @@ export class AddRatingComponent implements OnInit {
 
   ngOnInit() {
     this.initialiseRatingForm();
-    //console.log(this.courseId);
   }
 }

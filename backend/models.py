@@ -50,7 +50,7 @@ class Type(models.Model):
 class CourseType(models.Model):
     pk_course_typeid = models.AutoField(primary_key=True)
     fk_courseid = models.ForeignKey(
-        Course, models.DO_NOTHING, db_column='fk_courseid')
+        Course, models.DO_NOTHING, db_column='fk_courseid', related_name="types")
     fk_typeid = models.ForeignKey(
         'Type', models.DO_NOTHING, db_column='fk_typeid')
     hand_index = models.CharField(max_length=45, blank=True, null=True)
@@ -74,7 +74,7 @@ class Hole(models.Model):
 class CourseTypeHole(models.Model):
     pk_course_type_holeid = models.AutoField(primary_key=True)
     fk_course_typeid = models.ForeignKey(
-        CourseType, models.DO_NOTHING, db_column='fk_course_typeid')
+        CourseType, models.DO_NOTHING, db_column='fk_course_typeid', related_name='holes')
     hole_pk_holeid = models.ForeignKey(
         'Hole', models.DO_NOTHING, db_column='hole_pk_holeid')
     distance = models.IntegerField(blank=True, null=True)

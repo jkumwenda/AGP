@@ -10,7 +10,7 @@
               <tr>
                   <th>Course</th>
                   <th>Country</th>
-                  <th width='60px'>Controls</th>
+                  <th width='100px'>Controls</th>
               </tr>
           </thead>
           <tbody>
@@ -18,8 +18,9 @@
                   <td>{{  course.course}}</td>
                   <td>{{ course.country.country }}</td>
                   <td>
-                  <button (click)="deleteCourse(course.pk_courseid)" class="btn btn-danger btn-sm btn-control"><i class="mdi mdi-delete"></i></button>
+                  <button (click)="viewCourse(course.pk_courseid)" class="btn btn-secondary btn-sm btn-control"><i class="mdi mdi-eye"></i></button>
                   <button (click)="editCourse(course.pk_courseid)" class="btn btn-success btn-sm btn-control"><i class="mdi mdi-pencil"></i></button>
+                  <button (click)="deleteCourse(course.pk_courseid)" class="btn btn-danger btn-sm btn-control"><i class="mdi mdi-delete"></i></button>
                   </td>
               </tr>
           </tbody>

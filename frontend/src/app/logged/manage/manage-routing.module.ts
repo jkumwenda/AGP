@@ -50,6 +50,7 @@ import { AddDrawTypeComponent } from './draw-types/add-draw-type/add-draw-type.c
 import { EditDrawTypeComponent } from './draw-types/edit-draw-type/edit-draw-type.component';
 import { DrawTypeComponent } from './draw-types/draw-type/draw-type.component';
 import { from } from 'rxjs';
+import { CourseComponent } from '../course/course.component';
 
 const manageRoutes: Routes = [
   {path: 'manage', component: ManageComponent,

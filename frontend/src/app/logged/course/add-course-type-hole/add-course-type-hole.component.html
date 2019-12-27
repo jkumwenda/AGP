@@ -1,6 +1,6 @@
 <!-- Button trigger modal -->
 <!-- Modal -->
-<div class="modal fade" id="editRating" tabindex="-1" role="dialog" aria-labelledby="modelTitleId" aria-hidden="true">
+<div class="modal fade" id="addHole" tabindex="-1" role="dialog" aria-labelledby="modelTitleId" aria-hidden="true">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
@@ -10,20 +10,27 @@
           </button>
       </div>
       <div class="modal-body">
-          <form [formGroup]="ratingForm" (ngSubmit)="editRating()">
+          <form [formGroup]="courseTypeHoleForm" (ngSubmit)="addCourseTypeHole()">
+            <div class="form-group">
+              <label for="hole">Select Hole</label>
+              <select class="form-control" name="" id="hole" formControlName="hole_pk_holeid">
+                <option *ngFor="let hole of holes" value="{{ hole.pk_holeid }}">{{ hole.hole }}</option>
+              </select>
+            </div>
+
           <div class="form-group">
               <div class="row">
                   <div class="col-lg-12 col-md-12 col-sm-12">
-                      <label for="cRate">Course Rate</label>
-                      <input type="text" class="form-control" id="cRate" aria-describedby="emailHelp" placeholder="Enter Course Rate" required formControlName='course_rating'>
+                      <label for="distance">Distance</label>
+                      <input type="text" class="form-control" id="distance" aria-describedby="emailHelp" placeholder="Enter Distance" required formControlName='distance'>
                   </div>
               </div>
           </div>
           <div class="form-group">
               <div class="row">
                   <div class="col-lg-12 col-md-12 col-sm-12">
-                      <label for="sRate">Sloopy Rate</label>
-                      <input type="text" class="form-control" id="sRate" aria-describedby="emailHelp" placeholder="Enter Sloppy Rate" required formControlName='sloppy_rating'>
+                      <label for="si">Si</label>
+                      <input type="text" class="form-control" id="si" aria-describedby="emailHelp" placeholder="Enter Si" required formControlName='si'>
                   </div>
               </div>
           </div>
@@ -33,12 +40,11 @@
                   <div class="col-lg-12 col-md-12 col-sm-12">
                       <label for="par">Par</label>
                       <input type="text" class="form-control" id="par" aria-describedby="emailHelp" placeholder="Enter par" required formControlName='par'>
-
-                    </div>
+                  </div>
               </div>
           </div>
 
-          <button type="submit" class="btn btn-primary btn-block btn-lg" [disabled]="!ratingForm.valid">Save</button>
+          <button type="submit" class="btn btn-primary btn-block btn-lg" [disabled]="!courseTypeHoleForm.valid">Save</button>
 
       </form>
       </div>
