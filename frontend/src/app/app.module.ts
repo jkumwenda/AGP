@@ -3,9 +3,10 @@ import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { NgxUiLoaderModule } from 'ngx-ui-loader';
-import { HttpClientModule } from '@angular/common/http';    // add this
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';    // add this
-import { AuthService } from './shared/services/auth.service';    // add this
+import { HttpClientModule } from '@angular/common/http';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { AuthService } from './shared/services/auth.service';
+import { DataService } from './shared/services/data.service';
 import { AppRoutingModule } from './app-routing.module';
 import { DataTablesModule } from 'angular-datatables';
 
@@ -26,6 +27,7 @@ import { CourseComponent } from './logged/course/course.component';
 import { AddRatingComponent } from './logged/course/add-rating/add-rating.component';
 import { PlayersComponent } from './logged/players/players.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
+import { SignupComponent } from './auth/signup/signup.component';
 
 @NgModule({
   declarations: [
@@ -43,7 +45,8 @@ import { PageNotFoundComponent } from './page-not-found/page-not-found.component
     CourseComponent,
     AddRatingComponent,
     PlayersComponent,
-    PageNotFoundComponent
+    PageNotFoundComponent,
+    SignupComponent
   ],
   imports: [
     DataTablesModule,
@@ -58,7 +61,7 @@ import { PageNotFoundComponent } from './page-not-found/page-not-found.component
     NgxUiLoaderModule,
     BrowserAnimationsModule,
   ],
-  providers: [AuthService],
+  providers: [AuthService, DataService],
   bootstrap: [AppComponent],
   schemas: [ CUSTOM_ELEMENTS_SCHEMA ]
 })

@@ -2,7 +2,7 @@ from django.contrib.auth.models import User
 from rest_framework import serializers
 from rest_framework.relations import HyperlinkedIdentityField
 from .models import *
-
+from .serializer_helper import *
 
 class CountrySerializer(serializers.ModelSerializer):
     class Meta:
@@ -94,11 +94,30 @@ class UserSerializer(serializers.ModelSerializer):
     def create(self, validated_data, instance=None):
         profile_data = validated_data.pop('userprofile')
         user = User.objects.create(**validated_data)
-
-        user.set_password(validated_data['password'])
+        
+        # if validated_data('password') is not None:
+        #     password = validated_data('password')
+        # else:    
+        password = SerializerHelper.randomPassword(self)
+        user.set_password(password)
         user.save()
         Profile.objects.update_or_create(user=user, **profile_data)
         return user
+    
+    
+class UserProfileSerializer(serializers.ModelSerializer):
+    user = UserSerializer(read_only=True)
+    user_id = serializers.PrimaryKeyRelatedField(
+        queryset = User.objects.all(),
+        write_only=True, source='user')
+    
+    fk_genderid = GenderSerializer(read_only=True)
+    gender_id = serializers.PrimaryKeyRelatedField(
+        queryset=Gender.objects.all(),
+        write_only=True, source='gender')
+    class Meta:
+        model = Profile
+        fields = '__all__'
 
 
 class ClubProfileSerializer(serializers.ModelSerializer):
@@ -120,6 +139,11 @@ class RoleSerializer(serializers.ModelSerializer):
 
 
 class ProfileRoleSerializer(serializers.ModelSerializer):
+    fk_roleid = RoleSerializer(read_only=True)
+    role_data = serializers.PrimaryKeyRelatedField(
+        queryset=Role.objects.all(),
+        write_only=True, source='role')
+    
     class Meta:
         model = ProfileRole
         fields = '__all__'

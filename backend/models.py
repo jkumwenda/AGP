@@ -161,7 +161,7 @@ class Role(models.Model):
     role_desc = models.CharField(max_length=45)
 
     class Meta:
-        managed = True
+        managed = False
         db_table = 'role'
 
 

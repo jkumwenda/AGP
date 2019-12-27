@@ -37,7 +37,7 @@ export class ClubsComponent implements OnInit {
   }
 
   editClub(clubId){
-    this.router.navigate(['manage/edit-club',clubId])
+    this.router.navigate(['manage/edit-club', clubId]);
   }
 
   ngOnInit() {

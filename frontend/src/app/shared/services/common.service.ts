@@ -14,19 +14,28 @@ const API_URL = environment.apiUrl;
 export class CommonService {
   public token: any;
   public httpHeaders: any;
+  public httpHeadersNoAuth: any;
 
   constructor(
     private http: HttpClient,
     private dialog: MatDialog,
     private ngxService: NgxUiLoaderService,
-    private authService: AuthService
+    private authService: AuthService,
     ) {
 
-    this.token = this.authService.token;
+    // this.token = this.authService.token;
+    this.token = localStorage.getItem('token');
+
     this.httpHeaders = {
       headers: new HttpHeaders({
         'Content-Type': 'application/json',
         Authorization: 'Bearer ' + this.token
+      })
+    };
+
+    this.httpHeadersNoAuth = {
+      headers: new HttpHeaders({
+        'Content-Type': 'application/json'
       })
     };
   }
@@ -44,8 +53,20 @@ export class CommonService {
     });
   }
 
+  postNoAuth(endpoint, data) {
+    this.ngxService.start();
+    return new Promise((resolve, reject) => {
+      this.http.post(API_URL + endpoint, JSON.stringify(data), this.httpHeadersNoAuth).subscribe(result => {
+        this.ngxService.stop();
+        resolve(result);
+      }, (error) => {
+        this.ngxService.stop();
+        reject(error);
+      });
+    });
+  }
+
   get(endpoint) {
-    console.log('THIS IS THE TOKEN NOW', this.token);
     this.ngxService.start();
     return new Promise((resolve, reject) => {
       this.http.get(API_URL + endpoint, this.httpHeaders).subscribe(result => {
@@ -54,6 +75,19 @@ export class CommonService {
       }, (error) => {
           this.ngxService.stop();
           reject(error);
+      });
+    });
+  }
+
+  getNoAuth(endpoint) {
+    this.ngxService.start();
+    return new Promise((resolve, reject) => {
+      this.http.get(API_URL + endpoint, this.httpHeadersNoAuth).subscribe(result => {
+        this.ngxService.stop();
+        resolve(result);
+      }, (error) => {
+        this.ngxService.stop();
+        reject(error);
       });
     });
   }

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-tournaments',
@@ -7,9 +8,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class TournamentsComponent implements OnInit {
 
-  constructor() { }
+  constructor(
+    private router: Router
+  ) { }
+
+  viewTournament(tournamentId) {
+    this.router.navigate(['tournament', tournamentId]);
+  }
 
   ngOnInit() {
   }
-
 }

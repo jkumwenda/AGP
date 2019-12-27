@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { User } from 'src/app/shared/interfaces/user';
-import { UserService } from 'src/app/shared/services/user.service';
+import { Profile } from 'src/app/shared/interfaces/profile';
+import { UserProfileService } from 'src/app/shared/services/user-profile.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-users',
@@ -8,21 +9,27 @@ import { UserService } from 'src/app/shared/services/user.service';
   styleUrls: ['./users.component.css']
 })
 export class UsersComponent implements OnInit {
-  private users: User[];
+  private profiles: Profile[];
 
   constructor(
-    private userService: UserService
-  ) { }
+    private userProfileService: UserProfileService,
+    private router: Router
+  ) {}
 
   getUsers() {
-    this.userService.getUsers().then(
-      (result: User[]) => (this.users = result),
-      error => { }
+    this.userProfileService.getUserProfiles().then(
+      result => {
+        this.profiles = result as Profile[];
+      },
+      error => {}
     );
+  }
+
+  viewUser(profileId) {
+    this.router.navigate(['/manage/user', profileId]);
   }
 
   ngOnInit() {
     this.getUsers();
   }
-
 }

@@ -11,19 +11,20 @@
                   <th>Firstname</th>
                   <th>Lastname</th>
                   <th>Email</th>
-                  <th width="40px">Controls</th>
+                  <th width="120px">Controls</th>
               </tr>
           </thead>
           <tbody>
-              <tr *ngFor="let user of users">
-                  <td>{{ user.username }}</td>
-                  <td>{{ user.first_name }}</td>
-                  <td>{{ user.last_name }}</td>
-                  <td>{{ user.email }}</td>
+              <tr *ngFor="let profile of profiles">
+                  <td>{{ profile.user.username }}</td>
+                  <td>{{ profile.user.first_name }}</td>
+                  <td>{{ profile.user.last_name }}</td>
+                  <td>{{ profile.user.email }}</td>
                   <td>
                     <div class="btn-toolbar">
-                      <button (click)="deleteHole(hole.pk_holeid)" class="btn btn-danger btn-sm btn-control"><i class="mdi mdi-delete"></i></button>
-                      <button (click)="editHole(hole.pk_holeid)" class="btn btn-success btn-sm btn-control"><i class="mdi mdi-pencil"></i></button>
+                      <button (click)="viewUser(profile.pk_profileid)" class="btn btn-dark btn-sm btn-control"><i class="mdi mdi-eye"></i></button>
+                      <button (click)="editUser(profile.pk_profileid)" class="btn btn-success btn-sm btn-control"><i class="mdi mdi-pencil"></i></button>
+                      <button (click)="deleteUser(profile.pk_profileid)" class="btn btn-danger btn-sm btn-control"><i class="mdi mdi-delete"></i></button>
                       </div>
                     </td>
               </tr>

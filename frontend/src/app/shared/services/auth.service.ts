@@ -1,6 +1,7 @@
+import { DataService } from './data.service';
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders} from '@angular/common/http';
-import { Router } from '@angular/router';
+import { Router, Data } from '@angular/router';
 import { NgxUiLoaderService } from 'ngx-ui-loader';
 import { environment } from 'src/environments/environment';
 
@@ -20,7 +21,8 @@ export class AuthService {
   constructor(
     private http: HttpClient,
     private router: Router,
-    private ngxService: NgxUiLoaderService
+    private ngxService: NgxUiLoaderService,
+    private dataService: DataService
   ) {
     this.httpOptions = {
       headers: new HttpHeaders({'Content-Type': 'application/json'})
@@ -62,12 +64,17 @@ export class AuthService {
   }
 
   public isAuthenticated() {
-    return this.token != null;
+    // return this.token != null;
+    return localStorage.getItem('token') != null;
   }
 
   public decode() {
     const Role = 'Admin';
     return Role;
+  }
+
+  public setUsername(username) {
+    return 1;
   }
 
   private updateData(token) {
@@ -79,6 +86,6 @@ export class AuthService {
     const tokenDecoded = JSON.parse(window.atob(tokenParts[1]));
     this.tokenExpires = new Date(tokenDecoded.exp * 1000);
     this.username = tokenDecoded.username;
-    localStorage.setItem('username', this.username);
+    this.dataService.updateUsername(this.username);
   }
 }

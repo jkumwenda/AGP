@@ -13,7 +13,7 @@
                     <th>Date</th>
                     <th>Registration Period</th>
                     <th>Status</th>
-                    <th>Controls</th>
+                    <th width="130px">Controls</th>
                 </tr>
             </thead>
             <tbody>
@@ -22,14 +22,13 @@
                     <td>20 Dec 2019 - 21 Dec 2019</td>
                     <td>20 Dec 2019 - 21 Dec 2019</td>
                     <td>Closed</td>
-                    <td>Closed</td>
-                </tr>
-                <tr>
-                    <td>National Bank Trophy</td>
-                    <td>20 Dec 2019 - 21 Dec 2019</td>
-                    <td>20 Dec 2019 - 21 Dec 2019</td>
-                    <td>Closed</td>
-                    <td>Closed</td>
+                    <td>
+                      <div class="btn-toolbar">
+                        <button (click)="viewTournament(1)" class="btn btn-dark btn-sm btn-control"><i class="mdi mdi-eye"></i></button>
+                        <button (click)="editTournament()" class="btn btn-success btn-sm btn-control"><i class="mdi mdi-pencil"></i></button>
+                        <button (click)="deleteTournament()" class="btn btn-danger btn-sm btn-control"><i class="mdi mdi-delete"></i></button>
+                      </div>
+                    </td>
                 </tr>
             </tbody>
         </table>
