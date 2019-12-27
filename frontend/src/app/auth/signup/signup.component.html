@@ -1,0 +1,57 @@
+<div class= "col-lg-8 offset-lg-2 col-md-10 offset-md-1 col-sm-12">
+  <div class="card login-card dropdown-all w-100 ">
+    <div class="card-header card-header-customer">
+        <h5 class="mdi mdi-book-plus"> {{ moduleTitle }}</h5>
+    </div>
+    <div class="card-body login-card-body ">
+        <form [formGroup]="signupForm" (ngSubmit)="signup()">
+            <div class="form-group">
+                <div class="row">
+                    <div class="col-lg-6 col-md-6 col-sm-12">
+                        <label for="Firstname">Firstname</label>
+                        <input type="input" class="form-control" id="firstname" aria-describedby="firstnameHelp" placeholder="Enter firstname" required formControlName='first_name'>
+                    </div>
+                    <div class="col-lg-6 col-md-6 col-sm-12">
+                        <label for="Lastname">Lastname</label>
+                        <input type="input" class="form-control" id="lastname" aria-describedby="lastnameHelp" placeholder="Enter lastname" required formControlName='last_name'>
+                    </div>
+                </div>
+            </div>
+            <label for="Firstname">Gender:</label>
+            <div class="row">
+              <div class="col-lg-1 col-mg-1 col-sm-2" *ngFor="let gender of genders">
+                  <div class="form-group form-check">
+                      <input type="radio" class="form-check-input" id="exampleCheck1" name='gender' formControlName='gender' value={{gender.pk_genderid}}>
+                      <label class="form-check-label" for="exampleCheck1">{{gender.gender}}</label>
+                  </div>
+              </div>
+            </div>
+            <div class="form-group">
+                <div class="row">
+                    <div class="col-lg-6 col-md-6 col-sm-12">
+                        <label for="Email">Email</label>
+                        <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email" required formControlName='email'>
+                    </div>
+                    <div class="col-lg-6 col-md-6 col-sm-12">
+                        <label for="Phone">Phone</label>
+                        <input type="input" class="form-control" id="Phone" aria-describedby="phoneHelp" placeholder="Enter phone" required formControlName='phone'>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="row">
+                    <div class="col-lg-6 col-md-6 col-sm-12">
+                        <label for="Username">Username</label>
+                        <input type="text" class="form-control" id="Username" aria-describedby="emailHelp" placeholder="Username" required formControlName='username'>
+                    </div>
+                    <div class="col-lg-6 col-md-6 col-sm-12">
+                        <label for="Phone">Phone</label>
+                        <input type="password" class="form-control" id="Password" aria-describedby="passwordHelp" placeholder="Password" required formControlName='password'>
+                    </div>
+                </div>
+            </div>
+            <button type="submit" class="btn btn-primary" [disabled]="!signupForm.valid">Sign Up</button>
+        </form>
+    </div>
+  </div>
+</div>

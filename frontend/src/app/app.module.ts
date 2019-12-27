@@ -1,11 +1,12 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
+import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { NgxUiLoaderModule } from 'ngx-ui-loader';
-import { HttpClientModule } from '@angular/common/http';    // add this
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';    // add this
-import { AuthService } from './shared/services/auth.service';    // add this
+import { HttpClientModule } from '@angular/common/http';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { AuthService } from './shared/services/auth.service';
+import { DataService } from './shared/services/data.service';
 import { AppRoutingModule } from './app-routing.module';
 import { DataTablesModule } from 'angular-datatables';
 
@@ -25,6 +26,8 @@ import { TournamentComponent } from './logged/tournaments/tournament/tournament.
 import { CourseComponent } from './logged/course/course.component';
 import { AddRatingComponent } from './logged/course/add-rating/add-rating.component';
 import { PlayersComponent } from './logged/players/players.component';
+import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
+import { SignupComponent } from './auth/signup/signup.component';
 
 @NgModule({
   declarations: [
@@ -41,7 +44,9 @@ import { PlayersComponent } from './logged/players/players.component';
     TournamentComponent,
     CourseComponent,
     AddRatingComponent,
-    PlayersComponent
+    PlayersComponent,
+    PageNotFoundComponent,
+    SignupComponent
   ],
   imports: [
     DataTablesModule,
@@ -56,7 +61,8 @@ import { PlayersComponent } from './logged/players/players.component';
     NgxUiLoaderModule,
     BrowserAnimationsModule,
   ],
-  providers: [AuthService],
-  bootstrap: [AppComponent]
+  providers: [AuthService, DataService],
+  bootstrap: [AppComponent],
+  schemas: [ CUSTOM_ELEMENTS_SCHEMA ]
 })
 export class AppModule { }

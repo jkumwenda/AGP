@@ -33,7 +33,7 @@ export class AddUserComponent implements OnInit {
 
     this.userData = {
       first_name: data.first_name,
-      last_name: data.first_name,
+      last_name: data.last_name,
       email: data.email,
       username: data.username,
       password: '0',
@@ -41,9 +41,8 @@ export class AddUserComponent implements OnInit {
     };
 
     this.userService.addUser(this.userData).then((result) => {
-      this.router.navigate(['/manage/user']);
+      this.router.navigate(['/manage/users']);
     }, (error) => {
-      console.log(error);
     });
   }
 

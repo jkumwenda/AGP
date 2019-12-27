@@ -7,6 +7,7 @@ import { CommonService } from './common.service';
 export class GenderService {
   public token: any;
   public endpoint: any = 'api/gender/';
+  public endpointProfileGender: any = 'api/profile_gender/';
 
   constructor(private commonService: CommonService) {
   }
@@ -24,6 +25,16 @@ export class GenderService {
   getGenders() {
     return new Promise((resolve, reject) => {
       this.commonService.get(this.endpoint).then((result) => {
+        resolve(result);
+      }, (error) => {
+        reject(error);
+      });
+    });
+  }
+
+  getGendersNoAuth() {
+    return new Promise((resolve, reject) => {
+      this.commonService.getNoAuth(this.endpointProfileGender).then((result) => {
         resolve(result);
       }, (error) => {
         reject(error);

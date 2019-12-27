@@ -10,6 +10,7 @@ export class TournamentComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
+    console.log('HOTETTETETETET');
   }
 
 }

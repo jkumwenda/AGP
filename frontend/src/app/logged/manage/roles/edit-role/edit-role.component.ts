@@ -1,16 +1,16 @@
-import { Component, OnInit } from "@angular/core";
-import { FormBuilder, FormGroup, Validators } from "@angular/forms";
-import { Router, ActivatedRoute } from "@angular/router";
-import { Role } from "src/app/shared/interfaces/role";
-import { RoleService } from "src/app/shared/services/role.service";
+import { Component, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Router, ActivatedRoute } from '@angular/router';
+import { Role } from 'src/app/shared/interfaces/role';
+import { RoleService } from 'src/app/shared/services/role.service';
 
 @Component({
-  selector: "app-edit-role",
-  templateUrl: "./edit-role.component.html",
-  styleUrls: ["./edit-role.component.css"]
+  selector: 'app-edit-role',
+  templateUrl: './edit-role.component.html',
+  styleUrls: ['./edit-role.component.css']
 })
 export class EditRoleComponent implements OnInit {
-  public moduleTitle = "Edit Role";
+  public moduleTitle = 'Edit Role';
   public roleForm: FormGroup;
   private roleData: any;
   public roleId: any;
@@ -23,7 +23,7 @@ export class EditRoleComponent implements OnInit {
     private router: Router,
     private activatedRoute: ActivatedRoute
   ) {
-    this.roleId = activatedRoute.snapshot.params["id"];
+    this.roleId = activatedRoute.snapshot.params['id'];
     this.initializeRoleForm();
   }
 
@@ -59,7 +59,7 @@ export class EditRoleComponent implements OnInit {
 
     this.roleService.editRole(this.roleId, this.roleData).then(
       result => {
-        this.router.navigate(["/manage/roles/"]);
+        this.router.navigate(['/manage/roles/']);
       },
       error => {
         console.log(error);
