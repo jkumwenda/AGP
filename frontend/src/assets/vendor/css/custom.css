@@ -522,3 +522,28 @@ button {
     margin-top: 50px;
 }
 
+input[type="search"] {
+    border: 1px solid #666666;
+    border-radius: 2px;
+    padding: 5px;
+}
+
+.btn-group-xs>.btn,
+.btn-xs {
+    padding: .25rem .4rem;
+    font-size: .875rem;
+    line-height: .5;
+    border-radius: .2rem;
+}
+
+.alert {
+    border-radius: 2px;
+    padding: 5px;
+}
+
+.invalid-feedback {
+    font-size: x-small;
+    color: #fc283d;
+    padding-top: 5px;
+    padding-bottom: 5px;
+}

@@ -9,24 +9,24 @@ import { Router } from '@angular/router';
   styleUrls: ["./add-club.component.css"]
 })
 export class AddClubComponent implements OnInit {
-  public moduleTitle: string = "Add Club";
-  public clubForm:FormGroup
+  public moduleTitle = 'Add Club';
+  public clubForm: FormGroup;
 
   constructor(
-    private clubService:ClubService,
-    private formBuilder:FormBuilder,
-    private router:Router
+    private clubService: ClubService,
+    private formBuilder: FormBuilder,
+    private router: Router
   ) {}
 
-  addClub(){
+  addClub() {
     this.clubService.addClub(this.clubForm.value).then(
-      (result)=> this.router.navigate(['manage/clubs']),
-      error=> console.log(error)
-    )
+      (result) => this.router.navigate(['manage/clubs']),
+      error => console.log(error)
+    );
   }
   ngOnInit() {
-    this.clubForm= this.formBuilder.group({
-      club:["", Validators.compose([Validators.required])]
-    })
+    this.clubForm = this.formBuilder.group({
+      club: ['', Validators.compose([Validators.required])]
+    });
   }
 }

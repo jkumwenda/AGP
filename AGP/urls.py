@@ -16,6 +16,7 @@ schema_view = get_schema_view(
 # Routers provide an easy way of automatically determining the URL conf.
 router = routers.DefaultRouter()
 router.register(r'user', backend_views.UserViewSet, base_name='User')
+router.register(r'signup', backend_views.SignupViewSet, base_name='Sign Up')
 router.register(r'country', backend_views.CountryViewSet, base_name='Country')
 router.register(r'course', backend_views.CourseViewSet, base_name='Course')
 router.register(r'rating', backend_views.RatingViewSet, base_name='Rating')
@@ -29,7 +30,10 @@ router.register(r'club', backend_views.ClubViewSet, base_name='Club')
 router.register(r'club_course', backend_views.ClubCourseViewSet,
                 base_name='Club Course')
 router.register(r'gender', backend_views.GenderViewSet, base_name='Gender')
+router.register(r'profile_gender', backend_views.ProfileGenderViewSet,
+                base_name='Profile Gender')
 router.register(r'profile', backend_views.ProfileViewSet, base_name='Profile')
+router.register(r'user_profile', backend_views.UserProfileViewSet, base_name='User Profile')
 router.register(r'club_profile', backend_views.ClubProfileViewSet,
                 base_name='Club Profile')
 router.register(r'handicap', backend_views.HandicapViewSet,
@@ -52,6 +56,8 @@ router.register(r'event_format', backend_views.EventFormatViewSet,
 router.register(r'event', backend_views.EventViewSet, base_name='Event')
 router.register(r'event_type', backend_views.EventTypeViewSet,
                 base_name='Event Type')
+router.register(r'draw_type', backend_views.DrawTypeViewSet,
+                base_name='Draw Type')
 
 
 # Wire up our API using automatic URL routing.

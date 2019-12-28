@@ -4,6 +4,8 @@ import { User } from './user';
 export class Profile {
   pk_profileid: number;
   user: User;
-  gender: Gender;
-  mobile: string;
+  fk_genderid: Gender;
+  phone: string;
+  dob: string;
 }
+

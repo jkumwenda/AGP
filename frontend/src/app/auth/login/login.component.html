@@ -6,12 +6,12 @@
               <div class="form-group text-center">
                   <h5 class="login-title"><span><strong>User Log In</strong></span></h5>
               </div>
-              <form action="dashboard.html" class="login-form">
+              <form [formGroup]="loginForm" (ngSubmit)="userLogin()" class="login-form">
                   <div class="form-group">
-                      <input type="text" class="form-control" placeholder="Username">
+                      <input type="text" class="form-control" placeholder="Username" required formControlName='username'>
                   </div>
                   <div class="form-group">
-                      <input type="password" class="form-control" placeholder="Password">
+                      <input type="password" class="form-control" placeholder="Password" required formControlName='password'>
                   </div>
                   <div class="form-group form-check">
                       <label class="form-check-label">
@@ -19,11 +19,14 @@
                 </label>
                   </div>
                   <div class="form-group text-center">
-                      <button type="submit" class="btn btn-primary dropdown-all btn-block login-btn">Log In</button>
+                      <button type="submit" class="btn btn-primary dropdown-all btn-block login-btn"  [disabled]="!loginForm.valid">Log In</button>
                   </div>
               </form>
           </div>
-          <div class="card-footer login-card-footer"><a href="#">Forgot password?</a></div>
+          <div class="card-footer login-card-footer">
+          <p>Don’t have an account? <a [routerLink]="['/signup']">Sign up</a></p>
+          <a href="#">Forgot password?</a>
+          </div>
       </div>
   </div>
 </div>

@@ -1,13 +1,15 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
+import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { NgxUiLoaderModule } from 'ngx-ui-loader';
-import { HttpClientModule } from '@angular/common/http';    // add this
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';    // add this
-import { AuthService } from './shared/services/auth.service';    // add this
+import { HttpClientModule } from '@angular/common/http';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { AuthService } from './shared/services/auth.service';
+import { DataService } from './shared/services/data.service';
 import { AppRoutingModule } from './app-routing.module';
 import { DataTablesModule } from 'angular-datatables';
+import { MatExpansionModule } from '@angular/material/expansion';
 
 import { SharedModule } from './shared/shared.module';
 import { ManageModule } from './logged/manage/manage.module';
@@ -25,6 +27,8 @@ import { TournamentComponent } from './logged/tournaments/tournament/tournament.
 import { CourseComponent } from './logged/course/course.component';
 import { AddRatingComponent } from './logged/course/add-rating/add-rating.component';
 import { PlayersComponent } from './logged/players/players.component';
+import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
+import { SignupComponent } from './auth/signup/signup.component';
 import { EditRatingComponent } from './logged/course/edit-rating/edit-rating.component';
 import { RatingComponent } from './logged/course/rating/rating.component';
 import { CourseTypesComponent } from './logged/course/course-types/course-types.component';
@@ -35,6 +39,7 @@ import { AddCourseTypeComponent } from './logged/course/add-course-type/add-cour
 import { AddCourseTypeHoleComponent } from './logged/course/add-course-type-hole/add-course-type-hole.component';
 import { EditCourseTypeHoleComponent } from './logged/course/edit-course-type-hole/edit-course-type-hole.component';
 import { EditCourseTypeComponent } from './logged/course/edit-course-type/edit-course-type.component';
+import { SignupConfirmationComponent } from './auth/signup-confirmation/signup-confirmation.component';
 
 @NgModule({
   declarations: [
@@ -52,6 +57,8 @@ import { EditCourseTypeComponent } from './logged/course/edit-course-type/edit-c
     CourseComponent,
     AddRatingComponent,
     PlayersComponent,
+    PageNotFoundComponent,
+    SignupComponent,
     EditRatingComponent,
     RatingComponent,
     CourseTypesComponent,
@@ -61,6 +68,7 @@ import { EditCourseTypeComponent } from './logged/course/edit-course-type/edit-c
     AddCourseTypeHoleComponent,
     EditCourseTypeHoleComponent,
     EditCourseTypeComponent,
+    SignupConfirmationComponent,
 
 
   ],
@@ -76,8 +84,10 @@ import { EditCourseTypeComponent } from './logged/course/edit-course-type/edit-c
     SharedModule,
     NgxUiLoaderModule,
     BrowserAnimationsModule,
+    MatExpansionModule,
   ],
-  providers: [AuthService],
-  bootstrap: [AppComponent]
+  providers: [AuthService, DataService],
+  bootstrap: [AppComponent],
+  schemas: [ CUSTOM_ELEMENTS_SCHEMA ]
 })
 export class AppModule { }

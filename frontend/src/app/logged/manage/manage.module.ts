@@ -1,9 +1,12 @@
-import { NgModule } from '@angular/core';
+import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NgxUiLoaderModule } from 'ngx-ui-loader';
 import { HttpClientModule } from '@angular/common/http';
 import { DataTablesModule } from 'angular-datatables';
+import { AuthGuard } from 'src/app/shared/services/auth-guard.service';
+import { RoleGuard } from 'src/app/shared/services/role-guard.service';
+import { MatExpansionModule } from '@angular/material/expansion';
 
 import { ManageRoutingModule } from './manage-routing.module';
 import { UserComponent } from './users/user/user.component';
@@ -44,6 +47,14 @@ import { AddClubComponent } from './clubs/add-club/add-club.component';
 import { EditClubComponent } from './clubs/edit-club/edit-club.component';
 import { ClubComponent } from './clubs/club/club.component';
 import { ManageNavComponent } from './manage/manage-nav/manage-nav.component';
+import { FormatsComponent } from './formats/formats.component';
+import { AddFormatComponent } from './formats/add-format/add-format.component';
+import { EditFormatComponent } from './formats/edit-format/edit-format.component';
+import { FormatComponent } from './formats/format/format.component';
+import { DrawTypesComponent } from './draw-types/draw-types.component';
+import { AddDrawTypeComponent } from './draw-types/add-draw-type/add-draw-type.component';
+import { EditDrawTypeComponent } from './draw-types/edit-draw-type/edit-draw-type.component';
+import { DrawTypeComponent } from './draw-types/draw-type/draw-type.component';
 
 @NgModule({
   declarations: [
@@ -84,7 +95,15 @@ import { ManageNavComponent } from './manage/manage-nav/manage-nav.component';
     AddClubComponent,
     EditClubComponent,
     ClubComponent,
-    ManageNavComponent
+    ManageNavComponent,
+    FormatsComponent,
+    AddFormatComponent,
+    EditFormatComponent,
+    FormatComponent,
+    DrawTypesComponent,
+    AddDrawTypeComponent,
+    EditDrawTypeComponent,
+    DrawTypeComponent,
   ],
   imports: [
     FormsModule,
@@ -93,10 +112,13 @@ import { ManageNavComponent } from './manage/manage-nav/manage-nav.component';
     NgxUiLoaderModule,
     HttpClientModule,
     CommonModule,
-    ManageRoutingModule
+    ManageRoutingModule,
+    MatExpansionModule
   ],
   exports: [
     ManageRoutingModule
-  ]
+  ],
+  providers: [AuthGuard, RoleGuard],
+  schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })
 export class ManageModule { }

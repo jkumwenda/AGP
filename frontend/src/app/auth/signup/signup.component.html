@@ -1,0 +1,65 @@
+<div class= "col-lg-8 offset-lg-2 col-md-10 offset-md-1 col-sm-12">
+  <div class="card login-card dropdown-all w-100 ">
+    <div class="card-header card-header-customer">
+        <h5 class="mdi mdi-book-plus"> {{ moduleTitle }}</h5>
+    </div>
+    <div class="card-body login-card-body ">
+        <form [formGroup]="signupForm" (ngSubmit)="signup()">
+            <div class="form-group">
+                <div class="row">
+                    <div class="col-lg-6 col-md-6 col-sm-12">
+                        <label for="Firstname">Firstname</label>
+                        <input type="input" class="form-control" id="firstname" aria-describedby="firstnameHelp" placeholder="Enter firstname" required formControlName='first_name' [ngClass]="{ 'is-invalid': submitted && validatorCheck.first_name.errors}" >
+                        <div class="invalid-feedback" *ngIf="validatorCheck.gender.errors?.required">Firstname is required</div>
+                    </div>
+                    <div class="col-lg-6 col-md-6 col-sm-12">
+                        <label for="Lastname">Lastname</label>
+                        <input type="input" class="form-control" id="lastname" aria-describedby="lastnameHelp" placeholder="Enter lastname" required formControlName='last_name'  [ngClass]="{ 'is-invalid': submitted && validatorCheck.last_name.errors}">
+                        <div class="invalid-feedback" *ngIf="validatorCheck.gender.errors?.required">Lastname is required</div>
+                    </div>
+                </div>
+            </div>
+            <label for="Firstname">Gender:</label>
+            <div class="row">
+              <div class="col-lg-1 col-mg-1 col-sm-2" *ngFor="let gender of genders">
+                  <div class="form-group form-check">
+                      <input type="radio" class="form-check-input" name='gender' formControlName='gender' value={{gender.pk_genderid}} >
+                      <label class="form-check-label">{{gender.gender}}</label>
+                  </div>
+              </div>
+              <div class="invalid-feedback" *ngIf="validatorCheck.gender.errors?.required">Gender is required</div>
+            </div>
+            <div class="form-group">
+                <div class="row">
+                    <div class="col-lg-6 col-md-6 col-sm-12">
+                        <label for="Email">Email</label>
+                        <input type="email" class="form-control" id="Email" aria-describedby="emailHelp" placeholder="Enter email" required formControlName='email' [ngClass]="{ 'is-invalid': submitted && validatorCheck.email.errors }">
+                        <div class="invalid-feedback" *ngIf="validatorCheck.email.errors?.required">Email is required</div>
+                        <div class="invalid-feedback" *ngIf="validatorCheck.email.errors?.email">Email must be a valid email address</div>
+                    </div>
+                    <div class="col-lg-6 col-md-6 col-sm-12">
+                        <label for="Phone">Phone</label>
+                        <input type="input" class="form-control" id="Phone" aria-describedby="phoneHelp" placeholder="Enter phone" required formControlName='phone' [ngClass]="{ 'is-invalid': submitted && validatorCheck.phone.errors }" >
+                        <div class="invalid-feedback" *ngIf="validatorCheck.phone.errors?.required">Phone is required</div>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="row">
+                    <div class="col-lg-6 col-md-6 col-sm-12">
+                        <label for="Username">Username</label>
+                        <input type="text" class="form-control" id="Username" aria-describedby="emailHelp" placeholder="Username" required formControlName='username' [ngClass]="{ 'is-invalid': submitted && validatorCheck.username.errors }" >
+                        <div class="invalid-feedback" *ngIf="validatorCheck.username.errors?.required">Username is required</div>                        
+                    </div>
+                    <div class="col-lg-6 col-md-6 col-sm-12">
+                        <label for="Password">Password</label>
+                        <input type="password" class="form-control" id="Password" aria-describedby="passwordHelp" placeholder="Password" required formControlName='password' [ngClass]="{ 'is-invalid': submitted && validatorCheck.password.errors }" >
+                        <div class="invalid-feedback" *ngIf="validatorCheck.password.errors?.required">Password is required</div>                          
+                    </div>
+                </div>
+            </div>
+            <button type="submit" class="btn btn-primary">Sign Up</button>
+        </form>
+    </div>
+  </div>
+</div>

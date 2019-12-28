@@ -8,8 +8,8 @@
       <tr><strong>Sloppy </strong><td></td>: {{ rating.sloppy_rating }}<td></tr>
       <tr><strong>Par </strong><td></td>: {{ rating.par }}<td></tr>
     </table>
-    <div  *ngIf="rating.pk_ratingid==null" class="alert alert-info" role="alert">
-      <strong> <i class="mdi mdi-information"><span> Rating Not Set </span></i></strong>
+    <div  *ngIf="rating.pk_ratingid==null" class="alert alert-warning" role="alert">
+      <small class="mdi mdi-information-outline"> Rating no set </small>
     </div>
 
 

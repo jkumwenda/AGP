@@ -2,6 +2,9 @@ import { ManageNavComponent } from './manage/manage-nav/manage-nav.component';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Routes, RouterModule } from '@angular/router';
+import { AuthGuard } from 'src/app/shared/services/auth-guard.service';
+import { RoleGuard } from 'src/app/shared/services/role-guard.service';
+
 import { GendersComponent } from './genders/genders.component';
 import { AddGenderComponent } from './genders/add-gender/add-gender.component';
 import { EditGenderComponent } from './genders/edit-gender/edit-gender.component';
@@ -38,6 +41,15 @@ import { ClubsComponent } from './clubs/clubs.component';
 import { AddClubComponent } from './clubs/add-club/add-club.component';
 import { ClubComponent } from './clubs/club/club.component';
 import { EditClubComponent } from './clubs/edit-club/edit-club.component';
+import { FormatsComponent } from './formats/formats.component';
+import { AddFormatComponent } from './formats/add-format/add-format.component';
+import { EditFormatComponent } from './formats/edit-format/edit-format.component';
+import { FormatComponent } from './formats/format/format.component';
+import { DrawTypesComponent } from './draw-types/draw-types.component';
+import { AddDrawTypeComponent } from './draw-types/add-draw-type/add-draw-type.component';
+import { EditDrawTypeComponent } from './draw-types/edit-draw-type/edit-draw-type.component';
+import { DrawTypeComponent } from './draw-types/draw-type/draw-type.component';
+import { from } from 'rxjs';
 import { CourseComponent } from '../course/course.component';
 
 const manageRoutes: Routes = [
@@ -46,16 +58,16 @@ const manageRoutes: Routes = [
     {path: 'roles', component: RolesComponent},
     {path: 'manage-nav', component: ManageNavComponent},
     {path: 'add-role', component: AddRoleComponent},
-    {path: 'edit-role', component: EditRoleComponent},
+    {path: 'edit-role/:id', component: EditRoleComponent},
     {path: 'role', component: RoleComponent},
     {path: 'permissions', component: PermissionsComponent},
     {path: 'add-permission', component: AddPermissionComponent},
-    {path: 'edit-permission', component: EditPermissionComponent},
+    {path: 'edit-permission/:id', component: EditPermissionComponent},
     {path: 'permission', component: PermissionComponent},
     {path: 'users', component: UsersComponent},
     {path: 'add-user', component: AddUserComponent},
     {path: 'edit-user', component: EditUserComponent},
-    {path: 'user', component: UserComponent},
+    {path: 'user/:id', component: UserComponent},
     {path: 'genders', component: GendersComponent},
     {path: 'add-gender', component: AddGenderComponent},
     {path: 'edit-gender/:id', component: EditGenderComponent},
@@ -75,12 +87,20 @@ const manageRoutes: Routes = [
     {path: 'courses', component: CoursesComponent},
     {path: 'add-course', component: AddCourseComponent},
     {path: 'edit-course/:id', component: EditCourseComponent},
-    {path: 'clubs', component: ClubsComponent},
+    { path: 'club', component: ClubComponent },
+    { path: 'clubs', component: ClubsComponent},
     {path: 'add-club', component: AddClubComponent},
     {path: 'edit-club/:id', component: EditClubComponent},
     //{path: 'course/:id', component: CourseComponent},
-
-  ]}
+    {path: 'formats', component: FormatsComponent},
+    {path: 'add-format', component: AddFormatComponent},
+    {path: 'edit-format/:id', component: EditFormatComponent},
+    {path: 'format', component: FormatComponent},
+    {path: 'draw-types', component: DrawTypesComponent},
+    {path: 'add-draw-type', component: AddDrawTypeComponent},
+    {path: 'edit-draw-type/:id', component: EditDrawTypeComponent},
+    {path: 'draw-type', component: DrawTypeComponent}
+    ], canActivate: [AuthGuard]},
 ];
 
 @NgModule({

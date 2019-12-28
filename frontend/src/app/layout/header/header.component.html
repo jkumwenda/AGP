@@ -7,43 +7,45 @@
                       <span class="navbar-toggler-icon"></span>
                 </button>
                 <div class="collapse navbar-collapse" id="navbarResponsive">
-                    <ul class="navbar-nav mr-auto">
-                        <li class="nav-item active">
-                            <a class="nav-link mdi mdi-view-dashboard" [routerLink]="['/dashboard']"> Dashboard
-                              <span class="sr-only">(current)</span>
-                          </a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link mdi mdi-golf" [routerLink]="['/tournaments']"> Tournaments</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link mdi mdi-checkbox-blank-outline" [routerLink]="['/course']"> Course</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link mdi mdi-account-group-outline" [routerLink]="['/players']"> Players</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link mdi mdi-cogs" [routerLink]="['/manage/manage-nav']"> Manage</a>
-                        </li>
-                    </ul>
-                    <ul class="navbar-nav ml-auto">
-                        <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                <strong>jkumwenda</strong>
+                  <ng-template [ngIf]="authService.isAuthenticated()">
+                      <ul class="navbar-nav mr-auto" >
+                          <li class="nav-item active">
+                              <a class="nav-link mdi mdi-view-dashboard" [routerLink]="['/dashboard']"> Dashboard
+                                <span class="sr-only">(current)</span>
                             </a>
-                            <div class="dropdown-menu dropdown-all dropdown-menu-right" aria-labelledby="navbarDropdownMenuLink">
-                                <p class="dropdown-item text-center">
-                                    Joel Kumwenda
-                                    <br>
-                                    <span class="small">jkumwenda@gmail.com</span>
-                                </p>
-                                <div class="dropdown-divider"></div>
-                                <a class="dropdown-item text-center mdi mdi-settings-outline" href=""> Settings</a>
-                                <div class="dropdown-divider"></div>
-                                <span class="dropdown-item"><button class="btn btn-outline-secondary btn-block btn-sm mdi mdi-lock-outline">Logout</button></span>
-                            </div>
-                        </li>
-                    </ul>
+                          </li>
+                          <li class="nav-item">
+                              <a class="nav-link mdi mdi-golf" [routerLink]="['/tournaments']"> Tournaments</a>
+                          </li>
+                          <li class="nav-item">
+                              <a class="nav-link mdi mdi-checkbox-blank-outline" [routerLink]="['/course']"> Course</a>
+                          </li>
+                          <li class="nav-item">
+                              <a class="nav-link mdi mdi-account-group-outline" [routerLink]="['/players']"> Players</a>
+                          </li>
+                          <li class="nav-item">
+                              <a class="nav-link mdi mdi-cogs" [routerLink]="['/manage/manage-nav']"> Manage</a>
+                          </li>
+                      </ul>
+                      <ul class="navbar-nav ml-auto">
+                          <li class="nav-item dropdown">
+                              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                  <strong>{{username}}</strong>
+                              </a>
+                              <div class="dropdown-menu dropdown-all dropdown-menu-right" aria-labelledby="navbarDropdownMenuLink">
+                                  <p class="dropdown-item text-center">
+                                      Joel Kumwenda
+                                      <br>
+                                      <span class="small">jkumwenda@gmail.com</span>
+                                  </p>
+                                  <div class="dropdown-divider"></div>
+                                  <a class="dropdown-item text-center mdi mdi-settings-outline" href=""> Settings</a>
+                                  <div class="dropdown-divider"></div>
+                                  <span class="dropdown-item"><button class="btn btn-outline-secondary btn-block btn-sm mdi mdi-lock-outline" (click)="logout()">Logout</button></span>
+                              </div>
+                          </li>
+                      </ul>
+                    </ng-template>
                 </div>
             </div>
         </nav>

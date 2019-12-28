@@ -161,7 +161,7 @@ class Role(models.Model):
     role_desc = models.CharField(max_length=45)
 
     class Meta:
-        managed = True
+        managed = False
         db_table = 'role'
 
 
@@ -170,7 +170,7 @@ class ProfileRole(models.Model):
     fk_profileid = models.ForeignKey(
         Profile, models.DO_NOTHING, db_column='fk_profileid')
     fk_roleid = models.ForeignKey(
-        'Role', models.DO_NOTHING, db_column='fk__roleid')
+        'Role', models.DO_NOTHING, db_column='fk_roleid')
 
     class Meta:
         managed = True
