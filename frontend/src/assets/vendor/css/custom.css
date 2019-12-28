@@ -535,3 +535,15 @@ input[type="search"] {
     line-height: .5;
     border-radius: .2rem;
 }
+
+.alert {
+    border-radius: 2px;
+    padding: 5px;
+}
+
+.invalid-feedback {
+    font-size: x-small;
+    color: #fc283d;
+    padding-top: 5px;
+    padding-bottom: 5px;
+}

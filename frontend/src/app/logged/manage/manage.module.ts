@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NgxUiLoaderModule } from 'ngx-ui-loader';
@@ -6,6 +6,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { DataTablesModule } from 'angular-datatables';
 import { AuthGuard } from 'src/app/shared/services/auth-guard.service';
 import { RoleGuard } from 'src/app/shared/services/role-guard.service';
+import { MatExpansionModule } from '@angular/material/expansion';
 
 import { ManageRoutingModule } from './manage-routing.module';
 import { UserComponent } from './users/user/user.component';
@@ -102,7 +103,7 @@ import { DrawTypeComponent } from './draw-types/draw-type/draw-type.component';
     DrawTypesComponent,
     AddDrawTypeComponent,
     EditDrawTypeComponent,
-    DrawTypeComponent
+    DrawTypeComponent,
   ],
   imports: [
     FormsModule,
@@ -111,11 +112,13 @@ import { DrawTypeComponent } from './draw-types/draw-type/draw-type.component';
     NgxUiLoaderModule,
     HttpClientModule,
     CommonModule,
-    ManageRoutingModule
+    ManageRoutingModule,
+    MatExpansionModule
   ],
   exports: [
     ManageRoutingModule
   ],
-  providers: [AuthGuard, RoleGuard]
+  providers: [AuthGuard, RoleGuard],
+  schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })
 export class ManageModule { }

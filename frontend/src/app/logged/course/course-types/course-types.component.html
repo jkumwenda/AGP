@@ -7,12 +7,12 @@
       </li>
     </ul>
 
-    <div *ngIf="!checkIfEmpty()" class="alert alert-danger h-75" role="alert">
-      <strong> <i class="mdi mdi-information"></i></strong><small> No Types Created</small>
+    <div *ngIf="!checkIfEmpty()" class="alert alert-warning" role="alert">
+      <small class="mdi mdi-information-outline"> No types created</small>
     </div>
   </div>
 <div class="col-md-3">
-  <h6><a  class="btn btn-outline-secondary mdi mdi-plus" (click)="addComponentCreated=true"  data-toggle="modal" data-target="#addCourseType">Add Type</a></h6>
+  <h6><a  class="btn btn-outline-secondary btn-sm mdi mdi-plus" (click)="addComponentCreated=true"  data-toggle="modal" data-target="#addCourseType">Add Type</a></h6>
 </div>
 </div>
 <app-add-course-type *ngIf="addComponentCreated" [courseId]="courseId"></app-add-course-type>

@@ -16,6 +16,7 @@ class SignupViewSet(viewsets.ModelViewSet):
     permission_classes = (permissions.AllowAny,)
     queryset = User.objects.all()
     serializer_class = UserSerializer
+    http_method_names = ['post']
 
 
 class CountryViewSet(viewsets.ModelViewSet):

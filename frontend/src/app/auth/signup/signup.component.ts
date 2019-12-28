@@ -14,6 +14,8 @@ export class SignupComponent implements OnInit {
   public moduleTitle = 'Sign Up';
   public genders: Gender[];
   public signupForm: FormGroup;
+  private userData: any;
+  submitted = false;
 
   constructor(
     private signupService: SignupService,
@@ -23,9 +25,26 @@ export class SignupComponent implements OnInit {
   ) { }
 
   signup() {
-    this.signupService.signup(this.signupForm.value).then(
-      (result) => this.router.navigate(['manage/clubs']),
-      error => console.log(error)
+    this.submitted = true;
+    if (this.signupForm.invalid) {
+      return;
+    }
+
+    const data = this.signupForm.value;
+    this.userData = {
+      first_name: data.first_name,
+      last_name: data.last_name,
+      email: data.email,
+      username: data.username,
+      password: data.password,
+      userprofile: { fk_genderid: data.gender, phone: data.phone },
+    };
+
+    this.signupService.signup(this.userData).then((result => {
+      this.router.navigate(['signup-confirmation']);
+    }),
+      (error) => {
+      }
     );
   }
 
@@ -43,10 +62,13 @@ export class SignupComponent implements OnInit {
       gender: ['', Validators.compose([Validators.required])],
       first_name: ['', Validators.compose([Validators.required])],
       last_name: ['', Validators.compose([Validators.required])],
-      email: ['', Validators.compose([Validators.required])],
+      email: ['', Validators.compose([Validators.required, Validators.email])],
       phone: ['', Validators.compose([Validators.required])],
       username: ['', Validators.compose([Validators.required])],
-      password: ['', Validators.compose([Validators.required])],
+      password: ['', Validators.compose([Validators.required, Validators.minLength(6)])],
     });
+  }
+  get validatorCheck() {
+    return this.signupForm.controls;
   }
 }

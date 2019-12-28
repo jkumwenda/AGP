@@ -99,14 +99,16 @@ class UserSerializer(serializers.ModelSerializer):
     def create(self, validated_data, instance=None):
         profile_data = validated_data.pop('userprofile')
         user = User.objects.create(**validated_data)
-        
-        # if validated_data('password') is not None:
-        #     password = validated_data('password')
-        # else:    
-        password = SerializerHelper.randomPassword(self)
+
+        if validated_data['password'] == 0:
+            password = validated_data['password']
+        else:  
+            password = SerializerHelper.random_password(self)
+            
         user.set_password(password)
         user.save()
         Profile.objects.update_or_create(user=user, **profile_data)
+        SerializerHelper.add_default_role(self, user)
         return user
     
     

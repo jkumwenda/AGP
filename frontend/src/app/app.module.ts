@@ -9,6 +9,7 @@ import { AuthService } from './shared/services/auth.service';
 import { DataService } from './shared/services/data.service';
 import { AppRoutingModule } from './app-routing.module';
 import { DataTablesModule } from 'angular-datatables';
+import { MatExpansionModule } from '@angular/material/expansion';
 
 import { SharedModule } from './shared/shared.module';
 import { ManageModule } from './logged/manage/manage.module';
@@ -38,6 +39,7 @@ import { AddCourseTypeComponent } from './logged/course/add-course-type/add-cour
 import { AddCourseTypeHoleComponent } from './logged/course/add-course-type-hole/add-course-type-hole.component';
 import { EditCourseTypeHoleComponent } from './logged/course/edit-course-type-hole/edit-course-type-hole.component';
 import { EditCourseTypeComponent } from './logged/course/edit-course-type/edit-course-type.component';
+import { SignupConfirmationComponent } from './auth/signup-confirmation/signup-confirmation.component';
 
 @NgModule({
   declarations: [
@@ -66,6 +68,7 @@ import { EditCourseTypeComponent } from './logged/course/edit-course-type/edit-c
     AddCourseTypeHoleComponent,
     EditCourseTypeHoleComponent,
     EditCourseTypeComponent,
+    SignupConfirmationComponent,
 
 
   ],
@@ -81,6 +84,7 @@ import { EditCourseTypeComponent } from './logged/course/edit-course-type/edit-c
     SharedModule,
     NgxUiLoaderModule,
     BrowserAnimationsModule,
+    MatExpansionModule,
   ],
   providers: [AuthService, DataService],
   bootstrap: [AppComponent],
