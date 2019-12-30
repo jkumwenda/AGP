@@ -147,6 +147,7 @@ class RoleSerializer(serializers.ModelSerializer):
     class Meta:
         model = Role
         fields = '__all__'
+        depth=1
 
 
 class ProfileRoleSerializer(serializers.ModelSerializer):

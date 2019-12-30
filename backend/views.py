@@ -95,6 +95,22 @@ class RoleViewSet(viewsets.ModelViewSet):
     queryset = Role.objects.all()
     serializer_class = RoleSerializer
 
+    @action(methods=['POST','PATCH'], detail=True)
+    def permission(self, request,pk=None):
+        permission = Permission.objects.get(pk_permissionid=request.data['pk_permissionid'])
+        role = self.get_object()
+       
+
+        if request.method== 'POST':
+             role.Permissions.add(permission)
+        elif request.method=='PATCH':
+              role.Permissions.remove(permission)  
+        role.save()
+
+        serializer = RoleSerializer(role, many=False)
+        return Response(serializer.data)
+
+  
 
 class GenderViewSet(viewsets.ModelViewSet):
     queryset = Gender.objects.all()

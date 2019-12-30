@@ -99,7 +99,9 @@ const manageRoutes: Routes = [
     {path: 'draw-types', component: DrawTypesComponent},
     {path: 'add-draw-type', component: AddDrawTypeComponent},
     {path: 'edit-draw-type/:id', component: EditDrawTypeComponent},
-    {path: 'draw-type', component: DrawTypeComponent}
+    {path: 'draw-type', component: DrawTypeComponent},
+    {path: 'role/:id', component: RoleComponent},
+
     ], canActivate: [AuthGuard]},
 ];
 
