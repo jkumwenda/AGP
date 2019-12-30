@@ -84,7 +84,7 @@ class GenderSerializer(serializers.ModelSerializer):
 class ProfileSerializer(serializers.ModelSerializer):
     class Meta:
         model = Profile
-        fields = '__all__'
+        fields = ('__all__')
 
 
 class UserSerializer(serializers.ModelSerializer):
@@ -125,10 +125,27 @@ class UserProfileSerializer(serializers.ModelSerializer):
     fk_genderid = GenderSerializer(read_only=True)
     gender_id = serializers.PrimaryKeyRelatedField(
         queryset=Gender.objects.all(),
-        write_only=True, source='gender')
+        write_only=True, source='fk_genderid')
     class Meta:
         model = Profile
         fields = '__all__'
+
+
+class PlayerSerializer(serializers.ModelSerializer):
+    user = UserSerializer(read_only=True)
+    user_id = serializers.PrimaryKeyRelatedField(
+        queryset=User.objects.all(),
+        write_only=True, source='user')
+
+    fk_genderid = GenderSerializer(read_only=True)
+    gender_id = serializers.PrimaryKeyRelatedField(
+        queryset=Gender.objects.all(),
+        write_only=True, source='fk_genderid')
+
+    class Meta:
+        model = Profile
+        fields = '__all__'
+
 
 
 class ClubProfileSerializer(serializers.ModelSerializer):
@@ -146,19 +163,24 @@ class HandicapSerializer(serializers.ModelSerializer):
 class RoleSerializer(serializers.ModelSerializer):
     class Meta:
         model = Role
-        fields = '__all__'
+        fields = ('__all__')
 
 
-class ProfileRoleSerializer(serializers.ModelSerializer):
+class ProfileRoleSerializer(serializers.ModelSerializer):    
     fk_roleid = RoleSerializer(read_only=True)
-    role_data = serializers.PrimaryKeyRelatedField(
+    role_id = serializers.PrimaryKeyRelatedField(
         queryset=Role.objects.all(),
-        write_only=True, source='role')
+        write_only=True, source='fk_roleid')
+    
+    fk_profileid = ProfileSerializer(read_only=True)
+    profile_id = serializers.PrimaryKeyRelatedField(
+        queryset=Profile.objects.all(),
+        write_only=True, source='fk_profileid')
     
     class Meta:
         model = ProfileRole
         fields = '__all__'
-
+        
 
 class PermissionSerializer(serializers.ModelSerializer):
     class Meta:
@@ -166,7 +188,17 @@ class PermissionSerializer(serializers.ModelSerializer):
         fields = '__all__'
 
 
-class RolePermissionSerializer(serializers.ModelSerializer):
+class RolePermissionSerializer(serializers.ModelSerializer):  
+    fk_roleid = RoleSerializer(read_only=True)
+    role_id = serializers.PrimaryKeyRelatedField(
+        queryset=Role.objects.all(),
+        write_only=True, source='fk_roleid')  
+    
+    fk_permissionid = PermissionSerializer(read_only=True)
+    permission_id = serializers.PrimaryKeyRelatedField(
+        queryset=Permission.objects.all(),
+        write_only=True, source='fk_permissionid')
+    
     class Meta:
         model = RolePermission
         fields = '__all__'

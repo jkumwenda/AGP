@@ -33,7 +33,10 @@ router.register(r'gender', backend_views.GenderViewSet, base_name='Gender')
 router.register(r'profile_gender', backend_views.ProfileGenderViewSet,
                 base_name='Profile Gender')
 router.register(r'profile', backend_views.ProfileViewSet, base_name='Profile')
-router.register(r'user_profile', backend_views.UserProfileViewSet, base_name='User Profile')
+router.register(r'user_profile', backend_views.UserProfileViewSet,
+                base_name='User Profile')
+router.register(r'player', backend_views.PlayerViewSet,
+                base_name='User Player')
 router.register(r'club_profile', backend_views.ClubProfileViewSet,
                 base_name='Club Profile')
 router.register(r'handicap', backend_views.HandicapViewSet,
