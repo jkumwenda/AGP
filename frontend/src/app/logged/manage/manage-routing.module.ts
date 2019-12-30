@@ -91,6 +91,7 @@ const manageRoutes: Routes = [
     { path: 'clubs', component: ClubsComponent},
     {path: 'add-club', component: AddClubComponent},
     {path: 'edit-club/:id', component: EditClubComponent},
+    //{path: 'course/:id', component: CourseComponent},
     {path: 'formats', component: FormatsComponent},
     {path: 'add-format', component: AddFormatComponent},
     {path: 'edit-format/:id', component: EditFormatComponent},
@@ -98,7 +99,9 @@ const manageRoutes: Routes = [
     {path: 'draw-types', component: DrawTypesComponent},
     {path: 'add-draw-type', component: AddDrawTypeComponent},
     {path: 'edit-draw-type/:id', component: EditDrawTypeComponent},
-    {path: 'draw-type', component: DrawTypeComponent}
+    {path: 'draw-type', component: DrawTypeComponent},
+    {path: 'role/:id', component: RoleComponent},
+
     ], canActivate: [AuthGuard]},
 ];
 

@@ -188,6 +188,18 @@ class Permission(models.Model):
         db_table = 'permission'
 
 
+class Role(models.Model):
+    pk_roleid = models.AutoField(primary_key=True)
+    role = models.CharField(max_length=45)
+    role_desc = models.CharField(max_length=45)
+    Permissions = models.ManyToManyField(
+        Permission, related_name='permissions', through='RolePermission')
+
+    class Meta:
+        managed = False
+        db_table = 'role'
+
+
 class RolePermission(models.Model):
     pk_role_permissionid = models.AutoField(primary_key=True)
     fk_roleid = models.ForeignKey(
@@ -198,6 +210,18 @@ class RolePermission(models.Model):
     class Meta:
         managed = True
         db_table = 'role_permission'
+
+
+class ProfileRole(models.Model):
+    pk_profile_roleid = models.AutoField(primary_key=True)
+    fk_profileid = models.ForeignKey(
+        Profile, models.DO_NOTHING, db_column='fk_profileid')
+    fk_roleid = models.ForeignKey(
+        'Role', models.DO_NOTHING, db_column='fk_roleid')
+
+    class Meta:
+        managed = True
+        db_table = 'profile_role'
 
 
 class EventType(models.Model):
