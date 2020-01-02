@@ -4,6 +4,7 @@ from rest_framework.relations import HyperlinkedIdentityField
 from .models import *
 from .serializer_helper import *
 
+
 class CountrySerializer(serializers.ModelSerializer):
     class Meta:
         model = Country
@@ -14,13 +15,13 @@ class DrawTypeSerializer(serializers.ModelSerializer):
     class Meta:
         model = DrawType
         fields = '__all__'
-        
-        
+
+
 class RatingSerializer(serializers.ModelSerializer):
     class Meta:
         model = Rating
         fields = '__all__'
-        
+
 
 class CourseSerializer(serializers.ModelSerializer):
     country = CountrySerializer(source="pk_countryid", read_only=True)
@@ -103,29 +104,30 @@ class UserSerializer(serializers.ModelSerializer):
         if validated_data['password'] != '0':
             register = True
             password = validated_data['password']
-        else:  
+        else:
             register = False
             password = SerializerHelper.random_password(self)
-            
+
         user.set_password(password)
         user.save()
         Profile.objects.update_or_create(user=user, **profile_data)
-        
+
         if register is True:
             SerializerHelper.add_default_role(self, user)
         return user
-    
-    
+
+
 class UserProfileSerializer(serializers.ModelSerializer):
     user = UserSerializer(read_only=True)
     user_id = serializers.PrimaryKeyRelatedField(
-        queryset = User.objects.all(),
+        queryset=User.objects.all(),
         write_only=True, source='user')
-    
+
     fk_genderid = GenderSerializer(read_only=True)
     gender_id = serializers.PrimaryKeyRelatedField(
         queryset=Gender.objects.all(),
         write_only=True, source='gender')
+
     class Meta:
         model = Profile
         fields = '__all__'
@@ -147,7 +149,7 @@ class RoleSerializer(serializers.ModelSerializer):
     class Meta:
         model = Role
         fields = '__all__'
-        depth=1
+        depth = 1
 
 
 class ProfileRoleSerializer(serializers.ModelSerializer):
@@ -155,7 +157,7 @@ class ProfileRoleSerializer(serializers.ModelSerializer):
     role_data = serializers.PrimaryKeyRelatedField(
         queryset=Role.objects.all(),
         write_only=True, source='role')
-    
+
     class Meta:
         model = ProfileRole
         fields = '__all__'
@@ -192,12 +194,29 @@ class RegisterSerializer(serializers.ModelSerializer):
 
 
 class SlotSerializer(serializers.ModelSerializer):
+    registers=RegisterSerializer(many=True, read_only=True)
     class Meta:
         model = Slot
         fields = '__all__'
+ 
 
+class FieldSerializer(serializers.ModelSerializer):
+    slots= SlotSerializer(many=True, read_only=True)
+    class Meta:
+        model = Field
+        fields = '__all__'
+
+    def create(self, validated_data):
+        event=validated_data['fk_eventid']
+        field= Field(field_type=validated_data['field_type'], fk_eventid=event)
+        field.save()
+    
+        SerializerHelper.saveSlots(self,event.start_date, event.end_date,field)
+        return field
+       
 
 class EventSerializer(serializers.ModelSerializer):
+    field=FieldSerializer(many=True, read_only=True)
     class Meta:
         model = Event
         fields = '__all__'
@@ -207,3 +226,5 @@ class EventTypeSerializer(serializers.ModelSerializer):
     class Meta:
         model = EventType
         fields = '__all__'
+
+

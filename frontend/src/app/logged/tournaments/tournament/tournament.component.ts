@@ -1,4 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { Tournament } from 'src/app/shared/interfaces/tournament';
+import { TournamentService } from 'src/app/shared/services/tournament.service';
+import { Slot } from 'src/app/shared/interfaces/slot';
+import { Field } from 'src/app/shared/interfaces/field';
 
 @Component({
   selector: 'app-tournament',
@@ -7,10 +11,26 @@ import { Component, OnInit } from '@angular/core';
 })
 export class TournamentComponent implements OnInit {
 
-  constructor() { }
+  public tournamentId:number
+  public tournament:Tournament
+  public slots:Slot[]=[]
+
+  constructor(
+    private tournamentService:TournamentService
+  ) {
+    this.tournament= Tournament.initialize()
+    this.tournament.field[0]= new Field(null)
+  }
 
   ngOnInit() {
-    console.log('HOTETTETETETET');
+    this.tournamentService.getTournament(1).then(
+      (result:Tournament) => {
+        this.tournament=result
+        this.slots= result.field[0].slots
+      },
+      error=>console.log(error)
+    )
+
   }
 
 }

@@ -40,6 +40,10 @@ import { AddCourseTypeHoleComponent } from './logged/course/add-course-type-hole
 import { EditCourseTypeHoleComponent } from './logged/course/edit-course-type-hole/edit-course-type-hole.component';
 import { EditCourseTypeComponent } from './logged/course/edit-course-type/edit-course-type.component';
 import { SignupConfirmationComponent } from './auth/signup-confirmation/signup-confirmation.component';
+import { TournamentDetailComponent } from './logged/tournaments/tournament/tournament-detail/tournament-detail.component';
+import { AddFieldComponent } from './logged/tournaments/tournament/add-field/add-field.component';
+import { RegistrationSlotsComponent } from './logged/tournaments/tournament/registration-slots/registration-slots.component';
+
 
 @NgModule({
   declarations: [
@@ -69,6 +73,9 @@ import { SignupConfirmationComponent } from './auth/signup-confirmation/signup-c
     EditCourseTypeHoleComponent,
     EditCourseTypeComponent,
     SignupConfirmationComponent,
+    TournamentDetailComponent,
+    AddFieldComponent,
+    RegistrationSlotsComponent,
 
 
   ],

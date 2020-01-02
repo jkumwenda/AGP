@@ -28,6 +28,7 @@ class CourseViewSet(viewsets.ModelViewSet):
     queryset = Course.objects.all()
     serializer_class = CourseSerializer
 
+#/COURSE/1/TYPES/
     @action(methods=['GET'],  detail=True)
     def types(self,request, pk=None):
         course=self.get_object()
@@ -173,7 +174,6 @@ class EventViewSet(viewsets.ModelViewSet):
     queryset = Event.objects.all()
     serializer_class = EventSerializer
 
-
 class EventTypeViewSet(viewsets.ModelViewSet):
     queryset = EventType.objects.all()
     serializer_class = EventTypeSerializer
@@ -182,3 +182,9 @@ class EventTypeViewSet(viewsets.ModelViewSet):
 class EventFormatViewSet(viewsets.ModelViewSet):
     queryset = EventFormat.objects.all()
     serializer_class = EventTypeSerializer
+
+class FieldViewSet(viewsets.ModelViewSet):
+    queryset = Field.objects.all()
+    serializer_class = FieldSerializer
+
+
