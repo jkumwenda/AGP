@@ -80,7 +80,11 @@ class ProfileViewSet(viewsets.ModelViewSet):
 class UserProfileViewSet(viewsets.ModelViewSet):
     queryset = Profile.objects.all()
     serializer_class = UserProfileSerializer
-
+    
+    
+class PlayerViewSet(viewsets.ModelViewSet):
+    queryset = Profile.objects.all()
+    serializer_class = PlayerSerializer
 
 class ClubProfileViewSet(viewsets.ModelViewSet):
     queryset = ClubProfile.objects.all()
@@ -143,6 +147,13 @@ class PermissionViewSet(viewsets.ModelViewSet):
 class RolePermissionViewSet(viewsets.ModelViewSet):
     queryset = RolePermission.objects.all()
     serializer_class = RolePermissionSerializer
+    
+    def get_queryset(self):
+        queryset = super().get_queryset()
+        data = ViewsHelper.filter_role_permission(
+            self, queryset, self.request.query_params.get('permission'),
+            self.request.query_params.get('profile_id'))
+        return data
 
 
 class RegistrationDateViewSet(viewsets.ModelViewSet):

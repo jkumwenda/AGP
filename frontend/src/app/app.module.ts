@@ -27,6 +27,7 @@ import { TournamentComponent } from './logged/tournaments/tournament/tournament.
 import { CourseComponent } from './logged/course/course.component';
 import { AddRatingComponent } from './logged/course/add-rating/add-rating.component';
 import { PlayersComponent } from './logged/players/players.component';
+import { AddPlayerComponent } from './logged/players/add-player/add-player.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { SignupComponent } from './auth/signup/signup.component';
 import { EditRatingComponent } from './logged/course/edit-rating/edit-rating.component';
@@ -61,6 +62,7 @@ import { RegistrationSlotsComponent } from './logged/tournaments/tournament/regi
     CourseComponent,
     AddRatingComponent,
     PlayersComponent,
+    AddPlayerComponent,
     PageNotFoundComponent,
     SignupComponent,
     EditRatingComponent,
