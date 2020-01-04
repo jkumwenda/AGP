@@ -24,7 +24,6 @@ export class RegistrationSlotsComponent implements OnInit {
     private sizeService: SlotSizeService
   ) {}
 
-
   checkIfRegistered(sizeId, registers) {
     let register = registers.find(register => {
       return (
@@ -33,38 +32,55 @@ export class RegistrationSlotsComponent implements OnInit {
       );
     });
 
+    if (this.checkIfRegisteredOtherProfile(sizeId, registers)) return "danger";
+
     if (!this.profileRegistered) return "primary";
     else return register ? "success" : "secondary";
   }
 
+  checkIfRegisteredOtherProfile(sizeId, registers) {
+    let register = registers.find(register => {
+      return (
+        register.fk_profileid !== this.profileId &&
+        register.size.pk_slot_sizeid == sizeId
+      );
+    });
+
+    return register;
+  }
+
   register(slotId, size) {
 
-    if (this.profileRegistered) return
+    if (this.profileRegistered) return;
+    let slot = this.slots.find(slot => slot.pk_slotid == slotId);
+    if (this.checkIfRegisteredOtherProfile(size,slot.registers)) return
 
-    this.registerService
-      .addSlotRegister({
-        fk_profileid: this.profileId,
-        fk_slotid: slotId,
-        fk_slot_sizeid: size
-      })
-      .then(
-        (result: SlotRegister) => {
-          let index = this.slots.findIndex(slot => slot.pk_slotid == slotId);
-          this.slots[index].registers.push(result);
-          this.daySlots(this.day);
-          this.profileRegistered = true;
-        },
-        error => console.log(error)
-      );
+      this.registerService
+        .addSlotRegister({
+          fk_profileid: this.profileId,
+          fk_slotid: slotId,
+          fk_slot_sizeid: size
+        })
+        .then(
+          (result: SlotRegister) => {
+            let index = this.slots.findIndex(slot => slot.pk_slotid == slotId);
+            this.slots[index].registers.push(result);
+            this.daySlots(this.day);
+            this.profileRegistered = true;
+          },
+          error => console.log(error)
+        );
   }
 
   checkProfileRegistered(registers: SlotRegister[]) {
     return registers.find(register => register.fk_profileid == this.profileId);
   }
 
-  initProfileCheck(){
-    let profileCheck = this.slots.find(slot => this.checkProfileRegistered(slot.registers))
-    return profileCheck ? true: false
+  initProfileCheck() {
+    let profileCheck = this.slots.find(slot =>
+      this.checkProfileRegistered(slot.registers)
+    );
+    return profileCheck ? true : false;
   }
 
   getSlotSizes() {
@@ -75,7 +91,6 @@ export class RegistrationSlotsComponent implements OnInit {
       error => console.log(error)
     );
   }
-
 
   cancelRegistration(registers: SlotRegister[]) {
     console.log(registers);
@@ -98,16 +113,14 @@ export class RegistrationSlotsComponent implements OnInit {
   }
 
   ngOnChanges(): void {
-
-    console.log(this.slots)
+    console.log(this.slots);
     this.slots.forEach(
       slot => (slot.slot_time = this.createDateTime(slot.slot_time))
     );
     this.day = 1;
     this.findDays();
     this.daySlots(this.day);
-    this.profileRegistered = this.initProfileCheck()
-
+    this.profileRegistered = this.initProfileCheck();
   }
 
   findDays() {
@@ -128,7 +141,7 @@ export class RegistrationSlotsComponent implements OnInit {
   }
 
   ngOnInit() {
-    console.log(this.slots)
+    console.log(this.slots);
     this.getSlotSizes();
   }
 }
