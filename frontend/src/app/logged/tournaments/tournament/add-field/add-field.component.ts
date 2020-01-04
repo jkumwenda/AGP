@@ -2,6 +2,7 @@ import { Component, OnInit, Input, Output, EventEmitter, ViewChild, ElementRef} 
 import { FieldService } from "src/app/shared/services/field.service";
 import { FormBuilder, FormGroup, Validators } from "@angular/forms";
 import { Field } from 'src/app/shared/interfaces/field';
+import { Slot } from 'src/app/shared/interfaces/slot';
 
 
 @Component({
@@ -23,9 +24,12 @@ export class AddFieldComponent implements OnInit {
   ) {}
 
   addField(){
+
     this.fieldService.addField(this.fieldForm.value).then(
       (result:Field) => {
           this.fieldCreatedEvent.emit(result)
+          console.log(result)
+
           this.initializeFieldForm()
           this.closeModal.nativeElement.click()
       },

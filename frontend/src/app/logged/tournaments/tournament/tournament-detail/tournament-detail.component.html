@@ -11,10 +11,10 @@
       <tr><strong>Format </strong><td></td> : Medal<td></tr>
       <tr><strong>Draw Type </strong><td></td> : {{ tournament.fk_draw_typeid }}<button (click)="editComponentCreated=true" class="btn btn-md mdi mdi-pencil-box" data-toggle="modal" data-target="#editRating"></button><td></tr>
       <tr><strong>Field </strong><td></td> :
-          {{ tournament.field[0].field_type }}
+          {{ field.field_type }}
         <button class="btn btn-md mdi mdi-pencil-box" data-toggle="modal" data-target="#addField"></button><td></tr>
     </table>
   </div>
 </div>
 
-<app-add-field [tournamentId]="tournament.pk_eventid"></app-add-field>
+<app-add-field (fieldCreatedEvent)="updateField($event)" [tournamentId]="tournament.pk_eventid"></app-add-field>

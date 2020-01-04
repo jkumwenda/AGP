@@ -7,9 +7,14 @@ from .views_helper import *
 from rest_framework.response import Response
 from rest_framework.decorators import action
 
+
 class UserViewSet(viewsets.ModelViewSet):
     queryset = User.objects.all()
     serializer_class = UserSerializer
+
+class SlotSizeViewSet(viewsets.ModelViewSet):
+    queryset = SlotSize.objects.all()
+    serializer_class = SlotSizeSerializer
 
 
 class SignupViewSet(viewsets.ModelViewSet):
@@ -28,14 +33,15 @@ class CourseViewSet(viewsets.ModelViewSet):
     queryset = Course.objects.all()
     serializer_class = CourseSerializer
 
-#/COURSE/1/TYPES/
+# /COURSE/1/TYPES/
     @action(methods=['GET'],  detail=True)
-    def types(self,request, pk=None):
-        course=self.get_object()
-        serializer= CourseTypeSerializer(
+    def types(self, request, pk=None):
+        course = self.get_object()
+        serializer = CourseTypeSerializer(
             course.types.all(), many=True
         )
         return Response(serializer.data)
+
 
 class RatingViewSet(viewsets.ModelViewSet):
     queryset = Rating.objects.all()
@@ -75,16 +81,17 @@ class ClubCourseViewSet(viewsets.ModelViewSet):
 class ProfileViewSet(viewsets.ModelViewSet):
     queryset = Profile.objects.all()
     serializer_class = ProfileSerializer
-    
+
 
 class UserProfileViewSet(viewsets.ModelViewSet):
     queryset = Profile.objects.all()
     serializer_class = UserProfileSerializer
-    
-    
+
+
 class PlayerViewSet(viewsets.ModelViewSet):
     queryset = Profile.objects.all()
     serializer_class = PlayerSerializer
+
 
 class ClubProfileViewSet(viewsets.ModelViewSet):
     queryset = ClubProfile.objects.all()
@@ -100,27 +107,26 @@ class RoleViewSet(viewsets.ModelViewSet):
     queryset = Role.objects.all()
     serializer_class = RoleSerializer
 
-    @action(methods=['POST','PATCH'], detail=True)
-    def permission(self, request,pk=None):
-        permission = Permission.objects.get(pk_permissionid=request.data['pk_permissionid'])
+    @action(methods=['POST', 'PATCH'], detail=True)
+    def permission(self, request, pk=None):
+        permission = Permission.objects.get(
+            pk_permissionid=request.data['pk_permissionid'])
         role = self.get_object()
-       
 
-        if request.method== 'POST':
-             role.Permissions.add(permission)
-        elif request.method=='PATCH':
-              role.Permissions.remove(permission)  
+        if request.method == 'POST':
+            role.Permissions.add(permission)
+        elif request.method == 'PATCH':
+            role.Permissions.remove(permission)
         role.save()
 
         serializer = RoleSerializer(role, many=False)
         return Response(serializer.data)
 
-  
 
 class GenderViewSet(viewsets.ModelViewSet):
     queryset = Gender.objects.all()
     serializer_class = GenderSerializer
- 
+
 
 class ProfileGenderViewSet(viewsets.ModelViewSet):
     permission_classes = (permissions.AllowAny,)
@@ -131,7 +137,7 @@ class ProfileGenderViewSet(viewsets.ModelViewSet):
 class ProfileRoleViewSet(viewsets.ModelViewSet):
     queryset = ProfileRole.objects.all()
     serializer_class = ProfileRoleSerializer
-    
+
     def get_queryset(self):
         queryset = super().get_queryset()
         data = ViewsHelper.filter_profile_role(
@@ -147,7 +153,7 @@ class PermissionViewSet(viewsets.ModelViewSet):
 class RolePermissionViewSet(viewsets.ModelViewSet):
     queryset = RolePermission.objects.all()
     serializer_class = RolePermissionSerializer
-    
+
     def get_queryset(self):
         queryset = super().get_queryset()
         data = ViewsHelper.filter_role_permission(
@@ -165,10 +171,10 @@ class FormatViewSet(viewsets.ModelViewSet):
     queryset = Format.objects.all()
     serializer_class = FormatSerializer
 
+
 class DrawTypeViewSet(viewsets.ModelViewSet):
     queryset = DrawType.objects.all()
     serializer_class = DrawTypeSerializer
-
 
 
 class RegisterViewSet(viewsets.ModelViewSet):
@@ -185,6 +191,7 @@ class EventViewSet(viewsets.ModelViewSet):
     queryset = Event.objects.all()
     serializer_class = EventSerializer
 
+
 class EventTypeViewSet(viewsets.ModelViewSet):
     queryset = EventType.objects.all()
     serializer_class = EventTypeSerializer
@@ -194,8 +201,7 @@ class EventFormatViewSet(viewsets.ModelViewSet):
     queryset = EventFormat.objects.all()
     serializer_class = EventTypeSerializer
 
+
 class FieldViewSet(viewsets.ModelViewSet):
     queryset = Field.objects.all()
     serializer_class = FieldSerializer
-
-

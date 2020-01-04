@@ -116,8 +116,12 @@ class UserSerializer(serializers.ModelSerializer):
             SerializerHelper.add_default_role(self, user)
         return user
 
+    def checkStatus(self):
+        return True
+
 
 class UserProfileSerializer(serializers.ModelSerializer):
+
     user = UserSerializer(read_only=True)
     user_id = serializers.PrimaryKeyRelatedField(
         queryset=User.objects.all(),
@@ -218,7 +222,14 @@ class FormatSerializer(serializers.ModelSerializer):
         fields = '__all__'
 
 
+class SlotSizeSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = SlotSize
+        fields = '__all__'
+
+
 class RegisterSerializer(serializers.ModelSerializer):
+    size= SlotSizeSerializer(many=False, source='fk_slot_sizeid', read_only=True)
     class Meta:
         model = Register
         fields = '__all__'

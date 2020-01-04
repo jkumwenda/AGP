@@ -9,5 +9,6 @@ export class Field {
 
   constructor(fieldType){
     this.field_type=fieldType
+    this.slots=[]
   }
 }

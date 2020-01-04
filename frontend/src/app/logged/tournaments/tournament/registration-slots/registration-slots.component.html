@@ -18,8 +18,12 @@
           <tr><th>Slot</th><th>Registered</th><th>Size</th><th>Status</th><th width='120'>Controls</th></tr>
           <tr *ngFor="let slot of displayedSlots; let i=index">
             <td>
-            {{ slot.slot_time | date:'hh:mm'}}
-             - {{ slots[i+1].slot_time | date:'hh:mm a' }}</td><td>{{ slot.registers.length }}</td><td>4</td><td>Open</td><td><span class="mdi mdi-check hole-edit" (click)="register(slot.pk_slotid)" *ngIf="!profileRegistered"> Register</span> | <span (click)="cancelRegistration(slot.registers)" *ngIf="checkProfileRegistered(slot.registers)" class="mdi mdi-delete hole-delete">Cancel</span></td></tr>
+             {{ slot.slot_time | date:'hh:mm a'}}
+             - {{ slots[i].slot_time | date:'hh:mm a' }}</td><td>{{ slot.registers.length }}</td><td>4</td><td>Open</td><td>
+               <!-- <span class="mdi mdi-check hole-edit" (click)="register(slot.pk_slotid)" *ngIf="!profileRegistered"> Register</span> -->
+               <span *ngFor="let size of sizes" class='badge badge-{{ checkIfRegistered(size.pk_slot_sizeid, slot.registers) }}' (click)="register(slot.pk_slotid,size.pk_slot_sizeid)">{{ size.slot_size }}</span>
+
+               | <span (click)="cancelRegistration(slot.registers)" *ngIf="checkProfileRegistered(slot.registers)" class="mdi mdi-delete hole-delete">Cancel</span></td></tr>
         </table>
     </div>
   </div>

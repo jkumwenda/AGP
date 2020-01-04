@@ -2,7 +2,7 @@ from django.db import models
 from django.contrib.auth.models import User
 from django.db.models.signals import post_save
 from django.dispatch import receiver
-from datetime import datetime   
+from datetime import datetime
 
 
 class Country(models.Model):
@@ -197,7 +197,7 @@ class Role(models.Model):
         Permission, related_name='permissions', through='RolePermission')
 
     class Meta:
-        managed = False
+        managed = True
         db_table = 'role'
 
 
@@ -327,6 +327,15 @@ class Information(models.Model):
         managed = True
         db_table = 'information'
 
+class SlotSize(models.Model):
+    pk_slot_sizeid= models.AutoField(primary_key=True)
+    slot_size = models.IntegerField(blank=True, null=True)
+
+    class Meta:
+        managed = True
+        db_table = 'slot_size'
+
+
 
 class Register(models.Model):
     pk_registerid = models.AutoField(primary_key=True)
@@ -334,6 +343,7 @@ class Register(models.Model):
         'Slot', models.DO_NOTHING, related_name="registers", db_column='fk_slotid')
     fk_profileid = models.ForeignKey(
         Profile, models.DO_NOTHING, related_name="profile", db_column='fk_profileid')
+    fk_slot_sizeid= models.ForeignKey(SlotSize,  models.DO_NOTHING, db_column='fk_sizeid')
     reg_date = models.DateTimeField(default=datetime.now, blank=True)
 
     class Meta:

@@ -1,6 +1,6 @@
 <div class="row content-row">
     <div class="col-lg-4 col-md-6 col-sm-12">
-      <app-tournament-detail [tournament]="tournament"></app-tournament-detail>
+      <app-tournament-detail (updatedSlots)="UpdateSlots($event)"  [tournament]="tournament"></app-tournament-detail>
         <br>
 
         <div class="card dropdown-all d-flex w-100 ">
