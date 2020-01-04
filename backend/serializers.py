@@ -115,7 +115,17 @@ class UserSerializer(serializers.ModelSerializer):
             SerializerHelper.add_default_role(self, user)
         return user
     
+
+class UserPlayerProfileSerializer(serializers.ModelSerializer):
+    user = UserSerializer(read_only=True)
+    user_id = serializers.PrimaryKeyRelatedField(
+        queryset=User.objects.all(),
+        write_only=True, source='user')
     
+    class Meta:
+        model = Profile
+        fields = ('__all__')
+        
 class UserProfileSerializer(serializers.ModelSerializer):
     user = UserSerializer(read_only=True)
     user_id = serializers.PrimaryKeyRelatedField(
@@ -129,23 +139,6 @@ class UserProfileSerializer(serializers.ModelSerializer):
     class Meta:
         model = Profile
         fields = '__all__'
-
-
-class PlayerSerializer(serializers.ModelSerializer):
-    user = UserSerializer(read_only=True)
-    user_id = serializers.PrimaryKeyRelatedField(
-        queryset=User.objects.all(),
-        write_only=True, source='user')
-
-    fk_genderid = GenderSerializer(read_only=True)
-    gender_id = serializers.PrimaryKeyRelatedField(
-        queryset=Gender.objects.all(),
-        write_only=True, source='fk_genderid')
-
-    class Meta:
-        model = Profile
-        fields = '__all__'
-
 
 
 class ClubProfileSerializer(serializers.ModelSerializer):
@@ -184,6 +177,13 @@ class ProfileRoleSerializer(serializers.ModelSerializer):
         fields = '__all__'
         
 
+class PlayerSerializer(serializers.ModelSerializer):
+    fk_profileid = UserPlayerProfileSerializer(read_only=True)
+    class Meta:
+        model = ProfileRole
+        fields = '__all__'
+        
+        
 class PermissionSerializer(serializers.ModelSerializer):
     class Meta:
         model = Permission

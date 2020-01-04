@@ -10,6 +10,11 @@ from rest_framework.decorators import action
 class UserViewSet(viewsets.ModelViewSet):
     queryset = User.objects.all()
     serializer_class = UserSerializer
+    
+    def get_queryset(self):
+        queryset = super().get_queryset()
+        data = ViewsHelper.filter_test(self, queryset)
+        return data
 
 
 class SignupViewSet(viewsets.ModelViewSet):
@@ -82,8 +87,13 @@ class UserProfileViewSet(viewsets.ModelViewSet):
     
     
 class PlayerViewSet(viewsets.ModelViewSet):
-    queryset = Profile.objects.all()
+    queryset = ProfileRole.objects.all()
     serializer_class = PlayerSerializer
+    
+    def get_queryset(self):
+        queryset = super().get_queryset()
+        data = ViewsHelper.filter_player_profile(self, queryset)
+        return data
 
 class ClubProfileViewSet(viewsets.ModelViewSet):
     queryset = ClubProfile.objects.all()

@@ -28,6 +28,7 @@ import { CourseComponent } from './logged/course/course.component';
 import { AddRatingComponent } from './logged/course/add-rating/add-rating.component';
 import { PlayersComponent } from './logged/players/players.component';
 import { AddPlayerComponent } from './logged/players/add-player/add-player.component';
+import { PlayerComponent } from './logged/players/player/player.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { SignupComponent } from './auth/signup/signup.component';
 import { EditRatingComponent } from './logged/course/edit-rating/edit-rating.component';
@@ -41,6 +42,10 @@ import { AddCourseTypeHoleComponent } from './logged/course/add-course-type-hole
 import { EditCourseTypeHoleComponent } from './logged/course/edit-course-type-hole/edit-course-type-hole.component';
 import { EditCourseTypeComponent } from './logged/course/edit-course-type/edit-course-type.component';
 import { SignupConfirmationComponent } from './auth/signup-confirmation/signup-confirmation.component';
+import { ChartistModule } from 'ng-chartist';
+import { PublicComponent } from './public/public.component';
+import { EventsComponent } from './public/events/events.component';
+import { LeaderboardComponent } from './public/leaderboard/leaderboard.component';
 
 @NgModule({
   declarations: [
@@ -59,6 +64,7 @@ import { SignupConfirmationComponent } from './auth/signup-confirmation/signup-c
     AddRatingComponent,
     PlayersComponent,
     AddPlayerComponent,
+    PlayerComponent,
     PageNotFoundComponent,
     SignupComponent,
     EditRatingComponent,
@@ -71,8 +77,9 @@ import { SignupConfirmationComponent } from './auth/signup-confirmation/signup-c
     EditCourseTypeHoleComponent,
     EditCourseTypeComponent,
     SignupConfirmationComponent,
-
-
+    PublicComponent,
+    EventsComponent,
+    LeaderboardComponent
   ],
   imports: [
     DataTablesModule,
@@ -87,9 +94,10 @@ import { SignupConfirmationComponent } from './auth/signup-confirmation/signup-c
     NgxUiLoaderModule,
     BrowserAnimationsModule,
     MatExpansionModule,
+    ChartistModule
   ],
   providers: [AuthService, DataService],
   bootstrap: [AppComponent],
-  schemas: [ CUSTOM_ELEMENTS_SCHEMA ]
+  schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })
-export class AppModule { }
+export class AppModule {}

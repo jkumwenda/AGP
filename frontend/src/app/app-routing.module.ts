@@ -6,10 +6,13 @@ import { TournamentComponent } from './logged/tournaments/tournament/tournament.
 import { CourseComponent } from './logged/course/course.component';
 import { PlayersComponent } from './logged/players/players.component';
 import { AddPlayerComponent } from './logged/players/add-player/add-player.component';
+import { PlayerComponent } from './logged/players/player/player.component';
 import { SignupComponent } from './auth/signup/signup.component';
 import { LoginComponent } from './auth/login/login.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { SignupConfirmationComponent } from './auth/signup-confirmation/signup-confirmation.component';
+import { EventsComponent } from './public/events/events.component';
+import { LeaderboardComponent } from './public/leaderboard/leaderboard.component';
 
 const routes: Routes = [
   { path: '', component: LoginComponent },
@@ -25,7 +28,10 @@ const routes: Routes = [
   {path: 'tournaments', component: TournamentsComponent},
   {path: 'course/:id', component: CourseComponent},
   { path: 'players', component: PlayersComponent },
-  { path: 'add-player', component: AddPlayerComponent }
+  { path: 'add-player', component: AddPlayerComponent },
+  { path: 'player/:id', component: PlayerComponent },
+  { path: 'events', component: EventsComponent },
+  { path: 'leaderboard', component: LeaderboardComponent }
 ];
 
 @NgModule({

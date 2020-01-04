@@ -11,6 +11,11 @@
     src: url("../fonts/Aclonica/Aclonica-Regular.ttf");
 }
 
+@font-face {
+    font-family: "Candal";
+    src: url("../fonts/Candal/Candal-Regular.ttf");
+}
+
 body,
 html {
     background: #f0f0f0;
@@ -98,6 +103,7 @@ html {
 .login-card-footer {
     padding: 25px;
     text-align: center;
+    font-size: small;
 }
 
 .card-header-customer {
@@ -350,7 +356,7 @@ html {
     background-color: #0c2560;
     color: #c3d2f7;
     padding: 20px;
-    font-size: x-small;
+    font-size: small;
 }
 
 .footer-row .container {
@@ -546,4 +552,90 @@ input[type="search"] {
     color: #fc283d;
     padding-top: 5px;
     padding-bottom: 5px;
+}
+
+.img-max {
+    max-width: 750px
+}
+
+.promotion-text {
+    text-align: center;
+    padding: 10px;
+    color: #FFF;
+    font-weight: bold;
+}
+
+.promotion-row {
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.promotion-agp {
+    color: #0c2560;
+    font-family: Candal;
+}
+
+.footer-row span {
+    margin-left: 10px;
+}
+
+.tournament-name {
+    color: sandybrown;
+    font-weight: bold;
+}
+
+.leaderboard-header {
+    color: #f0f0f0;
+    text-align: center;
+}
+
+.score-title {
+    background-color: #2e59c1;
+    color: #f0f0f0;
+    font-weight: lighter;
+    text-align: center;
+}
+
+.score {
+    background-color: #000;
+    text-align: center;
+    color: #f0f0f0;
+}
+
+.alert-tournament {
+    padding: 10px 10px 0.5px 10px;
+    font-size: small;
+    border-radius: 2px;
+    margin-bottom: 5px;
+}
+
+.tournament-content {
+    font-size: small;
+}
+
+.badge {
+    padding-bottom: 0px;
+}
+
+.all-games {
+    border-radius: 20px;
+}
+
+.tourna-date {
+    font-size: small;
+    font-weight: bold;
+    padding: 5px;
+}
+
+.tournament-trow td {
+    padding: 18px;
+}
+
+.events-table {
+    font-size: small;
+}
+
+.page-title {
+    padding-top: 18px;
+    padding-bottom: 18px;
 }

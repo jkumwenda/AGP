@@ -5,10 +5,9 @@
         <h5 class="mdi mdi-file-table"> {{moduleTitle}}</h5>
     </div>
     <div class="card-body login-card-body ">
-      <table  datatable class="table table-striped table-sm">
+      <table *ngIf="profiles"  datatable class="table table-striped table-sm">
           <thead>
               <tr>
-
                   <th>Firstname</th>
                   <th>Lastname</th>
                   <th>Handicap</th>
@@ -18,15 +17,15 @@
           </thead>
           <tbody>
               <tr *ngFor="let profile of profiles">
-                  <td>{{ profile.user.first_name }}</td>
-                  <td>{{ profile.user.last_name }}</td>
+                  <td>{{ profile.fk_profileid.user.first_name }}</td>
+                  <td>{{ profile.fk_profileid.user.last_name }}</td>
                   <td></td>
                   <td></td>
                   <td>
                     <div class="btn-toolbar">
-                      <button (click)="viewUser(profile.pk_profileid)" class="btn btn-dark btn-sm btn-control"><i class="mdi mdi-eye"></i></button>
-                      <button (click)="editUser(profile.pk_profileid)" class="btn btn-success btn-sm btn-control"><i class="mdi mdi-pencil"></i></button>
-                      <button (click)="deleteUser(profile.pk_profileid)" class="btn btn-danger btn-sm btn-control"><i class="mdi mdi-delete"></i></button>
+                      <button (click)="viewPlayer(profile.fk_profileid.pk_profileid)" class="btn btn-dark btn-sm btn-control"><i class="mdi mdi-eye"></i></button>
+                      <button (click)="editUser(profile.fk_profileid.pk_profileid)" class="btn btn-success btn-sm btn-control"><i class="mdi mdi-pencil"></i></button>
+                      <button (click)="deleteUser(profile.fk_profileid.pk_profileid)" class="btn btn-danger btn-sm btn-control"><i class="mdi mdi-delete"></i></button>
                       </div>
                     </td>
               </tr>
