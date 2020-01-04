@@ -1,4 +1,7 @@
 import { Field } from './field';
+import { EventType } from './event-type';
+import { DrawType } from './draw-type';
+import { Profile } from './profile';
 
 export class Tournament {
   pk_eventid: number;

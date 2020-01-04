@@ -49,6 +49,10 @@ import { DrawTypesComponent } from './draw-types/draw-types.component';
 import { AddDrawTypeComponent } from './draw-types/add-draw-type/add-draw-type.component';
 import { EditDrawTypeComponent } from './draw-types/edit-draw-type/edit-draw-type.component';
 import { DrawTypeComponent } from './draw-types/draw-type/draw-type.component';
+import { EventTypesComponent } from './event-types/event-types.component';
+import { AddEventTypeComponent } from './event-types/add-event-type/add-event-type.component';
+import { EditEventTypeComponent } from './event-types/edit-event-type/edit-event-type.component';
+import { EventTypeComponent } from './event-types/event-type/event-type.component';
 import { from } from 'rxjs';
 import { CourseComponent } from '../course/course.component';
 
@@ -91,7 +95,7 @@ const manageRoutes: Routes = [
     { path: 'clubs', component: ClubsComponent},
     {path: 'add-club', component: AddClubComponent},
     {path: 'edit-club/:id', component: EditClubComponent},
-    //{path: 'course/:id', component: CourseComponent},
+    {path: 'course/:id', component: CourseComponent},
     {path: 'formats', component: FormatsComponent},
     {path: 'add-format', component: AddFormatComponent},
     {path: 'edit-format/:id', component: EditFormatComponent},
@@ -101,8 +105,13 @@ const manageRoutes: Routes = [
     {path: 'edit-draw-type/:id', component: EditDrawTypeComponent},
     {path: 'draw-type', component: DrawTypeComponent},
     {path: 'role/:id', component: RoleComponent},
-
-    ], canActivate: [AuthGuard]},
+    {path: 'draw-type', component: DrawTypeComponent},
+    {path: 'event-types', component: EventTypesComponent},
+    {path: 'add-event-type', component: AddEventTypeComponent},
+    {path: 'edit-event-type/:id', component: EditEventTypeComponent},
+    { path: 'event-type', component: EventTypeComponent },
+    { path: 'draw-type', component: DrawTypeComponent },
+  ], canActivate: [AuthGuard]}
 ];
 
 @NgModule({
