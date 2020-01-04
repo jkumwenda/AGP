@@ -14,7 +14,7 @@ export class RoleComponent implements OnInit {
 
   public moduleTitle="Role Permissions"
   public roleId:number
-  public  permissions:Permission[]=[]
+  public permissions:Permission[]=[]
   public rolePermissions: Permission[]=[]
   public selectedAll:Boolean=false
   public selectedAllRolePermission:Boolean=false
@@ -66,7 +66,6 @@ export class RoleComponent implements OnInit {
     this.roleService.getRole(this.roleId).then(
       (result:Role)=>{
         this.rolePermissions=result.Permissions
-        console.log(result)
         this.rolePermissions.forEach(p=>p.selected=false)
       },
       error=> console.log(error)
@@ -78,7 +77,7 @@ export class RoleComponent implements OnInit {
       if(permission.selected){
           this.rolePermissions.push(permission)
           this.roleService.addRolePermission(this.roleId,{'pk_permissionid': permission.pk_permissionid}).then(
-            result=>console.log(result),
+            result=>result,
             error=>console.log(error)
           )
         }
@@ -91,7 +90,7 @@ export class RoleComponent implements OnInit {
       if(permission.selected){
           this.permissions.push(permission)
           this.roleService.removeRolePermission(this.roleId,{'pk_permissionid': permission.pk_permissionid}).then(
-            result=>console.log(result),
+            result=>result,
             error=>console.log(error)
           )
         }

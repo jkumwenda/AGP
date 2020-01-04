@@ -46,6 +46,10 @@ import { ChartistModule } from 'ng-chartist';
 import { PublicComponent } from './public/public.component';
 import { EventsComponent } from './public/events/events.component';
 import { LeaderboardComponent } from './public/leaderboard/leaderboard.component';
+import { TournamentDetailComponent } from './logged/tournaments/tournament/tournament-detail/tournament-detail.component';
+import { AddFieldComponent } from './logged/tournaments/tournament/add-field/add-field.component';
+import { RegistrationSlotsComponent } from './logged/tournaments/tournament/registration-slots/registration-slots.component';
+
 
 @NgModule({
   declarations: [
@@ -79,7 +83,12 @@ import { LeaderboardComponent } from './public/leaderboard/leaderboard.component
     SignupConfirmationComponent,
     PublicComponent,
     EventsComponent,
-    LeaderboardComponent
+    LeaderboardComponent,
+    TournamentDetailComponent,
+    AddFieldComponent,
+    RegistrationSlotsComponent,
+
+
   ],
   imports: [
     DataTablesModule,
