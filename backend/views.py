@@ -1,11 +1,18 @@
 from django.shortcuts import render
 from django.contrib.auth.models import User
-from rest_framework import viewsets
+from rest_framework import viewsets, permissions
 from .serializers import *
 from .models import *
+from .views_helper import *
 
 
 class UserViewSet(viewsets.ModelViewSet):
+    queryset = User.objects.all()
+    serializer_class = UserSerializer
+
+
+class SignupViewSet(viewsets.ModelViewSet):
+    permission_classes = (permissions.AllowAny,)
     queryset = User.objects.all()
     serializer_class = UserSerializer
 
@@ -58,6 +65,11 @@ class ClubCourseViewSet(viewsets.ModelViewSet):
 class ProfileViewSet(viewsets.ModelViewSet):
     queryset = Profile.objects.all()
     serializer_class = ProfileSerializer
+    
+
+class UserProfileViewSet(viewsets.ModelViewSet):
+    queryset = Profile.objects.all()
+    serializer_class = UserProfileSerializer
 
 
 class ClubProfileViewSet(viewsets.ModelViewSet):
@@ -78,11 +90,23 @@ class RoleViewSet(viewsets.ModelViewSet):
 class GenderViewSet(viewsets.ModelViewSet):
     queryset = Gender.objects.all()
     serializer_class = GenderSerializer
+ 
+
+class ProfileGenderViewSet(viewsets.ModelViewSet):
+    permission_classes = (permissions.AllowAny,)
+    queryset = Gender.objects.all()
+    serializer_class = GenderSerializer
 
 
 class ProfileRoleViewSet(viewsets.ModelViewSet):
     queryset = ProfileRole.objects.all()
     serializer_class = ProfileRoleSerializer
+    
+    def get_queryset(self):
+        queryset = super().get_queryset()
+        data = ViewsHelper.filter_profile_role(
+            self, queryset, self.request.query_params.get('profile_id'))
+        return data
 
 
 class PermissionViewSet(viewsets.ModelViewSet):

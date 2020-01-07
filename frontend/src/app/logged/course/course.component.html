@@ -22,7 +22,7 @@
           </div>
           <div class="card-footer">
           <button class="btn btn-md mdi mdi-file-plus" data-toggle="modal" data-target="#setRating">Set</button>
-          <button class="btn btn-md mdi mdi-pencil-box">Update</button>
+          <button (click)="editComponentCreated=true" class="btn btn-md mdi mdi-pencil-box" data-toggle="modal" data-target="#editRating">Update</button>
           </div>
         </div>
     </div>
@@ -55,7 +55,7 @@
                     <strong>Red Course</strong>
                     <hr>
                     Hand Index <span class="badge badge-light">10</span><br>
-                    Course Handicap <span class="badge badge-light">10</span>
+                   Course Handicap <span class="badge badge-light">10</span>
                     <hr>
                     <div class="row">
                       <button class="btn btn-sm mdi mdi-file-plus set-on-red">Set</button>
@@ -88,4 +88,5 @@
         </div>
     </div>
 </div>
-<app-add-rating [courseId]="1"></app-add-rating>
+<app-add-rating [courseId]="5"></app-add-rating>
+<app-edit-rating *ngIf="editComponentCreated"  [rating]="course.rating[0]" [courseId]="5" ></app-edit-rating>

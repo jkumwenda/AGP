@@ -34,6 +34,7 @@ export class TournamentComponent implements OnInit {
     private activatedRoute:ActivatedRoute
   ) { 
 
+<<<<<<< HEAD
     this.information= new Information(null,null);
     this.eventFormat= new EventFormat(null,null);
     this.registrationDate= new RegistrationDate(null,null);
@@ -77,6 +78,10 @@ export class TournamentComponent implements OnInit {
       },
       error => console.log(error)
     );
+=======
+  ngOnInit() {
+    console.log('HOTETTETETETET');
+>>>>>>> origin/jones
   }
 
   informationUpdated(information:Information){

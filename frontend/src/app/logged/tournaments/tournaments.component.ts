@@ -1,8 +1,12 @@
 import { Component, OnInit } from '@angular/core';
+<<<<<<< HEAD
 import { Tournament } from "src/app/shared/interfaces/tournament";
 import { TournamentService } from "src/app/shared/services/tournament.service";
 import { Router } from '@angular/router';
 import { RegistrationDate } from '../../shared/interfaces/registration-date';
+=======
+import { Router } from '@angular/router';
+>>>>>>> origin/jones
 
 @Component({
   selector: 'app-tournaments',

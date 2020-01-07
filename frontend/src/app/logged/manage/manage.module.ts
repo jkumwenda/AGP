@@ -4,6 +4,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NgxUiLoaderModule } from 'ngx-ui-loader';
 import { HttpClientModule } from '@angular/common/http';
 import { DataTablesModule } from 'angular-datatables';
+import { AuthGuard } from 'src/app/shared/services/auth-guard.service';
+import { RoleGuard } from 'src/app/shared/services/role-guard.service';
 
 import { ManageRoutingModule } from './manage-routing.module';
 import { UserComponent } from './users/user/user.component';
@@ -139,6 +141,7 @@ import { AddTournamentComponent } from '../tournaments/add-tournament/add-tourna
   ],
   exports: [
     ManageRoutingModule
-  ]
+  ],
+  providers: [AuthGuard, RoleGuard]
 })
 export class ManageModule { }

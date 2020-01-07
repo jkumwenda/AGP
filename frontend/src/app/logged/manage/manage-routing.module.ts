@@ -2,6 +2,9 @@ import { ManageNavComponent } from './manage/manage-nav/manage-nav.component';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Routes, RouterModule } from '@angular/router';
+import { AuthGuard } from 'src/app/shared/services/auth-guard.service';
+import { RoleGuard } from 'src/app/shared/services/role-guard.service';
+
 import { GendersComponent } from './genders/genders.component';
 import { AddGenderComponent } from './genders/add-gender/add-gender.component';
 import { EditGenderComponent } from './genders/edit-gender/edit-gender.component';
@@ -74,7 +77,7 @@ const manageRoutes: Routes = [
     {path: 'users', component: UsersComponent},
     {path: 'add-user', component: AddUserComponent},
     {path: 'edit-user', component: EditUserComponent},
-    {path: 'user', component: UserComponent},
+    {path: 'user/:id', component: UserComponent},
     {path: 'genders', component: GendersComponent},
     {path: 'add-gender', component: AddGenderComponent},
     {path: 'edit-gender/:id', component: EditGenderComponent},
@@ -94,7 +97,8 @@ const manageRoutes: Routes = [
     {path: 'courses', component: CoursesComponent},
     {path: 'add-course', component: AddCourseComponent},
     {path: 'edit-course/:id', component: EditCourseComponent},
-    {path: 'clubs', component: ClubsComponent},
+    { path: 'club', component: ClubComponent },
+    { path: 'clubs', component: ClubsComponent},
     {path: 'add-club', component: AddClubComponent},
     {path: 'edit-club/:id', component: EditClubComponent},
     {path: 'formats', component: FormatsComponent},
@@ -104,11 +108,13 @@ const manageRoutes: Routes = [
     {path: 'draw-types', component: DrawTypesComponent},
     {path: 'add-draw-type', component: AddDrawTypeComponent},
     {path: 'edit-draw-type/:id', component: EditDrawTypeComponent},
+<<<<<<< HEAD
     {path: 'draw-type', component: DrawTypeComponent},
     {path: 'event-types', component: EventTypesComponent},
     {path: 'add-event-type', component: AddEventTypeComponent},
     {path: 'edit-event-type/:id', component: EditEventTypeComponent},
     {path: 'event-type', component: EventTypeComponent},
+<<<<<<< HEAD
     {path: 'profiles', component: ProfilesComponent},
     {path: 'add-profile', component: AddProfileComponent},
     {path: 'edit-profile/:id', component: EditProfileComponent},
@@ -118,7 +124,14 @@ const manageRoutes: Routes = [
     {path: 'edit-tournament/:id', component: EditTournamentComponent},
     {path: 'tournament/:id', component: TournamentComponent},
   
+=======
+
+>>>>>>> origin/jones
   ]}
+=======
+    {path: 'draw-type', component: DrawTypeComponent}
+    ], canActivate: [AuthGuard]},
+>>>>>>> master
 ];
 
 @NgModule({
