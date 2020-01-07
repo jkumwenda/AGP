@@ -15,7 +15,7 @@ export class RegistrationSlotsComponent implements OnInit {
   public days: any = [];
   public displayedSlots: Slot[];
   public day: number;
-  public profileId: number = 1; //loggedIn Profile
+  public profileId: number = 2; //loggedIn Profile
   public profileRegistered: Boolean = false;
   public sizes: SlotSize[] = [];
 
