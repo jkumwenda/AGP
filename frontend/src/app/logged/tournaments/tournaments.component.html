@@ -2,42 +2,50 @@
     <div class="col-lg-9 col-md-9 col-sm-12">
 <div class="card login-card dropdown-all w-100 ">
     <div class="card-header card-header-customer md-success">
-        <h5 class="mdi mdi-file-table"> Tournaments</h5>
+        <h5 class="mdi mdi-file-table" class="mdi mdi-trophy"> Tournaments</h5>
     </div>
     <div class="card-body login-card-body ">
-        <h6><a [routerLink]="['/manage/add-user']" class="btn btn-outline-secondary btn-sm mdi mdi-plus ">Add User</a></h6>
-        <table class="table table-striped">
+        <h6><a [routerLink]="['/tournaments/add-tournament']" class="btn btn-outline-secondary btn-sm mdi mdi-plus ">Add Tournament</a></h6>
+        <table datatable class="table table-striped" *ngIf="checkIfEmpty()">
             <thead>
                 <tr>
                     <th>Tournament</th>
                     <th>Date</th>
                     <th>Registration Period</th>
                     <th>Status</th>
-                    <th>Controls</th>
+                    <th width="130px">Controls</th>
                 </tr>
             </thead>
             <tbody>
-                <tr>
-                    <td>National Bank Trophy</td>
-                    <td>20 Dec 2019 - 21 Dec 2019</td>
-                    <td>20 Dec 2019 - 21 Dec 2019</td>
-                    <td>Closed</td>
-                    <td>Closed</td>
+                <tr *ngFor="let tournament of tournaments; let data_index=index">
+                    <td>{{ tournament.event }}</td>
+                    <td >{{ tournament.start_date| date:'mediumDate' }} -
+                        {{ tournament.end_date | date:'mediumDate' }}
+                    </td>
+                    <td *ngIf="tournament.registrationDate[0]">
+                        {{ tournament.registrationDate[0].open_date | date:'mediumDate' }} -
+                        {{ tournament.registrationDate[0].close_date | date:'mediumDate' }}
+                    </td>
+                    <td *ngIf="!tournament.registrationDate[0]">
+                        not set
+                    </td>
+                    <td>{{ tournament.status }}</td>
+                    <td>
+                        <div class="btn-toolbar">
+                        <button (click)="viewTournament(tournament.pk_eventid)" class="btn btn-dark btn-sm btn-control"><i class="mdi mdi-eye"></i></button>
+                        <button (click)="editTournament(tournament.pk_eventid)" class="btn btn-success btn-sm btn-control"><i class="mdi mdi-pencil"></i></button>
+                        <button (click)="deleteTournament(tournament.pk_eventid)" class="btn btn-danger btn-sm btn-control"><i class="mdi mdi-delete"></i></button>
+                        </div>
+                        </td>
                 </tr>
-                <tr>
-                    <td>National Bank Trophy</td>
-                    <td>20 Dec 2019 - 21 Dec 2019</td>
-                    <td>20 Dec 2019 - 21 Dec 2019</td>
-                    <td>Closed</td>
-                    <td>Closed</td>
-                </tr>
+                
             </tbody>
         </table>
     </div>
 </div>
 </div>
   <div class="col-lg-3 col-md-3 col-sm-12">
-    <div class="card login-card dropdown-all w-100 ">
+    <div class="card lCopyrightogin-card dropdown-all w-100 ">
       <div class="card-header card-header-customer md-secondary-dark">
           <h5 class="mdi mdi-file-table"> Tournaments</h5>
       </div>

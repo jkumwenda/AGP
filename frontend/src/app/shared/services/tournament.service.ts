@@ -6,7 +6,7 @@ import { CommonService } from './common.service';
 })
 export class TournamentService {
   public token: any;
-  public endpoint: any = 'api/tournament/';
+  public endpoint: any = 'api/event/';
 
   constructor(private commonService: CommonService) {
   }
@@ -31,7 +31,8 @@ export class TournamentService {
     });
   }
 
-  getTournament(tournamentId) {
+  getTournament(tournamentId)
+   {
     return new Promise((resolve, reject) => {
       this.commonService.get(this.endpoint + tournamentId + '/').then((result) => {
         resolve(result);

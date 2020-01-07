@@ -50,6 +50,14 @@ import { EventTypesComponent } from './event-types/event-types.component';
 import { AddEventTypeComponent } from './event-types/add-event-type/add-event-type.component';
 import { EditEventTypeComponent } from './event-types/edit-event-type/edit-event-type.component';
 import { EventTypeComponent } from './event-types/event-type/event-type.component';
+import { ProfilesComponent } from './profiles/profiles.component';
+import { AddProfileComponent } from './profiles/add-profile/add-profile.component';
+import { EditProfileComponent } from './profiles/edit-profile/edit-profile.component';
+import { ProfileComponent } from './profiles/profile/profile.component';
+import { TournamentsComponent } from '../tournaments/tournaments.component';
+import { AddTournamentComponent } from '../tournaments/add-tournament/add-tournament.component';
+import { EditTournamentComponent } from '../tournaments/edit-tournament/edit-tournament.component';
+import { TournamentComponent } from '../tournaments/tournament/tournament.component';
 
 const manageRoutes: Routes = [
   {path: 'manage', component: ManageComponent,
@@ -101,6 +109,14 @@ const manageRoutes: Routes = [
     {path: 'add-event-type', component: AddEventTypeComponent},
     {path: 'edit-event-type/:id', component: EditEventTypeComponent},
     {path: 'event-type', component: EventTypeComponent},
+    {path: 'profiles', component: ProfilesComponent},
+    {path: 'add-profile', component: AddProfileComponent},
+    {path: 'edit-profile/:id', component: EditProfileComponent},
+    {path: 'profile', component: ProfileComponent},
+    {path: 'tournaments', component: TournamentsComponent},
+    {path: 'add-tournament', component: AddTournamentComponent},
+    {path: 'edit-tournament/:id', component: EditTournamentComponent},
+    {path: 'tournament/:id', component: TournamentComponent},
   
   ]}
 ];

@@ -54,6 +54,10 @@ router.register(r'event_type', backend_views.EventTypeViewSet,
                 base_name='Event Type')
 router.register(r'draw_type', backend_views.DrawTypeViewSet,
                 base_name='Draw Type')
+router.register(r'information', backend_views.InformationViewSet,
+                base_name='Information')
+router.register(r'field', backend_views.FieldViewSet,
+                base_name='Field')
 
 
 # Wire up our API using automatic URL routing.

@@ -120,6 +120,16 @@ class SlotViewSet(viewsets.ModelViewSet):
     serializer_class = SlotSerializer
 
 
+class InformationViewSet(viewsets.ModelViewSet):
+    queryset = Information.objects.all()
+    serializer_class = InformationSerializer
+
+
+class FieldViewSet(viewsets.ModelViewSet):
+    queryset = Field.objects.all()
+    serializer_class = FieldSerializer
+
+
 class EventViewSet(viewsets.ModelViewSet):
     queryset = Event.objects.all()
     serializer_class = EventSerializer
@@ -132,4 +142,4 @@ class EventTypeViewSet(viewsets.ModelViewSet):
 
 class EventFormatViewSet(viewsets.ModelViewSet):
     queryset = EventFormat.objects.all()
-    serializer_class = EventTypeSerializer
+    serializer_class = EventFormatSerializer
