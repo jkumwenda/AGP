@@ -59,6 +59,8 @@ import { EventTypesComponent } from './event-types/event-types.component';
 import { AddEventTypeComponent } from './event-types/add-event-type/add-event-type.component';
 import { EditEventTypeComponent } from './event-types/edit-event-type/edit-event-type.component';
 import { EventTypeComponent } from './event-types/event-type/event-type.component';
+import { AddUserRoleComponent } from './users/user/add-user-role/add-user-role.component';
+import { UserRolePermissionsComponent } from './users/user/user-role-permissions/user-role-permissions.component';
 
 @NgModule({
   declarations: [
@@ -111,7 +113,9 @@ import { EventTypeComponent } from './event-types/event-type/event-type.componen
     EventTypesComponent,
     AddEventTypeComponent,
     EditEventTypeComponent,
-    EventTypeComponent
+    EventTypeComponent,
+    AddUserRoleComponent,
+    UserRolePermissionsComponent
   ],
   imports: [
     FormsModule,

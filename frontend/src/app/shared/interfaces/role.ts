@@ -5,4 +5,5 @@ export class Role {
   role: string;
   role_desc: string;
   Permissions:Permission[]
+  selected:boolean
 }

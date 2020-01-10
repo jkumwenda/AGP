@@ -43,6 +43,7 @@ export class RoleComponent implements OnInit {
     let index = this.permissions.findIndex(permission => permission.pk_permissionid==permissionId)
     this.permissions[index].selected= this.permissions[index].selected?false:true
   }
+
   selectRolePermission(permissionId){
     let index = this.rolePermissions.findIndex(permission => permission.pk_permissionid==permissionId)
     this.rolePermissions[index].selected= this.rolePermissions[index].selected?false:true

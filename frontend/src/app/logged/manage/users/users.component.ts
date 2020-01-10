@@ -20,6 +20,7 @@ export class UsersComponent implements OnInit {
     this.userProfileService.getUserProfiles().then(
       result => {
         this.profiles = result as Profile[];
+        console.log(this.profiles)
       },
       error => {}
     );
@@ -28,6 +29,7 @@ export class UsersComponent implements OnInit {
   viewUser(profileId) {
     this.router.navigate(['/manage/user', profileId]);
   }
+
 
   ngOnInit() {
     this.getUsers();
