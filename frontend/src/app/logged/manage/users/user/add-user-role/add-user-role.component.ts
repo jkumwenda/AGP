@@ -1,5 +1,13 @@
 //import { Component, ViewChild, El, OutputementRef, OnInit, Input, EventEmiter} from "@angular/core";
-import { Component, OnInit, ViewChild, ElementRef, Input, Output, EventEmitter } from "@angular/core";
+import {
+  Component,
+  OnInit,
+  ViewChild,
+  ElementRef,
+  Input,
+  Output,
+  EventEmitter
+} from "@angular/core";
 import { Role } from "src/app/shared/interfaces/role";
 import { RoleService } from "src/app/shared/services/role.service";
 import { ProfileRole } from "src/app/shared/interfaces/profile-role";
@@ -12,9 +20,10 @@ import { ProfileRoleService } from "src/app/shared/services/profile-role.service
   templateUrl: "./add-user-role.component.html",
   styleUrls: ["./add-user-role.component.css"]
 })
+
 export class AddUserRoleComponent implements OnInit {
   @Input() userRoles: ProfileRole[];
-  @Output() userRoleCreated = new EventEmitter<ProfileRole>()
+  @Output() userRoleCreated = new EventEmitter<ProfileRole>();
 
   public moduleTitle: string = "Assign Roles";
   public roles: Role[] = [];
@@ -40,7 +49,7 @@ export class AddUserRoleComponent implements OnInit {
           item =>
             !this.userRoles.some(ur => ur.fk_roleid.pk_roleid == item.pk_roleid)
         );
-        this.roles.forEach(r => (r.selected = false));
+        this.roles.forEach(r => r.selected = false );
         this.initialiseForm();
         this.initRoleArray();
       },
@@ -49,7 +58,7 @@ export class AddUserRoleComponent implements OnInit {
   }
 
   ngOnChanges(): void {
-    this.getRoles()
+    this.getRoles();
   }
 
   initialiseForm() {
@@ -81,7 +90,7 @@ export class AddUserRoleComponent implements OnInit {
     });
     this.createUserRole(formValue.roles);
     this.closeModal.nativeElement.click();
-    this.ngOnInit()
+    this.ngOnInit();
   }
 
   createUserRole(roleArray) {
@@ -94,13 +103,12 @@ export class AddUserRoleComponent implements OnInit {
           })
           .then(
             (result: ProfileRole) => {
-              this.userRoleCreated.emit(result)
-              this.roleArray.splice(0,1)
-              this.getRoles()
-
+              this.userRoleCreated.emit(result);
+              this.roleArray.splice(0, 1);
+              this.getRoles();
             },
 
-            error => console.log(error)
+            error => {}
           );
       }
     });

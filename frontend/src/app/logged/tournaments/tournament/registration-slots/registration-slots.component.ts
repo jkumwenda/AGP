@@ -50,26 +50,25 @@ export class RegistrationSlotsComponent implements OnInit {
   }
 
   register(slotId, size) {
-
     if (this.profileRegistered) return;
     let slot = this.slots.find(slot => slot.pk_slotid == slotId);
-    if (this.checkIfRegisteredOtherProfile(size,slot.registers)) return
+    if (this.checkIfRegisteredOtherProfile(size, slot.registers)) return;
 
-      this.registerService
-        .addSlotRegister({
-          fk_profileid: this.profileId,
-          fk_slotid: slotId,
-          fk_slot_sizeid: size
-        })
-        .then(
-          (result: SlotRegister) => {
-            let index = this.slots.findIndex(slot => slot.pk_slotid == slotId);
-            this.slots[index].registers.push(result);
-            this.daySlots(this.day);
-            this.profileRegistered = true;
-          },
-          error => console.log(error)
-        );
+    this.registerService
+      .addSlotRegister({
+        fk_profileid: this.profileId,
+        fk_slotid: slotId,
+        fk_slot_sizeid: size
+      })
+      .then(
+        (result: SlotRegister) => {
+          let index = this.slots.findIndex(slot => slot.pk_slotid == slotId);
+          this.slots[index].registers.push(result);
+          this.daySlots(this.day);
+          this.profileRegistered = true;
+        },
+        error => {}
+      );
   }
 
   checkProfileRegistered(registers: SlotRegister[]) {
@@ -88,7 +87,7 @@ export class RegistrationSlotsComponent implements OnInit {
       (result: SlotSize[]) => {
         this.sizes = result;
       },
-      error => console.log(error)
+      error => {}
     );
   }
 
@@ -108,15 +107,15 @@ export class RegistrationSlotsComponent implements OnInit {
         this.daySlots(this.day);
         this.profileRegistered = false;
       },
-      error => console.log(error)
+      error => {}
     );
   }
 
   ngOnChanges(): void {
-    console.log(this.slots);
     this.slots.forEach(
       slot => (slot.slot_time = this.createDateTime(slot.slot_time))
     );
+
     this.day = 1;
     this.findDays();
     this.daySlots(this.day);
@@ -141,7 +140,6 @@ export class RegistrationSlotsComponent implements OnInit {
   }
 
   ngOnInit() {
-    console.log(this.slots);
     this.getSlotSizes();
   }
 }
