@@ -7,12 +7,9 @@ import { CourseComponent } from './logged/course/course.component';
 import { PlayersComponent } from './logged/players/players.component';
 import { SignupComponent } from './auth/signup/signup.component';
 import { LoginComponent } from './auth/login/login.component';
-<<<<<<< HEAD
 import { AddTournamentComponent } from './logged/tournaments/add-tournament/add-tournament.component';
 import { EditTournamentComponent } from './logged/tournaments/edit-tournament/edit-tournament.component';
-=======
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
->>>>>>> origin/jones
 
 const routes: Routes = [
   { path: '', component: LoginComponent },

@@ -6,12 +6,12 @@ import { Tournament } from 'src/app/shared/interfaces/tournament';
 import { DrawType } from 'src/app/shared/interfaces/draw-type';
 import { TournamentService } from "src/app/shared/services/tournament.service";
 import { Router, ActivatedRoute } from '@angular/router';
-
 @Component({
   selector: 'app-tournament',
   templateUrl: './tournament.component.html',
   styleUrls: ['./tournament.component.css']
 })
+
 export class TournamentComponent implements OnInit {
   public registrationDate:RegistrationDate;
   tournaments: any[];
@@ -27,14 +27,12 @@ export class TournamentComponent implements OnInit {
   public editComponentCreated: boolean = false;
   public addComponentCreated: boolean = false;
 
-  constructor(
-    
+  constructor(    
     private router: Router,
     private tournamentService: TournamentService,
     private activatedRoute:ActivatedRoute
   ) { 
 
-<<<<<<< HEAD
     this.information= new Information(null,null);
     this.eventFormat= new EventFormat(null,null);
     this.registrationDate= new RegistrationDate(null,null);
@@ -43,66 +41,42 @@ export class TournamentComponent implements OnInit {
     this.tournament.eventFormat.push(new EventFormat(null,null))
     this.tournament.information.push(new Information(null,null))
     this.tournament.registrationDate.push(new RegistrationDate(null,null))
-
-
   }
 
   getTournament(tournamentId) {
     this.tournamentService.getTournament(tournamentId).then(
       (result: Tournament) => {
-
         this.tournament = result; 
         
-        
         if(this.tournament.information.length > 0){
-            this.information.pk_informationid=this.tournament.information[0].pk_informationid
-            //console.log(this.tournament.information[0].info)
+            this.information.pk_informationid=this.tournament.information[0].pk_informationid  
           }
         else this.tournament.information[0]= new Information(null, null)
 
         if(this.tournament.eventFormat.length>0){
           this.eventFormat.pk_event_formatid=this.tournament.eventFormat[0].pk_event_formatid
-          //console.log(this.tournament.eventFormat[0].format.format)
-
         }
         else this.tournament.eventFormat.push(new EventFormat(null, null))
 
         if(this.tournament.registrationDate.length>0){
           this.registrationDate.pk_registration_dateid=this.tournament.registrationDate[0].pk_registration_dateid
-          //console.log(this.tournament.registrationDate[0].open_date)
-          
-
         }
         else this.tournament.registrationDate.push(new RegistrationDate(null, null))
 
       },
       error => console.log(error)
     );
-=======
-  ngOnInit() {
-    console.log('HOTETTETETETET');
->>>>>>> origin/jones
   }
 
-  informationUpdated(information:Information){
-   this.tournament.information[0].info = information.info
-   console.log(this.tournament.information[0])
+  editInformation(data){
+    this.tournament.information[0]=data
+    this.information=data
+    console.log(data)
   }
-
-  informationCreated(information:Information){
-    
-    this.tournament.information.push(this.tournament.information[0]);
-    console.log(this.tournament.information)
-
-    
-    
-  }
-
 
   editDrawType(data){
     this.tournament.draw_type=data
   }
-
 
   editFormat(data){
     this.tournament.eventFormat[0].format=data
@@ -110,14 +84,13 @@ export class TournamentComponent implements OnInit {
   }
 
   editRegistrationDate(data){
-    this.tournament.registrationDate[0]=data
-    console.log(data)
+
+    this.tournament.registrationDate[0]= data
+    this.registrationDate=data
+  
   }
 
   ngOnInit() {
-
-    this.getTournament(this.tournamentId);
-    
-   
+    this.getTournament(this.tournamentId);    
   }
 }

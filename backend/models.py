@@ -210,7 +210,7 @@ class EventType(models.Model):
         managed = True
         db_table = 'event_type'
 
-
+        
 class DrawType(models.Model):
     pk_draw_typeid = models.AutoField(primary_key=True)
     draw_type = models.CharField(max_length=45)

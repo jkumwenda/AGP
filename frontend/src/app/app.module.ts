@@ -39,6 +39,9 @@ import { AddEventFormatComponent } from './logged/tournaments/add-event-format/a
 import { EditEventFormatComponent } from './logged/tournaments/edit-event-format/edit-event-format.component';
 import { EventFormatComponent } from './logged/tournaments/event-format/event-format.component';
 import { EditEventDrawTypeComponent } from './logged/tournaments/edit-event-draw-type/edit-event-draw-type.component';
+import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
+import { SignupComponent } from './auth/signup/signup.component';
+import { EditRatingComponent } from './logged/course/edit-rating/edit-rating.component';
 
 
 @NgModule({
@@ -68,6 +71,9 @@ import { EditEventDrawTypeComponent } from './logged/tournaments/edit-event-draw
     EditEventFormatComponent,
     EventFormatComponent,
     EditEventDrawTypeComponent,
+    PageNotFoundComponent,
+    SignupComponent,
+    EditRatingComponent
   
   ],
   imports: [

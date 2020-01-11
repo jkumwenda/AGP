@@ -1,12 +1,11 @@
 import { Component, OnInit, Input, ViewChild, ElementRef, Output, EventEmitter } from "@angular/core";
 import { FormGroup, FormBuilder, Validators } from "@angular/forms";
-
 import { EventFormatService } from "src/app/shared/services/event-format.service";
 import { EventFormat } from 'src/app/shared/interfaces/event-format';
 import { Format } from 'src/app/shared/interfaces/format';
 import { Router } from "@angular/router";
 import { FormatService } from 'src/app/shared/services/format.service';
-//import * as $ from "jquery";
+
 @Component({
   selector: "app-add-event-format",
   templateUrl: "./add-event-format.component.html",
@@ -14,12 +13,12 @@ import { FormatService } from 'src/app/shared/services/format.service';
 })
 export class AddEventFormatComponent implements OnInit {
   @ViewChild("closeModal", null) closeModal: ElementRef;
-  public moduleTitle: string = "Set Event Format";
-  public eventFormatForm: FormGroup;
-  public eventFormatData: any;
-
   @Output() eventFormatCreated = new EventEmitter<any>()
   @Input() eventId: number;
+
+  public moduleTitle: string = "Set Event Format";
+  public eventFormatForm: FormGroup;
+  public eventFormatData: any;  
   public formats: Format[];
 
   constructor(
@@ -28,7 +27,6 @@ export class AddEventFormatComponent implements OnInit {
     private formatService: FormatService,
     private router: Router
   ) {}
-
 
   addEventFormat() {
     let data = this.eventFormatForm.value
@@ -59,4 +57,3 @@ export class AddEventFormatComponent implements OnInit {
     });
   }
 }
-

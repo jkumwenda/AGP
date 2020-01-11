@@ -95,8 +95,8 @@
 <app-add-registration-date *ngIf="addComponentCreated" [eventId]="tournamentId" (registrationDateCreated)="editRegistrationDate($event)"></app-add-registration-date>
 <app-edit-registration-date *ngIf="editComponentCreated" [registrationDateId]="registrationDate.pk_registration_dateid" (registrationDateEdited)="editRegistrationDate($event)"></app-edit-registration-date>
 
-<app-add-information *ngIf="addComponentCreated" [eventId]="tournamentId" (informationCreated)="informationUpdated($event)"></app-add-information>
-<app-edit-information *ngIf="editComponentCreated" [informationId]="information.pk_informationid" (informationUpdated)="informationUpdated($event)"></app-edit-information>
+<app-add-information *ngIf="addComponentCreated" [eventId]="tournamentId" (informationUpdated)="editInformation($event)"></app-add-information>
+<app-edit-information *ngIf="editComponentCreated" [informationId]="information.pk_informationid" (informationUpdated)="editInformation($event)"></app-edit-information>
 
 <app-add-event-format *ngIf="addComponentCreated" (eventFormatCreated)='editFormat($event)' [eventId]="tournamentId"></app-add-event-format>
 <app-edit-event-format *ngIf="editComponentCreated" [eventFormatId]="eventFormat.pk_event_formatid" (formatEdited)="editFormat($event)"></app-edit-event-format>

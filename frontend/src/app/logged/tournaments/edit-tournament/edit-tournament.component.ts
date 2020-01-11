@@ -10,13 +10,12 @@ import { TournamentService } from "src/app/shared/services/tournament.service";
 import { FormGroup, FormBuilder, Validators } from "@angular/forms";
 import { DatePipe } from '@angular/common'
 import { Router, ActivatedRoute } from '@angular/router';
-
-
 @Component({
   selector: 'app-edit-tournament-format',
   templateUrl: './edit-tournament.component.html',
   styleUrls: ['./edit-tournament.component.css']
 })
+
 export class EditTournamentComponent implements OnInit {
   @Input() tournamentId: number;
   @ViewChild("closeModal", null) closeModal: ElementRef;

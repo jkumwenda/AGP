@@ -14,7 +14,6 @@ export class EditInformationComponent implements OnInit {
   @Input() informationId: number;
   @Input() eventId: number;
   @ViewChild("closeModal", null) closeModal: ElementRef;
-
   @Output() informationUpdated = new EventEmitter<Information>();
 
   public moduleTitle: string = "Edit Information";
@@ -48,6 +47,7 @@ export class EditInformationComponent implements OnInit {
   
      const data = this.informationForm.value;
      this.informationData = {
+       pk_informationid:this.informationId,
        info: data.info,
      };
 

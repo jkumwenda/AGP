@@ -29,37 +29,29 @@ export class EditRegistrationDateComponent implements OnInit {
     private router: Router,
     private activatedRoute: ActivatedRoute,
   ) {
-     //this.eventId = activatedRoute.snapshot.params['id'];
      this.initializeRegistrationDateForm();
    }
 
-   getRegistrationDate(registrationDateId){
-     
-     
+   getRegistrationDate(registrationDateId){ 
      this.registrationDateService.getRegistrationDate(registrationDateId).then((result) => {
        this.registrationDate = result as RegistrationDate;
-       
        this.initializeRegistrationDateForm();
-       //console.log(RegistrationDate);
-
      }, (error) => {
      });
      }
 
    editRegistrationDate(registrationDateId){
      const data = this.registrationDateForm.value;
-     console.log(this.registrationDateForm.value)
+ 
      this.registrationDateData = {
+       pk_registration_dateid:this.registrationDateId,
        open_date: data.open_date,
        close_date: data.close_date,
      };
-
-     //let registrationDate = this.registrationDates.find(re=> re.pk_registration_dateid===this.registrationDateData.fk_registration_dateid)
-     this.registrationDateService.editRegistrationDate(this.registrationDateId, this.registrationDateData).then((result) => {
-      
-       //this.registrationDateEdited.emit(registrationDate)
-       
-       this.closeModal.nativeElement.click()
+    
+     this.registrationDateService.editRegistrationDate(this.registrationDateId, this.registrationDateData).then((result) => { 
+      this.registrationDateEdited.emit(this.registrationDateData) 
+      this.closeModal.nativeElement.click()
     }, (error) => {
        console.log(error);
 

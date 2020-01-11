@@ -4,8 +4,8 @@ export class
 RegistrationDate {
     pk_registration_dateid: number;
     eventId: Tournament;
-    open_date: RegistrationDate;
-    close_date: RegistrationDate
+    open_date: Date;
+    close_date: Date;
     fk_eventid:number;
 
     //constructor(odate,cdate){

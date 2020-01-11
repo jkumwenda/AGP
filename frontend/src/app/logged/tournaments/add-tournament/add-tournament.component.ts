@@ -10,7 +10,6 @@ import { FormGroup, FormBuilder, Validators } from "@angular/forms";
 import { Router } from "@angular/router";
 import { DatePipe } from '@angular/common'
 import { Tournament } from 'src/app/shared/interfaces/tournament';
-//import * as $ from "jquery";
 @Component({
   selector: "app-add-tournament",
   templateUrl: "./add-tournament.component.html",
@@ -49,8 +48,6 @@ export class AddTournamentComponent implements OnInit {
      );
   }
       
-   
-
   getDrawTypes() {
     this.drawTypeService.getDrawTypes().then(
       (result: DrawType[]) => {
@@ -95,10 +92,5 @@ export class AddTournamentComponent implements OnInit {
       fk_event_typeid: ["", Validators.compose([Validators.required])],
       fk_profileid: ["", Validators.compose([Validators.required])],
     });
-
-    /** manually selecting bootstrap version for bootstrap-select plugin  */
-    // $('select').selectpicker()
-    // $.fn.selectpicker.Constructor.BootstrapVersion = "4";
-    // $('select').selectpicker('refresh')
   }
 }

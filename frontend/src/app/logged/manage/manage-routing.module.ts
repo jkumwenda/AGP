@@ -108,13 +108,11 @@ const manageRoutes: Routes = [
     {path: 'draw-types', component: DrawTypesComponent},
     {path: 'add-draw-type', component: AddDrawTypeComponent},
     {path: 'edit-draw-type/:id', component: EditDrawTypeComponent},
-<<<<<<< HEAD
     {path: 'draw-type', component: DrawTypeComponent},
     {path: 'event-types', component: EventTypesComponent},
     {path: 'add-event-type', component: AddEventTypeComponent},
     {path: 'edit-event-type/:id', component: EditEventTypeComponent},
     {path: 'event-type', component: EventTypeComponent},
-<<<<<<< HEAD
     {path: 'profiles', component: ProfilesComponent},
     {path: 'add-profile', component: AddProfileComponent},
     {path: 'edit-profile/:id', component: EditProfileComponent},
@@ -124,14 +122,7 @@ const manageRoutes: Routes = [
     {path: 'edit-tournament/:id', component: EditTournamentComponent},
     {path: 'tournament/:id', component: TournamentComponent},
   
-=======
-
->>>>>>> origin/jones
   ]}
-=======
-    {path: 'draw-type', component: DrawTypeComponent}
-    ], canActivate: [AuthGuard]},
->>>>>>> master
 ];
 
 @NgModule({

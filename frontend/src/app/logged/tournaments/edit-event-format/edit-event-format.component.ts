@@ -5,13 +5,12 @@ import { FormatService } from "src/app/shared/services/format.service";
 import { EventFormatService } from "src/app/shared/services/event-format.service";
 import { FormGroup, FormBuilder, Validators } from "@angular/forms";
 import { Router, ActivatedRoute } from '@angular/router';
-
-
 @Component({
   selector: 'app-edit-event-format',
   templateUrl: './edit-event-format.component.html',
   styleUrls: ['./edit-event-format.component.css']
 })
+
 export class EditEventFormatComponent implements OnInit {
   @Input() eventFormatId;
   @Input() eventId: number;
@@ -24,7 +23,6 @@ export class EditEventFormatComponent implements OnInit {
   public eventFormat: EventFormat;
   public formats: Format[];
 
-
   constructor(
     private formBuilder: FormBuilder,
     private eventFormatService: EventFormatService,
@@ -36,11 +34,9 @@ export class EditEventFormatComponent implements OnInit {
      this.initializeEventFormatForm();
    }
 
-   getEventFormat(eventFormatId){
-     
+   getEventFormat(eventFormatId){     
      this.eventFormatService.getEventFormat(eventFormatId).then((result) => {
        this.eventFormat = result as EventFormat;
-       
        this.initializeEventFormatForm();
        console.log(EventFormat);
 
