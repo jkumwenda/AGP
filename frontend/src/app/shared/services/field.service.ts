@@ -45,7 +45,7 @@ export class FieldService {
   editField(fieldId, data) {
     return new Promise((resolve, reject) => {
       this.commonService.update(this.endpoint + fieldId + '/', data).then((result) => {
-        resolve(true);
+        resolve(result);
       }, (error) => {
         reject(false);
       });

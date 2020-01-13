@@ -19,8 +19,8 @@ export class Tournament {
     fk_draw_typeid: number;
     fk_event_typeid: number;
     fk_profileid: number;
-    information:Information[];
-    eventFormat:EventFormat[];
+    information: Information[];
+    eventFormat: EventFormat[];
     registrationDate: RegistrationDate[];
     field: Field[];
 
@@ -34,8 +34,9 @@ export class Tournament {
       this.start_date = sDate;
       this.end_date = eDate;
       this.field = [];
+
     }
 
 
-    static initialize = () => new Tournament(null, null, null, null)
+    static initialize = () => new Tournament(null, null, null, null);
 }
