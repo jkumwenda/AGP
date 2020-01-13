@@ -1,4 +1,4 @@
-//import { Component, ViewChild, El, OutputementRef, OnInit, Input, EventEmiter} from "@angular/core";
+
 import {
   Component,
   OnInit,
@@ -7,31 +7,31 @@ import {
   Input,
   Output,
   EventEmitter
-} from "@angular/core";
-import { Role } from "src/app/shared/interfaces/role";
-import { RoleService } from "src/app/shared/services/role.service";
-import { ProfileRole } from "src/app/shared/interfaces/profile-role";
-import { FormGroup, FormBuilder, FormArray, FormControl } from "@angular/forms";
-import { ActivatedRoute } from "@angular/router";
-import { ProfileRoleService } from "src/app/shared/services/profile-role.service";
+} from '@angular/core';
+import { Role } from 'src/app/shared/interfaces/role';
+import { RoleService } from 'src/app/shared/services/role.service';
+import { ProfileRole } from 'src/app/shared/interfaces/profile-role';
+import { FormGroup, FormBuilder, FormArray, FormControl } from '@angular/forms';
+import { ActivatedRoute } from '@angular/router';
+import { ProfileRoleService } from 'src/app/shared/services/profile-role.service';
 
 @Component({
-  selector: "app-add-user-role",
-  templateUrl: "./add-user-role.component.html",
-  styleUrls: ["./add-user-role.component.css"]
+  selector: 'app-add-user-role',
+  templateUrl: './add-user-role.component.html',
+  styleUrls: ['./add-user-role.component.css']
 })
 
 export class AddUserRoleComponent implements OnInit {
   @Input() userRoles: ProfileRole[];
   @Output() userRoleCreated = new EventEmitter<ProfileRole>();
 
-  public moduleTitle: string = "Assign Roles";
+  public moduleTitle = 'Assign Roles';
   public roles: Role[] = [];
-  public AddComponentCreated: Boolean = false;
+  public AddComponentCreated: boolean = false;
   public roleForm: FormGroup;
   public roleArray: any = [];
   public profileId: number;
-  @ViewChild("closeModal", null) closeModal: ElementRef;
+  @ViewChild('closeModal', null) closeModal: ElementRef;
 
   constructor(
     private roleService: RoleService,
@@ -39,7 +39,7 @@ export class AddUserRoleComponent implements OnInit {
     private activatedRoute: ActivatedRoute,
     private profileRoleService: ProfileRoleService
   ) {
-    this.profileId = this.activatedRoute.snapshot.params["id"];
+    this.profileId = this.activatedRoute.snapshot.params.id;
   }
 
   getRoles() {
@@ -76,7 +76,7 @@ export class AddUserRoleComponent implements OnInit {
   }
 
   initRoleArray() {
-    this.roleArray = this.roleForm.get("roles").controls;
+    this.roleArray = this.roleForm.get('roles')['controls'];
   }
 
   submit(value) {
