@@ -44,8 +44,6 @@ import { PageNotFoundComponent } from './page-not-found/page-not-found.component
 import { SignupComponent } from './auth/signup/signup.component';
 import { AddPlayerComponent } from './logged/players/add-player/add-player.component';
 import { PlayerComponent } from './logged/players/player/player.component';
-import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
-import { SignupComponent } from './auth/signup/signup.component';
 import { EditRatingComponent } from './logged/course/edit-rating/edit-rating.component';
 import { RatingComponent } from './logged/course/rating/rating.component';
 import { CourseTypesComponent } from './logged/course/course-types/course-types.component';
@@ -95,7 +93,7 @@ import { RegistrationSlotsComponent } from './logged/tournaments/tournament/regi
     EditEventDrawTypeComponent,
     PageNotFoundComponent,
     SignupComponent,
-    EditRatingComponent
+    EditRatingComponent,
     AddPlayerComponent,
     PlayerComponent,
     PageNotFoundComponent,
@@ -136,8 +134,6 @@ import { RegistrationSlotsComponent } from './logged/tournaments/tournament/regi
     ChartistModule
   ],
   providers: [AuthService, DatePipe],
-  bootstrap: [AppComponent],
-  providers: [AuthService, DataService],
   bootstrap: [AppComponent],
   schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })

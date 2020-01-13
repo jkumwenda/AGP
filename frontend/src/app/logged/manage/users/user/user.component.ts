@@ -76,8 +76,8 @@ export class UserComponent implements OnInit {
 
   initializeProfileData() {
     if (this.profile == null) {
-      this.profile = new Profile(null,null);
-      this.profile.user = new User(null,null);
+      this.profile = new Profile(null, null);
+      this.profile.user = new User();
       this.profile.gender = new Gender();
       this.profile.dob = null;
       this.profile.phone = null;

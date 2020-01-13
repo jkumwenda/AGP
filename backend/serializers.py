@@ -254,8 +254,8 @@ class SlotSerializer(serializers.ModelSerializer):
         
 class InformationSerializer(serializers.ModelSerializer):
     class Meta:
-    model = Information
-    fields = '__all__'
+        model = Information
+        fields = '__all__'
     
 class FieldSerializer(serializers.ModelSerializer):
     slots = SlotSerializer(many=True, read_only=True)

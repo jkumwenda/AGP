@@ -46,10 +46,10 @@ export class EditTournamentComponent implements OnInit {
    }
 
    getTournament(tournamentId){
-     
+
      this.tournamentService.getTournament(tournamentId).then((result) => {
        this.tournament = result as Tournament;
-       
+
        this.initializeTournamentForm();
        console.log(this.initializeTournamentForm());
 
@@ -71,7 +71,7 @@ export class EditTournamentComponent implements OnInit {
 
      this.tournamentService.editTournament(this.tournamentId, this.tournamentData).then((result) => {
       this.router.navigate(['/tournaments']);
- 
+
     }, (error) => {
        console.log(error);
 
@@ -107,7 +107,7 @@ export class EditTournamentComponent implements OnInit {
 
     initializeTournamentForm() {
       if (this.tournament==null) {
-        this.tournament = new Tournament();
+        this.tournament = Tournament.initialize();
         this.tournament.fk_event_typeid = null;
         this.tournament.fk_draw_typeid = null;
         this.tournament.fk_profileid = null;

@@ -76,7 +76,7 @@ export class AddUserRoleComponent implements OnInit {
   }
 
   initRoleArray() {
-    this.roleArray = this.roleForm.get("roles").controls;
+    this.roleArray = this.roleForm.get("roles")['controls'];
   }
 
   submit(value) {

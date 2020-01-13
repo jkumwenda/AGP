@@ -126,8 +126,6 @@ const manageRoutes: Routes = [
     {path: 'add-tournament', component: AddTournamentComponent},
     {path: 'edit-tournament/:id', component: EditTournamentComponent},
     {path: 'tournament/:id', component: TournamentComponent},
-  
-  ]}
     { path: 'event-type', component: EventTypeComponent },
     { path: 'draw-type', component: DrawTypeComponent },
   ], canActivate: [AuthGuard]}

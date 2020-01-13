@@ -1,9 +1,9 @@
-import { Component, OnInit, Input, Output, ViewChild, ElementRef, EventEmitter } from "@angular/core";
-import { DrawType } from "src/app/shared/interfaces/draw-type";
-import { DrawTypeService } from "src/app/shared/services/draw-type.service";
-import { Tournament } from "src/app/shared/interfaces/tournament";
-import { TournamentService } from "src/app/shared/services/tournament.service";
-import { FormGroup, FormBuilder, Validators } from "@angular/forms";
+import { Component, OnInit, Input, Output, ViewChild, ElementRef, EventEmitter } from '@angular/core';
+import { DrawType } from 'src/app/shared/interfaces/draw-type';
+import { DrawTypeService } from 'src/app/shared/services/draw-type.service';
+import { Tournament } from 'src/app/shared/interfaces/tournament';
+import { TournamentService } from 'src/app/shared/services/tournament.service';
+import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Router, ActivatedRoute } from '@angular/router';
 
 
@@ -18,9 +18,9 @@ export class EditEventDrawTypeComponent implements OnInit {
   @Input() eventId: number;
   @Output() drawTypeEdited = new EventEmitter<any>()
   @Output() event
-  @ViewChild("closeModal", null) closeModal: ElementRef;
+  @ViewChild('closeModal', null) closeModal: ElementRef;
 
-  public moduleTitle: string = "Edit Draw Type";
+  public moduleTitle: string = 'Edit Draw Type';
   public eventDrawTypeForm: FormGroup;
   private eventDrawTypeData: any;
   public drawType: DrawType;
@@ -40,10 +40,10 @@ export class EditEventDrawTypeComponent implements OnInit {
    }
 
    getEventDrawType(eventId){
-     
+
      this.tournamentService.getTournament(eventId).then((result) => {
        this.tournament = result as Tournament;
-       
+
        this.initializeEventDrawTypeForm();
        console.log(this.initializeEventDrawTypeForm());
 
@@ -60,7 +60,7 @@ export class EditEventDrawTypeComponent implements OnInit {
      this.tournamentService.editTournament(this.eventId, this.eventDrawTypeData).then((result) => {
       this.drawTypeEdited.emit(dType)
       this.closeModal.nativeElement.click()
- 
+
     }, (error) => {
        console.log(error);
 
@@ -77,8 +77,8 @@ export class EditEventDrawTypeComponent implements OnInit {
     }
 
     initializeEventDrawTypeForm() {
-      if (this.tournament==null) {
-        this.tournament = new Tournament();
+      if (this.tournament == null) {
+        this.tournament = Tournament.initialize();
         this.tournament.fk_draw_typeid = null;
       }
 
