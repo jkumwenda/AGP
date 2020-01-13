@@ -1,0 +1,20 @@
+<h6><a  class="btn btn-md mdi mdi-plus-box" data-toggle="modal" data-target="#addHole">Hole</a></h6>
+<table class="table table-striped table-dark table-sm holes-table" *ngIf="checkIfEmpty()">
+  <tr><th>Hole</th><th>Distance</th><th>Par</th><th>SI</th><th width='100'>Controls</th></tr>
+  <tr *ngFor="let hole of courseType.holes; let i=index">
+    <td>{{ i + 1}}</td>
+    <td>{{ hole.distance }}</td>
+    <td>{{ hole.par }}</td>
+    <td>{{ hole.si }}</td>
+    <td>
+      <span class="mdi mdi-delete hole-delete" (click)="deleteHole(hole.pk_course_type_holeid)"> Delete</span> |
+       <span class="mdi mdi-pencil hole-edit" data-toggle="modal" data-target="#editHole" (click)="editHole(hole)" >Edit</span>
+      </td>
+  </tr>
+</table>
+<div *ngIf="!checkIfEmpty()" class="alert alert-danger" role="alert">
+  <small> No Holes Created</small>
+</div>
+<!-- <button (click)="addComponentCreated=true"  class="btn btn-md mdi mdi-file-plus" >Set</button> -->
+<app-edit-course-type-hole *ngIf="editCourseTypeCreated" (editCourseTypeHoleEvent)="editedHole($event)" [courseTypeHole]="courseTypehole"></app-edit-course-type-hole>
+<app-add-course-type-hole [courseTypeId]="this.courseType.pk_course_typeid"></app-add-course-type-hole>

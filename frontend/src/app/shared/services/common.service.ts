@@ -35,7 +35,8 @@ export class CommonService {
 
     this.httpHeadersNoAuth = {
       headers: new HttpHeaders({
-        'Content-Type': 'application/json'
+        'Content-Type': 'application/json',
+        Authorization: ''
       })
     };
   }
@@ -125,4 +126,6 @@ export class CommonService {
       });
     });
   }
+
+
 }

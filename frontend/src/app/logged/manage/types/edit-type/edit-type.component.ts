@@ -27,8 +27,7 @@ export class EditTypeComponent implements OnInit {
   }
   initializetypeForm() {
     if (this.type == null) {
-      this.type = new Type();
-      this.type.type = null;
+      this.type = new Type(null);
     }
 
     this.typeForm = this.formBuilder.group({

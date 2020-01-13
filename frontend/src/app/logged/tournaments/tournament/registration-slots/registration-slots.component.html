@@ -1,0 +1,33 @@
+<div class="card dropdown-all d-flex w-100 ">
+  <div class="card-header card-header-customer md-success">
+      <h5 class="mdi mdi-file-table"> Registration slots</h5>
+  </div>
+  <div class="card-body">
+  <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
+    <li class="nav-item" *ngFor="let day of days">
+      <a class="nav-link btn-dark btn-tab" id="pills-home-tab" data-toggle="pill" href="#pills-home" role="tab" aria-controls="pills-home" aria-selected="true" (click)="daySlots(day)">Day {{ day }}</a>
+    </li>
+
+  </ul>
+  <div class="tab-content" id="pills-tabContent">
+    <div class="tab-pane tab-pill tab-pill-red  show active" id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab">
+  <div class="row">
+    <div class="col-lg-12 col-md-12 col-sm-12">
+    DAY {{ day }}
+        <table class="table table-striped table-dark table-sm holes-table">
+          <tr><th>Slot</th><th>Registered</th><th>Size</th><th>Status</th><th width='120'>Controls</th></tr>
+          <tr *ngFor="let slot of displayedSlots; let i=index">
+            <td>
+             {{ slot.slot_time | date:'hh:mm a'}}
+             - {{ slots[i].slot_time | date:'hh:mm a' }}</td><td>{{ slot.registers.length }}</td><td>4</td><td>Open</td><td>
+               <!-- <span class="mdi mdi-check hole-edit" (click)="register(slot.pk_slotid)" *ngIf="!profileRegistered"> Register</span> -->
+               <span *ngFor="let size of sizes" class='badge badge-{{ checkIfRegistered(size.pk_slot_sizeid, slot.registers) }}' (click)="register(slot.pk_slotid,size.pk_slot_sizeid)">{{ size.slot_size }}</span>
+
+               | <span (click)="cancelRegistration(slot.registers)" *ngIf="checkProfileRegistered(slot.registers)" class="mdi mdi-delete hole-delete">Cancel</span></td></tr>
+        </table>
+    </div>
+  </div>
+    </div>
+  </div>
+  </div>
+</div>

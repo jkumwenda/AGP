@@ -1,1 +1,83 @@
-<p>role works!</p>
+<div class="card login-card dropdown-all w-100 ">
+  <div class="card-header card-header-customer md-secondary-dark">
+      <h5 class="mdi mdi-file-table"> {{moduleTitle}}</h5>
+  </div>
+  <div class="card-body login-card-body ">
+      <div class="after-btn-spacing"></div>
+
+      <div class="row">
+      <div class="col-md-4">
+        <div class="container">
+          <div class="row">
+            <div class="col-md-12">
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th scope="col">
+                      <div class="custom-control custom-checkbox mb-3">
+                        <input type="checkbox" class="custom-control-input" [checked]="selectedAll" id="customCheck" name="example1" (change)="selectAllPermission()">
+                        <label class="custom-control-label" for="customCheck"> Select All</label>
+                      </div>
+                    </th>
+                    <th scope="col">Inactive Permission</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr *ngFor="let permission of permissions"  [ngClass]="{'selected': permission.selected}">
+                    <td>
+                      <div class="custom-control custom-checkbox mb-3">
+                        <input type="checkbox" class="custom-control-input" [checked]="permission.selected" id="{{ permission.pk_permissionid }}" (change)="selectPermission(permission.pk_permissionid)">
+                        <label class="custom-control-label" for="{{ permission.pk_permissionid }}">Select</label>
+                      </div>
+                    </td>
+                    <td>{{ permission.permission }}</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-1">
+        <div class="after-btn-spacing"></div>
+        <div class="row">
+          <div class="col-md-12">
+            <h2 class="mdi mdi-arrow-right-bold-circle" (click)="addPermissions()"></h2>
+          </div>
+          <div class="col-md-12">
+            <h2 class="mdi mdi-arrow-left-bold-circle" (click)="removePermissions()"></h2>
+          </div>
+      </div>
+      </div>
+      <div class="col-md-4">
+        <table class="table">
+          <thead>
+            <tr>
+              <th scope="col">
+                <div class="custom-control custom-checkbox mb-3">
+                  <input type="checkbox" class="custom-control-input" [checked]="selectedAllRolePermission" id="rolePermission" name="example1" (change)="selectAllRolePermission()">
+                  <label class="custom-control-label" for="rolePermission"> Select All</label>
+                </div>
+              </th>
+              <th scope="col">Active Permission</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let rolePermission of rolePermissions"  [ngClass]="{'selected': rolePermission.selected}">
+              <td>
+                <div class="custom-control custom-checkbox mb-3">
+                  <input type="checkbox" class="custom-control-input" [checked]="rolePermission.selected" id="{{ rolePermission.pk_permissionid }}" (change)="selectRolePermission(rolePermission.pk_permissionid)">
+                  <label class="custom-control-label" for="{{ rolePermission.pk_permissionid }}">Select</label>
+                </div>
+              </td>
+              <td>{{ rolePermission.permission }}</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      </div>
+
+  </div>
+</div>
+

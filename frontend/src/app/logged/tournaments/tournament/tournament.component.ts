@@ -6,6 +6,12 @@ import { Tournament } from 'src/app/shared/interfaces/tournament';
 import { DrawType } from 'src/app/shared/interfaces/draw-type';
 import { TournamentService } from "src/app/shared/services/tournament.service";
 import { Router, ActivatedRoute } from '@angular/router';
+import { Tournament } from 'src/app/shared/interfaces/tournament';
+import { TournamentService } from 'src/app/shared/services/tournament.service';
+import { Slot } from 'src/app/shared/interfaces/slot';
+import { Field } from 'src/app/shared/interfaces/field';
+import { ActivatedRoute } from '@angular/router';
+
 @Component({
   selector: 'app-tournament',
   templateUrl: './tournament.component.html',
@@ -72,6 +78,39 @@ export class TournamentComponent implements OnInit {
     this.tournament.information[0]=data
     this.information=data
     console.log(data)
+
+  public tournamentId:number
+  public tournament:Tournament
+  public slots:Slot[]=[]
+
+  constructor(
+    private tournamentService:TournamentService,
+    private activatedRoute: ActivatedRoute
+  ) {
+
+    this.tournamentId= this.activatedRoute.snapshot.params['id']
+    this.tournament= Tournament.initialize()
+    this.tournament.field.push(new Field(null))
+  }
+
+
+  UpdateSlots(slots){
+    this.slots=slots
+
+  }
+
+  ngOnInit() {
+    this.tournamentService.getTournament(this.tournamentId).then(
+      (result:Tournament) => {
+        this.tournament=result
+        if(result.field.length>0)
+            this.slots= this.tournament.field[0].slots
+        else
+            this.slots=[]
+      },
+      error=>console.log(error)
+    )
+
   }
 
   editDrawType(data){

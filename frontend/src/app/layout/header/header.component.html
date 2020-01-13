@@ -2,19 +2,43 @@
     <div class="container">
         <nav class="navbar navbar-expand-lg navbar-dark">
             <div class="container">
-                <a class="navbar-brand" href="#">AGP <span class="plus">+</span></a>
+                <a class="navbar-brand" [routerLink]="['/']">AGP <span class="plus">+</span></a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
                       <span class="navbar-toggler-icon"></span>
                 </button>
                 <div class="collapse navbar-collapse" id="navbarResponsive">
+
+                  <ng-template [ngIf]="!authService.isAuthenticated()">
+                    <ul class="navbar-nav mr-auto" >
+                        <li class="nav-item">
+                            <a class="nav-link mdi mdi-home-variant-outline" [routerLink]="['/']"> Home
+
+                          </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link mdi mdi-golf" [routerLink]="['/events']"> Tournaments</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link mdi mdi-poll-box" [routerLink]="['/leaderboard']"> Leaderboard</a>
+                        </li>
+                    </ul>
+                    <ul class="navbar-nav ml-auto" >
+                        <li class="nav-item">
+                            <a class="nav-link" [routerLink]="['/']"> <strong>Login</strong></a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link mdi" [routerLink]="['/signup']"> <strong>Sign Up</strong></a>
+                        </li>
+                    </ul>
+                  </ng-template>
+
                   <ng-template [ngIf]="authService.isAuthenticated()">
                       <ul class="navbar-nav mr-auto" >
-                          <li class="nav-item active">
+                          <li class="nav-item">
                               <a class="nav-link mdi mdi-view-dashboard" [routerLink]="['/dashboard']"> Dashboard
-                                <span class="sr-only">(current)</span>
                             </a>
                           </li>
-                          <li class="nav-item" *ngIf="Test('JOEL KKKEKEK')">
+                          <li class="nav-item">
                               <a class="nav-link mdi mdi-golf" [routerLink]="['/tournaments']"> Tournaments</a>
                           </li>
                           <li class="nav-item">
@@ -23,7 +47,7 @@
                           <li class="nav-item">
                               <a class="nav-link mdi mdi-account-group-outline" [routerLink]="['/players']"> Players</a>
                           </li>
-                          <li class="nav-item">
+                          <li class="nav-item" >
                               <a class="nav-link mdi mdi-cogs" [routerLink]="['/manage/manage-nav']"> Manage</a>
                           </li>
                       </ul>

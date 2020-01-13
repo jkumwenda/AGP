@@ -5,5 +5,6 @@ export class ProfileRole {
   pk_profile_roleid: number;
   profile: Profile;
   role: Role;
+  fk_roleid: Role;
 }
 

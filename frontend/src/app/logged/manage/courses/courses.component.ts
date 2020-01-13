@@ -9,7 +9,7 @@ import { Router } from "@angular/router";
   styleUrls: ["./courses.component.css"]
 })
 export class CoursesComponent implements OnInit {
-  public moduleTitle: string = "Course";
+  public moduleTitle: string = 'Course';
   public courses: Course[];
 
   constructor(private courseService: CourseService, private router: Router) {}
@@ -33,7 +33,11 @@ export class CoursesComponent implements OnInit {
   }
 
   editCourse(courseId) {
-    this.router.navigate(['manage/edit-course', courseId])
+    this.router.navigate(['manage/edit-course', courseId]);
+  }
+
+  viewCourse(courseId) {
+    this.router.navigate(['course', courseId]);
   }
   ngOnInit() {
     this.getCourses();

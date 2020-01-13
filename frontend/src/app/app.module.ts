@@ -10,6 +10,7 @@ import { DataService } from './shared/services/data.service';
 import { AppRoutingModule } from './app-routing.module';
 import { DataTablesModule } from 'angular-datatables';
 import { OwlDateTimeModule, OwlNativeDateTimeModule } from 'ng-pick-datetime';
+import { MatExpansionModule } from '@angular/material/expansion';
 
 import { SharedModule } from './shared/shared.module';
 import { ManageModule } from './logged/manage/manage.module';
@@ -41,7 +42,28 @@ import { EventFormatComponent } from './logged/tournaments/event-format/event-fo
 import { EditEventDrawTypeComponent } from './logged/tournaments/edit-event-draw-type/edit-event-draw-type.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { SignupComponent } from './auth/signup/signup.component';
+import { AddPlayerComponent } from './logged/players/add-player/add-player.component';
+import { PlayerComponent } from './logged/players/player/player.component';
+import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
+import { SignupComponent } from './auth/signup/signup.component';
 import { EditRatingComponent } from './logged/course/edit-rating/edit-rating.component';
+import { RatingComponent } from './logged/course/rating/rating.component';
+import { CourseTypesComponent } from './logged/course/course-types/course-types.component';
+import { CourseTypeComponent } from './logged/course/course-type/course-type.component';
+import { CourseTypeHolesComponent } from './logged/course/course-type-holes/course-type-holes.component';
+import { AddCourseTypeComponent } from './logged/course/add-course-type/add-course-type.component';
+
+import { AddCourseTypeHoleComponent } from './logged/course/add-course-type-hole/add-course-type-hole.component';
+import { EditCourseTypeHoleComponent } from './logged/course/edit-course-type-hole/edit-course-type-hole.component';
+import { EditCourseTypeComponent } from './logged/course/edit-course-type/edit-course-type.component';
+import { SignupConfirmationComponent } from './auth/signup-confirmation/signup-confirmation.component';
+import { ChartistModule } from 'ng-chartist';
+import { PublicComponent } from './public/public.component';
+import { EventsComponent } from './public/events/events.component';
+import { LeaderboardComponent } from './public/leaderboard/leaderboard.component';
+import { TournamentDetailComponent } from './logged/tournaments/tournament/tournament-detail/tournament-detail.component';
+import { AddFieldComponent } from './logged/tournaments/tournament/add-field/add-field.component';
+import { RegistrationSlotsComponent } from './logged/tournaments/tournament/registration-slots/registration-slots.component';
 
 
 @NgModule({
@@ -74,7 +96,27 @@ import { EditRatingComponent } from './logged/course/edit-rating/edit-rating.com
     PageNotFoundComponent,
     SignupComponent,
     EditRatingComponent
-  
+    AddPlayerComponent,
+    PlayerComponent,
+    PageNotFoundComponent,
+    SignupComponent,
+    EditRatingComponent,
+    RatingComponent,
+    CourseTypesComponent,
+    CourseTypeComponent,
+    CourseTypeHolesComponent,
+    AddCourseTypeComponent,
+    AddCourseTypeHoleComponent,
+    EditCourseTypeHoleComponent,
+    EditCourseTypeComponent,
+    SignupConfirmationComponent,
+    PublicComponent,
+    EventsComponent,
+    LeaderboardComponent,
+    TournamentDetailComponent,
+    AddFieldComponent,
+    RegistrationSlotsComponent,
+
   ],
   imports: [
     DataTablesModule,
@@ -90,8 +132,13 @@ import { EditRatingComponent } from './logged/course/edit-rating/edit-rating.com
     OwlDateTimeModule,
     OwlNativeDateTimeModule,
     BrowserAnimationsModule,
+    MatExpansionModule,
+    ChartistModule
   ],
   providers: [AuthService, DatePipe],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  providers: [AuthService, DataService],
+  bootstrap: [AppComponent],
+  schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })
-export class AppModule { }
+export class AppModule {}
