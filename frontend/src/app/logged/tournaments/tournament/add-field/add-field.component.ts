@@ -33,7 +33,7 @@ export class AddFieldComponent implements OnInit {
           this.initializeFieldForm()
           this.closeModal.nativeElement.click()
       },
-      error=> console.log(error)
+      error=> {}
     )
   }
 

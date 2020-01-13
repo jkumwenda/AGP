@@ -6,7 +6,7 @@ import { CommonService } from './common.service';
 })
 export class TournamentService {
   public token: any;
-  public endpoint: any = 'api/tournament/';
+  public endpoint: any = 'api/event/';
 
   constructor(private commonService: CommonService) {
   }

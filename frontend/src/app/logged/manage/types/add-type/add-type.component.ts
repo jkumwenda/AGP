@@ -1,6 +1,6 @@
 import { Component, OnInit } from "@angular/core";
 import { TypeService } from "src/app/shared/services/type.service";
-import { FormGroup, FormBuilder, Validators } from "@angular/forms";
+import { FormGroup, FormBuilder, Validators} from "@angular/forms";
 import { Router } from "@angular/router";
 
 @Component({
