@@ -1,0 +1,78 @@
+<div class="row content-row">
+    <div class="col-lg-4 col-md-6 col-sm-12">
+        <div class="card dropdown-all d-flex w-100 ">
+          <div class="card-header card-header-customer md-dark">
+              <h5 class="mdi mdi-trophy"> Tournament details</h5>
+          </div>
+          <div class="card-body">
+            <table class="">
+              <tr><strong>Title </strong><td></td> : NB Golf Championiship<td></tr>
+              <tr><strong>Duration </strong><td></td> : 28.12.19 - 29.12.19<td></tr>
+              <tr><strong>Format </strong><td></td> : Medal<td></tr>
+              <tr><strong>Draw Type </strong><td></td> : Day Draw<button (click)="editComponentCreated=true" class="btn btn-md mdi mdi-pencil-box" data-toggle="modal" data-target="#editRating"></button><td></tr>
+              <tr><strong>Field </strong><td></td> : UP<button (click)="editComponentCreated=true" class="btn btn-md mdi mdi-pencil-box" data-toggle="modal" data-target="#editRating"></button><td></tr>
+            </table>
+          </div>
+        </div>
+        <br>
+
+        <div class="card dropdown-all d-flex w-100 ">
+          <div class="card-header card-header-customer md-secondary">
+              <h5 class="mdi mdi-calendar"> Registration</h5>
+          </div>
+          <div class="card-body">
+            <table class="">
+              <tr><strong>Period </strong><td></td> : 28.12.19 - 29.12.19 <button (click)="editComponentCreated=true" class="btn btn-md mdi mdi-pencil-box" data-toggle="modal" data-target="#editRating"></button><td></tr>
+              <tr><strong>Registered </strong><td></td> : M <span class='badge badge-primary'>8</span> F <span class='badge badge-primary'>6</span><td></tr>
+            </table>
+          </div>
+        </div>
+    </div>
+    <div class="col-lg-8 col-md-8 col-sm-12">
+        <div class="card dropdown-all d-flex w-100 ">
+          <div class="card-header card-header-customer md-success">
+              <h5 class="mdi mdi-file-table"> Registration slots</h5>
+          </div>
+          <div class="card-body">
+          <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
+            <li class="nav-item">
+              <a class="nav-link btn-dark btn-tab" id="pills-home-tab" data-toggle="pill" href="#pills-home" role="tab" aria-controls="pills-home" aria-selected="true">Day 1</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link active btn-danger btn-tab" id="pills-home-tab" data-toggle="pill" href="#pills-home" role="tab" aria-controls="pills-home" aria-selected="true">Day 2</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link btn-success btn-tab" id="pills-profile-tab" data-toggle="pill" href="#pills-profile" role="tab" aria-controls="pills-profile" aria-selected="false">Day 3</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link  btn-blue btn-tab btn-tab-pill" id="pills-contact-tab" data-toggle="pill" href="#pills-contact" role="tab" aria-controls="pills-contact" aria-selected="false">Day 4</a>
+            </li>
+          </ul>
+          <div class="tab-content" id="pills-tabContent">
+            <div class="tab-pane tab-pill tab-pill-red fade show active" id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab">
+          <div class="row">
+            <div class="col-lg-12 col-md-12 col-sm-12">
+            DAY 1
+                <table class="table table-striped table-dark table-sm holes-table">
+                  <tr><th>Slot</th><th>Registered</th><th>Size</th><th>Status</th><th width='120'>Controls</th></tr>
+                  <tr><td>8:00 AM - 8:10 AM</td><td>2</td><td>4</td><td>Open</td><td><span class="mdi mdi-check hole-edit"> Register</span> | <span class="mdi mdi-delete hole-delete">Cancel</span></td></tr>
+                  <tr><td>8:00 AM - 8:10 AM</td><td>2</td><td>4</td><td>Open</td><td><span class="mdi mdi-check hole-edit"> Register</span> | <span class="mdi mdi-delete hole-delete">Cancel</span></td></tr>
+                  <tr><td>8:00 AM - 8:10 AM</td><td>2</td><td>4</td><td>Open</td><td><span class="mdi mdi-check hole-edit"> Register</span> | <span class="mdi mdi-delete hole-delete">Cancel</span></td></tr>
+                  <tr><td>8:00 AM - 8:10 AM</td><td>2</td><td>4</td><td>Open</td><td><span class="mdi mdi-check hole-edit"> Register</span> | <span class="mdi mdi-delete hole-delete">Cancel</span></td></tr>
+                  <tr><td>8:00 AM - 8:10 AM</td><td>2</td><td>4</td><td>Open</td><td><span class="mdi mdi-check hole-edit"> Register</span> | <span class="mdi mdi-delete hole-delete">Cancel</span></td></tr>
+                  <tr><td>8:00 AM - 8:10 AM</td><td>2</td><td>4</td><td>Open</td><td><span class="mdi mdi-check hole-edit"> Register</span> | <span class="mdi mdi-delete hole-delete">Cancel</span></td></tr>
+                  <tr><td>8:00 AM - 8:10 AM</td><td>2</td><td>4</td><td>Open</td><td><span class="mdi mdi-check hole-edit"> Register</span> | <span class="mdi mdi-delete hole-delete">Cancel</span></td></tr>
+                  <tr><td>8:00 AM - 8:10 AM</td><td>2</td><td>4</td><td>Open</td><td><span class="mdi mdi-check hole-edit"> Register</span> | <span class="mdi mdi-delete hole-delete">Cancel</span></td></tr>
+                  <tr><td>8:00 AM - 8:10 AM</td><td>2</td><td>4</td><td>Open</td><td><span class="mdi mdi-check hole-edit"> Register</span> | <span class="mdi mdi-delete hole-delete">Cancel</span></td></tr>
+                  <tr><td>8:00 AM - 8:10 AM</td><td>2</td><td>4</td><td>Open</td><td><span class="mdi mdi-check hole-edit"> Register</span> | <span class="mdi mdi-delete hole-delete">Cancel</span></td></tr>
+                </table>
+            </div>
+          </div>
+            </div>
+            <div class="tab-pane tab-pill tab-pill-green fade" id="pills-profile" role="tabpanel" aria-labelledby="pills-profile-tab">Green</div>
+            <div class="tab-pane tab-pill tab-pill-blue fade" id="pills-contact" role="tabpanel" aria-labelledby="pills-contact-tab">...</div>
+          </div>
+          </div>
+        </div>
+    </div>
+</div>

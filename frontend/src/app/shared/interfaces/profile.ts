@@ -4,8 +4,15 @@ import { User } from './user';
 export class Profile {
   pk_profileid: number;
   user: User;
-  fk_genderid: Gender;
+  gender: Gender;
   phone: string;
-  dob: string;
+  fk_genderid:number;
+  dob:Date;
+  
+
+  constructor(id, user){
+    this.pk_profileid=id
+    this.user= user
+  }
 }
 

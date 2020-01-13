@@ -61,13 +61,16 @@ router.register(r'event_type', backend_views.EventTypeViewSet,
                 base_name='Event Type')
 router.register(r'draw_type', backend_views.DrawTypeViewSet,
                 base_name='Draw Type')
+router.register(r'information', backend_views.InformationViewSet,
+                base_name='Information')
+router.register(r'field', backend_views.FieldViewSet,
+                base_name='Field')
 router.register(r'field', backend_views.FieldViewSet,
                 base_name='Draw Type')
 router.register(r'slot_register', backend_views.RegisterViewSet,
                 base_name='Slot Register')
 router.register(r'slot_size', backend_views.SlotSizeViewSet,
                 base_name='Slot Size')
-
 
 # Wire up our API using automatic URL routing.
 # Additionally, we include login URLs for the browsable API.

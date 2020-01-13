@@ -31,7 +31,8 @@ export class TournamentService {
     });
   }
 
-  getTournament(tournamentId) {
+  getTournament(tournamentId)
+   {
     return new Promise((resolve, reject) => {
       this.commonService.get(this.endpoint + tournamentId + '/').then((result) => {
         resolve(result);

@@ -1,1 +1,71 @@
-<p>edit-tournament works!</p>
+<div class="card login-card dropdown-all w-100 ">
+    <div class="card-header card-header-customer">
+        <h5 class="mdi mdi-book-plus"> {{ moduleTitle }}</h5>
+    </div>
+    <div class="card-body login-card-body ">
+        <form [formGroup]="tournamentForm" (ngSubmit)="editTournament()">
+
+            <div class="form-group">
+                <div class="row">
+                    <div class="col-lg-12 col-md-12 col-sm-12">
+                        <label for="dob">Event</label>
+                        <input type="text" class="form-control" id="event" placeholder="Enter the event" required formControlName='event'>
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="row">
+                    <div class="col-lg-12 col-md-12 col-sm-12">
+                        <label for="event description Description">Event Description</label>
+                        <textarea class="form-control" id="event description" rows="5" placeholder="Enter event description" required formControlName='event_description'></textarea>
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="row">
+                    <div class="col-lg-12 col-md-12 col-sm-12">
+                        <label for="datetimepicker">Event Start Date</label>
+                        <input [owlDateTime]="dt1" [owlDateTimeTrigger]="dt1" placeholder="Date Time" formControlName='start_date'><owl-date-time #dt2></owl-date-time>
+                    </div>
+    
+                </div>
+            </div>
+            
+            <div class="form-group">
+                <div class="row">
+                    <div class="col-lg-12 col-md-12 col-sm-12">
+                        <label for="datetimepicker">Event End Date</label>
+                        <input [owlDateTime]="dt2" [owlDateTimeTrigger]="dt2" placeholder="Date Time" formControlName='end_date'><owl-date-time #dt1></owl-date-time>
+                    </div>
+                </div>
+            </div>
+
+         <div class="form-group">
+             <label for="profile">Select User Profile</label><br>
+               <select id="profile" class="form-control" data-live-search="true" formControlName='fk_profileid'>
+                  <option *ngFor="let profile of profiles" value="{{ profile.pk_profileid }}"data-tokens="ketchup mustard">{{ profile.pk_profileid }}</option>
+               </select>
+         </div>
+  
+          <div class="form-group">
+            <label for="event type">Select Event Type</label><br>
+            <select id="event type" class="form-control" data-live-search="true" formControlName='fk_event_typeid'>
+              <option *ngFor="let eventType of eventTypes" value="{{ eventType.pk_event_typeid }}"data-tokens="ketchup mustard">{{ eventType.event_type }}</option>
+            </select>
+           </div>
+
+           <div class="form-group">
+            <label for="draw type">Select Draw Type</label><br>
+            <select id="draw type" class="form-control" data-live-search="true" formControlName='fk_draw_typeid'>
+              <option *ngFor="let drawType of drawTypes" value="{{ drawType.pk_draw_typeid }}"data-tokens="ketchup mustard">{{ drawType.draw_type }}</option>
+            </select>
+           </div>
+  
+            <button type="submit" class="btn btn-primary" [disabled]="!tournamentForm.valid">Save</button>
+            <button type="submit" class="btn" [routerLink]="'/tournaments/'">Cancel</button>
+        </form>
+    </div>
+  </div>
+  
