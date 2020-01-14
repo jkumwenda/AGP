@@ -283,9 +283,21 @@ class EventSerializer(serializers.ModelSerializer):
 
 
 class FieldSerializer(serializers.ModelSerializer):
+    slots = SlotSerializer(many=True, read_only=True)
+
     class Meta:
         model = Field
         fields = '__all__'
+
+    def create(self, validated_data):
+        event = validated_data['fk_eventid']
+        field = Field(
+            field_type=validated_data['field_type'], fk_eventid=event)
+        field.save()
+
+        SerializerHelper.saveSlots(
+            self, event.start_date, event.end_date, field)
+        return field
 
 
 class EventTypeSerializer(serializers.ModelSerializer):
@@ -307,7 +319,8 @@ class EventSerializer(serializers.ModelSerializer):
     information= InformationSerializer(many=True, read_only=True)
     eventFormat = EventFormatSerializer(many=True, read_only=True)
     registrationDate = RegistrationDateSerializer(many=True, read_only=True)
-
+    field = FieldSerializer(many=True, read_only=True)
+    
     class Meta:
         model = Event
         fields = '__all__'
@@ -318,7 +331,7 @@ class EventSerializer(serializers.ModelSerializer):
         
         for registrationDate in registrationDates:
             dt = registrationDate.close_date
-            now = datetime.datetime.utcnow().replace(tzinfo=utc)
+            now = datetime.utcnow().replace(tzinfo=utc)
             if now < dt:
                 return 'Open'
         
