@@ -24,6 +24,8 @@ export class RolesComponent implements OnInit {
     });
   }
 
+  viewRole = (roleId) => this.router.navigate(['/manage/role', roleId])
+
   checkIfEmpty(){
     return Array.isArray(this.roles) && this.roles.length
   }

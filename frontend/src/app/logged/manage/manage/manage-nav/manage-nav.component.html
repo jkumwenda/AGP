@@ -6,8 +6,8 @@
 
       <div class="row manage-icons">
         <div class="col-sm">
-          <a href="#">
-              <button class="btn btn-outline-dark">
+          <a [routerLink]="['/manage/roles']">
+              <button class="btn ">
                   <i class="mdi mdi-account-group mdi-24px "></i><br>
                   Roles
               </button>
@@ -15,8 +15,8 @@
         </div>
 
         <div class="col-sm">
-          <a href="#">
-              <button class="btn btn-outline-dark">
+          <a [routerLink]="['/manage/permissions']">
+              <button class="btn ">
                   <i class="mdi mdi-security mdi-24px "></i><br>
                   Permissions
               </button>
@@ -24,8 +24,8 @@
         </div>
 
         <div class="col-sm">
-          <a href="#">
-              <button class="btn btn-outline-dark">
+          <a [routerLink]="['/manage/genders']">
+              <button class="btn ">
                   <i class="mdi mdi-gender-male-female mdi-24px "></i><br>
                   Gender
               </button>
@@ -33,8 +33,8 @@
         </div>
 
         <div class="col-sm">
-          <a href="#">
-              <button class="btn btn-outline-dark">
+          <a [routerLink]="['/manage/users']">
+              <button class="btn ">
                   <i class="mdi mdi-human-male-female mdi-24px "></i><br>
                   Users
               </button>
@@ -42,19 +42,10 @@
         </div>
 
         <div class="col-sm">
-          <a href="#">
-              <button class="btn btn-outline-dark">
+          <a [routerLink]="['/manage/holes']">
+              <button class="btn ">
                   <i class="mdi mdi-golf mdi-24px "></i><br>
                   Holes
-              </button>
-          </a>
-        </div>
-
-        <div class="col-sm">
-          <a href="#">
-              <button class="btn btn-outline-dark">
-                  <i class="mdi mdi-earth mdi-24px "></i><br>
-                  Countries
               </button>
           </a>
         </div>
@@ -63,8 +54,16 @@
 
       <div class="row manage-icons">
         <div class="col-sm">
-          <a href="#">
-              <button class="btn btn-outline-dark">
+          <a [routerLink]="['/manage/countries']">
+              <button class="btn">
+                  <i class="mdi mdi-earth mdi-24px "></i><br>
+                  Countries
+              </button>
+          </a>
+        </div>
+        <div class="col-sm">
+          <a [routerLink]="['/manage/types']">
+              <button class="btn ">
                   <i class="mdi mdi-checkbox-intermediate mdi-24px "></i><br>
                   Course Types
               </button>
@@ -72,8 +71,8 @@
         </div>
 
         <div class="col-sm">
-          <a href="#">
-              <button class="btn btn-outline-dark">
+          <a [routerLink]="['/manage/courses']">
+              <button class="btn ">
                   <i class="mdi mdi-checkbox-blank mdi-24px "></i><br>
                   Courses
               </button>
@@ -81,16 +80,16 @@
         </div>
 
         <div class="col-sm">
-          <a href="#">
-              <button class="btn btn-outline-dark">
+          <a [routerLink]="['/manage/clubs']">
+              <button class="btn ">
                   <i class="mdi mdi-home-account mdi-24px "></i><br>
                   Clubs
               </button>
           </a>
         </div>
         <div class="col-sm">
-          <a href="#">
-              <button class="btn btn-outline-dark">
+          <a [routerLink]="['/manage/draw-types']">
+              <button class="btn ">
                   <i class="mdi mdi-checkbox-blank mdi-24px "></i><br>
                   Draw Types
               </button>

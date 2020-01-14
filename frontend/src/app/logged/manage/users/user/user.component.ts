@@ -1,12 +1,12 @@
-import { Component, OnInit } from '@angular/core';
-import { Router, ActivatedRoute } from '@angular/router';
-import { Profile } from 'src/app/shared/interfaces/profile';
-import { UserProfileService } from 'src/app/shared/services/user-profile.service';
-import { User } from 'src/app/shared/interfaces/user';
-import { Gender } from 'src/app/shared/interfaces/gender';
-import { ProfileRole } from 'src/app/shared/interfaces/profile-role';
-import { ProfileRoleService } from 'src/app/shared/services/profile-role.service';
-
+import { Component, OnInit } from "@angular/core";
+import { Router, ActivatedRoute } from "@angular/router";
+import { Profile } from "src/app/shared/interfaces/profile";
+import { UserProfileService } from "src/app/shared/services/user-profile.service";
+import { User } from "src/app/shared/interfaces/user";
+import { Gender } from "src/app/shared/interfaces/gender";
+import { ProfileRole } from "src/app/shared/interfaces/profile-role";
+import { ProfileRoleService } from "src/app/shared/services/profile-role.service";
+import { Permission } from "src/app/shared/interfaces/permission";
 
 @Component({
   selector: "app-user",
@@ -16,10 +16,13 @@ import { ProfileRoleService } from 'src/app/shared/services/profile-role.service
 export class UserComponent implements OnInit {
   public moduleTitle = "User Profile";
   private profile: Profile;
-  private profileRoles: ProfileRole[];
+  public profileRoles: ProfileRole[];
   private user: User;
   private fk_genderid: Gender;
   private profileId: number;
+  public permissions: Permission[] = [];
+  public viewPermissionComponentCreated: Boolean = false;
+  public AddComponentCreated: Boolean = false;
 
   constructor(
     private router: Router,
@@ -46,14 +49,35 @@ export class UserComponent implements OnInit {
       result => {
         this.profileRoles = result as ProfileRole[];
       },
+      error => {
+        this.profileRoles = [];
+      }
+    );
+  }
+
+  addUserRole(profileRole) {
+    this.profileRoles.push(profileRole);
+  }
+
+  viewPermission(permissions) {
+    this.viewPermissionComponentCreated = true;
+    this.permissions = permissions;
+  }
+  deleteProfileRole(profileRoleId) {
+    this.profileRoleService.deleteProfileRole(profileRoleId).then(
+      result => {
+        this.profileRoles = this.profileRoles.filter(
+          pRole => pRole.pk_profile_roleid !== profileRoleId
+        );
+      },
       error => {}
     );
   }
 
   initializeProfileData() {
     if (this.profile == null) {
-      this.profile = new Profile(null,null);
-      this.profile.user = new User(null,null);
+      this.profile = new Profile(null, null);
+      this.profile.user = new User();
       this.profile.gender = new Gender();
       this.profile.dob = null;
       this.profile.phone = null;

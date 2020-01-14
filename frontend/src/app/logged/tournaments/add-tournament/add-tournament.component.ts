@@ -8,7 +8,7 @@ import { ProfileService } from "src/app/shared/services/profile.service";
 import { TournamentService } from "src/app/shared/services/tournament.service";
 import { FormGroup, FormBuilder, Validators } from "@angular/forms";
 import { Router } from "@angular/router";
-import { DatePipe } from '@angular/common'
+import { DatePipe } from '@angular/common';
 import { Tournament } from 'src/app/shared/interfaces/tournament';
 @Component({
   selector: "app-add-tournament",
@@ -23,7 +23,7 @@ export class AddTournamentComponent implements OnInit {
   public drawTypes: DrawType[];
   public profiles: Profile[];
   public profileId: Profile;
- 
+
   constructor(
     public datepipe: DatePipe,
     private eventTypeService: EventTypeService,
@@ -36,22 +36,21 @@ export class AddTournamentComponent implements OnInit {
 
 
   addTournament() {
-    console.log(this.tournamentForm.value);
-     this.tournamentService.addTournament(this.tournamentForm.value).then(
-       (result:Tournament) => {
-        
-         console.log(result)
-         this.router.navigate(['/tournaments/tournament', result.pk_eventid]);
 
-       },
-       error => console.log(error)
-     );
+    console.log(this.tournamentForm.value);
+    this.tournamentService.addTournament(this.tournamentForm.value).then(
+      (result:Tournament) => {
+        console.log(result);
+        this.router.navigate(['/tournaments/tournament', result.pk_eventid]);
+      },
+      error => console.log(error)
+    );
   }
-      
+
   getDrawTypes() {
     this.drawTypeService.getDrawTypes().then(
       (result: DrawType[]) => {
-        this.drawTypes = result
+        this.drawTypes = result;
 
       },
       error => console.log(error)
@@ -61,7 +60,7 @@ export class AddTournamentComponent implements OnInit {
   getEventTypes() {
     this.eventTypeService.getEventTypes().then(
       (result: EventType[]) => {
-        this.eventTypes = result
+        this.eventTypes = result;
 
       },
       error => console.log(error)
@@ -71,7 +70,7 @@ export class AddTournamentComponent implements OnInit {
   getProfiles() {
     this.profileService.getProfiles().then(
       (result: Profile[]) => {
-        this.profiles = result
+        this.profiles = result;
 
       },
       error => console.log(error)

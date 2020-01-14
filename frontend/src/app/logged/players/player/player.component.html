@@ -1,1 +1,88 @@
-<p>player works!</p>
+<div class="row" style="padding:10px">
+  <div class="col-lg-3">
+      <div class="card dropdown-all d-flex w-100 ">
+        <div class="card-header card-header-customer md-secondary">
+            <h5 class="mdi mdi-account-card-details"> Profile </h5>
+        </div>
+        <div class='col-10 offset-1' style='margin-top:10px'><img src="assets/images/profile.jpg" class="card-img-top card-img-center img-fluid img-thumbnail" max-width="100" alt=".."></div>
+        <div class="card-body text-center">
+          <h5 class="card-title mdi mdi-account"> {{profile.user.username}}</h5>
+          <p class="card-text">
+            <span class="mdi mdi-face-profile"> {{profile.user.first_name+' '+profile.user.last_name}}</span><br>
+            <span class="mdi mdi-gender-male-female"> {{profile.fk_genderid.gender}}</span><br>
+            <span class="mdi mdi-email"> <a href="mailto:{{profile.user.email}}"> {{profile.user.email}}</a></span><br>
+            <span class="mdi mdi-phone-classic"> {{profile.phone}} </span><br>
+          </p>
+          <button href="#" class="btn btn-sm btn-primary mdi mdi-pencil">Update</button>
+        </div>
+      </div>
+  </div>
+  <div class="col-lg-4">
+      <div class="card dropdown-all d-flex w-100 ">
+        <div class="card-header card-header-customer md-default-dark">
+            <h5 class="mdi mdi-chart-bar"> Perfomance in review</h5>
+        </div>
+        <div class="card-body">
+
+
+
+
+
+
+ <x-chartist
+     *ngFor="let chart of charts"
+      class="col-md-12"
+      [data]="chart.data"
+      [type]="chart.type"
+      [options]="chart.options"
+      [responsiveOptions]="chart.responsiveOptions"
+      [events]="chart.events">
+</x-chartist>
+<div class="row"></div>
+
+<div class="row">
+  <div class="col-md-6">
+    <async-chart></async-chart>
+  </div>
+  <div class="col-md-6">
+    <live-chart></live-chart>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-md-6">
+    <dynamic-chart></dynamic-chart>
+  </div>
+  <div class="col-md-6">
+    <tooltip-chart></tooltip-chart>
+  </div>
+</div>
+
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+  <br>
+      <div class="card dropdown-all d-flex w-100 ">
+        <div class="card-body">
+        <h5 class="mdi mdi-chart-pie"> Stats</h5>
+          <table class="table table-striped table-bordered table-sm">
+            <tbody>
+              <tr >
+                <td>Games played</td><td>: 10</td>
+              </tr>
+              <tr >
+                <td>Scores</td><td>: 109</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+  </div>
+</div>

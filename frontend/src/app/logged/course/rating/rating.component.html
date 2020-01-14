@@ -1,0 +1,23 @@
+<div class="card dropdown-all d-flex w-100 ">
+  <div class="card-header card-header-customer md-success">
+    <h5 class="mdi mdi-star">{{ moduleTitle }}</h5>
+  </div>
+  <div class="card-body">
+    <table *ngIf="rating.pk_ratingid!=null">
+      <tr><strong>Course Rating </strong><td></td>: {{ rating.course_rating }}<td></tr>
+      <tr><strong>Sloppy </strong><td></td>: {{ rating.sloppy_rating }}<td></tr>
+      <tr><strong>Par </strong><td></td>: {{ rating.par }}<td></tr>
+    </table>
+    <div  *ngIf="rating.pk_ratingid==null" class="alert alert-warning" role="alert">
+      <small class="mdi mdi-information-outline"> Rating no set </small>
+    </div>
+
+
+  </div>
+  <div class="card-footer">
+  <button [disabled]="rating.pk_ratingid!=null" (click)="addComponentCreated=true"  class="btn btn-md mdi mdi-file-plus" data-toggle="modal" data-target="#setRating">Set</button>
+  <button [disabled]="rating.pk_ratingid==null" (click)="editComponentCreated=true" class="btn btn-md mdi mdi-pencil-box" data-toggle="modal" data-target="#editRating">Update</button>
+  </div>
+</div>
+<app-add-rating  *ngIf="addComponentCreated"  [courseId]="returnData(rating.fk_courseid)"></app-add-rating>
+<app-edit-rating  [rating]="rating"  [courseId]=" returnData(rating.fk_courseid)" ></app-edit-rating>

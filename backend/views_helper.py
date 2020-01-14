@@ -16,3 +16,23 @@ class ViewsHelper:
         else:
             return queryset
         
+    def filter_role_permission(self, queryset, permission_code, profile_id):
+        if (permission_code and profile_id):
+            rolepermission = queryset.select_related(
+                'fk_permissionid', 'fk_roleid').filter(fk_permissionid__code=permission_code.replace('"', ''), fk_roleid__pk_roleid=1)
+            return rolepermission
+        else:
+            return queryset
+        
+
+    def filter_player_profile(self, queryset):
+        player_profile = queryset.select_related(
+            'fk_roleid').filter(fk_roleid__role='Player')
+        if player_profile is not None:
+            return player_profile
+        else:
+            return APIException('Players not found')
+        
+    def filter_test(self, queryset):
+        r = {'queryset': queryset, 'status':'Test'}
+        raise APIException(r)

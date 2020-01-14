@@ -1,0 +1,38 @@
+
+<!-- Modal -->
+<div class="modal fade" id="assignRoles" tabindex="-1" role="dialog" aria-labelledby="modelTitleId" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+        <div class="modal-header">
+            <h5 class="modal-title">{{moduleTitle}}</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+          </div>
+      <div class="modal-body">
+        <div class="container-fluid">
+          <form [formGroup]="roleForm" (ngSubmit)="submit(roleForm.value)" *ngIf="roleArray.length > 0">
+
+            <div class="form-check form-check-inline" *ngFor="let uRole of roleArray; let i=index">
+              <label class="form-check-label">
+                <input class="form-check-input"  type="checkbox"  [formControl]="uRole"> {{ roles[i].role }}
+              </label>
+            </div>
+            <button type="submit" class="btn btn-primary">Submit</button>
+          </form>
+          <div class="row" *ngIf="roleArray.length==0">
+            <div class="col-md-12">
+              <div class="alert alert-warning" role="alert">
+                <small class="mdi mdi-information-outline"> Data not available</small>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button #closeModal type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+

@@ -23,7 +23,7 @@
             <h5 class="mdi mdi-account-group"> User Roles</h5>
         </div>
         <div class="card-body">
-          <h6><a class="btn btn-outline-secondary btn-sm mdi mdi-plus ">Assign Role</a></h6>
+          <h6><a class="btn btn-outline-secondary btn-sm mdi mdi-plus" (click)='AddComponentCreated=true' data-toggle="modal" data-target="#assignRoles">Assign Role</a></h6>
           <table class="table table-striped table-bordered table-sm">
             <thead>
               <tr>
@@ -35,10 +35,10 @@
             <tbody>
               <tr  *ngFor="let profileRole of profileRoles">
                 <td>{{profileRole.fk_roleid.role}}</td>
-                <td>##</td>
+                <td>{{ profileRole.fk_roleid.Permissions.length}}</td>
                 <td>
-                    <button class="btn btn-dark btn-sm btn-control"><i class="mdi mdi-eye"></i></button>
-                    <button class="btn btn-danger btn-sm btn-control"><i class="mdi mdi-delete"></i></button>
+                    <button class="btn btn-dark btn-sm btn-control" (click)="viewPermission(profileRole.fk_roleid.Permissions)" data-toggle="modal" data-target="#userRolePermissions"><i class="mdi mdi-eye"></i></button>
+                    <button class="btn btn-danger btn-sm btn-control" (click)="deleteProfileRole(profileRole.pk_profile_roleid)"><i class="mdi mdi-delete"></i></button>
                 </td>
               </tr>
             </tbody>
@@ -47,3 +47,5 @@
       </div>
   </div>
 </div>
+<app-add-user-role *ngIf="AddComponentCreated"  (userRoleCreated)="addUserRole($event)" [userRoles]='profileRoles'></app-add-user-role>
+<app-user-role-permissions *ngIf="viewPermissionComponentCreated"  [permissions]='permissions'></app-user-role-permissions>

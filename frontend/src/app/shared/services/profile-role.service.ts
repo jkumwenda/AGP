@@ -23,4 +23,24 @@ export class ProfileRoleService {
     });
   }
 
+  addProfileRole(data) {
+    return new Promise((resolve, reject) => {
+      this.commonService.post(this.endpoint, data).then((result) => {
+        resolve(result);
+      }, (error) => {
+        reject(error);
+      });
+    });
+  }
+
+  deleteProfileRole(profileRoleId) {
+    return new Promise((resolve, reject) => {
+      this.commonService.delete(this.endpoint + profileRoleId + '/').then((result) => {
+        resolve(true);
+      }, (error) => {
+        reject(false);
+      });
+    });
+  }
+
 }
