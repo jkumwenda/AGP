@@ -10,8 +10,9 @@ import {Router} from '@angular/router';
   styleUrls: ['./events.component.css']
 })
 export class EventsComponent implements OnInit {
-  public tournaments: Tournament[];
-
+  public tournaments: Tournament[] = [];
+  public displayedTournaments: Tournament[] = [];
+  public  numberOfTournamentsToDisplay = 3;
 
   constructor(
     private tournamentService: TournamentService,
@@ -27,16 +28,27 @@ export class EventsComponent implements OnInit {
             if (tournamentOne.start_date < tournamentTwo.start_date) { return -1; }
           }
         );
+        this.initDisplayedEvents();
       },
       error => {}
     );
   }
-
+  initDisplayedEvents() {
+    this.displayedTournaments = this.tournaments.filter(
+      (tournament, index) => {
+        return index < this.numberOfTournamentsToDisplay;
+      }
+    );
+  }
   ngOnInit() {
     this.getTournaments();
   }
 
   navigateToTournament(eventid: number) {
     this.router.navigate(['/tournament', eventid]);
+  }
+
+  changeDisplayed(tournaments: Tournament[]) {
+    this.displayedTournaments = tournaments;
   }
 }
