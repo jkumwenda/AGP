@@ -15,4 +15,4 @@ migrations/
 frontend/node_modules/
 .vscode
 .idea
-~/.vscode-root/
+~/.vscode-root/*
