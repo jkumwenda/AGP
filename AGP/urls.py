@@ -71,6 +71,8 @@ router.register(r'slot_register', backend_views.RegisterViewSet,
                 base_name='Slot Register')
 router.register(r'slot_size', backend_views.SlotSizeViewSet,
                 base_name='Slot Size')
+router.register(r'game', backend_views.GameViewSet,
+                base_name='Game')
 
 # Wire up our API using automatic URL routing.
 # Additionally, we include login URLs for the browsable API.
