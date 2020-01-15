@@ -61,7 +61,7 @@ export class EditTournamentComponent implements OnInit {
      const data = this.tournamentForm.value;
      this.tournamentData = {
       fk_event_typeid: data.fk_event_typeid,
-      fk_profileid: data.fk_profileid,
+      fk_profileid: 2,
       fk_draw_typeid: data.fk_draw_typeid,
       event: data.event,
       event_description: data.event_description,
@@ -73,7 +73,6 @@ export class EditTournamentComponent implements OnInit {
       this.router.navigate(['/tournaments']);
 
     }, (error) => {
-       console.log(error);
 
      });
     }
@@ -83,7 +82,9 @@ export class EditTournamentComponent implements OnInit {
         (result: DrawType[]) => {
           this.drawTypes = result
         },
-        error => console.log(error)
+        (error) => {
+
+        }
       );
     }
 
@@ -92,16 +93,9 @@ export class EditTournamentComponent implements OnInit {
         (result: EventType[]) => {
           this.eventTypes = result
         },
-        error => console.log(error)
-      );
-    }
+        (error) => {
 
-    getProfiles() {
-      this.profileService.getProfiles().then(
-        (result: Profile[]) => {
-          this.profiles = result
-        },
-        error => console.log(error)
+        }
       );
     }
 
@@ -120,7 +114,6 @@ export class EditTournamentComponent implements OnInit {
       this.tournamentForm = this.formBuilder.group({
         fk_event_typeid: [this.tournament.fk_event_typeid, Validators.compose([Validators.required])],
         fk_draw_typeid: [this.tournament.fk_draw_typeid, Validators.compose([Validators.required])],
-        fk_profileid: [this.tournament.fk_profileid, Validators.compose([Validators.required])],
         event: [this.tournament.event, Validators.compose([Validators.required])],
         event_description: [this.tournament.event_description, Validators.compose([Validators.required])],
         start_date: [this.tournament.start_date, Validators.compose([Validators.required])],
@@ -129,7 +122,6 @@ export class EditTournamentComponent implements OnInit {
     }
 
     ngOnInit() {
-      this.getProfiles();
       this.getEventTypes();
       this.getDrawTypes();
       this.getTournament(this.tournamentId)

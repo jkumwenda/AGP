@@ -225,3 +225,15 @@ class EventFormatViewSet(viewsets.ModelViewSet):
 class FieldViewSet(viewsets.ModelViewSet):
     queryset = Field.objects.all()
     serializer_class = FieldSerializer
+
+
+class GameViewSet(viewsets.ModelViewSet):
+    queryset = Event.objects.all()
+    serializer_class = GameSerializer
+
+    def get_queryset(self):
+        queryset = super().get_queryset()
+        data = ViewsHelper.filter_games(
+            self, queryset, self.request.query_params.get('end_date'),
+        )
+        return data
