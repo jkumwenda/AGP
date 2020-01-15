@@ -336,3 +336,9 @@ class EventSerializer(serializers.ModelSerializer):
                 return 'Open'
         
         return 'Closed'
+
+
+class GameSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Event
+        fields = '__all__'

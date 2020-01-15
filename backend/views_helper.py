@@ -4,6 +4,8 @@ from rest_framework.response import Response
 from rest_framework import status
 from rest_framework.exceptions import APIException
 from .models import *
+from datetime import datetime
+
 
 class ViewsHelper:
     def filter_profile_role(self, queryset, profile_id):
@@ -36,3 +38,7 @@ class ViewsHelper:
     def filter_test(self, queryset):
         r = {'queryset': queryset, 'status':'Test'}
         raise APIException(r)
+
+    def filter_games(self, queryset, end_date):
+        games = queryset.order_by('-end_date').filter(end_date__lt=datetime.now())
+        return games
