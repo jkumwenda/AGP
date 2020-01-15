@@ -1,0 +1,33 @@
+<div class="card login-card dropdown-all w-100 ">
+    <div class="card-header card-header-customer md-secondary-dark">
+        <h5 class="mdi mdi-file-table"> {{moduleTitle}}</h5>
+    </div>
+    <div class="card-body login-card-body ">
+        <h6><a [routerLink]="['/manage/add-profile']" class="btn btn-outline-secondary btn-sm mdi mdi-plus ">Add Profile</a></h6>
+        <div class="after-btn-spacing"></div>
+        <table datatable class="table table-striped" *ngIf="checkIfEmpty()">
+            <thead>
+                <tr>
+                    <th>Date of Birth</th>
+                    <th>Phone Number</th>
+                    <th>Gender</th>
+                    <th>User</th>
+                    <th width='60px'>Controls</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let profile of profiles; let data_index=index">
+                    <td>{{profile.dob}}</td>
+                    <td>{{profile.phone}}</td>
+                    <td>{{profile.fk_genderid}}</td>
+                    <td>{{profile.user_id}}</td>
+                    <td>
+                    <button (click)="deleteProfile(profile.pk_profileid)" class="btn btn-danger btn-sm btn-control"><i class="mdi mdi-delete"></i></button>
+                    <button (click)="editProfile(profile.pk_profileid)" class="btn btn-success btn-sm btn-control"><i class="mdi mdi-pencil"></i></button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+

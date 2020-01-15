@@ -1,0 +1,42 @@
+<div class="modal fade" id="setRegistrationDate" tabindex="-1" role="dialog" aria-labelledby="modelTitleId" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title"><i class="mdi mdi-file-plus"></i> {{ moduleTitle }}</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+        <div class="modal-body">
+            <form [formGroup]="registrationDateForm" (ngSubmit)="addRegistrationDate()">
+                  <div class="form-group">
+                    <div class="row">
+                        <div class="col-lg-12 col-md-12 col-sm-12">
+                            <label for="datetimepicker">Registration Open Date</label>
+                            <input class="adjust-input" [owlDateTime]="dt1" [owlDateTimeTrigger]="dt1" placeholder="Registration open data" formControlName='open_date'><owl-date-time #dt1></owl-date-time>
+                        </div>
+        
+                    </div>
+                </div>
+                
+                <div class="form-group">
+                    <div class="row">
+                        <div class="col-lg-12 col-md-12 col-sm-12">
+                            <label for="datetimepicker">Registration Close Date</label>
+                            <input class="adjust-input" [owlDateTime]="dt2" [owlDateTimeTrigger]="dt2" placeholder="Close date" formControlName='close_date'><owl-date-time #dt2></owl-date-time>
+                        </div>
+                    </div>
+                </div>
+            <button type="submit" class="btn btn-primary btn-block btn-lg" [disabled]="!registrationDateForm.valid">Save</button>
+  
+        </form>
+        </div>
+        <div class="modal-footer">
+          <button #closeModal type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  
+  

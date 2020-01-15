@@ -251,7 +251,12 @@ class SlotSerializer(serializers.ModelSerializer):
         model = Slot
         fields = '__all__'
 
-
+        
+class InformationSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Information
+        fields = '__all__'
+    
 class FieldSerializer(serializers.ModelSerializer):
     slots = SlotSerializer(many=True, read_only=True)
 
@@ -272,13 +277,62 @@ class FieldSerializer(serializers.ModelSerializer):
 
 class EventSerializer(serializers.ModelSerializer):
     field = FieldSerializer(many=True, read_only=True)
+    class Meta:
+        model = Information
+        fields = '__all__'
+
+
+class FieldSerializer(serializers.ModelSerializer):
+    slots = SlotSerializer(many=True, read_only=True)
 
     class Meta:
-        model = Event
+        model = Field
         fields = '__all__'
+
+    def create(self, validated_data):
+        event = validated_data['fk_eventid']
+        field = Field(
+            field_type=validated_data['field_type'], fk_eventid=event)
+        field.save()
+
+        SerializerHelper.saveSlots(
+            self, event.start_date, event.end_date, field)
+        return field
 
 
 class EventTypeSerializer(serializers.ModelSerializer):
     class Meta:
         model = EventType
         fields = '__all__'
+
+class EventFormatSerializer(serializers.ModelSerializer):
+    format = FormatSerializer(many=False,source='fk_formatid', read_only=True)
+    class Meta:
+        model = EventFormat
+        fields = '__all__'
+
+class EventSerializer(serializers.ModelSerializer):
+    status = serializers.SerializerMethodField('checkStatus')
+    event_type= EventTypeSerializer(many=False,source='fk_event_typeid',read_only=True)
+    profile= ProfileSerializer(many=False, source='fk_profileid', read_only=True)
+    draw_type= DrawTypeSerializer(many=False, source='fk_draw_typeid', read_only=True)
+    information= InformationSerializer(many=True, read_only=True)
+    eventFormat = EventFormatSerializer(many=True, read_only=True)
+    registrationDate = RegistrationDateSerializer(many=True, read_only=True)
+    field = FieldSerializer(many=True, read_only=True)
+    
+    class Meta:
+        model = Event
+        fields = '__all__'
+        #fields = ['pk_eventid', 'fk_event_typeid', 'fk_profileid', 'fk_draw_typeid', 'event', 'event_description', 'start_date', 'end_date', 'open_date', 'close_date', 'status', 'info']
+
+    def checkStatus(self, obj):
+        registrationDates = RegistrationDate.objects.filter(fk_eventid=obj) 
+        
+        for registrationDate in registrationDates:
+            dt = registrationDate.close_date
+            now = datetime.utcnow().replace(tzinfo=utc)
+            if now < dt:
+                return 'Open'
+        
+        return 'Closed'

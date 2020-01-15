@@ -1,0 +1,32 @@
+<!-- Button trigger modal -->
+<!-- Modal -->
+<div class="modal fade" id="editEventDrawType" tabindex="-1" role="dialog" aria-labelledby="modelTitleId" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title"><i class="mdi mdi-fe-plus"></i> {{ moduleTitle }}</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+        <div class="modal-body">
+            <form [formGroup]="eventDrawTypeForm" (ngSubmit)="editEventDrawType()">
+                <div class="form-group">
+                    <label for="draw type">Select Draw Type</label><br>
+                    <select id="draw type" class="form-control" data-live-search="true" formControlName='fk_draw_typeid'>
+                      <option *ngFor="let drawType of drawTypes" value="{{ drawType.pk_draw_typeid }}"data-tokens="ketchup mustard">{{ drawType.draw_type }}</option>
+                    </select>
+                   </div>
+            <button type="submit" class="btn btn-primary btn-block btn-lg" [disabled]="!eventDrawTypeForm.valid">Save</button>
+  
+        </form>
+        </div>
+        <div class="modal-footer">
+          <button #closeModal type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  
+  

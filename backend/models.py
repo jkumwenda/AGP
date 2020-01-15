@@ -2,7 +2,8 @@ from django.db import models
 from django.contrib.auth.models import User
 from django.db.models.signals import post_save
 from django.dispatch import receiver
-from datetime import datetime
+import datetime
+from django.utils.timezone import utc,datetime
 
 
 class Country(models.Model):
@@ -233,7 +234,7 @@ class EventType(models.Model):
         managed = False
         db_table = 'event_type'
 
-
+        
 class DrawType(models.Model):
     pk_draw_typeid = models.AutoField(primary_key=True)
     draw_type = models.CharField(max_length=45)
@@ -244,7 +245,7 @@ class DrawType(models.Model):
 
 
 class Event(models.Model):
-    pk_eventid = models.IntegerField(primary_key=True)
+    pk_eventid = models.AutoField(primary_key=True)
     fk_event_typeid = models.ForeignKey(
         'EventType', models.DO_NOTHING, db_column='fk_event_typeid')
     fk_profileid = models.ForeignKey(
@@ -259,7 +260,7 @@ class Event(models.Model):
     class Meta:
         managed = False
         db_table = 'event'
-
+    
 
 class Field(models.Model):
     pk_fieldid = models.AutoField(primary_key=True)
@@ -287,7 +288,7 @@ class Slot(models.Model):
 class RegistrationDate(models.Model):
     pk_registration_dateid = models.AutoField(primary_key=True)
     fk_eventid = models.ForeignKey(
-        Event, models.DO_NOTHING, db_column='fk_eventid')
+        Event,models.DO_NOTHING , related_name='registrationDate', db_column='fk_eventid')
     open_date = models.DateTimeField()
     close_date = models.DateTimeField()
 
@@ -295,7 +296,7 @@ class RegistrationDate(models.Model):
         managed = False
         db_table = 'registration_date'
 
-
+        
 class Format(models.Model):
     pk_formatid = models.AutoField(primary_key=True)
     format = models.CharField(max_length=45)
@@ -306,9 +307,9 @@ class Format(models.Model):
 
 
 class EventFormat(models.Model):
-    pk_event_formatid = models.IntegerField(primary_key=True)
+    pk_event_formatid = models.AutoField(primary_key=True)
     fk_eventid = models.ForeignKey(
-        Event, models.DO_NOTHING, db_column='fk_eventid')
+        Event, models.DO_NOTHING, related_name='eventFormat', db_column='fk_eventid')
     fk_formatid = models.ForeignKey(
         'Format', models.DO_NOTHING, db_column='fk_formatid')
 
@@ -320,7 +321,7 @@ class EventFormat(models.Model):
 class Information(models.Model):
     pk_informationid = models.AutoField(primary_key=True)
     fk_eventid = models.ForeignKey(
-        Event, models.DO_NOTHING, db_column='fk_eventid')
+        Event, models.DO_NOTHING, related_name="information", db_column='fk_eventid')
     info = models.TextField()
 
     class Meta:

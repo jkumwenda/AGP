@@ -9,6 +9,8 @@ import { AddPlayerComponent } from './logged/players/add-player/add-player.compo
 import { PlayerComponent } from './logged/players/player/player.component';
 import { SignupComponent } from './auth/signup/signup.component';
 import { LoginComponent } from './auth/login/login.component';
+import { AddTournamentComponent } from './logged/tournaments/add-tournament/add-tournament.component';
+import { EditTournamentComponent } from './logged/tournaments/edit-tournament/edit-tournament.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { SignupConfirmationComponent } from './auth/signup-confirmation/signup-confirmation.component';
 import { EventsComponent } from './public/events/events.component';
@@ -24,6 +26,10 @@ const routes: Routes = [
   { path: 'tournaments', component: TournamentsComponent },
   { path: 'tournament/:id', component: TournamentComponent },
   {path: 'course', component: CourseComponent},
+  {path: 'players', component: PlayersComponent},
+  {path: 'tournaments/add-tournament', component: AddTournamentComponent},
+  {path: 'tournaments/tournament/:id', component: TournamentComponent},
+  {path: 'tournaments/edit-tournament/:id', component: EditTournamentComponent},
   {path: 'dashboard', component: DashboardComponent},
   {path: 'tournaments', component: TournamentsComponent},
   {path: 'course/:id', component: CourseComponent},

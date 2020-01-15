@@ -59,6 +59,15 @@ import { EventTypesComponent } from './event-types/event-types.component';
 import { AddEventTypeComponent } from './event-types/add-event-type/add-event-type.component';
 import { EditEventTypeComponent } from './event-types/edit-event-type/edit-event-type.component';
 import { EventTypeComponent } from './event-types/event-type/event-type.component';
+import { ProfilesComponent } from './profiles/profiles.component';
+import { AddProfileComponent } from './profiles/add-profile/add-profile.component';
+import { EditProfileComponent } from './profiles/edit-profile/edit-profile.component';
+import { ProfileComponent } from './profiles/profile/profile.component';
+//import { AddInformationComponent } from '../tournaments/add-information/add-information.component';
+//import { EditInformationComponent } from '../tournaments/edit-information/edit-information.component';
+//import { InformationComponent } from '../tournaments/information/information.component';
+import { AddTournamentComponent } from '../tournaments/add-tournament/add-tournament.component';
+
 import { AddUserRoleComponent } from './users/user/add-user-role/add-user-role.component';
 import { UserRolePermissionsComponent } from './users/user/user-role-permissions/user-role-permissions.component';
 
@@ -114,6 +123,15 @@ import { UserRolePermissionsComponent } from './users/user/user-role-permissions
     AddEventTypeComponent,
     EditEventTypeComponent,
     EventTypeComponent,
+    ProfilesComponent,
+    AddProfileComponent,
+    EditProfileComponent,
+    ProfileComponent,
+    //AddInformationComponent,
+    //EditInformationComponent,
+    //InformationComponent,
+    //AddInformationComponent,
+    //AddTournamentComponent,
     AddUserRoleComponent,
     UserRolePermissionsComponent
   ],

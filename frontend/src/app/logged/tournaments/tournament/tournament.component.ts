@@ -12,38 +12,40 @@ import { ActivatedRoute } from '@angular/router';
 })
 export class TournamentComponent implements OnInit {
 
-  public tournamentId:number
-  public tournament:Tournament
-  public slots:Slot[]=[]
+  public tournamentId: number;
+  public tournament: Tournament;
+  public slots: Slot[] = [];
 
   constructor(
-    private tournamentService:TournamentService,
+    private tournamentService: TournamentService,
     private activatedRoute: ActivatedRoute
   ) {
 
-    this.tournamentId= this.activatedRoute.snapshot.params['id']
-    this.tournament= Tournament.initialize()
-    this.tournament.field.push(new Field(null))
+    this.tournamentId = this.activatedRoute.snapshot.params.id;
+    this.tournament = Tournament.initialize();
   }
 
 
-  UpdateSlots(slots){
-    this.slots=slots
+  UpdateSlots(slots) {
+    this.slots = slots;
+  }
 
+  getTournament() {
+    this.tournamentService.getTournament(this.tournamentId).then(
+      (result: Tournament) => {
+        this.tournament = result;
+        if (result.field.length > 0) {
+          this.slots = this.tournament.field[0].slots;
+        } else {
+          this.slots = [];
+        }
+      },
+      error => {}
+    );
   }
 
   ngOnInit() {
-    this.tournamentService.getTournament(this.tournamentId).then(
-      (result:Tournament) => {
-        this.tournament=result
-        if(result.field.length>0)
-            this.slots= this.tournament.field[0].slots
-        else
-            this.slots=[]
-      },
-      error=>console.log(error)
-    )
-
+  this.getTournament();
   }
 
 }

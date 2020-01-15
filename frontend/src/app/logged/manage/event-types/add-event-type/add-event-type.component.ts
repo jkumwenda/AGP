@@ -24,7 +24,7 @@ export class AddEventTypeComponent implements OnInit {
     this.eventTypeData = {
        event_type: data.event_type
     };
-
+      
     this.eventTypeService.addEventType(this.eventTypeData).then((result) => {
       this.router.navigate(['/manage/event-types']);
     }, (error) => {
