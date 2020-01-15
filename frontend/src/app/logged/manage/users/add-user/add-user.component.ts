@@ -36,7 +36,7 @@ export class AddUserComponent implements OnInit {
       last_name: data.last_name,
       email: data.email,
       username: data.username,
-      password: 2,
+      password: 0,
       userprofile: {fk_genderid: data.gender, phone: data.phone},
     };
 
