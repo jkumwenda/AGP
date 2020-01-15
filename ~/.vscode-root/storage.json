@@ -1,7 +1,12 @@
 {
     "telemetry.machineId": "7052a682fd1e8ac632dd7dcd8c3fd6e36b305fe61fe10451482f8770861f9b79",
     "openedPathsList": {
-        "workspaces3": [],
+        "workspaces3": [
+            {
+                "id": "d5f103b46fed559bc90bfe2694d7c885",
+                "configURIPath": "file:///home/joel/Projects/AGP/AGP.code-workspace"
+            }
+        ],
         "files2": []
     },
     "lastKnownMenubarData": {
@@ -44,6 +49,21 @@
                                     "id": "vscode.menubar.separator"
                                 },
                                 {
+                                    "id": "openRecentWorkspace",
+                                    "uri": {
+                                        "$mid": 1,
+                                        "fsPath": "/home/joel/Projects/AGP/AGP.code-workspace",
+                                        "external": "file:///home/joel/Projects/AGP/AGP.code-workspace",
+                                        "path": "/home/joel/Projects/AGP/AGP.code-workspace",
+                                        "scheme": "file"
+                                    },
+                                    "enabled": true,
+                                    "label": "/home/joel/Projects/AGP/AGP (Workspace)"
+                                },
+                                {
+                                    "id": "vscode.menubar.separator"
+                                },
+                                {
                                     "id": "workbench.action.openRecent",
                                     "label": "&&More..."
                                 },
@@ -73,8 +93,7 @@
                     },
                     {
                         "id": "workbench.action.files.save",
-                        "label": "&&Save",
-                        "enabled": false
+                        "label": "&&Save"
                     },
                     {
                         "id": "workbench.action.files.saveAs",
@@ -146,8 +165,7 @@
                     },
                     {
                         "id": "workbench.action.files.revert",
-                        "label": "Re&&vert File",
-                        "enabled": false
+                        "label": "Re&&vert File"
                     },
                     {
                         "id": "workbench.action.closeActiveEditor",
@@ -155,8 +173,7 @@
                     },
                     {
                         "id": "workbench.action.closeFolder",
-                        "label": "Close &&Folder",
-                        "enabled": false
+                        "label": "Close &&Workspace"
                     },
                     {
                         "id": "workbench.action.closeWindow",
@@ -349,7 +366,8 @@
                                 },
                                 {
                                     "id": "workbench.action.toggleSidebarVisibility",
-                                    "label": "Show &&Side Bar"
+                                    "label": "Show &&Side Bar",
+                                    "checked": true
                                 },
                                 {
                                     "id": "workbench.action.toggleStatusbarVisibility",
@@ -538,8 +556,7 @@
                 "items": [
                     {
                         "id": "workbench.action.navigateBack",
-                        "label": "&&Back",
-                        "enabled": false
+                        "label": "&&Back"
                     },
                     {
                         "id": "workbench.action.navigateForward",
@@ -548,8 +565,7 @@
                     },
                     {
                         "id": "workbench.action.navigateToLastEditLocation",
-                        "label": "&&Last Edit Location",
-                        "enabled": false
+                        "label": "&&Last Edit Location"
                     },
                     {
                         "id": "vscode.menubar.separator"
@@ -1401,5 +1417,6 @@
             }
         },
         "openedWindows": []
-    }
+    },
+    "pickerWorkingDir": "/home/joel/Projects/AGP"
 }

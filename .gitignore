@@ -13,3 +13,5 @@ db.sqlite3
 requirements.txt
 migrations/
 frontend/node_modules/
+.vscode
+.idea
