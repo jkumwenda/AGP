@@ -23,6 +23,7 @@ export class Tournament {
     eventFormat: EventFormat[];
     registrationDate: RegistrationDate[];
     field: Field[];
+    status: string;
 
     constructor(id, event, sDate, eDate) {
       this.information = [];
