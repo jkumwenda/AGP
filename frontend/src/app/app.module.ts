@@ -55,7 +55,7 @@ import { AddCourseTypeHoleComponent } from './logged/course/add-course-type-hole
 import { EditCourseTypeHoleComponent } from './logged/course/edit-course-type-hole/edit-course-type-hole.component';
 import { EditCourseTypeComponent } from './logged/course/edit-course-type/edit-course-type.component';
 import { SignupConfirmationComponent } from './auth/signup-confirmation/signup-confirmation.component';
-//import { ChartistModule } from 'ng-chartist';
+import { ChartistModule } from 'ng-chartist';
 import { PublicComponent } from './public/public.component';
 import { EventsComponent } from './public/events/events.component';
 import { LeaderboardComponent } from './public/leaderboard/leaderboard.component';
@@ -135,7 +135,7 @@ import { EditFieldComponent } from './logged/tournaments/tournament/edit-field/e
     OwlNativeDateTimeModule,
     BrowserAnimationsModule,
     MatExpansionModule,
-    //ChartistModule
+    ChartistModule
   ],
   providers: [AuthService, DatePipe],
   bootstrap: [AppComponent],
