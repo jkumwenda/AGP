@@ -15,6 +15,7 @@ import { PageNotFoundComponent } from './page-not-found/page-not-found.component
 import { SignupConfirmationComponent } from './auth/signup-confirmation/signup-confirmation.component';
 import { EventsComponent } from './public/events/events.component';
 import { LeaderboardComponent } from './public/leaderboard/leaderboard.component';
+import { GamesComponent } from './public/games/games.component';
 
 const routes: Routes = [
   { path: '', component: LoginComponent },
@@ -37,7 +38,9 @@ const routes: Routes = [
   { path: 'add-player', component: AddPlayerComponent },
   { path: 'player/:id', component: PlayerComponent },
   { path: 'events', component: EventsComponent },
-  { path: 'leaderboard', component: LeaderboardComponent }
+  { path: 'leaderboard', component: LeaderboardComponent },
+  { path: 'leaderboard/:id', component: LeaderboardComponent },
+  { path: 'games', component: GamesComponent }
 ];
 
 @NgModule({

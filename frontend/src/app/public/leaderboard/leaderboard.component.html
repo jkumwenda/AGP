@@ -2,15 +2,11 @@
   <div class="col-lg-8 col-md-8 col-sm-12">
     <div class="card dropdown-all w-100 leaderboard-card">
         <div class="card-header leaderboard-header bg-dark">
-            <h5 class='tournament-name'>NBM Open Championship</h5>
-            <span class=tournament-content><strong>Date</strong> 28 . 01 . 2020 - 29 . 01 . 2020 </span><br>
+            <h5 class='tournament-name'>{{ game.event }}</h5>
+            <span class=tournament-content><strong>Date</strong> {{ game.start_date | date:'longDate' }} - {{ game.end_date | date:'longDate' }} </span><br>
             <span><strong>Players</strong> M <span class="badge badge-secondary badge-pill badge-sm">8</span> F <span class="badge badge-secondary badge-pill badge-sm">10</span></span>
         </div>
         <div class="card-body">
-
-
-
-
 
 <table class="table table-striped table-bordered table-sm">
   <thead>
@@ -54,34 +50,11 @@
   </tbody>
 </table>
 
-
-
-
-
-
         </div>
     </div>
   </div>
+
   <div class="col-lg-4 col-md-4 col-sm-12">
-    <div class="card dropdown-all w-100">
-        <div class="card-header card-header-customer">
-            <h6 class=''><strong>Previous games</strong></h6>
-        </div>
-        <div class="card-body">
-          <div class='alert-primary alert-tournament'>
-            <strong>Standard Bank Championship</strong>
-            <p> 10 .12 . 209</p>
-          </div>
-          <div class='alert-success alert-tournament'>
-            <strong>Spac Systems female open</strong>
-            <p> 10 .12 . 209</p>
-          </div>
-          <div class='alert-danger alert-tournament'>
-            <strong>NBM Open challenge</strong>
-            <p> 10 .12 . 209</p>
-          </div>
-          <button class="btn btn-primary btn-sm all-games">All games &raquo;</button>
-        </div>
-    </div>
+      <app-previous-games (gameSelected)="selectGame($event)"></app-previous-games>
   </div>
 </div>
