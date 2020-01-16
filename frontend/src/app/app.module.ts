@@ -64,6 +64,7 @@ import { AddFieldComponent } from './logged/tournaments/tournament/add-field/add
 import { RegistrationSlotsComponent } from './logged/tournaments/tournament/registration-slots/registration-slots.component';
 import { TournamentRegistrationDetailComponent } from './logged/tournaments/tournament/tournament-registration-detail/tournament-registration-detail.component';
 import { EditFieldComponent } from './logged/tournaments/tournament/edit-field/edit-field.component';
+import { EventPaginationComponent } from './public/events/event-pagination/event-pagination.component';
 
 
 @NgModule({
@@ -118,6 +119,7 @@ import { EditFieldComponent } from './logged/tournaments/tournament/edit-field/e
     RegistrationSlotsComponent,
     TournamentRegistrationDetailComponent,
     EditFieldComponent,
+    EventPaginationComponent,
 
   ],
   imports: [
