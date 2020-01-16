@@ -67,6 +67,7 @@ import { EditFieldComponent } from './logged/tournaments/tournament/edit-field/e
 import { GamesComponent } from './public/games/games.component';
 import { PreviousGamesComponent } from './public/previous-games/previous-games.component';
 import { GameDetailComponent } from './public/game-detail/game-detail.component';
+import { EventPaginationComponent } from './public/events/event-pagination/event-pagination.component';
 
 
 @NgModule({
@@ -124,6 +125,7 @@ import { GameDetailComponent } from './public/game-detail/game-detail.component'
     GamesComponent,
     PreviousGamesComponent,
     GameDetailComponent,
+    EventPaginationComponent,
 
   ],
   imports: [
