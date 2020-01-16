@@ -13,6 +13,9 @@ export class EventsComponent implements OnInit {
   public tournaments: Tournament[] = [];
   public displayedTournaments: Tournament[] = [];
   public  numberOfTournamentsToDisplay = 3;
+  public searchString: string;
+  public search = false;
+  public searchedTournaments: Tournament[];
 
   constructor(
     private tournamentService: TournamentService,
@@ -28,13 +31,13 @@ export class EventsComponent implements OnInit {
             if (tournamentOne.start_date < tournamentTwo.start_date) { return -1; }
           }
         );
-        this.initDisplayedEvents();
+        this.initDisplayedEvents(this.tournaments);
       },
       error => {}
     );
   }
-  initDisplayedEvents() {
-    this.displayedTournaments = this.tournaments.filter(
+  initDisplayedEvents(tournaments: Tournament[]) {
+    this.displayedTournaments = tournaments.filter(
       (tournament, index) => {
         return index < this.numberOfTournamentsToDisplay;
       }
@@ -44,11 +47,19 @@ export class EventsComponent implements OnInit {
     this.getTournaments();
   }
 
-  navigateToTournament(eventid: number) {
-    this.router.navigate(['/tournament', eventid]);
+  navigateToTournament(eventId: number) {
+    this.router.navigate(['/tournament', eventId]);
   }
 
   changeDisplayed(tournaments: Tournament[]) {
     this.displayedTournaments = tournaments;
+  }
+
+  searchTournament() {
+    this.searchedTournaments = this.tournaments.filter((tournament) => {
+      return tournament.event.toLowerCase().includes(this.searchString.toLowerCase());
+    });
+    this.search = true;
+    this.initDisplayedEvents(this.searchedTournaments);
   }
 }

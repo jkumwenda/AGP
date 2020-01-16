@@ -23,7 +23,6 @@ export class EventPaginationComponent implements OnInit {
   }
   ngOnInit() {
     this.getNumberOfPages(this.tournaments);
-    // this.filterArray(this.currentPage);
   }
   selectPage(numberOfPage: number) {
     this.currentPage = numberOfPage;
@@ -33,7 +32,9 @@ export class EventPaginationComponent implements OnInit {
   previousPage() {
     this.currentPage -= 1;
     this.filterArray(this.currentPage);
-
+  }
+  ngOnChanges() {
+    this.getNumberOfPages(this.tournaments);
   }
 
   filterArray(currentIndex) {
