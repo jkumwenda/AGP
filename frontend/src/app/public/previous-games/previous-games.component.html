@@ -1,0 +1,12 @@
+<div class="card dropdown-all w-100">
+    <div class="card-header card-header-customer">
+        <h6 class=''><strong>{{ moduleTitle }}</strong></h6>
+    </div>
+    <div class="card-body">
+      <div style="cursor: pointer;" class='alert-primary alert-tournament' *ngFor="let game of games; let i=index" (click)="emitGameSelectedEvent(game)">
+        <strong>{{ game.event }}</strong>
+        <p>{{ game.end_date | date:'fullDate' }}</p>
+      </div>
+      <button [routerLink]="['/games']" class="btn btn-primary btn-sm all-games">All games &raquo;</button>
+    </div>
+</div>

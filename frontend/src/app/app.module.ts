@@ -64,6 +64,9 @@ import { AddFieldComponent } from './logged/tournaments/tournament/add-field/add
 import { RegistrationSlotsComponent } from './logged/tournaments/tournament/registration-slots/registration-slots.component';
 import { TournamentRegistrationDetailComponent } from './logged/tournaments/tournament/tournament-registration-detail/tournament-registration-detail.component';
 import { EditFieldComponent } from './logged/tournaments/tournament/edit-field/edit-field.component';
+import { GamesComponent } from './public/games/games.component';
+import { PreviousGamesComponent } from './public/previous-games/previous-games.component';
+import { GameDetailComponent } from './public/game-detail/game-detail.component';
 import { EventPaginationComponent } from './public/events/event-pagination/event-pagination.component';
 
 
@@ -119,6 +122,9 @@ import { EventPaginationComponent } from './public/events/event-pagination/event
     RegistrationSlotsComponent,
     TournamentRegistrationDetailComponent,
     EditFieldComponent,
+    GamesComponent,
+    PreviousGamesComponent,
+    GameDetailComponent,
     EventPaginationComponent,
 
   ],
