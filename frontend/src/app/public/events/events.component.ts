@@ -23,14 +23,16 @@ export class EventsComponent implements OnInit {
   ) { }
 
   getTournaments() {
-    this.tournamentService.getTournaments().then(
+    this.tournamentService.getTournamentsNoAuth().then(
       (tournaments: Tournament[]) => {
-        this.tournaments = tournaments.sort(
-          (tournamentOne, tournamentTwo) => {
-            if (tournamentOne.start_date > tournamentTwo.start_date) { return 1; }
-            if (tournamentOne.start_date < tournamentTwo.start_date) { return -1; }
+        this.tournaments = tournaments.sort((tournamentOne, tournamentTwo) => {
+          if (tournamentOne.start_date > tournamentTwo.start_date) {
+            return 1;
           }
-        );
+          if (tournamentOne.start_date < tournamentTwo.start_date) {
+            return -1;
+          }
+        });
         this.initDisplayedEvents(this.tournaments);
       },
       error => {}

@@ -35,8 +35,8 @@ class SerializerHelper:
        
         condition = True
 
-        startTimeObject = datetime.strptime(startTime, '%H:%M')
-        endTimeObject = datetime.strptime(endTime, '%H:%M')
+        startTimeObject = datetime.datetime.strptime(startTime, '%H:%M')
+        endTimeObject = datetime.datetime.strptime(endTime, '%H:%M')
 
         while(condition):   
             slot= Slot(fk_fieldid=field, slot_time=str(startTimeObject.time())[0:5], day=day)

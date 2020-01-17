@@ -44,12 +44,13 @@ export class AddTournamentComponent implements OnInit {
       end_date: data.end_date,
       fk_draw_typeid: data.fk_draw_typeid,
       fk_event_typeid: data.fk_event_typeid,
-      fk_profileid: 2,
+      fk_profileid: 1,
     };
 
     this.tournamentService.addTournament(this.tournamentData).then((result:Tournament) => {
       this.router.navigate(['/tournaments/tournament', result.pk_eventid]);
     }, (error) => {
+        console.log("TCL: AddTournamentComponent -> addTournament -> error", error);
 
     });
   }
