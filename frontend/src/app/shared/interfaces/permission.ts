@@ -3,4 +3,6 @@ export class Permission {
   permission: string;
   code: string;
   permission_desc: string;
+  selected:Boolean=false
+
 }

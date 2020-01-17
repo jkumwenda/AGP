@@ -10,13 +10,12 @@ import { TournamentService } from "src/app/shared/services/tournament.service";
 import { FormGroup, FormBuilder, Validators } from "@angular/forms";
 import { DatePipe } from '@angular/common'
 import { Router, ActivatedRoute } from '@angular/router';
-
-
 @Component({
   selector: 'app-edit-tournament-format',
   templateUrl: './edit-tournament.component.html',
   styleUrls: ['./edit-tournament.component.css']
 })
+
 export class EditTournamentComponent implements OnInit {
   @Input() tournamentId: number;
   @ViewChild("closeModal", null) closeModal: ElementRef;
@@ -47,10 +46,10 @@ export class EditTournamentComponent implements OnInit {
    }
 
    getTournament(tournamentId){
-     
+
      this.tournamentService.getTournament(tournamentId).then((result) => {
        this.tournament = result as Tournament;
-       
+
        this.initializeTournamentForm();
        console.log(this.initializeTournamentForm());
 
@@ -62,7 +61,7 @@ export class EditTournamentComponent implements OnInit {
      const data = this.tournamentForm.value;
      this.tournamentData = {
       fk_event_typeid: data.fk_event_typeid,
-      fk_profileid: data.fk_profileid,
+      fk_profileid: 2,
       fk_draw_typeid: data.fk_draw_typeid,
       event: data.event,
       event_description: data.event_description,
@@ -72,9 +71,8 @@ export class EditTournamentComponent implements OnInit {
 
      this.tournamentService.editTournament(this.tournamentId, this.tournamentData).then((result) => {
       this.router.navigate(['/tournaments']);
- 
+
     }, (error) => {
-       console.log(error);
 
      });
     }
@@ -84,7 +82,9 @@ export class EditTournamentComponent implements OnInit {
         (result: DrawType[]) => {
           this.drawTypes = result
         },
-        error => console.log(error)
+        (error) => {
+
+        }
       );
     }
 
@@ -93,22 +93,15 @@ export class EditTournamentComponent implements OnInit {
         (result: EventType[]) => {
           this.eventTypes = result
         },
-        error => console.log(error)
-      );
-    }
+        (error) => {
 
-    getProfiles() {
-      this.profileService.getProfiles().then(
-        (result: Profile[]) => {
-          this.profiles = result
-        },
-        error => console.log(error)
+        }
       );
     }
 
     initializeTournamentForm() {
       if (this.tournament==null) {
-        this.tournament = new Tournament();
+        this.tournament = Tournament.initialize();
         this.tournament.fk_event_typeid = null;
         this.tournament.fk_draw_typeid = null;
         this.tournament.fk_profileid = null;
@@ -121,7 +114,6 @@ export class EditTournamentComponent implements OnInit {
       this.tournamentForm = this.formBuilder.group({
         fk_event_typeid: [this.tournament.fk_event_typeid, Validators.compose([Validators.required])],
         fk_draw_typeid: [this.tournament.fk_draw_typeid, Validators.compose([Validators.required])],
-        fk_profileid: [this.tournament.fk_profileid, Validators.compose([Validators.required])],
         event: [this.tournament.event, Validators.compose([Validators.required])],
         event_description: [this.tournament.event_description, Validators.compose([Validators.required])],
         start_date: [this.tournament.start_date, Validators.compose([Validators.required])],
@@ -130,7 +122,6 @@ export class EditTournamentComponent implements OnInit {
     }
 
     ngOnInit() {
-      this.getProfiles();
       this.getEventTypes();
       this.getDrawTypes();
       this.getTournament(this.tournamentId)

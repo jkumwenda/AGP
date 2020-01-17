@@ -24,7 +24,7 @@ router.register(r'type', backend_views.TypeViewSet, base_name='Type')
 router.register(r'course_type', backend_views.CourseTypeViewSet,
                 base_name='Course Type')
 router.register(r'hole', backend_views.HoleViewSet, base_name='Hole')
-router.register(r'course_type_hole', backend_views.UserViewSet,
+router.register(r'course_type_hole', backend_views.CourseTypeHoleViewSet,
                 base_name='Course Type Hole')
 router.register(r'club', backend_views.ClubViewSet, base_name='Club')
 router.register(r'club_course', backend_views.ClubCourseViewSet,
@@ -33,7 +33,10 @@ router.register(r'gender', backend_views.GenderViewSet, base_name='Gender')
 router.register(r'profile_gender', backend_views.ProfileGenderViewSet,
                 base_name='Profile Gender')
 router.register(r'profile', backend_views.ProfileViewSet, base_name='Profile')
-router.register(r'user_profile', backend_views.UserProfileViewSet, base_name='User Profile')
+router.register(r'user_profile', backend_views.UserProfileViewSet,
+                base_name='User Profile')
+router.register(r'player', backend_views.PlayerViewSet,
+                base_name='User Player')
 router.register(r'club_profile', backend_views.ClubProfileViewSet,
                 base_name='Club Profile')
 router.register(r'handicap', backend_views.HandicapViewSet,
@@ -62,7 +65,14 @@ router.register(r'information', backend_views.InformationViewSet,
                 base_name='Information')
 router.register(r'field', backend_views.FieldViewSet,
                 base_name='Field')
-
+router.register(r'field', backend_views.FieldViewSet,
+                base_name='Draw Type')
+router.register(r'slot_register', backend_views.RegisterViewSet,
+                base_name='Slot Register')
+router.register(r'slot_size', backend_views.SlotSizeViewSet,
+                base_name='Slot Size')
+router.register(r'game', backend_views.GameViewSet,
+                base_name='Game')
 
 # Wire up our API using automatic URL routing.
 # Additionally, we include login URLs for the browsable API.

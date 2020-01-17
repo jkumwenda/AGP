@@ -1,3 +1,4 @@
+import { Field } from './field';
 import { EventType } from './event-type';
 import { DrawType } from './draw-type';
 import { EventFormat } from './event-format';
@@ -6,6 +7,7 @@ import { Information } from './information';
 import { RegistrationDate } from './registration-date';
 
 export class Tournament {
+
     pk_eventid: number;
     event: string;
     event_description: string;
@@ -17,16 +19,25 @@ export class Tournament {
     fk_draw_typeid: number;
     fk_event_typeid: number;
     fk_profileid: number;
+    information: Information[];
+    eventFormat: EventFormat[];
+    registrationDate: RegistrationDate[];
+    field: Field[];
+    status: string;
 
-    information:Information[];
-    eventFormat:EventFormat[];
-    registrationDate:RegistrationDate[];
+    constructor(id, event, sDate, eDate) {
+      this.information = [];
+      this.eventFormat = [];
+      this.registrationDate = [];
+      this.draw_type = new DrawType();
+      this.pk_eventid = id;
+      this.event = event;
+      this.start_date = sDate;
+      this.end_date = eDate;
+      this.field = [];
 
-    constructor(){
-      this.information=[]
-      this.eventFormat=[]
-      this.registrationDate=[]
-      this.draw_type = new DrawType()
     }
-  }
-  
+
+
+    static initialize = () => new Tournament(null, null, null, null);
+}

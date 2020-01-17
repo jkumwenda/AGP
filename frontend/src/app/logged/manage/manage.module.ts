@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NgxUiLoaderModule } from 'ngx-ui-loader';
@@ -6,6 +6,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { DataTablesModule } from 'angular-datatables';
 import { AuthGuard } from 'src/app/shared/services/auth-guard.service';
 import { RoleGuard } from 'src/app/shared/services/role-guard.service';
+import { MatExpansionModule } from '@angular/material/expansion';
 
 import { ManageRoutingModule } from './manage-routing.module';
 import { UserComponent } from './users/user/user.component';
@@ -67,6 +68,8 @@ import { ProfileComponent } from './profiles/profile/profile.component';
 //import { InformationComponent } from '../tournaments/information/information.component';
 import { AddTournamentComponent } from '../tournaments/add-tournament/add-tournament.component';
 
+import { AddUserRoleComponent } from './users/user/add-user-role/add-user-role.component';
+import { UserRolePermissionsComponent } from './users/user/user-role-permissions/user-role-permissions.component';
 
 @NgModule({
   declarations: [
@@ -129,6 +132,8 @@ import { AddTournamentComponent } from '../tournaments/add-tournament/add-tourna
     //InformationComponent,
     //AddInformationComponent,
     //AddTournamentComponent,
+    AddUserRoleComponent,
+    UserRolePermissionsComponent
   ],
   imports: [
     FormsModule,
@@ -137,11 +142,13 @@ import { AddTournamentComponent } from '../tournaments/add-tournament/add-tourna
     NgxUiLoaderModule,
     HttpClientModule,
     CommonModule,
-    ManageRoutingModule
+    ManageRoutingModule,
+    MatExpansionModule
   ],
   exports: [
     ManageRoutingModule
   ],
-  providers: [AuthGuard, RoleGuard]
+  providers: [AuthGuard, RoleGuard],
+  schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })
 export class ManageModule { }

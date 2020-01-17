@@ -1,3 +1,4 @@
+<div class="col-lg-9 col-md-9 col-sm-12">
 <div class="card login-card dropdown-all w-100 ">
     <div class="card-header card-header-customer">
         <h5 class="mdi mdi-book-plus"> {{ moduleTitle }}</h5>
@@ -27,7 +28,7 @@
                 <div class="row">
                     <div class="col-lg-12 col-md-12 col-sm-12">
                         <label for="datetimepicker">Event Start Date</label>
-                        <input [owlDateTime]="dt1" [owlDateTimeTrigger]="dt1" placeholder="Date Time" formControlName='start_date'><owl-date-time #dt2></owl-date-time>
+                        <input class="date-input" [owlDateTime]="dt1" [owlDateTimeTrigger]="dt1" placeholder="Date Time" formControlName='start_date'><owl-date-time #dt2></owl-date-time>
                     </div>
     
                 </div>
@@ -37,17 +38,10 @@
                 <div class="row">
                     <div class="col-lg-12 col-md-12 col-sm-12">
                         <label for="datetimepicker">Event End Date</label>
-                        <input [owlDateTime]="dt2" [owlDateTimeTrigger]="dt2" placeholder="Date Time" formControlName='end_date'><owl-date-time #dt1></owl-date-time>
+                        <input class="date-input" [owlDateTime]="dt2" [owlDateTimeTrigger]="dt2" placeholder="Date Time" formControlName='end_date'><owl-date-time #dt1></owl-date-time>
                     </div>
                 </div>
             </div>
-
-         <div class="form-group">
-             <label for="profile">Select User Profile</label><br>
-               <select id="profile" class="form-control" data-live-search="true" formControlName='fk_profileid'>
-                  <option *ngFor="let profile of profiles" value="{{ profile.pk_profileid }}"data-tokens="ketchup mustard">{{ profile.pk_profileid }}</option>
-               </select>
-         </div>
   
           <div class="form-group">
             <label for="event type">Select Event Type</label><br>
@@ -68,4 +62,4 @@
         </form>
     </div>
   </div>
-  
+</div>

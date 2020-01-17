@@ -1,0 +1,54 @@
+<!-- Button trigger modal -->
+<!-- Modal -->
+<div class="modal fade" id="addCourseType" tabindex="-1" role="dialog" aria-labelledby="modelTitleId" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title"><i class="mdi mdi-file-plus"></i> {{ moduleTitle }}</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+      </div>
+      <div class="modal-body">
+          <form [formGroup]="courseTypeForm" (ngSubmit)="addCourseType()">
+          <div class="form-group">
+              <div class="row">
+                  <div class="col-lg-12 col-md-12 col-sm-12">
+                     <div class="form-group">
+                       <label for="type">Course Type</label>
+                       <select class="form-control" name="" id="type" formControlName='fk_typeid'>
+                         <option  *ngFor="let type of types" value="{{ type.pk_typeid }}"> {{ type.type }}</option>
+                       </select>
+                     </div>
+                  </div>
+              </div>
+          </div>
+          <div class="form-group">
+              <div class="row">
+                  <div class="col-lg-12 col-md-12 col-sm-12">
+                      <label for="handiIndex">Hand Index</label>
+                      <input type="text" class="form-control" id="handiIndex" aria-describedby="emailHelp" placeholder="Enter Handindex" required formControlName='hand_index'>
+                  </div>
+              </div>
+          </div>
+          <div class="form-group">
+              <div class="row">
+                  <div class="col-lg-12 col-md-12 col-sm-12">
+                      <label for="handicap">Handicap</label>
+                      <input type="text" class="form-control" id="handicap" aria-describedby="emailHelp" placeholder="Enter Handicap" required formControlName='course_handicap'>
+                  </div>
+              </div>
+          </div>
+
+          <button type="submit" class="btn btn-primary btn-block btn-lg" [disabled]="!courseTypeForm.valid">Save</button>
+
+      </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" #closeModal class="btn btn-secondary" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+

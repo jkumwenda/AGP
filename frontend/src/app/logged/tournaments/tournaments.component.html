@@ -19,7 +19,8 @@
             <tbody>
                 <tr *ngFor="let tournament of tournaments; let data_index=index">
                     <td>{{ tournament.event }}</td>
-                    <td >{{ tournament.start_date| date:'mediumDate' }} -
+                    <td>
+                        {{ tournament.start_date | date:'mediumDate' }} -
                         {{ tournament.end_date | date:'mediumDate' }}
                     </td>
                     <td *ngIf="tournament.registrationDate[0]">
@@ -36,9 +37,8 @@
                         <button (click)="editTournament(tournament.pk_eventid)" class="btn btn-success btn-sm btn-control"><i class="mdi mdi-pencil"></i></button>
                         <button (click)="deleteTournament(tournament.pk_eventid)" class="btn btn-danger btn-sm btn-control"><i class="mdi mdi-delete"></i></button>
                         </div>
-                        </td>
+                    </td>
                 </tr>
-                
             </tbody>
         </table>
     </div>

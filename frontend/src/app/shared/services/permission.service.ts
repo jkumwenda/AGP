@@ -21,6 +21,9 @@ export class PermissionService {
     });
   }
 
+
+
+
   getPermissions() {
     return new Promise((resolve, reject) => {
       this.commonService.get(this.endpoint).then((result) => {

@@ -1,0 +1,54 @@
+<div class="card dropdown-all d-flex w-100 ">
+  <div class="card-header card-header-customer md-dark">
+      <h5 class="mdi mdi-trophy"> Tournament details</h5>
+  </div>
+  <div class="card-body">
+    <table class="">
+      <tr><strong>Title </strong><td></td> : {{ tournament.event }}<td></tr>
+      <tr><strong>Duration </strong><td></td> : {{ tournament.start_date | date:'mediumDate' }} -{{  tournament.end_date | date:'mediumDate' }}<td></tr>
+      <tr *ngIf="tournament.eventFormat.length > 0"><strong>Format </strong><td></td > : {{ tournament.eventFormat[0].format.format }}
+        <button  (click)="editEventComponentCreated=true" class="btn btn-md mdi mdi-pencil-box" data-toggle="modal" data-target="#editEventFormat">Update</button>
+      </tr>
+      <tr *ngIf="tournament.eventFormat.length == 0">
+        <strong>Format </strong><td></td > :
+        <button  (click)="addComponentCreated=true" class="btn btn-md mdi mdi-file-plus" data-toggle="modal" data-target="#setEventFormat">Set</button>
+      </tr>
+      <tr *ngIf="tournament.draw_type"><strong>Draw Type </strong><td></td > : {{ tournament.draw_type.draw_type}}
+        <button  (click)="editDrawComponentCreated=true" class="btn btn-md mdi mdi-pencil-box" data-toggle="modal" data-target="#editEventDrawType">Update</button>
+      </tr>
+      <tr *ngIf="!tournament.draw_type">
+        <strong>Draw Type </strong><td></td > :
+        <button  (click)="addComponentCreated=true" class="btn btn-md mdi mdi-file-plus" data-toggle="modal" data-target="#setEventFormat">Set</button>
+      </tr>
+
+      <tr *ngIf="tournament.information.length > 0"><strong>Information </strong><td></td > : {{ tournament.information[0].info}}
+        <button  (click)="editInFormationComponentCreated=true" class="btn btn-md mdi mdi-pencil-box" data-toggle="modal" data-target="#editInformation">Update</button>
+      </tr>
+      <tr *ngIf="tournament.information.length == 0">
+        <strong>Information </strong><td></td > :
+        <button  (click)="addComponentCreated=true" class="btn btn-md mdi mdi-file-plus" data-toggle="modal" data-target="#setInformation">Set</button>
+      </tr>
+      <tr *ngIf="tournament.field.length > 0"><strong>Field </strong><td></td> :
+          {{ tournament.field[0].field_type }}
+        <button (click)="editFieldComponent=true" class="btn btn-md mdi mdi-pencil-box" data-toggle="modal" data-target="#editField">Update</button><td></tr>
+
+      <tr *ngIf="tournament.field.length == 0"><strong>Field </strong><td></td> :
+        <button class="btn btn-md mdi mdi-file-plus" data-toggle="modal" data-target="#addField">Set</button><td></tr>
+    </table>
+  </div>
+</div>
+
+<!-- edit and add modal components-->
+<app-add-field (fieldCreatedEvent)="addField($event)" [tournamentId]="tournament.pk_eventid"></app-add-field>
+<app-edit-field *ngIf="editFieldComponent" (editFieldEvent)="updateField($event)" [field]="tournament.field[0]"></app-edit-field>
+
+<app-add-registration-date *ngIf="addComponentCreated" [eventId]="tournament.pk_eventid" (registrationDateCreated)="editRegistrationDate($event)"></app-add-registration-date>
+<app-edit-registration-date *ngIf="editComponentCreated" [registrationDateId]="tournament.registrationDate[0].pk_registration_dateid" (registrationDateEdited)="editRegistrationDate($event)"></app-edit-registration-date>
+
+<app-add-information *ngIf="addComponentCreated" [eventId]="tournament.pk_eventid" (informationUpdated)="editInformation($event)"></app-add-information>
+<app-edit-information *ngIf="editInFormationComponentCreated" [informationId]="tournament.information[0].pk_informationid" (informationUpdated)="editInformation($event)"></app-edit-information>
+
+<app-add-event-format *ngIf="addComponentCreated" (eventFormatCreated)='editFormat($event)' [eventId]="tournament.pk_eventid"></app-add-event-format>
+<app-edit-event-format *ngIf="editEventComponentCreated" [eventFormatId]="tournament.eventFormat[0].pk_event_formatid" (formatEdited)="editFormat($event)"></app-edit-event-format>
+
+<app-edit-event-draw-type *ngIf="editDrawComponentCreated" (drawTypeEdited)="editDrawType($event)" [eventId]="tournament.pk_eventid"></app-edit-event-draw-type>

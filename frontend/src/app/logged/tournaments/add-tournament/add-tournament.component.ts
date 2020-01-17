@@ -8,9 +8,8 @@ import { ProfileService } from "src/app/shared/services/profile.service";
 import { TournamentService } from "src/app/shared/services/tournament.service";
 import { FormGroup, FormBuilder, Validators } from "@angular/forms";
 import { Router } from "@angular/router";
-import { DatePipe } from '@angular/common'
+import { DatePipe } from '@angular/common';
 import { Tournament } from 'src/app/shared/interfaces/tournament';
-//import * as $ from "jquery";
 @Component({
   selector: "app-add-tournament",
   templateUrl: "./add-tournament.component.html",
@@ -24,7 +23,7 @@ export class AddTournamentComponent implements OnInit {
   public drawTypes: DrawType[];
   public profiles: Profile[];
   public profileId: Profile;
- 
+
   constructor(
     public datepipe: DatePipe,
     private eventTypeService: EventTypeService,
@@ -35,49 +34,47 @@ export class AddTournamentComponent implements OnInit {
     private router: Router
   ) {}
 
-
   addTournament() {
-    console.log(this.tournamentForm.value);
-     this.tournamentService.addTournament(this.tournamentForm.value).then(
-       (result:Tournament) => {
-        
-         console.log(result)
-         this.router.navigate(['/tournaments/tournament', result.pk_eventid]);
+    const data = this.tournamentForm.value;
 
-       },
-       error => console.log(error)
-     );
+    this.tournamentData = {
+      event: data.event,
+      event_description: data.event_description,
+      start_date: data.start_date,
+      end_date: data.end_date,
+      fk_draw_typeid: data.fk_draw_typeid,
+      fk_event_typeid: data.fk_event_typeid,
+      fk_profileid: 2,
+    };
+
+    this.tournamentService.addTournament(this.tournamentData).then((result:Tournament) => {
+      this.router.navigate(['/tournaments/tournament', result.pk_eventid]);
+    }, (error) => {
+
+    });
   }
-      
-   
 
   getDrawTypes() {
     this.drawTypeService.getDrawTypes().then(
       (result: DrawType[]) => {
-        this.drawTypes = result
+        this.drawTypes = result;
 
       },
-      error => console.log(error)
+      (error) => {
+
+      }
     );
   }
 
   getEventTypes() {
     this.eventTypeService.getEventTypes().then(
       (result: EventType[]) => {
-        this.eventTypes = result
+        this.eventTypes = result;
 
       },
-      error => console.log(error)
-    );
-  }
+      (error) => {
 
-  getProfiles() {
-    this.profileService.getProfiles().then(
-      (result: Profile[]) => {
-        this.profiles = result
-
-      },
-      error => console.log(error)
+      }
     );
   }
 
@@ -85,7 +82,6 @@ export class AddTournamentComponent implements OnInit {
 
     this.getEventTypes();
     this.getDrawTypes();
-    this.getProfiles();
     this.tournamentForm = this.formBuilder.group({
       event: ["", Validators.compose([Validators.required])],
       event_description: ["", Validators.compose([Validators.required])],
@@ -93,12 +89,6 @@ export class AddTournamentComponent implements OnInit {
       end_date: ["", Validators.compose([Validators.required])],
       fk_draw_typeid: ["", Validators.compose([Validators.required])],
       fk_event_typeid: ["", Validators.compose([Validators.required])],
-      fk_profileid: ["", Validators.compose([Validators.required])],
     });
-
-    /** manually selecting bootstrap version for bootstrap-select plugin  */
-    // $('select').selectpicker()
-    // $.fn.selectpicker.Constructor.BootstrapVersion = "4";
-    // $('select').selectpicker('refresh')
   }
 }
