@@ -57,6 +57,7 @@ router.register(r'slot', backend_views.SlotViewSet, base_name='Slot')
 router.register(r'event_format', backend_views.EventFormatViewSet,
                 base_name='Event Format')
 router.register(r'event', backend_views.EventViewSet, base_name='Event')
+router.register(r'public_event', backend_views.PublicEventViewSet, base_name='Public Event')
 router.register(r'event_type', backend_views.EventTypeViewSet,
                 base_name='Event Type')
 router.register(r'draw_type', backend_views.DrawTypeViewSet,

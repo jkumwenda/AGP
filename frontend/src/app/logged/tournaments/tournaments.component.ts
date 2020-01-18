@@ -18,13 +18,13 @@ export class TournamentsComponent implements OnInit {
   constructor(
     private tournamentService: TournamentService,
     private router: Router,
+
   ) { 
   }
 
   getTournaments() {
     this.tournamentService.getTournaments().then((result:Tournament[]) => {
       this.tournaments = result;
-
     }, (error) => {
     });
   }
@@ -57,5 +57,6 @@ export class TournamentsComponent implements OnInit {
 
   ngOnInit() {
     this.getTournaments();
+    
     }
 }

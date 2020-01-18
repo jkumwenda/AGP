@@ -3,6 +3,7 @@ from rest_framework import serializers
 from rest_framework.relations import HyperlinkedIdentityField
 from .models import *
 from .serializer_helper import *
+from datetime import datetime
 
 
 class CountrySerializer(serializers.ModelSerializer):
@@ -119,8 +120,10 @@ class UserSerializer(serializers.ModelSerializer):
 
 class UserPlayerProfileSerializer(serializers.ModelSerializer):
 
-    def checkStatus(self):
-        return True
+    class Meta:
+        model = Profile
+        fields = '__all__'
+
 
 
 class UserProfileSerializer(serializers.ModelSerializer):

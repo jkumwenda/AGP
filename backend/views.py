@@ -210,6 +210,12 @@ class FieldViewSet(viewsets.ModelViewSet):
 class EventViewSet(viewsets.ModelViewSet):
     queryset = Event.objects.all()
     serializer_class = EventSerializer
+    
+
+class PublicEventViewSet(viewsets.ModelViewSet):
+    permission_classes = (permissions.AllowAny,)
+    queryset = Event.objects.all()
+    serializer_class = EventSerializer
 
 
 class EventTypeViewSet(viewsets.ModelViewSet):

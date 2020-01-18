@@ -1,0 +1,597 @@
+[{
+        "model": "contenttypes.contenttype",
+        "pk": 1,
+        "fields": {
+            "app_label": "admin",
+            "model": "logentry"
+        }
+    },
+    {
+        "model": "contenttypes.contenttype",
+        "pk": 2,
+        "fields": {
+            "app_label": "auth",
+            "model": "permission"
+        }
+    },
+    {
+        "model": "contenttypes.contenttype",
+        "pk": 3,
+        "fields": {
+            "app_label": "auth",
+            "model": "group"
+        }
+    },
+    {
+        "model": "contenttypes.contenttype",
+        "pk": 4,
+        "fields": {
+            "app_label": "auth",
+            "model": "user"
+        }
+    },
+    {
+        "model": "contenttypes.contenttype",
+        "pk": 5,
+        "fields": {
+            "app_label": "contenttypes",
+            "model": "contenttype"
+        }
+    },
+    {
+        "model": "contenttypes.contenttype",
+        "pk": 6,
+        "fields": {
+            "app_label": "sessions",
+            "model": "session"
+        }
+    },
+    {
+        "model": "contenttypes.contenttype",
+        "pk": 7,
+        "fields": {
+            "app_label": "backend",
+            "model": "club"
+        }
+    },
+    {
+        "model": "contenttypes.contenttype",
+        "pk": 8,
+        "fields": {
+            "app_label": "backend",
+            "model": "country"
+        }
+    },
+    {
+        "model": "contenttypes.contenttype",
+        "pk": 9,
+        "fields": {
+            "app_label": "backend",
+            "model": "course"
+        }
+    },
+    {
+        "model": "contenttypes.contenttype",
+        "pk": 10,
+        "fields": {
+            "app_label": "backend",
+            "model": "coursetype"
+        }
+    },
+    {
+        "model": "contenttypes.contenttype",
+        "pk": 11,
+        "fields": {
+            "app_label": "backend",
+            "model": "drawtype"
+        }
+    },
+    {
+        "model": "contenttypes.contenttype",
+        "pk": 12,
+        "fields": {
+            "app_label": "backend",
+            "model": "event"
+        }
+    },
+    {
+        "model": "contenttypes.contenttype",
+        "pk": 13,
+        "fields": {
+            "app_label": "backend",
+            "model": "eventtype"
+        }
+    },
+    {
+        "model": "contenttypes.contenttype",
+        "pk": 14,
+        "fields": {
+            "app_label": "backend",
+            "model": "field"
+        }
+    },
+    {
+        "model": "contenttypes.contenttype",
+        "pk": 15,
+        "fields": {
+            "app_label": "backend",
+            "model": "format"
+        }
+    },
+    {
+        "model": "contenttypes.contenttype",
+        "pk": 16,
+        "fields": {
+            "app_label": "backend",
+            "model": "gender"
+        }
+    },
+    {
+        "model": "contenttypes.contenttype",
+        "pk": 17,
+        "fields": {
+            "app_label": "backend",
+            "model": "hole"
+        }
+    },
+    {
+        "model": "contenttypes.contenttype",
+        "pk": 18,
+        "fields": {
+            "app_label": "backend",
+            "model": "permission"
+        }
+    },
+    {
+        "model": "contenttypes.contenttype",
+        "pk": 19,
+        "fields": {
+            "app_label": "backend",
+            "model": "profile"
+        }
+    },
+    {
+        "model": "contenttypes.contenttype",
+        "pk": 20,
+        "fields": {
+            "app_label": "backend",
+            "model": "role"
+        }
+    },
+    {
+        "model": "contenttypes.contenttype",
+        "pk": 21,
+        "fields": {
+            "app_label": "backend",
+            "model": "type"
+        }
+    },
+    {
+        "model": "contenttypes.contenttype",
+        "pk": 22,
+        "fields": {
+            "app_label": "backend",
+            "model": "slot"
+        }
+    },
+    {
+        "model": "contenttypes.contenttype",
+        "pk": 23,
+        "fields": {
+            "app_label": "backend",
+            "model": "rolepermission"
+        }
+    },
+    {
+        "model": "contenttypes.contenttype",
+        "pk": 24,
+        "fields": {
+            "app_label": "backend",
+            "model": "registrationdate"
+        }
+    },
+    {
+        "model": "contenttypes.contenttype",
+        "pk": 25,
+        "fields": {
+            "app_label": "backend",
+            "model": "register"
+        }
+    },
+    {
+        "model": "contenttypes.contenttype",
+        "pk": 26,
+        "fields": {
+            "app_label": "backend",
+            "model": "profilerole"
+        }
+    },
+    {
+        "model": "contenttypes.contenttype",
+        "pk": 27,
+        "fields": {
+            "app_label": "backend",
+            "model": "information"
+        }
+    },
+    {
+        "model": "contenttypes.contenttype",
+        "pk": 28,
+        "fields": {
+            "app_label": "backend",
+            "model": "handicap"
+        }
+    },
+    {
+        "model": "contenttypes.contenttype",
+        "pk": 29,
+        "fields": {
+            "app_label": "backend",
+            "model": "eventformat"
+        }
+    },
+    {
+        "model": "contenttypes.contenttype",
+        "pk": 30,
+        "fields": {
+            "app_label": "backend",
+            "model": "coursetypehole"
+        }
+    },
+    {
+        "model": "contenttypes.contenttype",
+        "pk": 31,
+        "fields": {
+            "app_label": "backend",
+            "model": "clubprofile"
+        }
+    },
+    {
+        "model": "contenttypes.contenttype",
+        "pk": 32,
+        "fields": {
+            "app_label": "backend",
+            "model": "clubcourse"
+        }
+    },
+    {
+        "model": "contenttypes.contenttype",
+        "pk": 33,
+        "fields": {
+            "app_label": "backend",
+            "model": "rating"
+        }
+    },
+    {
+        "model": "contenttypes.contenttype",
+        "pk": 34,
+        "fields": {
+            "app_label": "backend",
+            "model": "slotsize"
+        }
+    },
+    {
+        "model": "sessions.session",
+        "pk": "105fojhczat6bsu2eznc6dw2ucibu7h1",
+        "fields": {
+            "session_data": "YjQyNmM0YWQ5YWY2OTZkM2ZmZDMzMGRmZTNhYjgwOTE0ZWFlYzYxNzp7Il9hdXRoX3VzZXJfaWQiOiIxIiwiX2F1dGhfdXNlcl9iYWNrZW5kIjoiZGphbmdvLmNvbnRyaWIuYXV0aC5iYWNrZW5kcy5Nb2RlbEJhY2tlbmQiLCJfYXV0aF91c2VyX2hhc2giOiI2MTIxMTkxZTlkNTM5YjU2ZDFjZDRmY2Y0MjQ4NGY0OGExZjM4OWRiIn0=",
+            "expire_date": "2020-01-12T12:02:12.551Z"
+        }
+    },
+    {
+        "model": "sessions.session",
+        "pk": "dee807ounxqmaegugilm4n4il0dfxer1",
+        "fields": {
+            "session_data": "YjQyNmM0YWQ5YWY2OTZkM2ZmZDMzMGRmZTNhYjgwOTE0ZWFlYzYxNzp7Il9hdXRoX3VzZXJfaWQiOiIxIiwiX2F1dGhfdXNlcl9iYWNrZW5kIjoiZGphbmdvLmNvbnRyaWIuYXV0aC5iYWNrZW5kcy5Nb2RlbEJhY2tlbmQiLCJfYXV0aF91c2VyX2hhc2giOiI2MTIxMTkxZTlkNTM5YjU2ZDFjZDRmY2Y0MjQ4NGY0OGExZjM4OWRiIn0=",
+            "expire_date": "2020-01-12T11:18:01.731Z"
+        }
+    },
+    {
+        "model": "sessions.session",
+        "pk": "qq3ix9b899ur8fuce9y5hyanpurpmluy",
+        "fields": {
+            "session_data": "YjQyNmM0YWQ5YWY2OTZkM2ZmZDMzMGRmZTNhYjgwOTE0ZWFlYzYxNzp7Il9hdXRoX3VzZXJfaWQiOiIxIiwiX2F1dGhfdXNlcl9iYWNrZW5kIjoiZGphbmdvLmNvbnRyaWIuYXV0aC5iYWNrZW5kcy5Nb2RlbEJhY2tlbmQiLCJfYXV0aF91c2VyX2hhc2giOiI2MTIxMTkxZTlkNTM5YjU2ZDFjZDRmY2Y0MjQ4NGY0OGExZjM4OWRiIn0=",
+            "expire_date": "2020-01-30T17:45:30.434Z"
+        }
+    },
+    {
+        "model": "backend.country",
+        "pk": 1,
+        "fields": {
+            "country": "Malawi"
+        }
+    },
+    {
+        "model": "backend.country",
+        "pk": 2,
+        "fields": {
+            "country": "Zambia"
+        }
+    },
+    {
+        "model": "backend.course",
+        "pk": 1,
+        "fields": {
+            "pk_countryid": 1,
+            "course": "Blantyre sports club"
+        }
+    },
+    {
+        "model": "backend.rating",
+        "pk": 1,
+        "fields": {
+            "fk_courseid": 1,
+            "course_rating": "23",
+            "sloppy_rating": "33",
+            "par": "12"
+        }
+    },
+    {
+        "model": "backend.type",
+        "pk": 1,
+        "fields": {
+            "type": "White"
+        }
+    },
+    {
+        "model": "backend.type",
+        "pk": 2,
+        "fields": {
+            "type": "Blue"
+        }
+    },
+    {
+        "model": "backend.type",
+        "pk": 3,
+        "fields": {
+            "type": "Red"
+        }
+    },
+    {
+        "model": "backend.coursetype",
+        "pk": 1,
+        "fields": {
+            "fk_courseid": 1,
+            "fk_typeid": 1,
+            "hand_index": "23",
+            "course_handicap": "12",
+            "status": 1
+        }
+    },
+    {
+        "model": "backend.coursetype",
+        "pk": 2,
+        "fields": {
+            "fk_courseid": 1,
+            "fk_typeid": 2,
+            "hand_index": "3",
+            "course_handicap": "23",
+            "status": 1
+        }
+    },
+    {
+        "model": "backend.hole",
+        "pk": 1,
+        "fields": {
+            "hole": 1
+        }
+    },
+    {
+        "model": "backend.hole",
+        "pk": 2,
+        "fields": {
+            "hole": 2
+        }
+    },
+    {
+        "model": "backend.hole",
+        "pk": 3,
+        "fields": {
+            "hole": 3
+        }
+    },
+    {
+        "model": "backend.hole",
+        "pk": 4,
+        "fields": {
+            "hole": 4
+        }
+    },
+    {
+        "model": "backend.hole",
+        "pk": 5,
+        "fields": {
+            "hole": 5
+        }
+    },
+    {
+        "model": "backend.hole",
+        "pk": 6,
+        "fields": {
+            "hole": 6
+        }
+    },
+    {
+        "model": "backend.hole",
+        "pk": 7,
+        "fields": {
+            "hole": 7
+        }
+    },
+    {
+        "model": "backend.hole",
+        "pk": 8,
+        "fields": {
+            "hole": 8
+        }
+    },
+    {
+        "model": "backend.hole",
+        "pk": 9,
+        "fields": {
+            "hole": 9
+        }
+    },
+    {
+        "model": "backend.coursetypehole",
+        "pk": 1,
+        "fields": {
+            "fk_course_typeid": 1,
+            "hole_pk_holeid": 1,
+            "distance": 122,
+            "par": 12,
+            "si": 3
+        }
+    },
+    {
+        "model": "backend.coursetypehole",
+        "pk": 2,
+        "fields": {
+            "fk_course_typeid": 2,
+            "hole_pk_holeid": 1,
+            "distance": 123,
+            "par": 12,
+            "si": 12
+        }
+    },
+    {
+        "model": "backend.club",
+        "pk": 1,
+        "fields": {
+            "club": "Blantyre Sports Club"
+        }
+    },
+    {
+        "model": "backend.gender",
+        "pk": 1,
+        "fields": {
+            "gender": "Male"
+        }
+    },
+    {
+        "model": "backend.gender",
+        "pk": 2,
+        "fields": {
+            "gender": "Female"
+        }
+    },
+    {
+        "model": "backend.gender",
+        "pk": 3,
+        "fields": {
+            "gender": "fff"
+        }
+    },
+    {
+        "model": "backend.role",
+        "pk": 1,
+        "fields": {
+            "role": "Administrator",
+            "role_desc": "Administrator"
+        }
+    },
+    {
+        "model": "backend.role",
+        "pk": 2,
+        "fields": {
+            "role": "Player",
+            "role_desc": "Player"
+        }
+    },
+    {
+        "model": "backend.profilerole",
+        "pk": 1,
+        "fields": {
+            "fk_profileid": 1,
+            "fk_roleid": 2
+        }
+    },
+    {
+        "model": "backend.profilerole",
+        "pk": 2,
+        "fields": {
+            "fk_profileid": 1,
+            "fk_roleid": 1
+        }
+    },
+    {
+        "model": "backend.profilerole",
+        "pk": 5,
+        "fields": {
+            "fk_profileid": 2,
+            "fk_roleid": 2
+        }
+    },
+    {
+        "model": "backend.profilerole",
+        "pk": 6,
+        "fields": {
+            "fk_profileid": 3,
+            "fk_roleid": 2
+        }
+    },
+    {
+        "model": "backend.permission",
+        "pk": 1,
+        "fields": {
+            "permission": "Add User",
+            "code": "add-user",
+            "permission_desc": "Add user"
+        }
+    },
+    {
+        "model": "backend.permission",
+        "pk": 2,
+        "fields": {
+            "permission": "View User",
+            "code": "view-user",
+            "permission_desc": "View user"
+        }
+    },
+    {
+        "model": "backend.rolepermission",
+        "pk": 2,
+        "fields": {
+            "fk_roleid": 1,
+            "fk_permissionid": 2
+        }
+    },
+    {
+        "model": "backend.rolepermission",
+        "pk": 3,
+        "fields": {
+            "fk_roleid": 2,
+            "fk_permissionid": 1
+        }
+    },
+    {
+        "model": "backend.rolepermission",
+        "pk": 5,
+        "fields": {
+            "fk_roleid": 2,
+            "fk_permissionid": 2
+        }
+    },
+    {
+        "model": "backend.rolepermission",
+        "pk": 6,
+        "fields": {
+            "fk_roleid": 2,
+            "fk_permissionid": 2
+        }
+    },
+    {
+        "model": "backend.eventtype",
+        "pk": 1,
+        "fields": {
+            "event_type": "Test"
+        }
+    },
+    {
+        "model": "backend.drawtype",
+        "pk": 1,
+        "fields": {
+            "draw_type": "Day draw"
+        }
+    }
+]
