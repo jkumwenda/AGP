@@ -85,7 +85,6 @@ export class UserComponent implements OnInit {
       this.profile.user.first_name = null;
       this.profile.user.last_name = null;
       this.profile.user.email = null;
-      //this.profile.fk_genderid.gender = null;
     }
     this.profile = this.profile;
   }

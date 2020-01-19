@@ -12,7 +12,7 @@ import {Router} from '@angular/router';
 export class EventsComponent implements OnInit {
   public tournaments: Tournament[] = [];
   public displayedTournaments: Tournament[] = [];
-  public  numberOfTournamentsToDisplay = 3;
+  public  numberOfTournamentsToDisplay = 1;
   public searchString: string;
   public search = false;
   public searchedTournaments: Tournament[];

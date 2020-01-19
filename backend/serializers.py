@@ -119,7 +119,11 @@ class UserSerializer(serializers.ModelSerializer):
     
 
 class UserPlayerProfileSerializer(serializers.ModelSerializer):
-
+    user = UserSerializer(read_only=True)
+    user_id = serializers.PrimaryKeyRelatedField(
+        queryset = User.objects.all(),
+        write_only=True, source='user')
+    
     class Meta:
         model = Profile
         fields = '__all__'
@@ -143,19 +147,19 @@ class UserProfileSerializer(serializers.ModelSerializer):
         model = Profile
         fields = ('__all__')
         
-class UserProfileSerializer(serializers.ModelSerializer):
-    user = UserSerializer(read_only=True)
-    user_id = serializers.PrimaryKeyRelatedField(
-        queryset = User.objects.all(),
-        write_only=True, source='user')
+# class UserProfileSerializer(serializers.ModelSerializer):
+#     user = UserSerializer(read_only=True)
+#     user_id = serializers.PrimaryKeyRelatedField(
+#         queryset = User.objects.all(),
+#         write_only=True, source='user')
     
-    fk_genderid = GenderSerializer(read_only=True)
-    gender_id = serializers.PrimaryKeyRelatedField(
-        queryset=Gender.objects.all(),
-        write_only=True, source='fk_genderid')
-    class Meta:
-        model = Profile
-        fields = '__all__'
+#     fk_genderid = GenderSerializer(read_only=True)
+#     gender_id = serializers.PrimaryKeyRelatedField(
+#         queryset=Gender.objects.all(),
+#         write_only=True, source='fk_genderid')
+#     class Meta:
+#         model = Profile
+#         fields = '__all__'
 
 
 class ClubProfileSerializer(serializers.ModelSerializer):
