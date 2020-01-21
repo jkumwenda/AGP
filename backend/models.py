@@ -20,7 +20,7 @@ class Course(models.Model):
     course = models.CharField(max_length=100)
 
     class Meta:
-        managed=False
+        managed= False
         db_table = 'course'
 
 
@@ -229,7 +229,7 @@ class EventType(models.Model):
     event_type = models.CharField(max_length=45)
 
     class Meta:
-        managed=True
+        managed= False
         db_table = 'event_type'
 
         
@@ -238,7 +238,7 @@ class DrawType(models.Model):
     draw_type = models.CharField(max_length=45)
 
     class Meta:
-        managed=True
+        managed= False
         db_table = 'draw_type'
 
 
@@ -250,13 +250,16 @@ class Event(models.Model):
         'Profile', models.DO_NOTHING, db_column='fk_profileid')
     fk_draw_typeid = models.ForeignKey(
         DrawType, models.DO_NOTHING, db_column='fk_draw_typeid')
+    fk_courseid = models.ForeignKey(
+        Course, models.DO_NOTHING, db_column='fk_courseid')
     event = models.CharField(max_length=500)
+    holes = models.IntegerField(blank=True, null=True)
     event_description = models.TextField()
     start_date = models.DateTimeField()
     end_date = models.DateTimeField()
 
     class Meta:
-        managed = True
+        managed =False
         db_table = 'event'
     
 
@@ -267,7 +270,7 @@ class Field(models.Model):
     field_type = models.CharField(max_length=3)
 
     class Meta:
-        managed=True
+        managed= False
         db_table = 'field'
 
 
@@ -279,7 +282,7 @@ class Slot(models.Model):
     day = models.IntegerField()
 
     class Meta:
-        managed=True
+        managed= False
         db_table = 'slot'
 
 
@@ -291,7 +294,7 @@ class RegistrationDate(models.Model):
     close_date = models.DateTimeField()
 
     class Meta:
-        managed=True
+        managed= False
         db_table = 'registration_date'
 
         
@@ -300,7 +303,7 @@ class Format(models.Model):
     format = models.CharField(max_length=45)
 
     class Meta:
-        managed=True
+        managed= False
         db_table = 'format'
 
 
@@ -312,7 +315,7 @@ class EventFormat(models.Model):
         'Format', models.DO_NOTHING, db_column='fk_formatid')
 
     class Meta:
-        managed=True
+        managed= False
         db_table = 'event_format'
 
 
@@ -323,7 +326,7 @@ class Information(models.Model):
     info = models.TextField()
 
     class Meta:
-        managed=True
+        managed= False
         db_table = 'information'
 
 class SlotSize(models.Model):
@@ -331,7 +334,7 @@ class SlotSize(models.Model):
     slot_size = models.IntegerField(blank=True, null=True)
 
     class Meta:
-        managed=True
+        managed= False
         db_table = 'slot_size'
 
 class Register(models.Model):
@@ -344,5 +347,19 @@ class Register(models.Model):
     reg_date = models.DateTimeField(default=datetime.now, blank=True)
 
     class Meta:
-        managed=True
+        managed= False
         db_table = 'register'
+
+
+class EventCourseType(models.Model):
+    pk_event_course_typeid = models.AutoField(primary_key=True)
+    fk_eventid = models.ForeignKey(
+        Event, models.DO_NOTHING, related_name="eventCourseType", db_column='fk_eventid')
+    fk_course_typeid = models.ForeignKey(
+        CourseType, models.DO_NOTHING, db_column='fk_course_typeid')
+    fk_genderid = models.ForeignKey(
+        Gender, models.DO_NOTHING, db_column='fk_genderid')
+
+    class Meta:
+        managed= False
+        db_table = 'event_course_type'

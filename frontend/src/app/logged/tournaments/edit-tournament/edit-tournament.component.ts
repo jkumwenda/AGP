@@ -6,6 +6,8 @@ import { Profile } from "src/app/shared/interfaces/profile";
 import { ProfileService } from "src/app/shared/services/profile.service";
 import { DrawType } from "src/app/shared/interfaces/draw-type";
 import { DrawTypeService } from "src/app/shared/services/draw-type.service";
+import { Course } from "src/app/shared/interfaces/course";
+import { CourseService } from "src/app/shared/services/course.service";
 import { TournamentService } from "src/app/shared/services/tournament.service";
 import { FormGroup, FormBuilder, Validators } from "@angular/forms";
 import { DatePipe } from '@angular/common'
@@ -30,6 +32,7 @@ export class EditTournamentComponent implements OnInit {
   public eventTypes: EventType[];
   public drawTypes: DrawType[];
   public profiles: Profile[];
+  public courses: Course[];
 
 
   constructor(
@@ -38,6 +41,7 @@ export class EditTournamentComponent implements OnInit {
     private drawTypeService: DrawTypeService,
     private eventTypeService: EventTypeService,
     private profileService: ProfileService,
+    private courseService: CourseService,
     private router: Router,
     private activatedRoute: ActivatedRoute,
   ) {
@@ -61,9 +65,11 @@ export class EditTournamentComponent implements OnInit {
      const data = this.tournamentForm.value;
      this.tournamentData = {
       fk_event_typeid: data.fk_event_typeid,
+      fk_courseid: data.fk_courseid,
       fk_profileid: 2,
       fk_draw_typeid: data.fk_draw_typeid,
       event: data.event,
+      holes: data.holes,
       event_description: data.event_description,
       start_date: data.start_date,
       end_date: data.end_date,
@@ -99,6 +105,18 @@ export class EditTournamentComponent implements OnInit {
       );
     }
 
+    getCourses() {
+      this.courseService.getCourses().then(
+        (result: Course[]) => {
+          this.courses = result;
+  
+        },
+        (error) => {
+  
+        }
+      );
+    }
+
     initializeTournamentForm() {
       if (this.tournament==null) {
         this.tournament = Tournament.initialize();
@@ -114,8 +132,10 @@ export class EditTournamentComponent implements OnInit {
       this.tournamentForm = this.formBuilder.group({
         fk_event_typeid: [this.tournament.fk_event_typeid, Validators.compose([Validators.required])],
         fk_draw_typeid: [this.tournament.fk_draw_typeid, Validators.compose([Validators.required])],
+        fk_courseid: [this.tournament.fk_courseid, Validators.compose([Validators.required])],
         event: [this.tournament.event, Validators.compose([Validators.required])],
         event_description: [this.tournament.event_description, Validators.compose([Validators.required])],
+        holes: [this.tournament.holes, Validators.compose([Validators.required])],
         start_date: [this.tournament.start_date, Validators.compose([Validators.required])],
         end_date: [this.tournament.end_date, Validators.compose([Validators.required])],
       });
@@ -124,6 +144,7 @@ export class EditTournamentComponent implements OnInit {
     ngOnInit() {
       this.getEventTypes();
       this.getDrawTypes();
+      this.getCourses();
       this.getTournament(this.tournamentId)
     }
   }

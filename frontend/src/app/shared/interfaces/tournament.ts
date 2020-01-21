@@ -5,12 +5,14 @@ import { EventFormat } from './event-format';
 import { Profile } from './profile';
 import { Information } from './information';
 import { RegistrationDate } from './registration-date';
+import { Course } from './course';
 
 export class Tournament {
 
     pk_eventid: number;
     event: string;
     event_description: string;
+    holes: number;
     start_date: Date;
     end_date: Date;
     draw_type: DrawType;
@@ -19,6 +21,7 @@ export class Tournament {
     fk_draw_typeid: number;
     fk_event_typeid: number;
     fk_profileid: number;
+    fk_courseid: number;
     information: Information[];
     eventFormat: EventFormat[];
     registrationDate: RegistrationDate[];

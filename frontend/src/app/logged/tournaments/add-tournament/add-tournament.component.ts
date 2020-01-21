@@ -5,6 +5,8 @@ import { EventType } from "src/app/shared/interfaces/event-type";
 import { EventTypeService } from "src/app/shared/services/event-type.service";
 import { Profile } from "src/app/shared/interfaces/profile";
 import { ProfileService } from "src/app/shared/services/profile.service";
+import { Course } from "src/app/shared/interfaces/course";
+import { CourseService } from "src/app/shared/services/course.service";
 import { TournamentService } from "src/app/shared/services/tournament.service";
 import { FormGroup, FormBuilder, Validators } from "@angular/forms";
 import { Router } from "@angular/router";
@@ -22,6 +24,7 @@ export class AddTournamentComponent implements OnInit {
   public eventTypes: EventType[];
   public drawTypes: DrawType[];
   public profiles: Profile[];
+  public courses: Course[];
   public profileId: Profile;
 
   constructor(
@@ -31,26 +34,28 @@ export class AddTournamentComponent implements OnInit {
     private profileService: ProfileService,
     private tournamentService: TournamentService,
     private drawTypeService: DrawTypeService,
+    private courseService: CourseService,
     private router: Router
   ) {}
 
   addTournament() {
     const data = this.tournamentForm.value;
-
     this.tournamentData = {
       event: data.event,
       event_description: data.event_description,
+      holes: data.holes,
       start_date: data.start_date,
       end_date: data.end_date,
       fk_draw_typeid: data.fk_draw_typeid,
       fk_event_typeid: data.fk_event_typeid,
+      fk_courseid: data.fk_courseid,
       fk_profileid: 1,
     };
 
     this.tournamentService.addTournament(this.tournamentData).then((result:Tournament) => {
+      console.log(result)
       this.router.navigate(['/tournaments/tournament', result.pk_eventid]);
     }, (error) => {
-        console.log("TCL: AddTournamentComponent -> addTournament -> error", error);
 
     });
   }
@@ -79,17 +84,32 @@ export class AddTournamentComponent implements OnInit {
     );
   }
 
+  getCourses() {
+    this.courseService.getCourses().then(
+      (result: Course[]) => {
+        this.courses = result;
+
+      },
+      (error) => {
+
+      }
+    );
+  }
+
   ngOnInit() {
 
     this.getEventTypes();
     this.getDrawTypes();
+    this.getCourses();
     this.tournamentForm = this.formBuilder.group({
       event: ["", Validators.compose([Validators.required])],
       event_description: ["", Validators.compose([Validators.required])],
+      holes: ["", Validators.compose([Validators.required])],
       start_date: ["", Validators.compose([Validators.required])],
       end_date: ["", Validators.compose([Validators.required])],
       fk_draw_typeid: ["", Validators.compose([Validators.required])],
       fk_event_typeid: ["", Validators.compose([Validators.required])],
+      fk_courseid: ["", Validators.compose([Validators.required])],
     });
   }
 }

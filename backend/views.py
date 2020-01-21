@@ -243,3 +243,8 @@ class GameViewSet(viewsets.ModelViewSet):
             self, queryset, self.request.query_params.get('end_date'),
         )
         return data
+
+
+class EventCourseTypeViewSet(viewsets.ModelViewSet):
+    queryset = EventCourseType.objects.all()
+    serializer_class = EventCourseTypeSerializer
