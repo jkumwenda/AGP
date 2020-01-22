@@ -14,17 +14,45 @@
   <div class="row">
     <div class="col-lg-12 col-md-12 col-sm-12">
     DAY {{ day }}
-        <table class="table table-striped table-dark table-sm holes-table">
-          <tr><th>Slot</th><th>Registered</th><th>Size</th><th>Status</th><th width='120'>Controls</th></tr>
+        <table class="table table-striped table-bordered table-sm holes-table ">
+          <tr>
+            <th>Time</th>
+            <th *ngFor="let size of sizes">Player {{ size.slot_size }}</th>
+           </tr>
           <tr *ngFor="let slot of displayedSlots; let i=index">
-            <td>
-             {{ slot.slot_time | date:'hh:mm a'}}
-             - {{ slots[i].slot_time | date:'hh:mm a' }}</td><td>{{ slot.registers.length }}</td><td>4</td><td>Open</td><td>
-               <!-- <span class="mdi mdi-check hole-edit" (click)="register(slot.pk_slotid)" *ngIf="!profileRegistered"> Register</span> -->
-               <span *ngFor="let size of sizes" class='badge badge-{{ checkIfRegistered(size.pk_slot_sizeid, slot.registers) }}' (click)="register(slot.pk_slotid,size.pk_slot_sizeid)">{{ size.slot_size }}</span>
+            <td>{{ slot.slot_time | date:'hh:mm'}}</td>
+            <td
+              *ngFor="let size of sizes"
+                (click)="register(slot.pk_slotid,size.pk_slot_sizeid)">
 
-               | <span (click)="cancelRegistration(slot.registers)" *ngIf="checkProfileRegistered(slot.registers)" class="mdi mdi-delete hole-delete">Cancel</span></td></tr>
+              <div class="input-group mb-3">
+                <div class="input-group-prepend">
+                  <div class="input-group-text" *ngIf="checkIfSlotSelected(size.pk_slot_sizeid, slot.registers)"> <!-- checkIdSelected Determines slotRegistered value-->
+                    <input type="checkbox" checked disabled>
+                  </div>
+                </div>
+                <div class="tooltip-1">
+                  <button class="btn btn-sm"
+                  (click)="selectToSwap(size.pk_slot_sizeid, slot)"
+                  [ngClass]="{'btn-outline-secondary':slotRegistered, 'btn-outline-success':!slotRegistered}">
+                    {{displayRegisterProfile(size.pk_slot_sizeid, slot.registers)}}</button>
+                  <span class="tooltip-1text" *ngIf="slotRegistered && admin">
+                    <span>
+                      <button (click)="selectToSwap(size.pk_slot_sizeid, slot)" class="btn btn-xs btn-dark">Swap</button>
+                      <button class="btn btn-xs btn-dark">Scores</button>
+                    </span>
+                  </span>
+                </div>
+
+                <button
+                  *ngIf="checkIfRegisteredOnProfile(size.pk_slot_sizeid, slot.registers)"
+                  class="btn btn-danger btn-sm"
+                  (click)="cancelRegistration(slot.registers)"> <i class="mdi mdi-cancel"></i></button>
+
+              </div>
+              </td>
         </table>
+
     </div>
   </div>
     </div>

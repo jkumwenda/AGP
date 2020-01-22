@@ -32,6 +32,7 @@
     "jquery": "^3.4.1",
     "ng-chartist": "^4.1.0",
     "ng-pick-datetime": "^7.0.0",
+    "ngx-smart-popover": "^1.1.0",
     "ngx-ui-loader": "^8.0.0",
     "rxjs": "~6.4.0",
     "rxjs-compat": "^6.5.4",

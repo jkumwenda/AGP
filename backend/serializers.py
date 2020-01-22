@@ -242,6 +242,7 @@ class SlotSizeSerializer(serializers.ModelSerializer):
 
 class RegisterSerializer(serializers.ModelSerializer):
     size= SlotSizeSerializer(many=False, source='fk_slot_sizeid', read_only=True)
+    profile = UserProfileSerializer(many = False, source='fk_profileid', read_only=True)
     class Meta:
         model = Register
         fields = '__all__'
