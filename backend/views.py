@@ -11,11 +11,12 @@ from rest_framework.decorators import action
 class UserViewSet(viewsets.ModelViewSet):
     queryset = User.objects.all()
     serializer_class = UserSerializer
-    
+
     def get_queryset(self):
         queryset = super().get_queryset()
         data = ViewsHelper.filter_test(self, queryset)
         return data
+
 
 class SlotSizeViewSet(viewsets.ModelViewSet):
     queryset = SlotSize.objects.all()
@@ -96,7 +97,7 @@ class UserProfileViewSet(viewsets.ModelViewSet):
 class PlayerViewSet(viewsets.ModelViewSet):
     queryset = ProfileRole.objects.all()
     serializer_class = PlayerSerializer
-    
+
     def get_queryset(self):
         queryset = super().get_queryset()
         data = ViewsHelper.filter_player_profile(self, queryset)
@@ -210,7 +211,7 @@ class FieldViewSet(viewsets.ModelViewSet):
 class EventViewSet(viewsets.ModelViewSet):
     queryset = Event.objects.all()
     serializer_class = EventSerializer
-    
+
 
 class PublicEventViewSet(viewsets.ModelViewSet):
     permission_classes = (permissions.AllowAny,)
@@ -243,3 +244,8 @@ class GameViewSet(viewsets.ModelViewSet):
             self, queryset, self.request.query_params.get('end_date'),
         )
         return data
+
+
+class ScoreViewSet(viewsets.ModelViewSet):
+    queryset = Score.objects.all()
+    serializer_class = ScoreSerializer

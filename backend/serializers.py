@@ -116,7 +116,7 @@ class UserSerializer(serializers.ModelSerializer):
         if register is True:
             SerializerHelper.add_default_role(self, user)
         return user
-    
+
 
 class UserPlayerProfileSerializer(serializers.ModelSerializer):
 
@@ -125,14 +125,12 @@ class UserPlayerProfileSerializer(serializers.ModelSerializer):
         fields = '__all__'
 
 
-
 class UserProfileSerializer(serializers.ModelSerializer):
 
     user = UserSerializer(read_only=True)
     user_id = serializers.PrimaryKeyRelatedField(
         queryset=User.objects.all(),
         write_only=True, source='user')
-    
 
     fk_genderid = GenderSerializer(read_only=True)
     gender_id = serializers.PrimaryKeyRelatedField(
@@ -142,17 +140,19 @@ class UserProfileSerializer(serializers.ModelSerializer):
     class Meta:
         model = Profile
         fields = ('__all__')
-        
+
+
 class UserProfileSerializer(serializers.ModelSerializer):
     user = UserSerializer(read_only=True)
     user_id = serializers.PrimaryKeyRelatedField(
-        queryset = User.objects.all(),
+        queryset=User.objects.all(),
         write_only=True, source='user')
-    
+
     fk_genderid = GenderSerializer(read_only=True)
     gender_id = serializers.PrimaryKeyRelatedField(
         queryset=Gender.objects.all(),
         write_only=True, source='fk_genderid')
+
     class Meta:
         model = Profile
         fields = '__all__'
@@ -195,11 +195,12 @@ class ProfileRoleSerializer(serializers.ModelSerializer):
 
 class PlayerSerializer(serializers.ModelSerializer):
     fk_profileid = UserPlayerProfileSerializer(read_only=True)
+
     class Meta:
         model = ProfileRole
         fields = '__all__'
-        
-        
+
+
 class PermissionSerializer(serializers.ModelSerializer):
     class Meta:
         model = Permission
@@ -241,8 +242,11 @@ class SlotSizeSerializer(serializers.ModelSerializer):
 
 
 class RegisterSerializer(serializers.ModelSerializer):
-    size= SlotSizeSerializer(many=False, source='fk_slot_sizeid', read_only=True)
-    profile = UserProfileSerializer(many = False, source='fk_profileid', read_only=True)
+    size = SlotSizeSerializer(
+        many=False, source='fk_slot_sizeid', read_only=True)
+    profile = UserProfileSerializer(
+        many=False, source='fk_profileid', read_only=True)
+
     class Meta:
         model = Register
         fields = '__all__'
@@ -255,12 +259,13 @@ class SlotSerializer(serializers.ModelSerializer):
         model = Slot
         fields = '__all__'
 
-        
+
 class InformationSerializer(serializers.ModelSerializer):
     class Meta:
         model = Information
         fields = '__all__'
-    
+
+
 class FieldSerializer(serializers.ModelSerializer):
     slots = SlotSerializer(many=True, read_only=True)
 
@@ -281,6 +286,7 @@ class FieldSerializer(serializers.ModelSerializer):
 
 class EventSerializer(serializers.ModelSerializer):
     field = FieldSerializer(many=True, read_only=True)
+
     class Meta:
         model = Information
         fields = '__all__'
@@ -309,40 +315,58 @@ class EventTypeSerializer(serializers.ModelSerializer):
         model = EventType
         fields = '__all__'
 
+
 class EventFormatSerializer(serializers.ModelSerializer):
-    format = FormatSerializer(many=False,source='fk_formatid', read_only=True)
+    format = FormatSerializer(many=False, source='fk_formatid', read_only=True)
+
     class Meta:
         model = EventFormat
         fields = '__all__'
 
+
 class EventSerializer(serializers.ModelSerializer):
     status = serializers.SerializerMethodField('checkStatus')
-    event_type= EventTypeSerializer(many=False,source='fk_event_typeid',read_only=True)
-    profile= ProfileSerializer(many=False, source='fk_profileid', read_only=True)
-    draw_type= DrawTypeSerializer(many=False, source='fk_draw_typeid', read_only=True)
-    information= InformationSerializer(many=True, read_only=True)
+    event_type = EventTypeSerializer(
+        many=False, source='fk_event_typeid', read_only=True)
+    profile = ProfileSerializer(
+        many=False, source='fk_profileid', read_only=True)
+    draw_type = DrawTypeSerializer(
+        many=False, source='fk_draw_typeid', read_only=True)
+    information = InformationSerializer(many=True, read_only=True)
     eventFormat = EventFormatSerializer(many=True, read_only=True)
     registrationDate = RegistrationDateSerializer(many=True, read_only=True)
     field = FieldSerializer(many=True, read_only=True)
-    
+
     class Meta:
         model = Event
         fields = '__all__'
         #fields = ['pk_eventid', 'fk_event_typeid', 'fk_profileid', 'fk_draw_typeid', 'event', 'event_description', 'start_date', 'end_date', 'open_date', 'close_date', 'status', 'info']
 
     def checkStatus(self, obj):
-        registrationDates = RegistrationDate.objects.filter(fk_eventid=obj) 
-        
+        registrationDates = RegistrationDate.objects.filter(fk_eventid=obj)
+
         for registrationDate in registrationDates:
             dt = registrationDate.close_date
             now = datetime.utcnow().replace(tzinfo=utc)
             if now < dt:
                 return 'Open'
-        
+
         return 'Closed'
 
 
 class GameSerializer(serializers.ModelSerializer):
     class Meta:
         model = Event
+        fields = '__all__'
+
+
+class ClubProfileSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = ClubProfile
+        fields = '__all__'
+
+
+class ScoreSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Score
         fields = '__all__'
