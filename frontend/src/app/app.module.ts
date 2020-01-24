@@ -68,6 +68,8 @@ import { GamesComponent } from './public/games/games.component';
 import { PreviousGamesComponent } from './public/previous-games/previous-games.component';
 import { GameDetailComponent } from './public/game-detail/game-detail.component';
 import { EventPaginationComponent } from './public/events/event-pagination/event-pagination.component';
+import { AddScoreComponent } from './logged/tournaments/tournament/add-score/add-score.component';
+import { ListScoreComponent } from './logged/tournaments/tournament/list-score/list-score.component';
 
 
 @NgModule({
@@ -126,6 +128,8 @@ import { EventPaginationComponent } from './public/events/event-pagination/event
     PreviousGamesComponent,
     GameDetailComponent,
     EventPaginationComponent,
+    AddScoreComponent,
+    ListScoreComponent,
 
   ],
   imports: [

@@ -42,3 +42,8 @@ class ViewsHelper:
     def filter_games(self, queryset, end_date):
         games = queryset.order_by('-end_date').filter(end_date__lt=datetime.now())
         return games
+
+    def filter_scores(self, queryset, eventId, profileId):
+        if(eventId and profileId):
+            return queryset.filter(fk_eventid=eventId, fk_profileid=profileId);
+        return queryset    

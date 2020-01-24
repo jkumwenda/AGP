@@ -17,14 +17,14 @@ export class RegistrationSlotsComponent implements OnInit {
   public days: any = [];
   public displayedSlots: Slot[];
   public day: number;
-  public profileId = 1; // loggedIn Profile
+  public profileId = 2; // loggedIn Profile
   public admin = true;
   public profileRegistered = false;
   public sizes: SlotSize[] = [];
-  show: any = false;
+  public show: any = false;
   public slotRegisterSwap: SlotRegister[] = [];
   public slotRegistered = false;
-
+  public selectedProfile: Profile;
 
   constructor(
     private registerService: slotRegisterService,
@@ -41,9 +41,11 @@ export class RegistrationSlotsComponent implements OnInit {
   }
 
   register(slotId, size) {
+
     if (this.profileRegistered) { return; }
     const slot = this.slots.find(slotItem => slotItem.pk_slotid === slotId);
     if (this.checkIfRegisteredOtherProfile(size, slot.registers)) { return; }
+
 
     this.registerService
       .addSlotRegister({
@@ -77,7 +79,6 @@ export class RegistrationSlotsComponent implements OnInit {
     this.sizeService.getSlotSizes().then(
       (result: SlotSize[]) => {
         this.sizes = result;
-        console.log(result);
       },
       error => {}
     );
@@ -132,6 +133,11 @@ export class RegistrationSlotsComponent implements OnInit {
 
   ngOnInit() {
     this.getSlotSizes();
+  }
+
+  fetchRegisterProfileId(sizeId: number, registers: SlotRegister[]) {
+    const register =  this.checkIfRegistered(sizeId, registers);
+    return register.profile;
   }
 
   displayRegisterProfile(sizeId: number, registers: SlotRegister[]) {

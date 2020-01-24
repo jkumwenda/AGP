@@ -39,7 +39,11 @@
                   <span class="tooltip-1text" *ngIf="slotRegistered && admin">
                     <span>
                       <button (click)="selectToSwap(size.pk_slot_sizeid, slot)" class="btn btn-xs btn-dark">Swap</button>
-                      <button class="btn btn-xs btn-dark">Scores</button>
+                      <button
+                        (click)= "selectedProfile=fetchRegisterProfileId(size.pk_slot_sizeid, slot.registers)"
+                        class="btn btn-xs btn-dark"
+                        data-toggle="modal"
+                        data-target="#addScore">Scores</button>
                     </span>
                   </span>
                 </div>
@@ -59,3 +63,4 @@
   </div>
   </div>
 </div>
+<app-add-score *ngIf="selectedProfile" [profile]="selectedProfile"></app-add-score>

@@ -249,3 +249,9 @@ class GameViewSet(viewsets.ModelViewSet):
 class ScoreViewSet(viewsets.ModelViewSet):
     queryset = Score.objects.all()
     serializer_class = ScoreSerializer
+
+    def get_queryset(self):
+        queryset = super().get_queryset()
+        eventId = self.request.query_params.get('event')
+        profile = self.request.query_params.get('profile')
+        return ViewsHelper.filter_scores(self, queryset,eventId, profile);

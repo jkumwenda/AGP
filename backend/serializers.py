@@ -367,6 +367,8 @@ class ClubProfileSerializer(serializers.ModelSerializer):
 
 
 class ScoreSerializer(serializers.ModelSerializer):
+    
+    courseTypeHole = CourseTypeHoleSerializer(source='fk_coursetype_holeid', read_only=True)
     class Meta:
         model = Score
         fields = '__all__'

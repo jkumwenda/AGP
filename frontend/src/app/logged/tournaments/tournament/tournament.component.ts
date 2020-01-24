@@ -36,8 +36,6 @@ export class TournamentComponent implements OnInit {
         this.tournament = result;
         if (result.field.length > 0) {
           this.slots = this.tournament.field[0].slots;
-
-          console.log(this.slots);
         } else {
           this.slots = [];
         }
