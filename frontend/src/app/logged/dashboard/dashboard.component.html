@@ -1,1 +1,73 @@
-<p>dashboard works!</p>
+<div class="container cards-wrap">
+  <div class='row'>
+    <div class='col-lg-4 col-md-6 col-sm-12 card-col'>
+      <div class='card dropdown-all bg-default bg-dark card-dark card-wrap'>
+        <div class='card-body'>
+        <strong>THE BEST PERFOMANCE</strong>
+        <br>
+          <table>
+            <tr><td>Playoffs</td><td>: 20%</td></tr>
+            <tr><td>Games in hand</td><td>: 20%</td></tr>
+          </table>
+        </div>
+      </div>
+    </div>
+
+    <div class='col-lg-4 col-md-6 col-sm-12 card-col'>
+      <div class='card dropdown-all bg-default card-wrap'>
+        <div class='card-body'>
+          <div class="chart-wrapper">
+            <canvas baseChart
+              [data]="doughnutChartData"
+              [labels]="doughnutChartLabels"
+              [chartType]="doughnutChartType">
+            </canvas>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class='col-lg-4 col-md-6 col-sm-12 card-col'>
+      <div class='card dropdown-all card-wrap'>
+        <div class='card-body'>
+        <strong>QUICK ACCESS</strong>
+        <br>
+          <table>
+            <tr><td>Playoffs</td><td>: 20%</td></tr>
+            <tr><td>Games in hand</td><td>: 20%</td></tr>
+          </table>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+<br>
+<div class="container">
+  <div class='row'>
+    <div class='col-lg-8 col-md-6 col-sm-12'>
+      <div class='card dropdown-all bg-default'>
+        <div class='card-body'>
+<div class="chart-wrapper">
+    <canvas baseChart
+    [datasets]="barChartData"
+    [labels]="barChartLabels"
+    [options]="barChartOptions"
+    [plugins]="barChartPlugins"
+    [legend]="barChartLegend"
+    [chartType]="barChartType">
+  </canvas>
+</div>
+        </div>
+      </div>
+    </div>
+    <div class='col-lg-4 col-md-6 col-sm-12'>
+      <div class='card dropdown-all bg-default'>
+        <div class='card-header card-header-customer md-secondary'>
+          <h6 class='mdi mdi-golf'>Upcoming tournaments</h6>
+        </div>
+        <div class='card-body'></div>
+      </div>
+    </div>
+  </div>
+</div>

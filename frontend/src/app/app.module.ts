@@ -68,7 +68,7 @@ import { GamesComponent } from './public/games/games.component';
 import { PreviousGamesComponent } from './public/previous-games/previous-games.component';
 import { GameDetailComponent } from './public/game-detail/game-detail.component';
 import { EventPaginationComponent } from './public/events/event-pagination/event-pagination.component';
-
+import { ChartsModule } from 'ng2-charts';
 
 @NgModule({
   declarations: [
@@ -143,7 +143,8 @@ import { EventPaginationComponent } from './public/events/event-pagination/event
     OwlNativeDateTimeModule,
     BrowserAnimationsModule,
     MatExpansionModule,
-    ChartistModule
+    ChartistModule,
+    ChartsModule
   ],
   providers: [AuthService, DatePipe],
   bootstrap: [AppComponent],

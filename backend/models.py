@@ -6,6 +6,7 @@ from django.utils.timezone import utc,datetime
 
 class Country(models.Model):
     pk_countryid = models.AutoField(primary_key=True)
+    code = models.CharField(max_length=3)
     country = models.CharField(max_length=45)
 
     class Meta:
@@ -20,7 +21,7 @@ class Course(models.Model):
     course = models.CharField(max_length=100)
 
     class Meta:
-        managed=False
+        managed = False
         db_table = 'course'
 
 
@@ -173,7 +174,7 @@ class Role(models.Model):
 #         'Role', models.DO_NOTHING, db_column='fk_roleid')
 
 #     class Meta:
-#         managed = False
+#         
 #         db_table = 'profile_role'
 
 
@@ -196,7 +197,7 @@ class Permission(models.Model):
 #         Permission, related_name='permissions', through='RolePermission')
 
 #     class Meta:
-#         managed = False
+#         
 #         db_table = 'role'
 
 
@@ -256,7 +257,7 @@ class Event(models.Model):
     end_date = models.DateTimeField()
 
     class Meta:
-        managed = True
+        managed = False
         db_table = 'event'
     
 
