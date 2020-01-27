@@ -5,6 +5,7 @@ import {SlotRegister} from 'src/app/shared/interfaces/slotRegister';
 import {SlotSizeService} from 'src/app/shared/services/slot-size.service';
 import {SlotSize} from 'src/app/shared/interfaces/slot-size';
 import {Profile} from '../../../../shared/interfaces/profile';
+import {Tournament} from '../../../../shared/interfaces/tournament';
 
 
 @Component({
@@ -14,6 +15,7 @@ import {Profile} from '../../../../shared/interfaces/profile';
 })
 export class RegistrationSlotsComponent implements OnInit {
   @Input() slots: Slot[];
+  @Input() tournament: Tournament;
   public days: any = [];
   public displayedSlots: Slot[];
   public day: number;
@@ -25,6 +27,7 @@ export class RegistrationSlotsComponent implements OnInit {
   public slotRegisterSwap: SlotRegister[] = [];
   public slotRegistered = false;
   public selectedProfile: Profile;
+  public activeDay = 0; // 0 for day draw otherwise tournament draw
 
   constructor(
     private registerService: slotRegisterService,
@@ -110,12 +113,24 @@ export class RegistrationSlotsComponent implements OnInit {
 
     this.day = 1;
     this.findDays();
-    this.daySlots(this.day);
     this.profileRegistered = this.initProfileCheck();
+
+    // day draw
+    if (!this.activeDay) {
+       this.daySlots(this.day);
+       return;
+    }
+    // tournament draw
+    this.daySlots(this.activeDay);
   }
 
   findDays() {
     this.days = Array.from(new Set(this.slots.map(item => item.day)));
+    this.days.forEach(day => {
+    if (this.checkIfCanRegister(day)) {
+        this.activeDay = day;
+    }
+    });
   }
 
   createDateTime(time): Date {
@@ -228,4 +243,21 @@ export class RegistrationSlotsComponent implements OnInit {
   }
 
 
+  checkIfCanRegister(day: any) { // check Active day for tournament draw
+    const checkIfTournamentDrawType = this.tournament.draw_type.draw_type.toLowerCase().includes('tournament');
+
+    if (checkIfTournamentDrawType) {
+       const startDate = new Date(this.tournament.start_date);
+       startDate.setDate(startDate.getDate() + day - 1);
+       return startDate.toLocaleDateString() === new Date().toLocaleDateString();
+    }
+    return false;
+  }
+
+  disableButton(day: any) {
+    if (this.activeDay === 0) {
+      return false;
+    }
+    return day !== this.activeDay;
+  }
 }

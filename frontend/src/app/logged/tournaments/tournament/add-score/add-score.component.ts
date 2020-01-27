@@ -72,7 +72,7 @@ export class AddScoreComponent implements OnInit {
       hits: ['', Validators.compose([Validators.required,  Validators.pattern('^[0-9]*$')])],
       fk_eventid: this.eventId,
       fk_profileid: this.profile.pk_profileid,
-      fk_coursetype_holeid: ['', Validators.compose([Validators.required])]
+      fk_coursetype_holeid: ['', Validators.compose([Validators.required, Validators.pattern('^[0-9]*$')])]
     });
   }
   ngOnInit() {
@@ -86,6 +86,7 @@ export class AddScoreComponent implements OnInit {
       (result: Score) => {
         this.scores.push(result);
         this.courseTypeHoles = this.filterCourseTypeHole(this.courseTypeHoles);
+        this.initScoreForm();
       },
       error => {}
     );

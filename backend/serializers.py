@@ -18,7 +18,6 @@ class DrawTypeSerializer(serializers.ModelSerializer):
         fields = '__all__'
 
 
-
 class RatingSerializer(serializers.ModelSerializer):
     class Meta:
         model = Rating
@@ -272,7 +271,7 @@ class InformationSerializer(serializers.ModelSerializer):
 
 
 class FieldSerializer(serializers.ModelSerializer):
-   
+
     class Meta:
         model = Field
         fields = '__all__'
@@ -286,6 +285,7 @@ class FieldSerializer(serializers.ModelSerializer):
         SerializerHelper.saveSlots(
             self, event.start_date, event.end_date, field)
         return field
+
 
 class FieldSerializer(serializers.ModelSerializer):
     class Meta:
@@ -351,7 +351,6 @@ class EventSerializer(serializers.ModelSerializer):
         SerializerHelper.saveSlots(
             self, event)
         return event
-        
 
 
 class GameSerializer(serializers.ModelSerializer):

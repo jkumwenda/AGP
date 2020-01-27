@@ -5,7 +5,7 @@
   <div class="card-body">
   <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
     <li class="nav-item" *ngFor="let day of days">
-      <a class="nav-link btn-dark btn-tab" id="pills-home-tab" data-toggle="pill" href="#pills-home" role="tab" aria-controls="pills-home" aria-selected="true" (click)="daySlots(day)">Day {{ day }}</a>
+      <button class="nav-link btn-tab" [disabled] ="disableButton(day)"  id="pills-home-tab" data-toggle="pill" href="#pills-home" role="tab" aria-controls="pills-home" aria-selected="true" (click)="daySlots(day)">Day {{ day }}</button>
     </li>
 
   </ul>
