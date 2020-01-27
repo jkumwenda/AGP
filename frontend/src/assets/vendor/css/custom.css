@@ -644,3 +644,16 @@ input[type="search"] {
     padding-top: 18px;
     padding-bottom: 18px;
 }
+
+.personal-leaderboard-table {
+    text-align: center !important;
+}
+
+.personal-leaderboard-head {
+    background-color: #1565c0;
+    color: #FFF;
+}
+
+.personal-leaderboard-score {
+    font-size: small;
+}

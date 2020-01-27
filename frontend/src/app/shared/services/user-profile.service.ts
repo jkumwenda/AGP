@@ -3,11 +3,11 @@ import { CommonService } from './common.service';
 
 
 @Injectable({
-  providedIn: "root"
+  providedIn: 'root'
 })
 export class UserProfileService {
   public token: any;
-  public endpoint: any = "api/user_profile/";
+  public endpoint: any = 'api/user_profile/';
 
   constructor(private commonService: CommonService) {}
 
@@ -25,7 +25,7 @@ export class UserProfileService {
   }
   getProfile(profileId) {
     return new Promise((resolve, reject) => {
-      this.commonService.get(this.endpoint + profileId + "/").then(
+      this.commonService.get(this.endpoint + profileId + '/').then(
         result => {
           resolve(result);
         },

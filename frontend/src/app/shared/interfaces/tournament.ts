@@ -5,6 +5,7 @@ import { EventFormat } from './event-format';
 import { Profile } from './profile';
 import { Information } from './information';
 import { RegistrationDate } from './registration-date';
+import {Slot} from './slot';
 
 export class Tournament {
 
@@ -20,9 +21,9 @@ export class Tournament {
     fk_event_typeid: number;
     fk_profileid: number;
     information: Information[];
+    slots: Slot[];
     eventFormat: EventFormat[];
     registrationDate: RegistrationDate[];
-    field: Field[];
     status: string;
 
     constructor(id, event, sDate, eDate) {
@@ -34,7 +35,7 @@ export class Tournament {
       this.event = event;
       this.start_date = sDate;
       this.end_date = eDate;
-      this.field = [];
+      this.slots = [];
 
     }
 

@@ -5,6 +5,6 @@ export class Slot {
   pk_slotid: number;
   slot_time: Date;
   day: number;
-  fk_fieldid: number;
+  fk_eventid: number;
   registers: SlotRegister[];
 }

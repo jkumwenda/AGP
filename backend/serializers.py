@@ -18,6 +18,7 @@ class DrawTypeSerializer(serializers.ModelSerializer):
         fields = '__all__'
 
 
+
 class RatingSerializer(serializers.ModelSerializer):
     class Meta:
         model = Rating
@@ -119,6 +120,10 @@ class UserSerializer(serializers.ModelSerializer):
 
 
 class UserPlayerProfileSerializer(serializers.ModelSerializer):
+    user = UserSerializer(read_only=True)
+    user_id = serializers.PrimaryKeyRelatedField(
+        queryset=User.objects.all(),
+        write_only=True, source='user')
 
     class Meta:
         model = Profile
@@ -267,8 +272,7 @@ class InformationSerializer(serializers.ModelSerializer):
 
 
 class FieldSerializer(serializers.ModelSerializer):
-    slots = SlotSerializer(many=True, read_only=True)
-
+   
     class Meta:
         model = Field
         fields = '__all__'
@@ -283,18 +287,7 @@ class FieldSerializer(serializers.ModelSerializer):
             self, event.start_date, event.end_date, field)
         return field
 
-
-class EventSerializer(serializers.ModelSerializer):
-    field = FieldSerializer(many=True, read_only=True)
-
-    class Meta:
-        model = Information
-        fields = '__all__'
-
-
 class FieldSerializer(serializers.ModelSerializer):
-    slots = SlotSerializer(many=True, read_only=True)
-
     class Meta:
         model = Field
         fields = '__all__'
@@ -335,7 +328,7 @@ class EventSerializer(serializers.ModelSerializer):
     information = InformationSerializer(many=True, read_only=True)
     eventFormat = EventFormatSerializer(many=True, read_only=True)
     registrationDate = RegistrationDateSerializer(many=True, read_only=True)
-    field = FieldSerializer(many=True, read_only=True)
+    slots = SlotSerializer(many=True, read_only=True)
 
     class Meta:
         model = Event
@@ -353,6 +346,13 @@ class EventSerializer(serializers.ModelSerializer):
 
         return 'Closed'
 
+    def create(self, validated_data):
+        event = Event.objects.create(**validated_data)
+        SerializerHelper.saveSlots(
+            self, event)
+        return event
+        
+
 
 class GameSerializer(serializers.ModelSerializer):
     class Meta:
@@ -367,8 +367,10 @@ class ClubProfileSerializer(serializers.ModelSerializer):
 
 
 class ScoreSerializer(serializers.ModelSerializer):
-    
-    courseTypeHole = CourseTypeHoleSerializer(source='fk_coursetype_holeid', read_only=True)
+
+    courseTypeHole = CourseTypeHoleSerializer(
+        source='fk_coursetype_holeid', read_only=True)
+
     class Meta:
         model = Score
         fields = '__all__'

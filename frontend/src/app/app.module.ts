@@ -70,6 +70,7 @@ import { GameDetailComponent } from './public/game-detail/game-detail.component'
 import { EventPaginationComponent } from './public/events/event-pagination/event-pagination.component';
 import { AddScoreComponent } from './logged/tournaments/tournament/add-score/add-score.component';
 import { ListScoreComponent } from './logged/tournaments/tournament/list-score/list-score.component';
+import { PlayerLeadershipboardComponent } from './logged/players/player/player-leadershipboard/player-leadershipboard.component';
 
 
 @NgModule({
@@ -130,6 +131,7 @@ import { ListScoreComponent } from './logged/tournaments/tournament/list-score/l
     EventPaginationComponent,
     AddScoreComponent,
     ListScoreComponent,
+    PlayerLeadershipboardComponent,
 
   ],
   imports: [

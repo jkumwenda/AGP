@@ -253,8 +253,8 @@ class Field(models.Model):
 
 class Slot(models.Model):
     pk_slotid = models.AutoField(primary_key=True)
-    fk_fieldid = models.ForeignKey(
-        Field, models.DO_NOTHING, related_name='slots', db_column='fk_fieldid')
+    fk_eventid = models.ForeignKey(
+        Event, models.DO_NOTHING, related_name='slots', db_column='fk_fieldid')
     slot_time = models.TimeField()
     day = models.IntegerField()
 
