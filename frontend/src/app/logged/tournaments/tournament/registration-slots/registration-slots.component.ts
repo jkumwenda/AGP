@@ -46,6 +46,9 @@ export class RegistrationSlotsComponent implements OnInit {
   register(slotId, size) {
 
     if (this.profileRegistered) { return; }
+
+    if (this.checkIfActiveDay(this.day)) { return; }
+
     const slot = this.slots.find(slotItem => slotItem.pk_slotid === slotId);
     if (this.checkIfRegisteredOtherProfile(size, slot.registers)) { return; }
 
@@ -254,8 +257,8 @@ export class RegistrationSlotsComponent implements OnInit {
     return false;
   }
 
-  disableButton(day: any) {
-    if (this.activeDay === 0) {
+  checkIfActiveDay(day: any) {
+    if (this.activeDay === 0) { // day draw
       return false;
     }
     return day !== this.activeDay;
