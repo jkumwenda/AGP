@@ -1,0 +1,43 @@
+<div class="modal fade" id="viewEventCourseType" tabindex="-1" role="dialog" aria-labelledby="modelTitleId" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title"><i class="mdi mdi-file-plus"></i> {{ moduleTitle }}</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+        <div class="modal-body">
+            <table class="table table-striped" *ngIf="checkIfEmpty()">
+                <thead>
+                    <tr>
+                        <th>Gender</th>
+                        <th>Course Type</th>
+                        <th>Controls</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let tournamentCourseType of eventCourseTypes; let data_index=index"> 
+                        <td>
+                            {{ tournamentCourseType?.gender.gender }}
+                        </td>
+
+                        <td>
+                          {{ tournamentCourseType.courseType?.type.type }}
+                        </td>
+
+                        <td>
+                            <div class="btn-toolbar">
+                              <button (click)="deleteEventCourseType(tournamentCourseType.pk_event_course_typeid)" class="btn btn-danger btn-sm btn-control"><i class="mdi mdi-delete"></i></button>
+                            </div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>   
+        </div>
+        <div class="modal-footer">
+          <button #closeModal type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+  </div> 

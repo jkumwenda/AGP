@@ -1,18 +1,19 @@
-
 import { Injectable } from '@angular/core';
-import { CommonService } from '../services/common.service';
+import { Subject } from "rxjs/Subject";
+import { CommonService } from './common.service';
+import { EventCourseType } from '../interfaces/eventCourseType';
 
 @Injectable({
   providedIn: 'root',
 })
-export class UserService {
+export class EventCourseTypeService {
   public token: any;
-  public endpoint: any = 'api/user/';
+  public endpoint: any = 'api/event_course_type/';
 
   constructor(private commonService: CommonService) {
   }
 
-  addUser(data) {
+  addEventCourseType(data) {
     return new Promise((resolve, reject) => {
       this.commonService.post(this.endpoint, data).then((result) => {
         resolve(result);
@@ -22,7 +23,7 @@ export class UserService {
     });
   }
 
-  getUsers() {
+  getEventCourseTypes() {
     return new Promise((resolve, reject) => {
       this.commonService.get(this.endpoint).then((result) => {
         resolve(result);
@@ -32,9 +33,9 @@ export class UserService {
     });
   }
 
-  getUser(userId) {
+  getEventCourseType(eventCourseTypeId) {
     return new Promise((resolve, reject) => {
-      this.commonService.get(this.endpoint + userId + '/').then((result) => {
+      this.commonService.get(this.endpoint + eventCourseTypeId + '/').then((result) => {
         resolve(result);
       }, (error) => {
         reject(error);
@@ -42,19 +43,9 @@ export class UserService {
     });
   }
 
-  getUserByID(userId) {
+  editEventCourseType(eventCourseTypeId, data) {
     return new Promise((resolve, reject) => {
-      this.commonService.get(this.endpoint + '?user_id=' + userId).then((result) => {
-        resolve(result);
-      }, (error) => {
-        reject(error);
-      });
-    });
-  }
-
-  editUser(userId, data) {
-    return new Promise((resolve, reject) => {
-      this.commonService.update(this.endpoint + userId + '/', data).then((result) => {
+      this.commonService.update(this.endpoint + eventCourseTypeId + '/', data).then((result) => {
         resolve(true);
       }, (error) => {
         reject(false);
@@ -62,9 +53,9 @@ export class UserService {
     });
   }
 
-  deleteUser(userId) {
+  deleteEventCourseType(eventCourseTypeId) {
     return new Promise((resolve, reject) => {
-      this.commonService.delete(this.endpoint + userId + '/').then((result) => {
+      this.commonService.delete(this.endpoint + eventCourseTypeId + '/').then((result) => {
         resolve(true);
       }, (error) => {
         reject(false);
