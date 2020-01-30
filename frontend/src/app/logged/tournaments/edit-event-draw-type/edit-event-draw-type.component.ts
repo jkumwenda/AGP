@@ -39,7 +39,7 @@ export class EditEventDrawTypeComponent implements OnInit {
      this.initializeEventDrawTypeForm();
    }
 
-   getEventDrawType(eventId){
+   getEventDrawType(eventId) {
 
      this.tournamentService.getTournament(eventId).then((result) => {
        this.tournament = result as Tournament;

@@ -68,10 +68,9 @@ import { GamesComponent } from './public/games/games.component';
 import { PreviousGamesComponent } from './public/previous-games/previous-games.component';
 import { GameDetailComponent } from './public/game-detail/game-detail.component';
 import { EventPaginationComponent } from './public/events/event-pagination/event-pagination.component';
-//import { EventCourseTypeComponent } from './logged/tournaments/event-course-type/event-course-type.component';
-import { AddEventCourseTypeComponent } from './logged/tournaments/add-event-course-type/add-event-course-type.component';
-import { EventCourseTypeDetailComponent } from './logged/tournaments/event-course-type-detail/event-course-type-detail.component';
-//import { EditEventCourseTypeComponent } from './logged/tournaments/edit-event-course-type/edit-event-course-type.component';
+import { AddScoreComponent } from './logged/tournaments/tournament/add-score/add-score.component';
+import { ListScoreComponent } from './logged/tournaments/tournament/list-score/list-score.component';
+import { PlayerLeadershipboardComponent } from './logged/players/player/player-leadershipboard/player-leadershipboard.component';
 
 
 @NgModule({
@@ -130,10 +129,9 @@ import { EventCourseTypeDetailComponent } from './logged/tournaments/event-cours
     PreviousGamesComponent,
     GameDetailComponent,
     EventPaginationComponent,
-    //EventCourseTypeComponent,
-    AddEventCourseTypeComponent,
-    EventCourseTypeDetailComponent,
-    //EditEventCourseTypeComponent,
+    AddScoreComponent,
+    ListScoreComponent,
+    PlayerLeadershipboardComponent,
 
   ],
   imports: [

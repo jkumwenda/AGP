@@ -45,9 +45,9 @@ export class slotRegisterService {
   editSlotRegister(slotRegisterId, data) {
     return new Promise((resolve, reject) => {
       this.commonService.update(this.endpoint + slotRegisterId + '/', data).then((result) => {
-        resolve(true);
+        resolve(result);
       }, (error) => {
-        reject(false);
+        reject(error);
       });
     });
   }

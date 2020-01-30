@@ -57,7 +57,8 @@ router.register(r'slot', backend_views.SlotViewSet, base_name='Slot')
 router.register(r'event_format', backend_views.EventFormatViewSet,
                 base_name='Event Format')
 router.register(r'event', backend_views.EventViewSet, base_name='Event')
-router.register(r'public_event', backend_views.PublicEventViewSet, base_name='Public Event')
+router.register(r'public_event', backend_views.PublicEventViewSet,
+                base_name='Public Event')
 router.register(r'event_type', backend_views.EventTypeViewSet,
                 base_name='Event Type')
 router.register(r'draw_type', backend_views.DrawTypeViewSet,
@@ -74,8 +75,14 @@ router.register(r'slot_size', backend_views.SlotSizeViewSet,
                 base_name='Slot Size')
 router.register(r'game', backend_views.GameViewSet,
                 base_name='Game')
+<<<<<<< HEAD
 router.register(r'event_course_type', backend_views.EventCourseTypeViewSet,
                 base_name='Event Course Type')
+=======
+router.register(r'score', backend_views.ScoreViewSet,
+                base_name='Score')
+
+>>>>>>> louis
 
 # Wire up our API using automatic URL routing.
 # Additionally, we include login URLs for the browsable API.

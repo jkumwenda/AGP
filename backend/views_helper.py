@@ -17,7 +17,7 @@ class ViewsHelper:
                 raise APIException("User profile has not roles")
         else:
             return queryset
-        
+
     def filter_role_permission(self, queryset, permission_code, profile_id):
         if (permission_code and profile_id):
             rolepermission = queryset.select_related(
@@ -25,7 +25,6 @@ class ViewsHelper:
             return rolepermission
         else:
             return queryset
-        
 
     def filter_player_profile(self, queryset):
         player_profile = queryset.select_related(
@@ -34,11 +33,28 @@ class ViewsHelper:
             return player_profile
         else:
             return APIException('Players not found')
-        
+
     def filter_test(self, queryset):
-        r = {'queryset': queryset, 'status':'Test'}
+        r = {'queryset': queryset, 'status': 'Test'}
         raise APIException(r)
 
     def filter_games(self, queryset, end_date):
-        games = queryset.order_by('-end_date').filter(end_date__lt=datetime.now())
+        games = queryset.order_by(
+            '-end_date').filter(end_date__lt=datetime.now())
         return games
+
+    def filter_scores(self, queryset, eventId, profileId):
+        if(eventId and profileId):
+            return queryset.filter(fk_eventid=eventId, fk_profileid=profileId)
+        if(profileId):
+            return queryset.filter(fk_profileid=profileId)
+        return queryset
+
+    def filter_events(self, queryset, profileId):
+        if profileId is not None:
+            registers = Register.objects.filter(fk_profileid=profileId)
+            tournaments = [
+                register.fk_slotid.fk_eventid for register in registers]
+            return tournaments
+
+        return queryset

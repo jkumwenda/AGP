@@ -16,8 +16,6 @@ import { EventCourseType } from '../../../../shared/interfaces/eventCourseType';
 export class TournamentDetailComponent implements OnInit {
   @Input() tournament: Tournament;
   @Output() updatedSlots = new EventEmitter<Slot[]>();
-  @Input() eventCourseTypes: EventCourseType;
-  public field: Field;
   public addComponentCreated = false;
   public editComponentCreated = false;
   public  editEventComponentCreated = false;
@@ -33,22 +31,22 @@ export class TournamentDetailComponent implements OnInit {
 
   constructor(private tournamentService: TournamentService) {
     this.tournament = Tournament.initialize();
-    this.tournament.field.push(new Field(''));
-    this.field = new Field(null);
-  }
-
-  updateField(field) {
-    this.tournament.field[0] = field;
-    this.field = field;
 
   }
- addField(field) {
-   this.tournament.field[0] = field;
-   this.updatedSlots.emit(this.tournament.field[0].slots);
- }
+
+ //  updateField(field) {
+ //    this.tournament.field[0] = field;
+ //    this.field = field;
+ //
+ //  }
+ // addField(field) {
+ //   this.tournament.field[0] = field;
+ //   this.updatedSlots.emit(this.tournament.field[0].slots);
+ // }
+  // tslint:disable-next-line:use-lifecycle-interface
   ngOnChanges(): void {
-    const fields = this.tournament.field;
-    this.field = fields.length > 0 ? fields[0] : new Field(null);
+    // const fields = this.tournament.field;
+    // this.field = fields.length > 0 ? fields[0] : new Field(null);
   }
 
 
@@ -80,5 +78,5 @@ export class TournamentDetailComponent implements OnInit {
       error => {}
     );
   }
-  
+
 }

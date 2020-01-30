@@ -1,0 +1,5 @@
+1. delete migrations folder in backend
+2. comment all models that have not been migrated
+3. run=> python manage.py makemigrations backend
+4. run=> python manage.py migrate backend --fake-initial
+5. you can now proceed and make the changes *Make sure you append backend for each migration command*

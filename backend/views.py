@@ -11,11 +11,12 @@ from rest_framework.decorators import action
 class UserViewSet(viewsets.ModelViewSet):
     queryset = User.objects.all()
     serializer_class = UserSerializer
-    
+
     def get_queryset(self):
         queryset = super().get_queryset()
         data = ViewsHelper.filter_test(self, queryset)
         return data
+
 
 class SlotSizeViewSet(viewsets.ModelViewSet):
     queryset = SlotSize.objects.all()
@@ -96,7 +97,7 @@ class UserProfileViewSet(viewsets.ModelViewSet):
 class PlayerViewSet(viewsets.ModelViewSet):
     queryset = ProfileRole.objects.all()
     serializer_class = PlayerSerializer
-    
+
     def get_queryset(self):
         queryset = super().get_queryset()
         data = ViewsHelper.filter_player_profile(self, queryset)
@@ -191,6 +192,14 @@ class RegisterViewSet(viewsets.ModelViewSet):
     queryset = Register.objects.all()
     serializer_class = RegisterSerializer
 
+    
+    def get_queryset(self):
+        queryset = super().get_queryset()
+        eventId = self.request.query_params.get('event')
+        profile = self.request.query_params.get('profile')
+        return ViewsHelper.filter_scores(self, queryset,eventId, profile);
+
+    
 
 class SlotViewSet(viewsets.ModelViewSet):
     queryset = Slot.objects.all()
@@ -210,7 +219,12 @@ class FieldViewSet(viewsets.ModelViewSet):
 class EventViewSet(viewsets.ModelViewSet):
     queryset = Event.objects.all()
     serializer_class = EventSerializer
-    
+
+    def get_queryset(self):
+        queryset = super().get_queryset() 
+        profileId = self.request.query_params.get('profile')
+        return ViewsHelper.filter_events(self,queryset, profileId)
+
 
 class PublicEventViewSet(viewsets.ModelViewSet):
     permission_classes = (permissions.AllowAny,)
@@ -245,6 +259,12 @@ class GameViewSet(viewsets.ModelViewSet):
         return data
 
 
-class EventCourseTypeViewSet(viewsets.ModelViewSet):
-    queryset = EventCourseType.objects.all()
-    serializer_class = EventCourseTypeSerializer
+class ScoreViewSet(viewsets.ModelViewSet):
+    queryset = Score.objects.all()
+    serializer_class = ScoreSerializer
+
+    def get_queryset(self):
+        queryset = super().get_queryset()
+        eventId = self.request.query_params.get('event')
+        profile = self.request.query_params.get('profile')
+        return ViewsHelper.filter_scores(self, queryset,eventId, profile);

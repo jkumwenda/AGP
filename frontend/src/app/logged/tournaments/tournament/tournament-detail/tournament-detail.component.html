@@ -30,19 +30,9 @@
         <strong>Information </strong><td></td > :
         <button class="btn btn-md mdi mdi-file-plus" data-toggle="modal" data-target="#setInformation">Set</button>
       </tr>
-      <tr *ngIf="tournament.field.length > 0"><strong>Field </strong><td></td> :
-          {{ tournament.field[0].field_type }}
-        <button (click)="editFieldComponent=true" class="btn btn-md mdi mdi-pencil-box" data-toggle="modal" data-target="#editField">Update</button><td></tr>
-
-      <tr *ngIf="tournament.field.length == 0"><strong>Field </strong><td></td> :
-        <button class="btn btn-md mdi mdi-file-plus" data-toggle="modal" data-target="#addField">Set</button><td></tr>
-      
-      <tr>
-        <strong>Course Type </strong><td></td > :
-        <button class="btn btn-md mdi mdi-file-plus" data-toggle="modal" data-target="#setEventCourseType">Set</button>
-
-        <button class="btn btn-dark btn-sm btn-control" data-toggle="modal" data-target="#viewEventCourseType"><i class="mdi mdi-eye"></i></button>
-      </tr>
+<!--      <tr *ngIf="tournament.field.length > 0"><strong>Field </strong><td></td> :-->
+<!--          {{ tournament.field[0].field_type }}-->
+<!--        <button (click)="editFieldComponent=true" class="btn btn-md mdi mdi-pencil-box" data-toggle="modal" data-target="#editField">Update</button><td></tr>-->
 
     </table>
   </div>
