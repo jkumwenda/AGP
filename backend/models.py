@@ -21,11 +21,7 @@ class Course(models.Model):
     course = models.CharField(max_length=100)
 
     class Meta:
-<<<<<<< HEAD
-        managed= False
-=======
         managed = False
->>>>>>> louis
         db_table = 'course'
 
 
@@ -160,31 +156,6 @@ class Handicap(models.Model):
         db_table = 'handicap'
 
 
-<<<<<<< HEAD
-class Role(models.Model):
-    pk_roleid = models.AutoField(primary_key=True)
-    role = models.CharField(max_length=45)
-    role_desc = models.CharField(max_length=45)
-
-    class Meta:
-        managed = False
-        db_table = 'role'
-
-
-# class ProfileRole(models.Model):
-#     pk_profile_roleid = models.AutoField(primary_key=True)
-#     fk_profileid = models.ForeignKey(
-#         Profile, models.DO_NOTHING, db_column='fk_profileid')
-#     fk_roleid = models.ForeignKey(
-#         'Role', models.DO_NOTHING, db_column='fk_roleid')
-
-#     class Meta:
-#         
-#         db_table = 'profile_role'
-
-
-=======
->>>>>>> louis
 class Permission(models.Model):
     pk_permissionid = models.AutoField(primary_key=True)
     permission = models.CharField(max_length=45)
@@ -198,11 +169,6 @@ class Permission(models.Model):
 #
 
 
-<<<<<<< HEAD
-#     class Meta:
-#         
-#         db_table = 'role'
-=======
 class Role(models.Model):
     pk_roleid = models.AutoField(primary_key=True)
     role = models.CharField(max_length=45)
@@ -213,7 +179,6 @@ class Role(models.Model):
     class Meta:
         managed = True
         db_table = 'role'
->>>>>>> louis
 
 
 class RolePermission(models.Model):
@@ -245,11 +210,7 @@ class EventType(models.Model):
     event_type = models.CharField(max_length=45)
 
     class Meta:
-<<<<<<< HEAD
-        managed= False
-=======
         managed = True
->>>>>>> louis
         db_table = 'event_type'
 
 
@@ -258,11 +219,7 @@ class DrawType(models.Model):
     draw_type = models.CharField(max_length=45)
 
     class Meta:
-<<<<<<< HEAD
-        managed= False
-=======
         managed = True
->>>>>>> louis
         db_table = 'draw_type'
 
 
@@ -294,11 +251,7 @@ class Field(models.Model):
     field_type = models.CharField(max_length=3)
 
     class Meta:
-<<<<<<< HEAD
-        managed= False
-=======
         managed = True
->>>>>>> louis
         db_table = 'field'
 
 
@@ -310,11 +263,7 @@ class Slot(models.Model):
     day = models.IntegerField()
 
     class Meta:
-<<<<<<< HEAD
-        managed= False
-=======
         managed = True
->>>>>>> louis
         db_table = 'slot'
 
 
@@ -326,11 +275,7 @@ class RegistrationDate(models.Model):
     close_date = models.DateTimeField()
 
     class Meta:
-<<<<<<< HEAD
-        managed= False
-=======
         managed = True
->>>>>>> louis
         db_table = 'registration_date'
 
 
@@ -339,11 +284,7 @@ class Format(models.Model):
     format = models.CharField(max_length=45)
 
     class Meta:
-<<<<<<< HEAD
-        managed= False
-=======
         managed = True
->>>>>>> louis
         db_table = 'format'
 
 
@@ -355,11 +296,7 @@ class EventFormat(models.Model):
         'Format', models.DO_NOTHING, db_column='fk_formatid')
 
     class Meta:
-<<<<<<< HEAD
-        managed= False
-=======
         managed = True
->>>>>>> louis
         db_table = 'event_format'
 
 
@@ -370,11 +307,7 @@ class Information(models.Model):
     info = models.TextField()
 
     class Meta:
-<<<<<<< HEAD
-        managed= False
-=======
         managed = True
->>>>>>> louis
         db_table = 'information'
 
 
@@ -383,11 +316,7 @@ class SlotSize(models.Model):
     slot_size = models.IntegerField(blank=True, null=True)
 
     class Meta:
-<<<<<<< HEAD
-        managed= False
-=======
         managed = True
->>>>>>> louis
         db_table = 'slot_size'
 
 
@@ -402,24 +331,6 @@ class Register(models.Model):
     reg_date = models.DateTimeField(default=datetime.now, blank=True)
 
     class Meta:
-<<<<<<< HEAD
-        managed= False
-        db_table = 'register'
-
-
-class EventCourseType(models.Model):
-    pk_event_course_typeid = models.AutoField(primary_key=True)
-    fk_eventid = models.ForeignKey(
-        Event, models.DO_NOTHING, related_name="eventCourseType", db_column='fk_eventid')
-    fk_course_typeid = models.ForeignKey(
-        CourseType, models.DO_NOTHING, db_column='fk_course_typeid')
-    fk_genderid = models.ForeignKey(
-        Gender, models.DO_NOTHING, db_column='fk_genderid')
-
-    class Meta:
-        managed= False
-        db_table = 'event_course_type'
-=======
         managed = True
         db_table = 'register'
 
@@ -437,4 +348,3 @@ class Score (models.Model):
     class Meta:
         managed = True
         db_table = 'score'
->>>>>>> louis
