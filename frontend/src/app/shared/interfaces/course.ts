@@ -16,6 +16,6 @@ export class Course {
     this.rating=[Rating.initializeRating()]
   }
 
-  static initializeCourse = () => new Course("", new Country(null,""))
+  static initializeCourse = () => new Course("", new Country(null,"", ""))
 
 }
