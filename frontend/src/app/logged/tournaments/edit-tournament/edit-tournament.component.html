@@ -56,6 +56,21 @@
               <option *ngFor="let drawType of drawTypes" value="{{ drawType.pk_draw_typeid }}"data-tokens="ketchup mustard">{{ drawType.draw_type }}</option>
             </select>
            </div>
+
+           <div class="form-group">
+            <label for="draw type">Select Course</label><br>
+            <select id="course" class="form-control" data-live-search="true" formControlName='fk_courseid'>
+              <option *ngFor="let course of courses" value="{{ course.pk_courseid }}"data-tokens="ketchup mustard">{{ course.course }}</option>
+            </select>   
+           </div>
+
+           <div class="form-group">
+            <label for="draw type">Select Number of Holes</label><br>
+            <select id="holes" class="form-control" data-live-search="true" formControlName='holes'>
+              <option value="9" data-tokens="ketchup mustard">9</option>
+              <option value="18" data-tokens="ketchup mustard">18</option>
+            </select>
+           </div>
   
             <button type="submit" class="btn btn-primary" [disabled]="!tournamentForm.valid">Save</button>
             <button type="submit" class="btn" [routerLink]="'/tournaments/'">Cancel</button>

@@ -312,26 +312,36 @@ class EventTypeSerializer(serializers.ModelSerializer):
         model = EventType
         fields = '__all__'
 
+
 class EventFormatSerializer(serializers.ModelSerializer):
     format = FormatSerializer(many=False,source='fk_formatid', read_only=True)
     class Meta:
         model = EventFormat
         fields = '__all__'
 
+
+class EventCourseTypeSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = EventCourseType
+        fields = '__all__'
+
+
 class EventSerializer(serializers.ModelSerializer):
     status = serializers.SerializerMethodField('checkStatus')
     event_type= EventTypeSerializer(many=False,source='fk_event_typeid',read_only=True)
     profile= ProfileSerializer(many=False, source='fk_profileid', read_only=True)
     draw_type= DrawTypeSerializer(many=False, source='fk_draw_typeid', read_only=True)
+    course= CourseSerializer(many=False, source='fk_courseid', read_only=True)
     information= InformationSerializer(many=True, read_only=True)
     eventFormat = EventFormatSerializer(many=True, read_only=True)
     registrationDate = RegistrationDateSerializer(many=True, read_only=True)
     field = FieldSerializer(many=True, read_only=True)
+    eventCourseType = EventCourseTypeSerializer(many=True, read_only=True)
     
     class Meta:
         model = Event
         fields = '__all__'
-        #fields = ['pk_eventid', 'fk_event_typeid', 'fk_profileid', 'fk_draw_typeid', 'event', 'event_description', 'start_date', 'end_date', 'open_date', 'close_date', 'status', 'info']
+        
 
     def checkStatus(self, obj):
         registrationDates = RegistrationDate.objects.filter(fk_eventid=obj) 
