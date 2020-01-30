@@ -192,6 +192,14 @@ class RegisterViewSet(viewsets.ModelViewSet):
     queryset = Register.objects.all()
     serializer_class = RegisterSerializer
 
+    
+    def get_queryset(self):
+        queryset = super().get_queryset()
+        eventId = self.request.query_params.get('event')
+        profile = self.request.query_params.get('profile')
+        return ViewsHelper.filter_scores(self, queryset,eventId, profile);
+
+    
 
 class SlotViewSet(viewsets.ModelViewSet):
     queryset = Slot.objects.all()
@@ -211,6 +219,11 @@ class FieldViewSet(viewsets.ModelViewSet):
 class EventViewSet(viewsets.ModelViewSet):
     queryset = Event.objects.all()
     serializer_class = EventSerializer
+
+    def get_queryset(self):
+        queryset = super().get_queryset() 
+        profileId = self.request.query_params.get('profile')
+        return ViewsHelper.filter_events(self,queryset, profileId)
 
 
 class PublicEventViewSet(viewsets.ModelViewSet):

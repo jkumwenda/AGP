@@ -13,8 +13,8 @@ import {ActivatedRoute} from '@angular/router';
 export class PlayerLeadershipboardComponent implements OnInit {
 
   @Input() profileId: number;
-  public events: Tournament[];
-  public scores: Score[];
+  @Input() events: Tournament[];
+  public scores: Score[] = [];
   public selectedModel: Tournament;
   constructor(
     private eventService: TournamentService,
@@ -25,31 +25,29 @@ export class PlayerLeadershipboardComponent implements OnInit {
     this.profileId = this.activatedRoute.snapshot.params.id;
   }
 
-getEvents() {
-    this.eventService.getTournaments().then(
-      (result: Tournament[]) => {
-        this.events = result;
-        if (this.events.length > 0) {
-          this.selectedModel =  this.events[0];
-          this.getScores(this.selectedModel.pk_eventid);
-        }
+
+
+ getScores(eventId) {
+    this.scoreService.getScores(this.profileId, eventId).then(
+      (result: Score[]) => {
+        this.scores = result;
       },
       error => {}
     );
  }
 
- getScores(eventId) {
-    this.scoreService.getScores(this.profileId, eventId).then(
-      (result: Score[]) => this.scores = result,
-      error => {}
-    );
+  // tslint:disable-next-line:use-lifecycle-interface
+ ngOnChanges() {
+    if (this.events.length > 0) {
+      this.selectedModel = this.events[0];
+      this.getScores(this.selectedModel.pk_eventid);
+    }
  }
-
   ngOnInit() {
-    this.getEvents();
 
   }
 
   fetchScores(event) {
+   this.getScores(event.pk_eventid);
   }
 }

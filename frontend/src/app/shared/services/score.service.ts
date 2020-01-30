@@ -35,6 +35,18 @@ export class ScoreService {
       );
     });
   }
+  getAllScores(profileId) {
+    return new Promise((resolve, reject) => {
+      this.commonService.get(`${this.endpoint}?profile=${profileId}`).then(
+        result => {
+          resolve(result);
+        },
+        error => {
+          reject(error);
+        }
+      );
+    });
+  }
 
   getScore(scoreId) {
     return new Promise((resolve, reject) => {

@@ -1,4 +1,4 @@
-<div class="card dropdown-all d-flex w-100 ">
+<div class="card dropdown-all d-flex w-100">
   <div class="card-body">
     <h5 class="">
       <div class="form-group" *ngIf="selectedModel">
@@ -9,22 +9,26 @@
     <table class="table table-primary table-striped table-bordered table-sm personal-leaderboard-table ">
       <thead>
       <tr class='personal-leaderboard-head' >
-        <th colspan='9'>{{selectedModel.event}}</th>s
+        <th colspan='9'>{{selectedModel.event}}</th>
       </tr>
       </thead>
-      <tbody>
-      <tr >
-        <th>1</th><th>2</th><th>3</th><th>4</th><th>5</th><th>6</th><th>7</th><th>8</th><th>9</th>
-      </tr>
-      <tr class='personal-leaderboard-score'>
-        <td>4</td><td>3</td><td>5</td><td>6</td><td>4</td><td>2</td><td>4</td><td>5</td><td>3</td>
-      </tr>
-      <tr >
-        <th>10</th><th>11</th><th>12</th><th>13</th><th>14</th><th>15</th><th>16</th><th>17</th><th>18</th>
-      </tr>
-      <tr class='personal-leaderboard-score'>
-        <td>4</td><td>3</td><td>5</td><td>6</td><td>4</td><td>2</td><td>4</td><td>5</td><td>3</td>
-      </tr>
+      <tbody *ngIf="scores.length==0">
+        <small class="mdi mdi-information-outline text-danger"> No Scores Added </small>
+      </tbody>
+      <tbody *ngIf="scores.length > 0">
+        <tr>
+          <th *ngFor="let score of scores.slice(0,9);">{{score.courseTypeHole.hole.hole}}</th>
+        </tr>
+        <tr class='personal-leaderboard-score'>
+          <td *ngFor="let score of scores.slice(0,9)">{{score.hits}}</td>
+        </tr>
+        <tr>
+          <th *ngFor="let score of scores.slice(9,18);">{{score.courseTypeHole.hole.hole}}</th>
+        </tr>
+        <tr class='personal-leaderboard-score'>
+          <td *ngFor="let score of scores.slice(9,18)">{{score.hits}}</td>
+        </tr>
+
       </tbody>
     </table>
   </div>

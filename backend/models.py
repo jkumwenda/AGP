@@ -254,7 +254,7 @@ class Field(models.Model):
 class Slot(models.Model):
     pk_slotid = models.AutoField(primary_key=True)
     fk_eventid = models.ForeignKey(
-        Event, models.DO_NOTHING, related_name='slots', db_column='fk_fieldid')
+        Event, models.DO_NOTHING, related_name='slots', db_column='fk_eventid')
     slot_time = models.TimeField()
     day = models.IntegerField()
 
@@ -321,7 +321,7 @@ class Register(models.Model):
     fk_slotid = models.ForeignKey(
         'Slot', models.DO_NOTHING, related_name="registers", db_column='fk_slotid')
     fk_profileid = models.ForeignKey(
-        Profile, models.DO_NOTHING, related_name="profile", db_column='fk_profileid')
+        Profile, models.DO_NOTHING, related_name="registers", db_column='fk_profileid')
     fk_slot_sizeid = models.ForeignKey(
         SlotSize,  models.DO_NOTHING, db_column='fk_sizeid')
     reg_date = models.DateTimeField(default=datetime.now, blank=True)
