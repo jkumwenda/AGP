@@ -317,6 +317,8 @@ class EventFormatSerializer(serializers.ModelSerializer):
 
 
 class EventCourseTypeSerializer(serializers.ModelSerializer):
+    courseType= CourseTypeSerializer(many=False, source='fk_course_typeid', read_only=True)
+    gender= GenderSerializer(many=False, source='fk_genderid', read_only=True)
     class Meta:
         model = EventCourseType
         fields = '__all__'
