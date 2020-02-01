@@ -268,3 +268,8 @@ class ScoreViewSet(viewsets.ModelViewSet):
         eventId = self.request.query_params.get('event')
         profile = self.request.query_params.get('profile')
         return ViewsHelper.filter_scores(self, queryset,eventId, profile);
+
+
+class EventCourseTypeViewSet(viewsets.ModelViewSet):
+    queryset = EventCourseType.objects.all()
+    serializer_class = EventCourseTypeSerializer

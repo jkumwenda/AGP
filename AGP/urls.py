@@ -77,6 +77,8 @@ router.register(r'game', backend_views.GameViewSet,
                 base_name='Game')
 router.register(r'score', backend_views.ScoreViewSet,
                 base_name='Score')
+router.register(r'event_course_type', backend_views.EventCourseTypeViewSet,
+                base_name='Event Course Type')
 
 
 # Wire up our API using automatic URL routing.

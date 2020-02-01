@@ -166,8 +166,6 @@ class Permission(models.Model):
         managed = False
         db_table = 'permission'
 
-#
-
 
 class Role(models.Model):
     pk_roleid = models.AutoField(primary_key=True)
@@ -348,3 +346,17 @@ class Score (models.Model):
     class Meta:
         managed = False
         db_table = 'score'
+
+
+class EventCourseType(models.Model):
+    pk_event_course_typeid = models.AutoField(primary_key=True)
+    fk_eventid = models.ForeignKey(
+        Event, models.DO_NOTHING, related_name="eventCourseType", db_column='fk_eventid')
+    fk_course_typeid = models.ForeignKey(
+        CourseType, models.DO_NOTHING, db_column='fk_course_typeid')
+    fk_genderid = models.ForeignKey(
+        Gender, models.DO_NOTHING, db_column='fk_genderid')
+
+    class Meta:
+        managed= False
+        db_table = 'event_course_type'

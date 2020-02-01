@@ -311,9 +311,15 @@ class EventTypeSerializer(serializers.ModelSerializer):
 
 class EventFormatSerializer(serializers.ModelSerializer):
     format = FormatSerializer(many=False, source='fk_formatid', read_only=True)
-
     class Meta:
         model = EventFormat
+        fields = '__all__'
+
+class EventCourseTypeSerializer(serializers.ModelSerializer):
+    courseType= CourseTypeSerializer(many=False, source='fk_course_typeid', read_only=True)
+    gender= GenderSerializer(many=False, source='fk_genderid', read_only=True)
+    class Meta:
+        model = EventCourseType
         fields = '__all__'
 
 
@@ -325,10 +331,12 @@ class EventSerializer(serializers.ModelSerializer):
         many=False, source='fk_profileid', read_only=True)
     draw_type = DrawTypeSerializer(
         many=False, source='fk_draw_typeid', read_only=True)
+    course= CourseSerializer(many=False, source='fk_courseid', read_only=True)
     information = InformationSerializer(many=True, read_only=True)
     eventFormat = EventFormatSerializer(many=True, read_only=True)
     registrationDate = RegistrationDateSerializer(many=True, read_only=True)
     slots = SlotSerializer(many=True, read_only=True)
+    eventCourseType = EventCourseTypeSerializer(many=True, read_only=True)
 
     class Meta:
         model = Event

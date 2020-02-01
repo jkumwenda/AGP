@@ -72,6 +72,9 @@ import { EventPaginationComponent } from './public/events/event-pagination/event
 import { AddScoreComponent } from './logged/tournaments/tournament/add-score/add-score.component';
 import { ListScoreComponent } from './logged/tournaments/tournament/list-score/list-score.component';
 import { PlayerLeadershipboardComponent } from './logged/players/player/player-leadershipboard/player-leadershipboard.component';
+import { AddEventCourseTypeComponent } from './logged/tournaments/add-event-course-type/add-event-course-type.component';
+import { EventCourseTypeDetailComponent } from './logged/tournaments/event-course-type-detail/event-course-type-detail.component';
+
 
 
 @NgModule({
@@ -133,6 +136,8 @@ import { PlayerLeadershipboardComponent } from './logged/players/player/player-l
     AddScoreComponent,
     ListScoreComponent,
     PlayerLeadershipboardComponent,
+    AddEventCourseTypeComponent,
+    EventCourseTypeDetailComponent,
 
   ],
   imports: [

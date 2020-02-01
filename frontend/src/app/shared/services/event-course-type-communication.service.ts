@@ -1,4 +1,4 @@
-import { Injectable } from "@angular/core";
+ import { Injectable } from "@angular/core";
 import { Subject, Observable } from "rxjs";
 import { Tournament } from "../interfaces/tournament";
 import { EventCourseType } from "../interfaces/eventCourseType";
