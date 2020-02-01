@@ -31,27 +31,28 @@ class SerializerHelper:
 
         return dict
 
-    def createSlots(self, startTime, endTime, intervalInMinutes, day, field):
-       
+    def createSlots(self, startTime, endTime, intervalInMinutes, day, event):
+
         condition = True
 
         startTimeObject = datetime.strptime(startTime, '%H:%M')
         endTimeObject = datetime.strptime(endTime, '%H:%M')
 
-        while(condition):   
-            slot= Slot(fk_fieldid=field, slot_time=str(startTimeObject.time())[0:5], day=day)
+        while(condition):
+            slot = Slot(fk_eventid=event, slot_time=str(
+                startTimeObject.time())[0:5], day=day)
             slot.save()
             startTimeObject = startTimeObject + \
                 timedelta(minutes=intervalInMinutes)
             if startTimeObject.time() > endTimeObject.time():
                 condition = False
-        
 
-    def saveSlots(self, start_date, end_date, field):
+    def saveSlots(self, event):
 
         defaultStartTime = "06:00"
         defaultEndTime = "18:00"
-        data = SerializerHelper.extractData(self,start_date, end_date)
+        data = SerializerHelper.extractData(
+            self, event.start_date, event.end_date)
         timeInterval = 30  # minutes
 
         numberOfDaysList = range(1, data['numberOfDays']+1)
@@ -59,5 +60,5 @@ class SerializerHelper:
         for day in numberOfDaysList:
             startTime = data['startTime'] if day == 1 else defaultStartTime
             endTime = data['endTime'] if day == numberOfDaysList[-1] else defaultEndTime
-            SerializerHelper.createSlots(self,startTime, endTime, timeInterval, day, field)
-           
+            SerializerHelper.createSlots(
+                self, startTime, endTime, timeInterval, day, event)

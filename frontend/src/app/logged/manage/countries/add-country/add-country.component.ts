@@ -1,28 +1,29 @@
-import { Component, OnInit } from "@angular/core";
-import { CountryService } from "src/app/shared/services/country.service";
-import { Router } from "@angular/router";
-import { FormGroup, FormBuilder, Validators } from "@angular/forms";
+import { Component, OnInit } from '@angular/core';
+import { CountryService } from 'src/app/shared/services/country.service';
+import { Router } from '@angular/router';
+import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 
 @Component({
-  selector: "app-add-country",
-  templateUrl: "./add-country.component.html",
-  styleUrls: ["./add-country.component.css"]
+  selector: 'app-add-country',
+  templateUrl: './add-country.component.html',
+  styleUrls: ['./add-country.component.css']
 })
 export class AddCountryComponent implements OnInit {
-  public moduleTitle: string = "Add Country";
+  public moduleTitle = 'Add Country';
   public countryForm: FormGroup;
   private countryData: any;
 
   addCountry() {
     const data = this.countryForm.value;
     this.countryData = {
-      country: data.country
+      country: data.country,
+      code: data.code
     };
 
     this.countryService.addCountry(this.countryData).then(
-      result=> this.router.navigate(['manage/countries']),
-      error=> console.log(error)
-    )
+      result => this.router.navigate(['manage/countries']),
+      error => console.log(error)
+    );
   }
 
   constructor(
@@ -33,7 +34,8 @@ export class AddCountryComponent implements OnInit {
 
   ngOnInit() {
     this.countryForm = this.formBuilder.group({
-      country: ["", Validators.compose([Validators.required])]
+      country: ['', Validators.compose([Validators.required])],
+      code: ['', Validators.compose([Validators.required])]
     });
   }
 }

@@ -57,15 +57,6 @@
     <tooltip-chart></tooltip-chart>
   </div>
 </div>
-
-
-
-
-
-
-
-
-
         </div>
       </div>
   <br>
@@ -75,14 +66,24 @@
           <table class="table table-striped table-bordered table-sm">
             <tbody>
               <tr >
-                <td>Games played</td><td>: 10</td>
+                <td>Games played</td><td>: {{this.tournamentsPlayed.length}}</td>
               </tr>
               <tr >
-                <td>Scores</td><td>: 109</td>
+                <td>Scores</td><td>: {{totalScore}}</td>
               </tr>
             </tbody>
           </table>
         </div>
       </div>
+  </div>
+
+  <div class="col-lg-5 personal-leaderboard">
+      <app-player-leadershipboard *ngIf="this.tournamentsPlayed.length>0" [events]="tournamentsPlayed"></app-player-leadershipboard>
+
+    <div *ngIf="this.tournamentsPlayed.length==0" class="card dropdown-all d-flex w-100">
+      <div  class="alert alert-warning" role="alert">
+        <small class="mdi mdi-information-outline"> No tournament played </small>
+      </div>
+    </div>
   </div>
 </div>

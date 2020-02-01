@@ -9,12 +9,14 @@
             <thead>
                 <tr>
                     <th>Country</th>
+                    <th>Code</th>
                     <th width='60px'>Controls</th>
                 </tr>
             </thead>
             <tbody>
                 <tr *ngFor="let country of countries">
                     <td>{{  country.country }}</td>
+                    <td>{{  country.code }}</td>
                     <td>
                     <button (click)="deleteCountry(country.pk_countryid)" class="btn btn-danger btn-sm btn-control"><i class="mdi mdi-delete"></i></button>
                     <button (click)="editCountry(country.pk_countryid)" class="btn btn-success btn-sm btn-control"><i class="mdi mdi-pencil"></i></button>

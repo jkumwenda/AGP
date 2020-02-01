@@ -1,0 +1,34 @@
+<div class="card dropdown-all d-flex w-100 ">
+  <div class="card-header card-header-score md-dark">
+    <h5 class="mdi mdi-format-list-bulleted"> Scores</h5>
+  </div>
+  <div class="card-body">
+    <table  class="table table-sm table-bordered holes-table table-dark">
+      <thead>
+      <tr>
+        <th>Hole</th>
+        <th>Distance</th>
+        <th>Par</th>
+        <th>Si</th>
+        <th>hits</th>
+        <th>Controls</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr *ngFor="let score of scores">
+        <td>{{score.courseTypeHole.hole.hole}}</td>
+        <td>{{score.courseTypeHole.distance}}</td>
+        <td>{{score.courseTypeHole.par}}</td>
+        <td>{{score.courseTypeHole.si}}</td>
+        <td>{{score.hits}}</td>
+        <td>
+          <div class="btn-toolbar">
+            <button  class="btn btn-dark btn-xs btn-control"><i class="mdi mdi-eye"></i></button>
+            <button  class="btn btn-dark btn-xs btn-control"><i class="mdi mdi-pencil"></i></button>
+          </div>
+        </td>
+      </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

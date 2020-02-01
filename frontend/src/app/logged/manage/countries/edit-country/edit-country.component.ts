@@ -27,7 +27,7 @@ export class EditCountryComponent implements OnInit {
   }
   initializeCountryForm() {
     if (this.country == null) {
-      this.country = new Country(null,null);
+      this.country = new Country(null, null, null);
     }
 
     this.countryForm = this.formBuilder.group({
@@ -48,7 +48,8 @@ export class EditCountryComponent implements OnInit {
   editCountry() {
     const data = this.countryForm.value;
     this.countryData = {
-      country: data.country
+      country: data.country,
+      code: data.code
     };
 
     this.countryService.editCountry(this.countryId, this.countryData).then(

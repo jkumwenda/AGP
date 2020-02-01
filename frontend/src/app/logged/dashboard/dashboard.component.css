@@ -1,0 +1,18 @@
+.card-dark {
+    color: #FFF;
+}
+
+.cards-wrap {
+    display: flex;
+    flex-direction: column;
+}
+
+.card-col {
+    display: flex;
+    flex-direction: column;
+}
+
+.card-wrap {
+    display: flex;
+    height: 100%;
+}

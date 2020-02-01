@@ -36,7 +36,7 @@ export class EditCourseComponent implements OnInit {
 
   initializeCourseForm() {
     if (this.course == null) {
-      this.course = new Course(null, new Country(null, null));
+      this.course = new Course(null, new Country(null, null, null));
     }
 
     this.courseForm = this.formBuilder.group({
@@ -52,7 +52,6 @@ export class EditCourseComponent implements OnInit {
     this.courseService.getCourse(courseId).then(
       (result: Course) => {
         this.course = result;
-        console.log(this.course);
         this.initializeCourseForm();
       },
       error => console.log(error)

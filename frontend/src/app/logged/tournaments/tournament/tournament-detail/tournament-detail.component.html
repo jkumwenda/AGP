@@ -9,13 +9,16 @@
       <tr *ngIf="tournament.eventFormat.length > 0"><strong>Format </strong><td></td > : {{ tournament.eventFormat[0].format.format }}
         <button  (click)="editEventComponentCreated=true" class="btn btn-md mdi mdi-pencil-box" data-toggle="modal" data-target="#editEventFormat">Update</button>
       </tr>
+      
       <tr *ngIf="tournament.eventFormat.length == 0">
         <strong>Format </strong><td></td > :
         <button  (click)="addComponentCreated=true" class="btn btn-md mdi mdi-file-plus" data-toggle="modal" data-target="#setEventFormat">Set</button>
       </tr>
+
       <tr *ngIf="tournament.draw_type"><strong>Draw Type </strong><td></td > : {{ tournament.draw_type.draw_type}}
         <button  (click)="editDrawComponentCreated=true" class="btn btn-md mdi mdi-pencil-box" data-toggle="modal" data-target="#editEventDrawType">Update</button>
       </tr>
+
       <tr *ngIf="!tournament.draw_type">
         <strong>Draw Type </strong><td></td > :
         <button
@@ -26,17 +29,12 @@
       <tr *ngIf="tournament.information.length > 0"><strong>Information </strong><td></td > : {{ tournament.information[0].info}}
         <button  (click)="editInFormationComponentCreated=true" class="btn btn-md mdi mdi-pencil-box" data-toggle="modal" data-target="#editInformation">Update</button>
       </tr>
+
       <tr *ngIf="tournament.information.length == 0">
         <strong>Information </strong><td></td > :
         <button class="btn btn-md mdi mdi-file-plus" data-toggle="modal" data-target="#setInformation">Set</button>
       </tr>
-      <tr *ngIf="tournament.field.length > 0"><strong>Field </strong><td></td> :
-          {{ tournament.field[0].field_type }}
-        <button (click)="editFieldComponent=true" class="btn btn-md mdi mdi-pencil-box" data-toggle="modal" data-target="#editField">Update</button><td></tr>
 
-      <tr *ngIf="tournament.field.length == 0"><strong>Field </strong><td></td> :
-        <button class="btn btn-md mdi mdi-file-plus" data-toggle="modal" data-target="#addField">Set</button><td></tr>
-      
       <tr>
         <strong>Course Type </strong><td></td > :
         <button class="btn btn-md mdi mdi-file-plus" data-toggle="modal" data-target="#setEventCourseType">Set</button>

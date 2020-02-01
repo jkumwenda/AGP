@@ -34,8 +34,8 @@ export class TournamentComponent implements OnInit {
     this.tournamentService.getTournament(this.tournamentId).then(
       (result: Tournament) => {
         this.tournament = result;
-        if (result.field.length > 0) {
-          this.slots = this.tournament.field[0].slots;
+        if (result.slots.length > 0) {
+          this.slots = this.tournament.slots;
         } else {
           this.slots = [];
         }

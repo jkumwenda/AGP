@@ -1,6 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { ChartsModule } from 'ng2-charts';
 
 import { NgxUiLoaderModule } from 'ngx-ui-loader';
 import { HttpClientModule } from '@angular/common/http';
@@ -68,10 +69,12 @@ import { GamesComponent } from './public/games/games.component';
 import { PreviousGamesComponent } from './public/previous-games/previous-games.component';
 import { GameDetailComponent } from './public/game-detail/game-detail.component';
 import { EventPaginationComponent } from './public/events/event-pagination/event-pagination.component';
-//import { EventCourseTypeComponent } from './logged/tournaments/event-course-type/event-course-type.component';
+import { AddScoreComponent } from './logged/tournaments/tournament/add-score/add-score.component';
+import { ListScoreComponent } from './logged/tournaments/tournament/list-score/list-score.component';
+import { PlayerLeadershipboardComponent } from './logged/players/player/player-leadershipboard/player-leadershipboard.component';
 import { AddEventCourseTypeComponent } from './logged/tournaments/add-event-course-type/add-event-course-type.component';
 import { EventCourseTypeDetailComponent } from './logged/tournaments/event-course-type-detail/event-course-type-detail.component';
-//import { EditEventCourseTypeComponent } from './logged/tournaments/edit-event-course-type/edit-event-course-type.component';
+
 
 
 @NgModule({
@@ -130,10 +133,11 @@ import { EventCourseTypeDetailComponent } from './logged/tournaments/event-cours
     PreviousGamesComponent,
     GameDetailComponent,
     EventPaginationComponent,
-    //EventCourseTypeComponent,
+    AddScoreComponent,
+    ListScoreComponent,
+    PlayerLeadershipboardComponent,
     AddEventCourseTypeComponent,
     EventCourseTypeDetailComponent,
-    //EditEventCourseTypeComponent,
 
   ],
   imports: [
@@ -151,7 +155,8 @@ import { EventCourseTypeDetailComponent } from './logged/tournaments/event-cours
     OwlNativeDateTimeModule,
     BrowserAnimationsModule,
     MatExpansionModule,
-    ChartistModule
+    ChartistModule,
+    ChartsModule
   ],
   providers: [AuthService, DatePipe],
   bootstrap: [AppComponent],
