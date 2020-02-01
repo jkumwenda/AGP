@@ -1,23 +1,44 @@
 <div class="card-header card-header-customer md-primary">
     <h5 class="mdi mdi-link-box-variant">Quick Access</h5>
 </div>
-<div class="card-body">
-    <ul class="list-group list-group-flush">
+<mat-accordion>
+  <mat-expansion-panel>
+    <mat-expansion-panel-header>
+      <mat-panel-title>
+        User functions
+      </mat-panel-title>
+    </mat-expansion-panel-header>
+      <ul class="list-group list-group-flush">
         <a [routerLink]="['/manage/roles']" class="list-group-item">Roles</a>
         <a [routerLink]="['/manage/permissions']" class="list-group-item">Permissions</a>
         <a [routerLink]="['/manage/genders']" class="list-group-item">Gender</a>
         <a [routerLink]="['/manage/users']" class="list-group-item">Users</a>
+      </ul>
+  </mat-expansion-panel>
+  <mat-expansion-panel>
+    <mat-expansion-panel-header>
+      <mat-panel-title>
+        Course functions
+      </mat-panel-title>
+    </mat-expansion-panel-header>
+      <ul class="list-group list-group-flush">
         <a [routerLink]="['/manage/holes']" class="list-group-item">Holes</a>
         <a [routerLink]="['/manage/countries']" class="list-group-item">Countries</a>
         <a [routerLink]="['/manage/courses']" class="list-group-item">Courses</a>
-        <a [routerLink]="['/manage/clubs']" class="list-group-item">Clubs</a>
         <a [routerLink]="['/manage/types']" class="list-group-item">Course Type</a>
+        <a [routerLink]="['/manage/clubs']" class="list-group-item">Clubs</a>
+      </ul>
+  </mat-expansion-panel>
+  <mat-expansion-panel>
+    <mat-expansion-panel-header>
+      <mat-panel-title>
+        Tournament functions
+      </mat-panel-title>
+    </mat-expansion-panel-header>
+    <ul class="list-group list-group-flush">
         <a [routerLink]="['/manage/formats']" class="list-group-item">Formats</a>
         <a [routerLink]="['/manage/draw-types']" class="list-group-item">Draw Types</a>
         <a [routerLink]="['/manage/event-types']" class="list-group-item">Event Types</a>
     </ul>
-
-</div>
-<div class="card-footer login-card-footer">
-    <p class="footer-text footer-title"><span>Management Functions</span></p>
-</div>
+  </mat-expansion-panel>
+</mat-accordion>

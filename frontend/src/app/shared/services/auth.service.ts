@@ -13,6 +13,7 @@ export class AuthService {
   private httpOptions: any;
   public token: string;
   public tokenExpires: Date;
+  public userID: number;
   public username: string;
   public firstname: string;
   public lastname: string;
@@ -86,6 +87,7 @@ export class AuthService {
     const tokenDecoded = JSON.parse(window.atob(tokenParts[1]));
     this.tokenExpires = new Date(tokenDecoded.exp * 1000);
     this.username = tokenDecoded.username;
+    this.userID = tokenDecoded.user_id;
     this.dataService.updateUsername(this.username);
   }
 }
