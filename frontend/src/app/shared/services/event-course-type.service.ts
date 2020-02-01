@@ -1,7 +1,6 @@
 import { Injectable } from '@angular/core';
-import { Subject } from "rxjs/Subject";
 import { CommonService } from './common.service';
-import { EventCourseType } from '../interfaces/eventCourseType';
+
 
 @Injectable({
   providedIn: 'root',
@@ -26,6 +25,15 @@ export class EventCourseTypeService {
   getEventCourseTypes() {
     return new Promise((resolve, reject) => {
       this.commonService.get(this.endpoint).then((result) => {
+        resolve(result);
+      }, (error) => {
+        reject(error);
+      });
+    });
+  }
+  getGenderEventCourseTypes(genderId, eventId) {
+    return new Promise((resolve, reject) => {
+      this.commonService.get(`${this.endpoint}?event=${eventId}&gender=${genderId}`).then((result) => {
         resolve(result);
       }, (error) => {
         reject(error);
