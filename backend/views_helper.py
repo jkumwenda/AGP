@@ -58,3 +58,8 @@ class ViewsHelper:
             return tournaments
 
         return queryset
+    
+    def filter_event_course_types(self,queryset, eventId, genderId):
+        if(eventId and genderId):
+            return queryset.filter(fk_genderid=genderId, fk_eventid=eventId)
+        return queryset

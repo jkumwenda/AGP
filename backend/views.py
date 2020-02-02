@@ -273,3 +273,9 @@ class ScoreViewSet(viewsets.ModelViewSet):
 class EventCourseTypeViewSet(viewsets.ModelViewSet):
     queryset = EventCourseType.objects.all()
     serializer_class = EventCourseTypeSerializer
+
+    def get_queryset(self):
+        queryset = super().get_queryset()
+        eventId = self.request.query_params.get('event')
+        genderId = self.request.query_params.get('gender')
+        return ViewsHelper.filter_event_course_types(self,queryset,eventId, genderId);

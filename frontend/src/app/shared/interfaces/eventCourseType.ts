@@ -1,9 +1,11 @@
+import {CourseType} from './courseType';
 
 export class EventCourseType {
     pk_event_course_typeid: number;
     fk_eventid: number;
     fk_genderid: number;
     fk_course_typeid: number;
+    courseType: CourseType;
 
     constructor(id,eventId,genderId,couseTypeId){
         this.pk_event_course_typeid=id
@@ -13,5 +15,4 @@ export class EventCourseType {
       }
 
   }
-  
-  
+

@@ -6,6 +6,8 @@ import {CourseTypeHoleService} from '../../../../shared/services/course-type-hol
 import {Score} from '../../../../shared/interfaces/score';
 import {Profile} from '../../../../shared/interfaces/profile';
 import {ActivatedRoute} from '@angular/router';
+import { EventCourseTypeService } from 'src/app/shared/services/event-course-type.service';
+import {EventCourseType} from '../../../../shared/interfaces/eventCourseType';
 
 @Component({
   selector: 'app-add-score',
@@ -24,15 +26,16 @@ export class AddScoreComponent implements OnInit {
   constructor(
     private formBuilder: FormBuilder,
     private scoreService: ScoreService,
-    private courseTypeHoleService: CourseTypeHoleService,
+    private courseTypeHoleService: EventCourseTypeService,
     private activatedRoute: ActivatedRoute
   ) {
     this.eventId = this.activatedRoute.snapshot.params.id;
   }
-  getCourseTypeHoles() {
-    this.courseTypeHoleService.getCourseTypeHoles().then(
-      (result: CourseTypeHole[]) => {
-        this.courseTypeHoles = this.filterCourseTypeHole(result);
+  getCourseTypeHoles(genderId, eventId) {
+    this.courseTypeHoleService.getGenderEventCourseTypes(genderId, eventId).then(
+      (result: EventCourseType[]) => {
+
+        this.courseTypeHoles =  this.filterCourseTypeHole(result[0].courseType.holes);
       },
       error => {}
     );
@@ -64,7 +67,7 @@ export class AddScoreComponent implements OnInit {
   ngOnChanges(changes) {
    this.initScoreForm();
    this.getScores(this.profile.pk_profileid, this.eventId);
-   this.getCourseTypeHoles();
+   this.getCourseTypeHoles(this.profile.fk_genderid.pk_genderid, this.eventId);
   }
 
   initScoreForm() {
@@ -77,7 +80,7 @@ export class AddScoreComponent implements OnInit {
   }
   ngOnInit() {
     this.getScores(this.profile.pk_profileid, this.eventId);
-    this.getCourseTypeHoles();
+    this.getCourseTypeHoles(this.profile.fk_genderid.pk_genderid, this.eventId);
     this.initScoreForm();
   }
 
