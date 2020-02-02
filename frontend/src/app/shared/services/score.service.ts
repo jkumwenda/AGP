@@ -65,7 +65,7 @@ export class ScoreService {
     return new Promise((resolve, reject) => {
       this.commonService.update(this.endpoint + scoreId + '/', data).then(
         result => {
-          resolve(true);
+          resolve(result);
         },
         error => {
           reject(false);

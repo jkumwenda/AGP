@@ -20,11 +20,21 @@
         <td>{{score.courseTypeHole.distance}}</td>
         <td>{{score.courseTypeHole.par}}</td>
         <td>{{score.courseTypeHole.si}}</td>
-        <td>{{score.hits}}</td>
+        <td *ngIf="!score.edit">{{score.hits}} </td>
+        <td *ngIf="score.edit">
+          <form [formGroup]="updateForm" (ngSubmit)="updateScore()" >
+          <div class="input-group">
+            <input type="text" class="form-control form-control-sm" formControlName="hits" style="width: 5px">
+            <div class="input-group-prepend">
+              <button [disabled]="!updateForm.valid" class="btn btn-success btn-sm"> <i class="mdi mdi-marker-check"></i></button>
+            </div>
+          </div>
+          </form>
+        </td>
         <td>
           <div class="btn-toolbar">
-            <button  class="btn btn-dark btn-xs btn-control"><i class="mdi mdi-eye"></i></button>
-            <button  class="btn btn-dark btn-xs btn-control"><i class="mdi mdi-pencil"></i></button>
+            <button   class="btn btn-dark btn-xs btn-control"><i class="mdi mdi-eye"></i></button>
+            <button  *ngIf="!score.edit" (click)="editScore(score)" class="btn btn-dark btn-xs btn-control"><i class="mdi mdi-pencil"></i></button>
           </div>
         </td>
       </tr>
