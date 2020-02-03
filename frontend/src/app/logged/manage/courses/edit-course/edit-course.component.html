@@ -17,7 +17,7 @@
             <div class="form-group">
                 <label for="course">Country</label><br>
                 <select id="country" class="form-control" data-live-search="true" formControlName='pk_countryid'>
-                  <option *ngFor="let country of countries" value="{{ country.pk_countryid }}"data-tokens="ketchup mustard">{{ country.country }}</option>
+                  <option *ngFor="let country of countries" value="{{ country.pk_countryid }}"data-tokens="ketchup mustard">{{ country?.country }}</option>
                 </select>
           </div>
 
