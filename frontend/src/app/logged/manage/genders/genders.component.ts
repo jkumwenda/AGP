@@ -35,6 +35,10 @@ export class GendersComponent implements OnInit {
     });
   }
 
+  checkIfEmpty(){
+    return Array.isArray(this.genders) && this.genders.length
+  }
+
   ngOnInit() {
     this.getGenders();
   }
