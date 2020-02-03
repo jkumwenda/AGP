@@ -9,7 +9,7 @@
           <h5 class="card-title mdi mdi-account"> {{profile.user.username}}</h5>
           <p class="card-text">
             <span class="mdi mdi-face-profile"> {{profile.user.first_name+' '+profile.user.last_name}}</span><br>
-            <span class="mdi mdi-gender-male-female"> {{profile.fk_genderid.gender}}</span><br>
+            <span class="mdi mdi-gender-male-female"> {{profile.fk_genderid?.gender}}</span><br>
             <span class="mdi mdi-email"> <a href="mailto:{{profile.user.email}}"> {{profile.user.email}}</a></span><br>
             <span class="mdi mdi-phone-classic"> {{profile.phone}} </span><br>
           </p>
