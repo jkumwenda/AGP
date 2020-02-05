@@ -16,8 +16,8 @@
                 <tr *ngFor="let type of types; let data_index=index">
                     <td>{{  type.type}}</td>
                     <td>
-                    <button (click)="deleteType(type.pk_typeid)" class="btn btn-danger btn-sm btn-control"><i class="mdi mdi-delete"></i></button>
                     <button (click)="editType(type.pk_typeid)" class="btn btn-success btn-sm btn-control"><i class="mdi mdi-pencil"></i></button>
+                    <button (click)="deleteType(type.pk_typeid)" class="btn btn-danger btn-sm btn-control"><i class="mdi mdi-delete"></i></button>
                     </td>
                 </tr>
             </tbody>

@@ -27,6 +27,10 @@ export class HolesComponent implements OnInit {
     );
   }
 
+  checkIfEmpty(){
+    return Array.isArray(this.holes) && this.holes.length
+  }
+
   editHole(holeId) {
     this.router.navigate(['/manage/edit-hole', holeId]);
   }

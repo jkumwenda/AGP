@@ -78,7 +78,7 @@ const manageRoutes: Routes = [
     {path: 'permission', component: PermissionComponent},
     {path: 'users', component: UsersComponent},
     {path: 'add-user', component: AddUserComponent},
-    {path: 'edit-user', component: EditUserComponent},
+    {path: 'edit-user/:id', component: EditUserComponent},
     {path: 'user/:id', component: UserComponent},
     {path: 'genders', component: GendersComponent},
     {path: 'add-gender', component: AddGenderComponent},

@@ -16,7 +16,7 @@
           <tbody>
               <tr *ngFor="let course of courses; let data_index=index">
                   <td>{{  course.course}}</td>
-                  <td>{{ course.country.country }}</td>
+                  <td>{{ course.country?.country }}</td>
                   <td>
                   <button (click)="viewCourse(course.pk_courseid)" class="btn btn-secondary btn-sm btn-control"><i class="mdi mdi-eye"></i></button>
                   <button (click)="editCourse(course.pk_courseid)" class="btn btn-success btn-sm btn-control"><i class="mdi mdi-pencil"></i></button>

@@ -16,8 +16,8 @@
                 <tr *ngFor="let drawType of drawTypes; let data_index=index">
                     <td>{{drawType.draw_type}}</td>
                     <td>
-                    <button (click)="deleteDrawType(drawType.pk_draw_typeid)" class="btn btn-danger btn-sm btn-control"><i class="mdi mdi-delete"></i></button>
                     <button (click)="editDrawType(drawType.pk_draw_typeid)" class="btn btn-success btn-sm btn-control"><i class="mdi mdi-pencil"></i></button>
+                    <button (click)="deleteDrawType(drawType.pk_draw_typeid)" class="btn btn-danger btn-sm btn-control"><i class="mdi mdi-delete"></i></button>
                     </td>
                 </tr>
             </tbody>
