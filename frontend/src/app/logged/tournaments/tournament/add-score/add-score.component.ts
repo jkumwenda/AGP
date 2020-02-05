@@ -2,7 +2,6 @@ import { Component, OnInit, Input} from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {CourseTypeHole} from '../../../../shared/interfaces/courseTypeHole';
 import {ScoreService} from '../../../../shared/services/score.service';
-import {CourseTypeHoleService} from '../../../../shared/services/course-type-hole.service';
 import {Score} from '../../../../shared/interfaces/score';
 import {Profile} from '../../../../shared/interfaces/profile';
 import {ActivatedRoute} from '@angular/router';
@@ -34,8 +33,10 @@ export class AddScoreComponent implements OnInit {
   getCourseTypeHoles(genderId, eventId) {
     this.courseTypeHoleService.getGenderEventCourseTypes(genderId, eventId).then(
       (result: EventCourseType[]) => {
-
-        this.courseTypeHoles =  this.filterCourseTypeHole(result[0].courseType.holes);
+        if (result.length > 0) {
+          this.courseTypeHoles = this.filterCourseTypeHole(result[0].courseType.holes);
+          return;
+        }
       },
       error => {}
     );

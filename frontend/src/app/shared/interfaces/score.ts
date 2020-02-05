@@ -7,4 +7,5 @@ export class Score {
   fk_coursetype_holeid: number;
   fk_profileid: number;
   courseTypeHole: CourseTypeHole;
+  edit: boolean;
 }
