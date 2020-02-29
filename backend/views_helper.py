@@ -77,4 +77,10 @@ class ViewsHelper:
             else:
                 raise APIException("User profile not found")
         else:
-            return queryset          
+            return queryset     
+    
+    def getProfilePermissionCodes(self, profile):
+        pass
+
+    def checkProfilePermission(self,profile,code):
+        pass

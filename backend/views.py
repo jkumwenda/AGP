@@ -6,6 +6,7 @@ from .models import *
 from .views_helper import *
 from rest_framework.response import Response
 from rest_framework.decorators import action
+import json
 
 
 class UserViewSet(viewsets.ModelViewSet):
@@ -88,6 +89,24 @@ class ProfileViewSet(viewsets.ModelViewSet):
     queryset = Profile.objects.all()
     serializer_class = ProfileSerializer
 
+    @action(methods=['POST'], detail=True)
+    def checkPermissions(self, request, pk=None):
+    
+        permisisionList = request.data['permissionCodes'] 
+
+        profile = self.get_object()
+        profileRoles = ProfileRole.objects.filter(fk_profileid=pk)
+
+        codes = []
+
+        for profileRole in profileRoles:
+            rolePermissions = RolePermission.objects.filter(
+                fk_roleid=profileRole.fk_roleid)
+            codes.append([
+                permission.fk_permissionid.code for permission in rolePermissions if permission.fk_permissionid.code in permisisionList])     
+
+        return Response(sum(codes,[]))
+
 
 class UserProfileViewSet(viewsets.ModelViewSet):
     queryset = Profile.objects.all()
@@ -95,9 +114,9 @@ class UserProfileViewSet(viewsets.ModelViewSet):
 
     def get_queryset(self):
         queryset = super().get_queryset()
-        data = ViewsHelper.filter_user_profile(self, queryset, 
-            self.request.query_params.get('username'))
-        return data    
+        data = ViewsHelper.filter_user_profile(self, queryset,
+                                               self.request.query_params.get('username'))
+        return data
 
 
 class PlayerViewSet(viewsets.ModelViewSet):
@@ -198,14 +217,12 @@ class RegisterViewSet(viewsets.ModelViewSet):
     queryset = Register.objects.all()
     serializer_class = RegisterSerializer
 
-    
     def get_queryset(self):
         queryset = super().get_queryset()
         eventId = self.request.query_params.get('event')
         profile = self.request.query_params.get('profile')
-        return ViewsHelper.filter_scores(self, queryset,eventId, profile);
+        return ViewsHelper.filter_scores(self, queryset, eventId, profile)
 
-    
 
 class SlotViewSet(viewsets.ModelViewSet):
     queryset = Slot.objects.all()
@@ -227,9 +244,9 @@ class EventViewSet(viewsets.ModelViewSet):
     serializer_class = EventSerializer
 
     def get_queryset(self):
-        queryset = super().get_queryset() 
+        queryset = super().get_queryset()
         profileId = self.request.query_params.get('profile')
-        return ViewsHelper.filter_events(self,queryset, profileId)
+        return ViewsHelper.filter_events(self, queryset, profileId)
 
 
 class PublicEventViewSet(viewsets.ModelViewSet):
@@ -273,7 +290,7 @@ class ScoreViewSet(viewsets.ModelViewSet):
         queryset = super().get_queryset()
         eventId = self.request.query_params.get('event')
         profile = self.request.query_params.get('profile')
-        return ViewsHelper.filter_scores(self, queryset,eventId, profile);
+        return ViewsHelper.filter_scores(self, queryset, eventId, profile)
 
 
 class EventCourseTypeViewSet(viewsets.ModelViewSet):
@@ -284,4 +301,4 @@ class EventCourseTypeViewSet(viewsets.ModelViewSet):
         queryset = super().get_queryset()
         eventId = self.request.query_params.get('event')
         genderId = self.request.query_params.get('gender')
-        return ViewsHelper.filter_event_course_types(self,queryset,eventId, genderId);
+        return ViewsHelper.filter_event_course_types(self, queryset, eventId, genderId)

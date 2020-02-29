@@ -381,3 +381,7 @@ class ScoreSerializer(serializers.ModelSerializer):
     class Meta:
         model = Score
         fields = '__all__'
+
+class ButtonPermissionSerializer(serializers.Serializer):
+    code=serializers.CharField()
+    isPermitted=serializers.BooleanField()

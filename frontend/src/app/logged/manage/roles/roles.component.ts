@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { Role } from '../../../shared/interfaces/role';
 import { Router } from '@angular/router';
 import { RoleService } from '../../../shared/services/role.service';
+import {ButtonPermission} from '../../../shared/interfaces/buttonPermission';
+import {PermissionCheckService} from '../../../shared/services/permission-check.service';
 
 @Component({
   selector: 'app-roles',
@@ -11,11 +13,18 @@ import { RoleService } from '../../../shared/services/role.service';
 export class RolesComponent implements OnInit {
   moduleTitle = 'Role';
   public roles: Role[];
+  public permissionCodes = ['addRole', 'viewRole', 'editRole', 'deleteRole'];
+  public loggedProfile = 2;
+  public profilePermissions: string[] = [];
 
   constructor(
     private roleService: RoleService,
+    private permissionCheckService: PermissionCheckService,
     private router: Router,
-  ) { }
+  ) {
+
+    console.log(localStorage.getItem('username'));
+  }
 
   getRoles() {
     this.roleService.getRoles().then((result) => {
@@ -24,10 +33,12 @@ export class RolesComponent implements OnInit {
     });
   }
 
-  viewRole = (roleId) => this.router.navigate(['/manage/role', roleId])
+  viewRole(roleId) {
+    this.router.navigate(['/manage/role', roleId]);
+  }
 
-  checkIfEmpty(){
-    return Array.isArray(this.roles) && this.roles.length
+  checkIfEmpty() {
+    return Array.isArray(this.roles) && this.roles.length;
   }
 
   editRole(roleId) {
@@ -41,7 +52,20 @@ export class RolesComponent implements OnInit {
     });
   }
 
+  checkPermissions() {
+    this.permissionCheckService.permissionCheck(this.loggedProfile, this.permissionCodes).then(
+      (result: string[]) => this.profilePermissions = result,
+      (error) => console.log(error)
+    );
+  }
+
+  checkIfPermitted(code) {
+    return this.profilePermissions.find(item => item === code);
+  }
+
   ngOnInit() {
     this.getRoles();
+    this.checkPermissions();
   }
+
 }
