@@ -358,5 +358,5 @@ class EventCourseType(models.Model):
         Gender, models.DO_NOTHING, db_column='fk_genderid')
 
     class Meta:
-        managed= False
+
         db_table = 'event_course_type'

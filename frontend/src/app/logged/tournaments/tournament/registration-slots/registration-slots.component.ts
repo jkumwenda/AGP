@@ -19,7 +19,7 @@ export class RegistrationSlotsComponent implements OnInit {
   public days: any = [];
   public displayedSlots: Slot[];
   public day: number;
-  public profileId = 1; // loggedIn Profile
+  public profileId: number; // loggedIn Profile
   public admin = true;
   public profileRegistered = false;
   public sizes: SlotSize[] = [];
@@ -32,7 +32,9 @@ export class RegistrationSlotsComponent implements OnInit {
   constructor(
     private registerService: slotRegisterService,
     private sizeService: SlotSizeService
-  ) {}
+  ) {
+    this.profileId = Number(localStorage.getItem('profileID'));
+  }
 
   checkIfRegisteredOtherProfile(sizeId, registers) {
     return registers.find(registerItem => {

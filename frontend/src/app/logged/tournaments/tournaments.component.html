@@ -1,28 +1,27 @@
 <div class="row content-row">
-    <div class="col-lg-9 col-md-9 col-sm-12">
+    <div class="col-lg-12 col-md-12 col-sm-12">
 <div class="card login-card dropdown-all w-100 ">
     <div class="card-header card-header-customer md-success">
         <h5 class="mdi mdi-file-table" class="mdi mdi-trophy"> Tournaments</h5>
     </div>
     <div class="card-body login-card-body ">
         <h6><a [routerLink]="['/tournaments/add-tournament']" class="btn btn-outline-secondary btn-sm mdi mdi-plus ">Add Tournament</a></h6>
-        <table datatable class="table table-striped" *ngIf="checkIfEmpty()">
+        <table datatable class="table table-sm table-striped table-bordered" *ngIf="checkIfEmpty()">
             <thead>
                 <tr>
+                    <th>Start</th>
+                    <th>End</th>
                     <th>Tournament</th>
-                    <th>Date</th>
                     <th>Registration Period</th>
                     <th>Status</th>
-                    <th width="130px">Controls</th>
+                    <th width="100px">Controls</th>
                 </tr>
             </thead>
             <tbody>
                 <tr *ngFor="let tournament of tournaments; let data_index=index">
+                    <td>{{ tournament.start_date | date:'mediumDate' }}</td>
+                    <td>{{ tournament.end_date | date:'mediumDate' }}</td>
                     <td>{{ tournament.event }}</td>
-                    <td>
-                        {{ tournament.start_date | date:'mediumDate' }} -
-                        {{ tournament.end_date | date:'mediumDate' }}
-                    </td>
                     <td *ngIf="tournament.registrationDate[0]">
                         {{ tournament.registrationDate[0].open_date | date:'mediumDate' }} -
                         {{ tournament.registrationDate[0].close_date | date:'mediumDate' }}
@@ -44,12 +43,4 @@
     </div>
 </div>
 </div>
-  <div class="col-lg-3 col-md-3 col-sm-12">
-    <div class="card copyright-card dropdown-all w-100 ">
-      <div class="card-header card-header-customer md-secondary-dark">
-          <h5 class="mdi mdi-file-table"> Tournaments</h5>
-      </div>
-      <div class="card-body login-card-body ">
-    </div>
-  </div>
 </div>

@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { AuthService } from 'src/app/shared/services/auth.service';
 import { DataService } from 'src/app/shared/services/data.service';
 import { PermGuardService } from 'src/app/shared/services/perm-guard.service';
+import { renderFlagCheckIfStmt } from '@angular/compiler/src/render3/view/template';
 
 @Component({
   selector: 'app-header',
@@ -10,18 +11,26 @@ import { PermGuardService } from 'src/app/shared/services/perm-guard.service';
 })
 export class HeaderComponent implements OnInit {
   private username: string;
+  private name: string;
+  private email: string;
+  private profileID: string;
   public guard: boolean;
 
   constructor(
     private authService: AuthService,
     private dataService: DataService,
     private permGuardService: PermGuardService
-  ) {}
+  ) {
+    this.username = localStorage.getItem('username');
+    this.name = localStorage.getItem('name');
+    this.email = localStorage.getItem('email');
+    this.profileID = localStorage.getItem('profileID');
+  }
 
-  permGuard(permission,  profileId) {
-    this.permGuardService.getProfileRolePermission(permission, profileId).then((result) => {
-      return true;
-
+  permGuard(permission,  profileID) {
+    this.permGuardService.getProfileRolePermission(permission, profileID).then((result) => {
+    console.log("TCL: HeaderComponent -> permGuard -> result", result);
+      return true
     }, (error) => {
         return false;
     });
@@ -32,10 +41,9 @@ export class HeaderComponent implements OnInit {
   }
 
   ngOnInit() {
-    // this.permGuard('add-user', 1);
+    this.permGuard('add-user', this.profileID);
     this.dataService.currentUsername.subscribe((username: string) => {
-      this.username = username;
-      localStorage.setItem('username', this.username);
+      // this.username = username;
     });
   }
 }

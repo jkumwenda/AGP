@@ -11,6 +11,7 @@ const API_URL = environment.apiUrl;
 export class AuthService {
 
   private httpOptions: any;
+  public httpHeaders: any;
   public token: string;
   public tokenExpires: Date;
   public userID: number;
@@ -28,6 +29,15 @@ export class AuthService {
     this.httpOptions = {
       headers: new HttpHeaders({'Content-Type': 'application/json'})
     };
+   
+
+    this.httpHeaders = {
+      headers: new HttpHeaders({
+        'Content-Type': 'application/json',
+        Authorization: 'Bearer ' + this.token
+      })
+    };
+
   }
 
   public login(user) {
@@ -65,7 +75,6 @@ export class AuthService {
   }
 
   public isAuthenticated() {
-    // return this.token != null;
     return localStorage.getItem('token') != null;
   }
 
@@ -82,12 +91,12 @@ export class AuthService {
     this.token = token;
     this.errors = [];
     localStorage.setItem('token', this.token);
-
     const tokenParts = this.token.split(/\./);
     const tokenDecoded = JSON.parse(window.atob(tokenParts[1]));
     this.tokenExpires = new Date(tokenDecoded.exp * 1000);
     this.username = tokenDecoded.username;
     this.userID = tokenDecoded.user_id;
+    localStorage.setItem('username', this.username);
     this.dataService.updateUsername(this.username);
   }
 }

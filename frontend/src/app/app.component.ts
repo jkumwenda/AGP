@@ -9,7 +9,6 @@ import { AuthService } from 'src/app/shared/services/auth.service';
 export class AppComponent {
   constructor(
     private authService: AuthService,
-  ) { }
-
-
+  ) { 
+  }
 }

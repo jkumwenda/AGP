@@ -38,7 +38,7 @@ export class CourseComponent implements OnInit {
       .getCourseType()
       .subscribe((courseType: CourseType) => {
         this.courseTypes.push(courseType);
-        this.courseType=courseType
+        this.courseType = courseType;
 
       });
   }
@@ -64,7 +64,7 @@ export class CourseComponent implements OnInit {
   getCourseTypes(courseId) {
     this.courseService.getCourseTypes(courseId).then(
       (result: CourseType[]) => {
-        this.courseTypes = result
+        this.courseTypes = result;
         this.courseType = !this.isEmpty(this.courseTypes) ? this.courseTypes[0] :  CourseType.initializeCourseType();
       },
       error => console.log(error)

@@ -93,6 +93,12 @@ class UserProfileViewSet(viewsets.ModelViewSet):
     queryset = Profile.objects.all()
     serializer_class = UserProfileSerializer
 
+    def get_queryset(self):
+        queryset = super().get_queryset()
+        data = ViewsHelper.filter_user_profile(self, queryset, 
+            self.request.query_params.get('username'))
+        return data    
+
 
 class PlayerViewSet(viewsets.ModelViewSet):
     queryset = ProfileRole.objects.all()

@@ -20,8 +20,13 @@ class ViewsHelper:
 
     def filter_role_permission(self, queryset, permission_code, profile_id):
         if (permission_code and profile_id):
-            rolepermission = queryset.select_related(
-                'fk_permissionid', 'fk_roleid').filter(fk_permissionid__code=permission_code.replace('"', ''), fk_roleid__pk_roleid=1)
+            roles = ProfileRole.objects.filter(fk_profileid = profile_id)
+            for role in roles:
+                rolepermission = queryset.filter(fk_permissionid__code=permission_code, fk_roleid__pk_roleid=role.fk_roleid.pk_roleid)
+                if rolepermission:
+                    raise True
+                else:
+                    return 'False'      
             return rolepermission
         else:
             return queryset
@@ -63,3 +68,13 @@ class ViewsHelper:
         if(eventId and genderId):
             return queryset.filter(fk_genderid=genderId, fk_eventid=eventId)
         return queryset
+
+    def filter_user_profile(self, queryset, username): 
+        if username is not None:
+            user_profile_result = queryset.filter(user__username=username)
+            if user_profile_result.exists():
+                return user_profile_result
+            else:
+                raise APIException("User profile not found")
+        else:
+            return queryset          

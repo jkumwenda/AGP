@@ -7,6 +7,8 @@ import { CommonService } from './common.service';
 export class ProfileService {
   public token: any;
   public endpoint: any = 'api/profile/';
+  public userProfileEndpoint: any = 'api/user_profile/';
+  
 
   constructor(private commonService: CommonService) {
   }
@@ -40,6 +42,16 @@ export class ProfileService {
       });
     });
   }
+
+  getUserProfile(username) {
+    return new Promise((resolve, reject) => {
+      this.commonService.get(this.userProfileEndpoint + '?username=' + username).then((result) => {
+        resolve(result);
+      }, (error) => {
+        reject(error);
+      });
+    });
+  }  
 
   editProfile(profileId, data) {
     return new Promise((resolve, reject) => {
