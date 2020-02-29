@@ -194,7 +194,7 @@ class RolePermission(models.Model):
 class ProfileRole(models.Model):
     pk_profile_roleid = models.AutoField(primary_key=True)
     fk_profileid = models.ForeignKey(
-        Profile, models.DO_NOTHING, db_column='fk_profileid')
+        Profile, models.DO_NOTHING, related_name="roles", db_column='fk_profileid')
     fk_roleid = models.ForeignKey(
         'Role', models.DO_NOTHING, db_column='fk_roleid')
 
