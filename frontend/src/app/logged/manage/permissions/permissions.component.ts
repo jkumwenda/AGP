@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Permission } from '../../../shared/interfaces/permission';
 import { Router } from '@angular/router';
 import { PermissionService } from '../../../shared/services/permission.service';
+import {PermissionCheckService} from '../../../shared/services/permission-check.service';
 
 @Component({
   selector: 'app-permissions',
@@ -11,9 +12,13 @@ import { PermissionService } from '../../../shared/services/permission.service';
 export class PermissionsComponent implements OnInit {
   moduleTitle = 'Permission';
   public permissions: Permission[];
+  public permissionCodes = ['addPermission', 'viewPermission', 'editPermission', 'deletePermission'];
+  public loggedProfile = 2;
+  public profilePermissions: string[] = [];
 
   constructor(
     private permissionService: PermissionService,
+    private permissionCheckService: PermissionCheckService,
     private router: Router,
   ) { }
 
@@ -40,7 +45,19 @@ export class PermissionsComponent implements OnInit {
     });
   }
 
+  checkPermissions() {
+    this.permissionCheckService.permissionCheck(this.loggedProfile, this.permissionCodes).then(
+      (result: string[]) => this.profilePermissions = result,
+      (error) => console.log(error)
+    );
+  }
+
+  checkIfPermitted(code) {
+    return this.profilePermissions.find(item => item === code);
+  }
+
   ngOnInit() {
     this.getPermissions();
+    this.checkPermissions();
   }
 }

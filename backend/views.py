@@ -91,8 +91,8 @@ class ProfileViewSet(viewsets.ModelViewSet):
 
     @action(methods=['POST'], detail=True)
     def checkPermissions(self, request, pk=None):
-    
-        permisisionList = request.data['permissionCodes'] 
+
+        permisisionList = request.data['permissionCodes']
 
         profile = self.get_object()
         profileRoles = ProfileRole.objects.filter(fk_profileid=pk)
@@ -103,9 +103,9 @@ class ProfileViewSet(viewsets.ModelViewSet):
             rolePermissions = RolePermission.objects.filter(
                 fk_roleid=profileRole.fk_roleid)
             codes.append([
-                permission.fk_permissionid.code for permission in rolePermissions if permission.fk_permissionid.code in permisisionList])     
+                permission.fk_permissionid.code for permission in rolePermissions if permission.fk_permissionid.code in permisisionList])
 
-        return Response(sum(codes,[]))
+        return Response(sum(codes, []))
 
 
 class UserProfileViewSet(viewsets.ModelViewSet):

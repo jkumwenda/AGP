@@ -3,7 +3,7 @@
         <h5 class="mdi mdi-file-table"> {{ moduleTitle }}</h5>
     </div>
     <div class="card-body login-card-body">
-        <h6><a [routerLink]="['/manage/add-type']" class="btn btn-outline-secondary btn-sm mdi mdi-plus ">Add Course type</a></h6>
+        <h6 *ngIf="checkIfPermitted('addCourseType')" ><a [routerLink]="['/manage/add-type']" class="btn btn-outline-secondary btn-sm mdi mdi-plus ">Add Course type</a></h6>
         <div class="after-btn-spacing"></div>
         <table datatable class="table table-striped" *ngIf="checkIfEmpty()">
             <thead>
@@ -16,8 +16,8 @@
                 <tr *ngFor="let type of types; let data_index=index">
                     <td>{{  type.type}}</td>
                     <td>
-                    <button (click)="editType(type.pk_typeid)" class="btn btn-success btn-sm btn-control"><i class="mdi mdi-pencil"></i></button>
-                    <button (click)="deleteType(type.pk_typeid)" class="btn btn-danger btn-sm btn-control"><i class="mdi mdi-delete"></i></button>
+                    <button  *ngIf="checkIfPermitted('editCourseType')" (click)="editType(type.pk_typeid)" class="btn btn-success btn-sm btn-control"><i class="mdi mdi-pencil"></i></button>
+                    <button  *ngIf="checkIfPermitted('deleteCourseType')" (click)="deleteType(type.pk_typeid)" class="btn btn-danger btn-sm btn-control"><i class="mdi mdi-delete"></i></button>
                     </td>
                 </tr>
             </tbody>

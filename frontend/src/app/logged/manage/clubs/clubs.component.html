@@ -3,7 +3,7 @@
       <h5 class="mdi mdi-file-table"> {{moduleTitle}}</h5>
   </div>
   <div class="card-body login-card-body ">
-      <h6><a [routerLink]="['/manage/add-club']" class="btn btn-outline-secondary btn-sm mdi mdi-plus ">Add Club</a></h6>
+      <h6 *ngIf="checkIfPermitted('addClub')"><a [routerLink]="['/manage/add-club']" class="btn btn-outline-secondary btn-sm mdi mdi-plus ">Add Club</a></h6>
       <div class="after-btn-spacing"></div>
       <table datatable class="table table-striped" *ngIf="checkIfEmpty()">
           <thead>
@@ -17,8 +17,8 @@
                   <td>{{ club.club }}</td>
                   <td>
                     <div class="btn-toolbar">
-                      <button (click)="editClub(club.pk_clubid)" class="btn btn-success btn-sm btn-control"><i class="mdi mdi-pencil"></i></button>
-                      <button (click)="deleteClub(club.pk_clubid)" class="btn btn-danger btn-sm btn-control"><i class="mdi mdi-delete"></i></button>
+                      <button  *ngIf="checkIfPermitted('editClub')" (click)="editClub(club.pk_clubid)" class="btn btn-success btn-sm btn-control"><i class="mdi mdi-pencil"></i></button>
+                      <button *ngIf="checkIfPermitted('deleteClub')" (click)="deleteClub(club.pk_clubid)" class="btn btn-danger btn-sm btn-control"><i class="mdi mdi-delete"></i></button>
                       </div>
                     </td>
               </tr>

@@ -79,8 +79,3 @@ class ViewsHelper:
         else:
             return queryset     
     
-    def getProfilePermissionCodes(self, profile):
-        pass
-
-    def checkProfilePermission(self,profile,code):
-        pass
