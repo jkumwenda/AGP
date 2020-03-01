@@ -382,6 +382,3 @@ class ScoreSerializer(serializers.ModelSerializer):
         model = Score
         fields = '__all__'
 
-class ButtonPermissionSerializer(serializers.Serializer):
-    code=serializers.CharField()
-    isPermitted=serializers.BooleanField()

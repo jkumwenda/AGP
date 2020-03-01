@@ -3,7 +3,7 @@
       <h5 class="mdi mdi-file-table"> {{moduleTitle}}</h5>
   </div>
   <div class="card-body login-card-body ">
-      <h6><a [routerLink]="['/manage/add-course']" class="btn btn-outline-secondary btn-sm mdi mdi-plus ">Add Course</a></h6>
+      <h6 *ngIf="checkIfPermitted('addCourse')"><a [routerLink]="['/manage/add-course']" class="btn btn-outline-secondary btn-sm mdi mdi-plus ">Add Course</a></h6>
       <div class="after-btn-spacing"></div>
       <table datatable class="table table-striped" *ngIf="checkIfEmpty()">
           <thead>
@@ -18,9 +18,9 @@
                   <td>{{  course.course}}</td>
                   <td>{{ course.country?.country }}</td>
                   <td>
-                  <button (click)="viewCourse(course.pk_courseid)" class="btn btn-secondary btn-sm btn-control"><i class="mdi mdi-eye"></i></button>
-                  <button (click)="editCourse(course.pk_courseid)" class="btn btn-success btn-sm btn-control"><i class="mdi mdi-pencil"></i></button>
-                  <button (click)="deleteCourse(course.pk_courseid)" class="btn btn-danger btn-sm btn-control"><i class="mdi mdi-delete"></i></button>
+                  <button  *ngIf="checkIfPermitted('viewCourse')"  (click)="viewCourse(course.pk_courseid)" class="btn btn-secondary btn-sm btn-control"><i class="mdi mdi-eye"></i></button>
+                  <button *ngIf="checkIfPermitted('editCourse')" (click)="editCourse(course.pk_courseid)" class="btn btn-success btn-sm btn-control"><i class="mdi mdi-pencil"></i></button>
+                  <button *ngIf="checkIfPermitted('deleteCourse')" (click)="deleteCourse(course.pk_courseid)" class="btn btn-danger btn-sm btn-control"><i class="mdi mdi-delete"></i></button>
                   </td>
               </tr>
           </tbody>

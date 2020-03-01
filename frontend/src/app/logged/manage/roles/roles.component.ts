@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { Role } from '../../../shared/interfaces/role';
 import { Router } from '@angular/router';
 import { RoleService } from '../../../shared/services/role.service';
-import {ButtonPermission} from '../../../shared/interfaces/buttonPermission';
 import {PermissionCheckService} from '../../../shared/services/permission-check.service';
 
 @Component({

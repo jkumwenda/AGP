@@ -3,7 +3,7 @@
         <h5 class="mdi mdi-file-table"> Users</h5>
     </div>
     <div class="card-body login-card-body ">
-      <h6><a [routerLink]="['/manage/add-user']" class="btn btn-outline-secondary btn-sm mdi mdi-plus ">Add User</a></h6>
+      <h6 *ngIf="checkIfPermitted('addUser')"><a [routerLink]="['/manage/add-user']" class="btn btn-outline-secondary btn-sm mdi mdi-plus ">Add User</a></h6>
       <table  datatable class="table table-striped" *ngIf="checkIfEmpty()">
           <thead>
               <tr>
@@ -22,9 +22,9 @@
                   <td>{{ profile.user?.email }}</td>
                   <td>
                     <div class="btn-toolbar">
-                      <button (click)="viewUser(profile.pk_profileid)" class="btn btn-dark btn-sm btn-control"><i class="mdi mdi-eye"></i></button>
-                      <button (click)="editUser(profile.pk_profileid)" class="btn btn-success btn-sm btn-control"><i class="mdi mdi-pencil"></i></button>
-                      <button (click)="deleteUser(profile.pk_profileid)" class="btn btn-danger btn-sm btn-control"><i class="mdi mdi-delete"></i></button>
+                      <button   *ngIf="checkIfPermitted('viewUser')"  (click)="viewUser(profile.pk_profileid)" class="btn btn-dark btn-sm btn-control"><i class="mdi mdi-eye"></i></button>
+                      <button *ngIf="checkIfPermitted('editUser')" (click)="editUser(profile.pk_profileid)" class="btn btn-success btn-sm btn-control"><i class="mdi mdi-pencil"></i></button>
+                      <button *ngIf="checkIfPermitted('deleteUser')" (click)="deleteUser(profile.pk_profileid)" class="btn btn-danger btn-sm btn-control"><i class="mdi mdi-delete"></i></button>
                       </div>
                     </td>
               </tr>

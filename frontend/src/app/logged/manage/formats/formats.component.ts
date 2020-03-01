@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Format } from '../../../shared/interfaces/format';
 import { Router } from '@angular/router';
 import { FormatService } from '../../../shared/services/format.service';
+import {PermissionCheckService} from '../../../shared/services/permission-check.service';
 
 @Component({
   selector: 'app-formats',
@@ -11,9 +12,13 @@ import { FormatService } from '../../../shared/services/format.service';
 export class FormatsComponent implements OnInit {
   moduleTitle = 'Format';
   public formats: Format[];
+  public permissionCodes = ['addFormat', 'viewFormat', 'editFormat', 'deleteFormat'];
+  public loggedProfile = 2;
+  public profilePermissions: string[] = [];
 
   constructor(
     private formatService: FormatService,
+    private permissionCheckService: PermissionCheckService,
     private router: Router,
   ) { }
 
@@ -38,8 +43,18 @@ export class FormatsComponent implements OnInit {
     }, (error) => {
     });
   }
+  checkPermissions() {
+    this.permissionCheckService.permissionCheck(this.loggedProfile, this.permissionCodes).then(
+      (result: string[]) => this.profilePermissions = result,
+      (error) => console.log(error)
+    );
+  }
 
+  checkIfPermitted(code) {
+    return this.profilePermissions.find(item => item === code);
+  }
   ngOnInit() {
     this.getFormats();
+    this.checkPermissions();
   }
 }

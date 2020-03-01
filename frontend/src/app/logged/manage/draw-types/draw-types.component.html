@@ -3,7 +3,7 @@
         <h5 class="mdi mdi-file-table"> {{moduleTitle}}</h5>
     </div>
     <div class="card-body login-card-body ">
-        <h6><a [routerLink]="['/manage/add-draw-type']" class="btn btn-outline-secondary btn-sm mdi mdi-plus ">Add Draw Type</a></h6>
+        <h6  *ngIf="checkIfPermitted('addDrawType')"  ><a [routerLink]="['/manage/add-draw-type']" class="btn btn-outline-secondary btn-sm mdi mdi-plus ">Add Draw Type</a></h6>
         <div class="after-btn-spacing"></div>
         <table datatable class="table table-striped" *ngIf="checkIfEmpty()">
             <thead>
@@ -16,8 +16,8 @@
                 <tr *ngFor="let drawType of drawTypes; let data_index=index">
                     <td>{{drawType.draw_type}}</td>
                     <td>
-                    <button (click)="editDrawType(drawType.pk_draw_typeid)" class="btn btn-success btn-sm btn-control"><i class="mdi mdi-pencil"></i></button>
-                    <button (click)="deleteDrawType(drawType.pk_draw_typeid)" class="btn btn-danger btn-sm btn-control"><i class="mdi mdi-delete"></i></button>
+                    <button  *ngIf="checkIfPermitted('editDrawType')"  (click)="editDrawType(drawType.pk_draw_typeid)" class="btn btn-success btn-sm btn-control"><i class="mdi mdi-pencil"></i></button>
+                    <button   *ngIf="checkIfPermitted('deleteDrawType')"  (click)="deleteDrawType(drawType.pk_draw_typeid)" class="btn btn-danger btn-sm btn-control"><i class="mdi mdi-delete"></i></button>
                     </td>
                 </tr>
             </tbody>
