@@ -16,6 +16,7 @@ import { SignupConfirmationComponent } from './auth/signup-confirmation/signup-c
 import { EventsComponent } from './public/events/events.component';
 import { LeaderboardComponent } from './public/leaderboard/leaderboard.component';
 import { GamesComponent } from './public/games/games.component';
+import { ResultsComponent } from './logged/tournaments/results/results.component';
 
 const routes: Routes = [
   { path: '', component: LoginComponent },
@@ -26,14 +27,15 @@ const routes: Routes = [
   { path: 'dashboard', component: DashboardComponent },
   { path: 'tournaments', component: TournamentsComponent },
   { path: 'tournament/:id', component: TournamentComponent },
-  {path: 'course', component: CourseComponent},
-  {path: 'players', component: PlayersComponent},
-  {path: 'tournaments/add-tournament', component: AddTournamentComponent},
-  {path: 'tournaments/tournament/:id', component: TournamentComponent},
-  {path: 'tournaments/edit-tournament/:id', component: EditTournamentComponent},
-  {path: 'dashboard', component: DashboardComponent},
-  {path: 'tournaments', component: TournamentsComponent},
-  {path: 'course/:id', component: CourseComponent},
+  { path: 'course', component: CourseComponent},
+  { path: 'players', component: PlayersComponent},
+  { path: 'tournaments/add-tournament', component: AddTournamentComponent},
+  { path: 'tournaments/tournament/:id', component: TournamentComponent},
+  { path: 'tournaments/edit-tournament/:id', component: EditTournamentComponent},
+  { path: 'tournaments/results/:id', component: ResultsComponent},
+  { path: 'dashboard', component: DashboardComponent},
+  { path: 'tournaments', component: TournamentsComponent},
+  { path: 'course/:id', component: CourseComponent},
   { path: 'players', component: PlayersComponent },
   { path: 'add-player', component: AddPlayerComponent },
   { path: 'player/:id', component: PlayerComponent },

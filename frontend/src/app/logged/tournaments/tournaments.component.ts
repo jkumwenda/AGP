@@ -55,6 +55,16 @@ export class TournamentsComponent implements OnInit {
     );
   }
 
+  resultsTournament(tournamentId){
+    this.tournamentService.getTournament(tournamentId).then(
+      (result:Tournament) => {
+        this.tournamentId=result.pk_eventid;
+      this.router.navigate(['/tournaments/results', result.pk_eventid]);    
+    },
+    error => console.log(error)
+    );    
+  }
+
   ngOnInit() {
     this.getTournaments();
     

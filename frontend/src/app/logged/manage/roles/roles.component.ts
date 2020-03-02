@@ -13,7 +13,7 @@ export class RolesComponent implements OnInit {
   moduleTitle = 'Role';
   public roles: Role[];
   public permissionCodes = ['addRole', 'viewRole', 'editRole', 'deleteRole'];
-  public loggedProfile = 2;
+  public loggedProfile:any = localStorage.getItem('profileID');
   public profilePermissions: string[] = [];
 
   constructor(
@@ -21,8 +21,6 @@ export class RolesComponent implements OnInit {
     private permissionCheckService: PermissionCheckService,
     private router: Router,
   ) {
-
-    console.log(localStorage.getItem('username'));
   }
 
   getRoles() {

@@ -74,6 +74,7 @@ import { ListScoreComponent } from './logged/tournaments/tournament/list-score/l
 import { PlayerLeadershipboardComponent } from './logged/players/player/player-leadershipboard/player-leadershipboard.component';
 import { AddEventCourseTypeComponent } from './logged/tournaments/add-event-course-type/add-event-course-type.component';
 import { EventCourseTypeDetailComponent } from './logged/tournaments/event-course-type-detail/event-course-type-detail.component';
+import { ResultsComponent } from './logged/tournaments/results/results.component';
 
 
 
@@ -138,6 +139,7 @@ import { EventCourseTypeDetailComponent } from './logged/tournaments/event-cours
     PlayerLeadershipboardComponent,
     AddEventCourseTypeComponent,
     EventCourseTypeDetailComponent,
+    ResultsComponent,
 
   ],
   imports: [

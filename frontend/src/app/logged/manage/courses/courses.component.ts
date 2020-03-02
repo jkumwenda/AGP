@@ -13,7 +13,7 @@ export class CoursesComponent implements OnInit {
   public moduleTitle = 'Course';
   public courses: Course[];
   public permissionCodes = ['addCourse', 'viewCourse', 'editCourse', 'deleteCourse'];
-  public loggedProfile = 2;
+  public loggedProfile:any = localStorage.getItem('profileID');
   public profilePermissions: string[] = [];
 
   constructor(

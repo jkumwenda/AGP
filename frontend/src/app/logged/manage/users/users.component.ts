@@ -13,7 +13,7 @@ import {PermissionCheckService} from '../../../shared/services/permission-check.
 export class UsersComponent implements OnInit {
   private profiles: Profile[];
   public permissionCodes = ['addUser', 'viewUser', 'editUser', 'deleteUser'];
-  public loggedProfile = 2;
+  public loggedProfile:any = localStorage.getItem('profileID');
   public profilePermissions: string[] = [];
 
   constructor(

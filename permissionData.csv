@@ -1,4 +1,3 @@
-pk_permissionid,permission,code,permission_desc
 1,"add Role",addRole,dd
 2,"view Role",viewRole,d
 3,"delete Role",deleteRole,h

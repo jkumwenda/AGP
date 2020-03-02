@@ -14,7 +14,7 @@
                     <th>Tournament</th>
                     <th>Registration Period</th>
                     <th>Status</th>
-                    <th width="100px">Controls</th>
+                    <th width="120px">Controls</th>
                 </tr>
             </thead>
             <tbody>
@@ -33,6 +33,7 @@
                     <td>
                         <div class="btn-toolbar">
                         <button (click)="viewTournament(tournament.pk_eventid)" class="btn btn-dark btn-sm btn-control"><i class="mdi mdi-eye"></i></button>
+                        <button (click)="resultsTournament(tournament.pk_eventid)" class="btn btn-warning btn-sm btn-control"><i class="mdi mdi-eye"></i></button>
                         <button (click)="editTournament(tournament.pk_eventid)" class="btn btn-success btn-sm btn-control"><i class="mdi mdi-pencil"></i></button>
                         <button (click)="deleteTournament(tournament.pk_eventid)" class="btn btn-danger btn-sm btn-control"><i class="mdi mdi-delete"></i></button>
                         </div>
